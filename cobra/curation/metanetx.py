@@ -2,6 +2,9 @@
 #Module for parsing MetaNetX.org curation information
 #and mapping to ME_Models
 
+#TODO: Update the wrapper to generate the h5 file if it doesn't exist or at least
+#raise an exception that the file needs to be generated.
+
 #NOTE: Take care when parsing items that have n-1 mappings to an MNX_ID to make sure
 #that variations are not overwritten.
 from os.path import abspath as __abspath

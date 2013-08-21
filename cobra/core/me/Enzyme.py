@@ -13,7 +13,9 @@ class Modification(Object):
         self._modification_dict = {} #A dictionary that holds the modifications as the keys
         #and the stoichiometries as the values.
         self.logic = None
-        
+
+    
+    
     def add_species(self, species, stoichiometry):
         """Species must be a cobra model species
 
@@ -86,6 +88,19 @@ class Complex(Species):
         self._supercomplexes = set() #Track super-complexes that contain this complex
         self.pids = set() #set of protein ids associated with a complex
         self.logic = None
+
+    @property
+    def subunits(self):
+        return self._subunits.keys()
+
+    @property
+    def catalysts(self):
+        return list(self._catalysts)
+
+    @property
+    def modifications(self):
+        return list(self._modifications)
+    
     def add_subunit(self, subunit, stoichiometry=1, update_subunit_awareness=True):
         """
         subunit:  A Subunit object.  If a Complex then add the Subunits of the Complex instead
@@ -245,6 +260,14 @@ class Catalyst(Species):
             #self._complex = self
         self._modifications = {} #The set of modifications that are required
         #to make the enzyme functional
+
+    @property
+    def modifications(self):
+        return(self._modifications.keys())
+
+    @property
+    def reactions(self):
+        return(list(self._reaction))
 
     def add_reaction(self, reaction):
         """
