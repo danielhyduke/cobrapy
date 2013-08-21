@@ -1,0 +1,82 @@
+### MNXref Version 18/02/2013 ###
+#
+#FILE:	comp_prop.tsv
+#
+#RESOURCE:	The Gene Ontology
+#PREFIX:	go
+#URL:	http://www.geneontology.org
+#VERSION:	09/06/2012
+#LICENSE:	The GO Consortium gives permission for any of its products to be used 
+#	without license for any purpose under three conditions: 
+#	 1- That the Gene Ontology Consortium is clearly acknowledged as the source of 
+#	the product; 
+#	 2- That any GO Consortium file(s) displayed publicly include the date(s) and/or 
+#	version number(s) of the relevant GO file(s) (the GO is evolving and changes will 
+#	occur with time); 
+#	 3- That neither the content of the GO file(s) nor the logical relationships embedded 
+#	within the GO file(s) be altered in any way. 
+#	(http://www.geneontology.org/GO.cite.shtml) 
+#
+#RESOURCE:	The Cell Component Ontology
+#PREFIX:	cco
+#URL:	http://bioinformatics.ai.sri.com/CCO/
+#VERSION:	Version 16.5
+#LICENSE:	MetaCyc data are free and open for all users. 
+#	(http://biocyc.org/download.shtml) 
+#
+#RESOURCE:	BiGG
+#PREFIX:	bigg
+#URL:	http://bigg.ucsd.edu
+#VERSION:	10/12/2012
+#LICENSE:	Permission to use, copy, modify and distribute any part of this BiGG Database 
+#	for educational, research and non-profit purposes, without fee, and without a 
+#	written agreement is granted, provided that the above copyright notice, this paragraph 
+#	and the following three paragraphs appear in all copies. 
+#	Those desiring to incorporate this BiGG database into commercial products or use 
+#	for commercial purposes should contact the Technology Transfer & Intellectual 
+#	Property Services, University of California, San Diego, 9500 Gilman Drive, Mail 
+#	Code 0910, La Jolla, CA 92093-0910, Ph: (858) 534-5815, FAX: (858) 534-7345, e-mail:invent@ucsd.edu. 
+#	IN NO EVENT SHALL THE UNIVERSITY OF CALIFORNIA BE LIABLE TO ANY PARTY FOR DIRECT, 
+#	INDIRECT, SPECIAL, INCIDENTAL, OR CONSEQUENTIAL DAMAGES, INCLUDING LOST PROFITS, 
+#	ARISING OUT OF THE USE OF THIS BIGG DATABASE, EVEN IF THE UNIVERSITY OF CALIFORNIA 
+#	HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. 
+#	THE BIGG DATABASE PROVIDED HEREIN IS ON AN "AS IS" BASIS, AND THE UNIVERSITY OF 
+#	CALIFORNIA HAS NO OBLIGATION TO PROVIDE MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, 
+#	OR MODIFICATIONS. THE UNIVERSITY OF CALIFORNIA MAKES NO REPRESENTATIONS AND EXTENDS 
+#	NO WARRANTIES OF ANY KIND, EITHER IMPLIED OR EXPRESS, INCLUDING, BUT NOT LIMITED 
+#	TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY OR FITNESS FOR A PARTICULAR PURPOSE, 
+#	OR THAT THE USE OF THE BIGG DATABASE WILL NOT INFRINGE ANY PATENT, TRADEMARK OR 
+#	OTHER RIGHTS. 
+#	(http://bigg.ucsd.edu/) 
+#
+#
+#MNX_ID	Description	Source
+MNXC1	cellular_component	go:0005575
+MNXC2	extracellular region	go:0005576
+MNXC3	cytoplasm	go:0005737
+MNXC4	mitochondrion	go:0005739
+MNXC5	mitochondrial membrane	go:0031966
+MNXC6	nucleus	go:0005634
+MNXC7	nuclear membrane	go:0031965
+MNXC8	chloroplast	go:0009507
+MNXC9	vacuole	go:0005773
+MNXC10	vacuolar membrane	go:0005774
+MNXC11	endoplasmic reticulum	go:0005783
+MNXC12	endoplasmic reticulum membrane	go:0005789
+MNXC13	peroxisome	go:0005777
+MNXC14	peroxisomal membrane	go:0005778
+MNXC15	Golgi apparatus	go:0005794
+MNXC16	Golgi membrane	go:0000139
+MNXC17	lysosome	go:0005764
+MNXC18	plastid	go:0009536
+MNXC19	periplasmic space	go:0042597
+MNXC20	plasma membrane	go:0005886
+MNXC21	outer membrane	go:0019867
+MNXC22	cell wall	go:0005618
+MNXC23	glycosome	go:0020015
+MNXC24	glyoxysome	go:0009514
+MNXC25	apicoplast	go:0020011
+MNXC26	provirus	go:0019038
+MNXC27	virion	go:0019012
+MNXC28	flagellum	go:0019861
+MNXC29	acidocalcisome	go:0020022
