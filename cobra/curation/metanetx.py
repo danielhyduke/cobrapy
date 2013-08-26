@@ -29,6 +29,40 @@ compartment_xref_file = __join(data_directory, 'comp_xref.tsv')
 
 metanetx_h5_file = __join(data_directory, 'species.h5')
 
+def _decompress_7z(compressed_file, decompressed_file):
+    """From http://www.linuxplanet.org/blogs/?cat=3845
+
+
+    """
+    from pylzma import decompressobj
+    i = open(compressed_file, 'rb')
+    o = open(decompressed_file, 'wb')
+    s = decompressobj()
+    while True:
+        tmp = i.read(1)
+        if not tmp: break
+        o.write(s.decompress(tmp))
+    o.close()
+    i.close()
+
+def _compress_7z(compressed_file, source_file):
+    """From http://www.linuxplanet.org/blogs/?cat=3845
+
+
+    """
+    from pylzma import compressfile
+    i = open(source_file, 'rb')
+    o = open(compressed_file, 'wb')
+    i.seek(0)
+    s = compressfile(i)
+    while True:
+        tmp = s.read(1)
+        if not tmp: break
+        o.write(tmp)
+    o.close()
+    i.close()
+
+    
 
 def open_h5_file(h5_file=None, access_type='r'):
     """Helper function to open an h5 file.  Mostly used as a shortcut
@@ -44,12 +78,31 @@ def open_h5_file(h5_file=None, access_type='r'):
     if h5_file is None:
         h5_file = metanetx_h5_file
 
-    if isfile(h5_file):
+    if access_type.startswith('r') and not isfile(h5_file):
+        print 'Cannot locate %s.  Searching for compressed versions'%h5_file
+        #Check to see if the file exists but in zipped format.
+        #Currently only supports lzma.  Note that it's currently faster to just call
+        #parse_metanetx_files.
+        zipped_file = '%s.lzma'%h5_file
+        if isfile(zipped_file):
+            try:
+                print 'Trying to unzip %s'%zipped_file
+                _decompress_7z(zipped_file, h5_file)
+                print 'Unzipped %s'%zipped_file
+            except Exception, e:
+                if isfile(h5_file):
+                    from os import unlink
+                    unlink(h5_file)
+                raise Exception('Failed to unzip %s: %s'%(zipped_file, e))
+                
+
+    if access_type in ['a', 'r+', 'w'] and isfile(h5_file):
         from warnings import warn
         if access_type == 'w':
             warn("Overwriting %s"%h5_file)
         elif access_type in ('a', 'r+'):
             warn("Appending to %s"%h5_file)
+
 
     return(open_file(h5_file, access_type))
 
@@ -198,7 +251,20 @@ def _metanetx_wrapper(function):
         if h5_handle is None:
             #Use default if no handle provided.
             _close_h5_handle = True
-            h5_handle = open_h5_file()
+
+            try:
+                h5_handle = open_h5_file()
+
+            except Exception, e:
+                #if the parsed file doesn't exist then parse it
+                if not isfile(metanetx_h5_file):
+                    from warnings import warn
+                    warn('%s does not exist.  creating it now'%metanetx_h5_file)
+                    parse_metanetx_files()   #TODO: Have it parse all the types not just species
+                    h5_handle = open_h5_file()
+                else:
+                    raise Exception(e)
+
         if isinstance(h5_handle, str):
             #Open the file if h5_handle appears to be a file name
             _close_h5_handle = True

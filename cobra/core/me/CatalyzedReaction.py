@@ -45,7 +45,8 @@ class CatalyzedReaction(Reaction):
             self._metabolites = {}
             self.add_metabolites(name._metabolites)
             self._species = self._metabolites
-            
+
+            #Deal with pre-0.3.0 Reactions where the _genes attribute was a dict
             if hasattr(name._genes, 'keys'):
                 self._genes = set(name._genes.keys())
             [x._reaction.add(self) for x in self._genes]
