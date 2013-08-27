@@ -5,3 +5,4 @@ gurobi.log
 documentation
 cobra.egg-info
 build/
+cobra/curation/data/mnxref_*
