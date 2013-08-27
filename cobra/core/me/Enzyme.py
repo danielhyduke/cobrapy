@@ -8,8 +8,8 @@ class Modification(Object):
     from Subunits and Modifications.
     
     """
-    def __init__(self):
-        self.id = 'Empty_Modification'
+    def __init__(self, id='Empty_Modification'):
+        self.id = id
         self._modification_dict = {} #A dictionary that holds the modifications as the keys
         #and the stoichiometries as the values.
         self.logic = None
@@ -53,7 +53,8 @@ class Modification(Object):
         the_copy = Object.guided_copy(self)
         the_copy._modification_dict = dict([(species_dict[k.id], v)
                                             for k, v in self._modification_dict.iteritems()])
-        the_copy.__update_id(self._modification_dict)
+        if len(the_copy._modification_dict) > 0:
+            the_copy.__update_id(self._modification_dict)
         return the_copy
     def remove_from_model(self):
         """
@@ -135,6 +136,31 @@ class Complex(Species):
                     self._rna_subunits.add(subunit)
             self.pids.add(subunit.pid)
             self._update_id(self._subunits)
+
+    def update_subunit_stoichiometry(self, subunit_stoichiometry_dict):
+        """Function that lets one update the stoichiometry for a Subunit or
+        Subunits in a list.
+
+        subunit_stoichiometry_dict: A dictionary where the k is the Subunit and
+        the value is the new stoichiometry.
+
+        
+        """
+        [self._subunits.update({k: v})
+         for k, v in subunit_stoichiometry_dict.iteritems()]
+        for the_catalyst in self._catalysts:
+            the_catalyst._update_id(subunit_stoichiometry_dict)
+            the_catalyst._update_id(the_catalyst._modifications)
+            if self.model is not None:
+                #Remove from the catalyst from the model.catalysts DictList because
+                #the id might be changing due to the current convention of
+                #constructing the id based on the complex composition.
+                self.model.catalyst.remove(the_catalyst)
+                #Add the catalyst back in so the name is regenerated
+                self.model.catalyst.append(the_catalyst)
+
+        self._update_id(self._subunits)
+        
                                                                           
     def _update_id(self, stoichiometry_dict, prefix='Complex'):
         """Ids are derived from their basic composition following this structure:
@@ -142,12 +168,21 @@ class Complex(Species):
         each modification is separated by __.
 
         """
+        if self.model is not None:
+            #Remove from the complex from the DictList because
+            #the id might be changing due to the current convention of
+            #constructing the id based on the complex composition.
+            self.model.complexes.remove(self)
+            
         self.id = prefix
         _tmp_list = stoichiometry_dict.items()
         _tmp_list.sort()
         for k, v in _tmp_list:
             self.id += '__%s_%s'%(repr(v), k.id)
         _update_logic(self, stoichiometry_dict)
+        if self.model is not None:
+            #Add the complex back in with its new id
+            self.model.complexes.append(self)
         
 
 
@@ -168,6 +203,11 @@ class Complex(Species):
                                                               
         catalyst = Catalyst(self)
         if modification is not None:
+            if self.model is not None and hasattr(self.model, 'modifications'):
+                try:
+                    modification = self.model.modifications.get_by_id(modification.id)
+                except KeyError:
+                    self.model.modifications.append(modification)
             catalyst.modify(modification)
             self._modification_to_catalyst[modification.id] = catalyst
         else:
@@ -176,6 +216,8 @@ class Complex(Species):
         self._modifications.add(modification)
         if data_source is not None:
             catalyst.source = data_source
+        if self.model is not None and hasattr(self.model, 'catalysts'):
+            self.model.catalysts.append(catalyst)
         return(catalyst)
 
 
@@ -269,6 +311,10 @@ class Catalyst(Species):
     def reactions(self):
         return(list(self._reaction))
 
+    @property
+    def complex(self):
+        return(self._complex)
+
     def add_reaction(self, reaction):
         """
         TODO Q: Should the reaction also be associated with the _complex?
@@ -306,8 +352,7 @@ class Catalyst(Species):
         for k, v in _tmp_list:
             self.id += '__%s_%s'%(repr(v), k.id)
         _update_logic(self, stoichiometry_dict)
-
-
+ 
  
         
 class Subunit(Gene):
@@ -365,7 +410,9 @@ class Subunit(Gene):
         """
         warn("%s.remove_from_model is not yet implemented"%(str(type(self))))
 
-
+    @property
+    def complexes(self):
+        return(self._complex)
 #Module Functions
 def _update_logic(the_object, stoichiometry_dict):
     """Construct a logical and string from a stoichiometry dictionary and

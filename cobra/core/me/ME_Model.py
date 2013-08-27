@@ -35,6 +35,20 @@ class ME_Model(Model):
          for k in self.reactions]
         
         self.genes = self.subunits
+
+    def __setstate__(self, state):
+        """Make sure all cobra.Objects in the model point to the model
+        
+        TODO: Make sure that the genes and metabolites referenced by
+        the reactions.(genes|metabolites) point to the model's genes
+        and metabolites.
+        
+        """
+        self.__dict__.update(state)
+        [[setattr(x, '_model', self)
+          for x in self.__dict__[y]]
+         for y in ['complexes', 'subunits', 'metabolites', 'reactions']]
+
         
     def copy(self):
         """Provides a partial 'deepcopy' of the ME_Model.  All of the Metabolite, Gene,

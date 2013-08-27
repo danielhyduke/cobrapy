@@ -51,7 +51,15 @@ class Species(Object):
         self._model =  self.charge = None
         self._reaction = set() #references to reactions that operate on this species
 
-  
+
+    @property
+    def reactions(self):
+        return self._reaction
+
+    @property
+    def model(self):
+        return self._model
+    
     def parse_composition(self):
         """Breaks the chemical formula down by element.
         Useful for making sure Reactions are balanced.'
