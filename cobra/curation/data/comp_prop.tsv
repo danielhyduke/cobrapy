@@ -1,4 +1,4 @@
-### MNXref Version 18/02/2013 ###
+### MNXref Version 14/06/2013 ###
 #
 #FILE:	comp_prop.tsv
 #
@@ -20,14 +20,14 @@
 #RESOURCE:	The Cell Component Ontology
 #PREFIX:	cco
 #URL:	http://bioinformatics.ai.sri.com/CCO/
-#VERSION:	Version 16.5
+#VERSION:	Version 17.0
 #LICENSE:	MetaCyc data are free and open for all users. 
 #	(http://biocyc.org/download.shtml) 
 #
 #RESOURCE:	BiGG
 #PREFIX:	bigg
 #URL:	http://bigg.ucsd.edu
-#VERSION:	10/12/2012
+#VERSION:	04/06/2013
 #LICENSE:	Permission to use, copy, modify and distribute any part of this BiGG Database 
 #	for educational, research and non-profit purposes, without fee, and without a 
 #	written agreement is granted, provided that the above copyright notice, this paragraph 
@@ -51,7 +51,8 @@
 #
 #
 #MNX_ID	Description	Source
-MNXC1	cellular_component	go:0005575
+MNXC0	cellular_component	go:0005575
+MNXC1	cell	go:0005623
 MNXC2	extracellular region	go:0005576
 MNXC3	cytoplasm	go:0005737
 MNXC4	mitochondrion	go:0005739

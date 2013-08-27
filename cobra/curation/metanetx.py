@@ -28,7 +28,19 @@ compartment_property_file = __join(data_directory, 'comp_prop.tsv')
 compartment_xref_file = __join(data_directory, 'comp_xref.tsv')
 
 metanetx_h5_file = __join(data_directory, 'species.h5')
-
+def database_version():
+    """Returns the version string from the database file.  Assumes that
+    the version line of the mnx file contains the following string: 'MNXref Version'
+    
+    """
+    with open(species_property_file) as in_file:
+        for the_line in in_file:
+            if 'mnxref version' in the_line.lower():
+                the_line.strip()
+                break
+            
+    return(the_line)
+    
 def _decompress_7z(compressed_file, decompressed_file):
     """From http://www.linuxplanet.org/blogs/?cat=3845
 
@@ -829,7 +841,9 @@ try:
                             "%s is of type %s"%(the_object.id, type(the_object)))
         else:
             id_type = 'species'
-
+        ## if the_object.id == 'adocblp':
+        ##     from pdb import set_trace
+        ##     set_trace()
         #Deal with old notes attributes derived from the Palsson lab
         the_resources = get_resources(id_type, h5_handle=h5_handle)
         the_notes = dict([(k.lower(), v) for k, v in the_object.notes.iteritems()])
@@ -843,21 +857,13 @@ try:
             tmp_list = mnx_ids[the_resource]
             the_id = the_notes[the_resource]
             if hasattr(the_id, '__iter__'):
-                #Deal with the situation where there might be multiple id
-                #mappings for a single object
+                #Assume that there is only a one to one mapping in the notes field
+                #which might not be accurate
                 for the_value in the_id:
-                    the_atoms = the_value.split()
-                    if len(the_atoms) > 1:
-                        for the_atom in the_atoms:
-                            tmp_list.append(map_id_to_metanetx(the_atom,
-                                                               the_resource,
-                                                                id_type,
-                                                               h5_handle=h5_handle))
-                    else:
-                        tmp_list.append(map_id_to_metanetx(the_value,
-                                                           the_resource,
-                                                           id_type,
-                                                           h5_handle=h5_handle))   
+                    tmp_list.append(map_id_to_metanetx(the_value,
+                                                       the_resource,
+                                                       id_type,
+                                                       h5_handle=h5_handle))   
             else:
                 tmp_list.append(map_id_to_metanetx(the_id,
                                                    the_resource,

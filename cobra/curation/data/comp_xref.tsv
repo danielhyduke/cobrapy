@@ -1,4 +1,4 @@
-### MNXref Version 18/02/2013 ###
+### MNXref Version 14/06/2013 ###
 #
 #FILE:	comp_xref.tsv
 #
@@ -20,14 +20,14 @@
 #RESOURCE:	The Cell Component Ontology
 #PREFIX:	cco
 #URL:	http://bioinformatics.ai.sri.com/CCO/
-#VERSION:	Version 16.5
+#VERSION:	Version 17.0
 #LICENSE:	MetaCyc data are free and open for all users. 
 #	(http://biocyc.org/download.shtml) 
 #
 #RESOURCE:	BiGG
 #PREFIX:	bigg
 #URL:	http://bigg.ucsd.edu
-#VERSION:	10/12/2012
+#VERSION:	04/06/2013
 #LICENSE:	Permission to use, copy, modify and distribute any part of this BiGG Database 
 #	for educational, research and non-profit purposes, without fee, and without a 
 #	written agreement is granted, provided that the above copyright notice, this paragraph 
@@ -76,35 +76,35 @@ bigg:x	MNXC13	peroxisome
 bigg:xm	MNXC14	peroxisomal membrane
 bigg:y	MNXC23	glycosome
 cco:CCO-AMYLOPLAST	MNXC18	amyloplast
-cco:CCO-CE-BAC	MNXC1	cell envelope (sensu Bacteria)
-cco:CCO-CE-BAC-NEG	MNXC1	cell envelope (sensu Gram-negative Bacteria)
-cco:CCO-CE-BAC-POS	MNXC1	cell envelope (sensu Gram-positive Bacteria)
+cco:CCO-CE-BAC	MNXC0	cell envelope (sensu Bacteria)
+cco:CCO-CE-BAC-NEG	MNXC0	cell envelope (sensu Gram-negative Bacteria)
+cco:CCO-CE-BAC-POS	MNXC0	cell envelope (sensu Gram-positive Bacteria)
 cco:CCO-CELL-FRACT	MNXC1	cell fraction
 cco:CCO-CELLWALL	MNXC22	cell wall
-cco:CCO-CHL-IM-SPC	MNXC1	chloroplast intermembrane space
-cco:CCO-CHL-STKD-THY	MNXC1	chloroplast stacked thylakoid
+cco:CCO-CHL-IM-SPC	MNXC0	chloroplast intermembrane space
+cco:CCO-CHL-STKD-THY	MNXC0	chloroplast stacked thylakoid
 cco:CCO-CHL-STR-THY	MNXC8	chloroplast stromal thylakoid
-cco:CCO-CHL-THY-LUM	MNXC1	chloroplast thylakoid lumen
-cco:CCO-CHL-THY-MEM	MNXC1	chloroplast thylakoid membrane
+cco:CCO-CHL-THY-LUM	MNXC0	chloroplast thylakoid lumen
+cco:CCO-CHL-THY-MEM	MNXC0	chloroplast thylakoid membrane
 cco:CCO-CHLOR-ENV	MNXC8	chloroplast envelope
 cco:CCO-CHLOR-IMEM	MNXC8	chloroplast inner membrane
-cco:CCO-CHLOR-MEM	MNXC1	chloroplast membrane
+cco:CCO-CHLOR-MEM	MNXC0	chloroplast membrane
 cco:CCO-CHLOR-OMEM	MNXC21	chloroplast outer membrane
 cco:CCO-CHLOR-STR	MNXC8	chloroplast stroma
-cco:CCO-CHLOR-THY	MNXC1	chloroplast thylakoid
+cco:CCO-CHLOR-THY	MNXC0	chloroplast thylakoid
 cco:CCO-CHLOROPLAST	MNXC8	chloroplast
-cco:CCO-CHR-IM-SPC	MNXC1	chromoplast intermembrane space
-cco:CCO-CHROM-ENV	MNXC1	chromoplast envelope
-cco:CCO-CHROM-IMEM	MNXC1	chromoplast inner membrane
+cco:CCO-CHR-IM-SPC	MNXC0	chromoplast intermembrane space
+cco:CCO-CHROM-ENV	MNXC0	chromoplast envelope
+cco:CCO-CHROM-IMEM	MNXC0	chromoplast inner membrane
 cco:CCO-CHROM-MEM	MNXC18	chromoplast membrane
-cco:CCO-CHROM-OMEM	MNXC1	chromoplast outer membrane
+cco:CCO-CHROM-OMEM	MNXC0	chromoplast outer membrane
 cco:CCO-CHROM-STR	MNXC18	chromoplast stroma
 cco:CCO-CHROMOPLAST	MNXC18	chromoplast
 cco:CCO-CLATH-END-VES	MNXC3	clathrin-coated endocytic vesicle
 cco:CCO-CLATH-VES	MNXC3	clathrin-coated vesicle
 cco:CCO-COATED-VES	MNXC3	coated vesicle
 cco:CCO-COPI-VES	MNXC15	COPI-coated vesicle
-cco:CCO-COPII-VES	MNXC1	COPII-coated vesicle
+cco:CCO-COPII-VES	MNXC0	COPII-coated vesicle
 cco:CCO-CW-BAC	MNXC22	cell wall (sensu Bacteria)
 cco:CCO-CW-BAC-NEG	MNXC22	cell wall (sensu Gram-negative Bacteria)
 cco:CCO-CW-BAC-POS	MNXC22	cell wall (sensu Gram-positive Bacteria)
@@ -114,92 +114,92 @@ cco:CCO-CW-PL-SEC	MNXC22	secondary cell wall (sensu Magnoliophyta)
 cco:CCO-CW-PLANT	MNXC22	cell wall (sensu Magnoliophyta)
 cco:CCO-CYTOPLASM	MNXC3	cytoplasm
 cco:CCO-CYTOSOL	MNXC3	cytosol
-cco:CCO-EARLY-END-LUM	MNXC1	early endosome lumen
+cco:CCO-EARLY-END-LUM	MNXC0	early endosome lumen
 cco:CCO-EARLY-ENDO	MNXC3	early endosome
-cco:CCO-EARLY-ENDO-MEM	MNXC1	early endosome membrane
+cco:CCO-EARLY-ENDO-MEM	MNXC0	early endosome membrane
 cco:CCO-ELAIOPLAST	MNXC18	elaioplast
-cco:CCO-ENDO-LUM	MNXC1	endosome lumen
+cco:CCO-ENDO-LUM	MNXC0	endosome lumen
 cco:CCO-ENDO-MEM	MNXC3	endosome membrane
 cco:CCO-ENDOCYT-VES	MNXC3	endocytic vesicle
 cco:CCO-ENDOSOME	MNXC3	endosome
-cco:CCO-ENVELOPE	MNXC1	envelope
+cco:CCO-ENVELOPE	MNXC0	envelope
 cco:CCO-ER	MNXC11	endoplasmic reticulum
 cco:CCO-ER-GOLGI-VES	MNXC3	ER-Golgi transport vesicle
 cco:CCO-ER-LUM	MNXC11	endoplasmic reticulum lumen
 cco:CCO-ER-MEM	MNXC12	endoplasmic reticulum membrane
 cco:CCO-ETIOPLAST	MNXC18	etioplast
-cco:CCO-EXTRACELL-MAT	MNXC1	extracellular matrix (sensu Animalia)
+cco:CCO-EXTRACELL-MAT	MNXC0	extracellular matrix (sensu Animalia)
 cco:CCO-EXTRACELLULAR	MNXC2	extracellular space
 cco:CCO-GG-CIS-CIST	MNXC15	Golgi cis cisterna
 cco:CCO-GG-MED-CIST	MNXC15	Golgi medial cisterna
 cco:CCO-GG-TR-CIST	MNXC15	Golgi trans cisterna
-cco:CCO-GLYOX-LUM	MNXC1	glyoxysomal lumen
+cco:CCO-GLYOX-LUM	MNXC0	glyoxysomal lumen
 cco:CCO-GLYOX-MEM	MNXC14	glyoxysomal membrane
 cco:CCO-GLYOXYSOME	MNXC24	glyoxysome
 cco:CCO-GOLGI	MNXC15	Golgi apparatus
-cco:CCO-GOLGI-CIST	MNXC1	Golgi cisterna
+cco:CCO-GOLGI-CIST	MNXC0	Golgi cisterna
 cco:CCO-GOLGI-ER-VES	MNXC15	Golgi-ER transport vesicle
 cco:CCO-GOLGI-LUM	MNXC15	Golgi lumen
 cco:CCO-GOLGI-MEM	MNXC16	Golgi membrane
 cco:CCO-GOLGI-VES	MNXC15	Golgi vesicle
 cco:CCO-IN	MNXC1	in
 cco:CCO-INTER-GOLGI-VES	MNXC15	inter-Golgi transport vesicle
-cco:CCO-LATE-END-LUM	MNXC1	late endosome lumen
+cco:CCO-LATE-END-LUM	MNXC0	late endosome lumen
 cco:CCO-LATE-ENDO	MNXC3	late endosome
-cco:CCO-LATE-ENDO-MEM	MNXC1	late endosome membrane
+cco:CCO-LATE-ENDO-MEM	MNXC0	late endosome membrane
 cco:CCO-LEUCOPLAST	MNXC18	leucoplast
-cco:CCO-LYS-LUM	MNXC1	lysosome lumen
+cco:CCO-LYS-LUM	MNXC0	lysosome lumen
 cco:CCO-LYS-MEM	MNXC17	lysosomal membrane
 cco:CCO-LYSOSOME	MNXC17	lysosome
 cco:CCO-LYTIC-VAC	MNXC9	lytic vacuole
-cco:CCO-MBODY-MEM	MNXC1	microbody membrane
-cco:CCO-MEM-ORG	MNXC1	membrane-bound organelle
-cco:CCO-MEMBRANE	MNXC1	membrane
-cco:CCO-MICRO-LUM	MNXC1	microbody lumen
+cco:CCO-MBODY-MEM	MNXC0	microbody membrane
+cco:CCO-MEM-ORG	MNXC0	membrane-bound organelle
+cco:CCO-MEMBRANE	MNXC0	membrane
+cco:CCO-MICRO-LUM	MNXC0	microbody lumen
 cco:CCO-MICROBODY	MNXC3	microbody
 cco:CCO-MICROSOME	MNXC1	microsome
 cco:CCO-MIT	MNXC4	mitochondrion
-cco:CCO-MIT-ENV	MNXC1	mitochondrial envelope
+cco:CCO-MIT-ENV	MNXC0	mitochondrial envelope
 cco:CCO-MIT-IM-SPC	MNXC4	mitochondrial intermembrane space
 cco:CCO-MIT-IMEM	MNXC5	mitochondrial inner membrane
-cco:CCO-MIT-LUM	MNXC1	mitochondrial lumen
-cco:CCO-MIT-MEM	MNXC1	mitochondrial membrane
+cco:CCO-MIT-LUM	MNXC0	mitochondrial lumen
+cco:CCO-MIT-MEM	MNXC0	mitochondrial membrane
 cco:CCO-MIT-OMEM	MNXC5	mitochondrial outer membrane
-cco:CCO-NON-MEM-ORG	MNXC1	non-membrane-bound organelle
-cco:CCO-NUC-ENV	MNXC1	nuclear envelope
+cco:CCO-NON-MEM-ORG	MNXC0	non-membrane-bound organelle
+cco:CCO-NUC-ENV	MNXC0	nuclear envelope
 cco:CCO-NUC-IMEM	MNXC7	nuclear inner membrane
-cco:CCO-NUC-LUM	MNXC1	nuclear lumen
-cco:CCO-NUC-MEM	MNXC1	nuclear membrane
+cco:CCO-NUC-LUM	MNXC0	nuclear lumen
+cco:CCO-NUC-MEM	MNXC0	nuclear membrane
 cco:CCO-NUC-OMEM	MNXC7	nuclear outer membrane
 cco:CCO-NUCLEOLUS	MNXC6	nucleolus
 cco:CCO-NUCLEUS	MNXC6	nucleus
-cco:CCO-ORGANEL-ENV	MNXC1	organellar envelope
-cco:CCO-ORGANELLE	MNXC1	organelle
+cco:CCO-ORGANEL-ENV	MNXC0	organellar envelope
+cco:CCO-ORGANELLE	MNXC0	organelle
 cco:CCO-OUT	MNXC2	out
 cco:CCO-OUTER-MEM	MNXC21	outer membrane (sensu Gram-negative Bacteria)
 cco:CCO-PERI-BAC	MNXC19	periplasmic space (sensu Gram-negative Bacteria)
 cco:CCO-PERI-FUNGI	MNXC19	periplasmic space (sensu Fungi)
 cco:CCO-PERINUC-SPC	MNXC6	perinuclear space
 cco:CCO-PERIPLASM	MNXC19	periplasmic space
-cco:CCO-PEROX-LUM	MNXC1	peroxisomal lumen
+cco:CCO-PEROX-LUM	MNXC0	peroxisomal lumen
 cco:CCO-PEROX-MEM	MNXC14	peroxisomal membrane
 cco:CCO-PEROXISOME	MNXC13	peroxisome
 cco:CCO-PLASMA-MEM	MNXC20	plasma membrane
 cco:CCO-PLAST-IM-SPC	MNXC18	plastid intermembrane space
 cco:CCO-PLAST-IMEM	MNXC18	plastid inner membrane
 cco:CCO-PLAST-OMEM	MNXC21	plastid outer membrane
-cco:CCO-PLAST-THY	MNXC1	plastid thylakoid
+cco:CCO-PLAST-THY	MNXC0	plastid thylakoid
 cco:CCO-PLASTID	MNXC18	plastid
 cco:CCO-PLASTID-ENV	MNXC18	plastid envelope
 cco:CCO-PLASTID-MEM	MNXC18	plastid membrane
 cco:CCO-PLASTID-STR	MNXC18	plastid stroma
-cco:CCO-PM-ANIMAL	MNXC1	plasma membrane (sensu Animalia)
-cco:CCO-PM-BAC-NEG	MNXC1	inner membrane (sensu Gram-negative Bacteria)
-cco:CCO-PM-BAC-POS	MNXC1	plasma membrane (sensu Gram-positive Bacteria)
-cco:CCO-PM-BACTERIA	MNXC1	plasma membrane (sensu Bacteria)
-cco:CCO-PM-FUNGI	MNXC1	plasma membrane (sensu Fungi)
-cco:CCO-PM-PLANT	MNXC1	plasma membrane (sensu Magnoliophyta)
-cco:CCO-PROT-PLAST	MNXC1	proteinoplast
+cco:CCO-PM-ANIMAL	MNXC0	plasma membrane (sensu Animalia)
+cco:CCO-PM-BAC-NEG	MNXC0	inner membrane (sensu Gram-negative Bacteria)
+cco:CCO-PM-BAC-POS	MNXC0	plasma membrane (sensu Gram-positive Bacteria)
+cco:CCO-PM-BACTERIA	MNXC0	plasma membrane (sensu Bacteria)
+cco:CCO-PM-FUNGI	MNXC0	plasma membrane (sensu Fungi)
+cco:CCO-PM-PLANT	MNXC0	plasma membrane (sensu Magnoliophyta)
+cco:CCO-PROT-PLAST	MNXC0	proteinoplast
 cco:CCO-RGH-ER-LUM	MNXC11	rough endoplasmic reticulum lumen
 cco:CCO-RGH-ER-MEM	MNXC12	rough endoplasmic reticulum membrane
 cco:CCO-RIBOSOME	MNXC3	ribosome
@@ -208,27 +208,27 @@ cco:CCO-SEC-GRANULE	MNXC3	secretory granule
 cco:CCO-SMOOTH-ER	MNXC11	smooth endoplasmic reticulum
 cco:CCO-SMTH-ER-LUM	MNXC11	smooth endoplasmic reticulum lumen
 cco:CCO-SMTH-ER-MEM	MNXC12	smooth endoplasmic reticulum membrane
-cco:CCO-SPACE	MNXC1	space
+cco:CCO-SPACE	MNXC0	space
 cco:CCO-STORAGE-VAC	MNXC9	storage vacuole
-cco:CCO-SUBORG-CMPT	MNXC1	suborganelle compartment
-cco:CCO-SUPER-COMP	MNXC1	super component
-cco:CCO-SURFACE-MAT	MNXC1	cell surface matrix
-cco:CCO-SYN-VES	MNXC1	synaptic vesicle
+cco:CCO-SUBORG-CMPT	MNXC0	suborganelle compartment
+cco:CCO-SUPER-COMP	MNXC0	super component
+cco:CCO-SURFACE-MAT	MNXC0	cell surface matrix
+cco:CCO-SYN-VES	MNXC0	synaptic vesicle
 cco:CCO-THY-CYA	MNXC1	thylakoid (sensu Cyanobacteria)
-cco:CCO-THY-LUM	MNXC1	thylakoid lumen
-cco:CCO-THY-LUM-CYA	MNXC1	thylakoid lumen (sensu Cyanobacteria)
-cco:CCO-THY-MEM	MNXC1	thylakoid membrane
-cco:CCO-THY-MEM-CYA	MNXC1	thylakoid membrane (sensu Cyanobacteria)
+cco:CCO-THY-LUM	MNXC0	thylakoid lumen
+cco:CCO-THY-LUM-CYA	MNXC0	thylakoid lumen (sensu Cyanobacteria)
+cco:CCO-THY-MEM	MNXC0	thylakoid membrane
+cco:CCO-THY-MEM-CYA	MNXC0	thylakoid membrane (sensu Cyanobacteria)
 cco:CCO-TR-GOLGI-VES	MNXC15	trans-Golgi network transport vesicle
 cco:CCO-UNKNOWN-SPACE	UNK_COMP	unknown space
 cco:CCO-VAC-LUM	MNXC9	vacuolar lumen
 cco:CCO-VAC-MEM	MNXC10	vacuolar membrane
 cco:CCO-VACUOLE	MNXC9	vacuole
-cco:CCO-VES-LUM	MNXC1	vesicle lumen
-cco:CCO-VESICLE	MNXC1	vesicle
+cco:CCO-VES-LUM	MNXC0	vesicle lumen
+cco:CCO-VESICLE	MNXC0	vesicle
 cco:CCO-VESICLE-MEM	MNXC1	vesicle membrane
 go:0000015	MNXC3	phosphopyruvate hydratase complex|enolase complex
-go:0000108	MNXC1	repairosome
+go:0000108	MNXC0	repairosome
 go:0000109	MNXC6	nucleotide-excision repair complex
 go:0000110	MNXC6	nucleotide-excision repair factor 1 complex|NEF1 complex|XPA-ERCC1-ERCC4 complex
 go:0000111	MNXC6	nucleotide-excision repair factor 2 complex|NEF2 complex
@@ -256,24 +256,24 @@ go:0000152	MNXC6	nuclear ubiquitin ligase complex
 go:0000153	MNXC3	cytoplasmic ubiquitin ligase complex
 go:0000159	MNXC1	protein phosphatase type 2A complex
 go:0000164	MNXC3	protein phosphatase type 1 complex
-go:0000172	MNXC1	ribonuclease MRP complex|RNase MRP complex|ribonuclease mitochondrial RNA processing complex
+go:0000172	MNXC0	ribonuclease MRP complex|RNase MRP complex|ribonuclease mitochondrial RNA processing complex
 go:0000176	MNXC6	nuclear exosome (RNase complex)|nuclear exosome multienzyme ribonuclease complex|eukaryotic exosome multienzyme ribonuclease complex|nuclear exosome (ribonuclease complex)
 go:0000177	MNXC3	cytoplasmic exosome (RNase complex)|cytoplasmic exosome multienzyme ribonuclease complex|prokaryotic exosome multienzyme ribonuclease complex|cytoplasmic exosome (ribonuclease complex)
 go:0000178	MNXC1	exosome (RNase complex)|exosome (ribonucleasease complex)|exosome multienzyme ribonuclease complex
-go:0000180	MNXC1	cytosolic large ribosomal subunit
-go:0000181	MNXC1	cytosolic small ribosomal subunit
+go:0000180	MNXC0	cytosolic large ribosomal subunit
+go:0000181	MNXC0	cytosolic small ribosomal subunit
 go:0000214	MNXC6	tRNA-intron endonuclease complex|tRNA splicing endonuclease complex|SEN complex
-go:0000219	MNXC1	vacuolar hydrogen-transporting ATPase|V-ATPase
+go:0000219	MNXC0	vacuolar hydrogen-transporting ATPase|V-ATPase
 go:0000220	MNXC10	vacuolar proton-transporting V-type ATPase, V0 domain|vacuolar hydrogen ion-transporting ATPase V0 domain
 go:0000221	MNXC10	vacuolar proton-transporting V-type ATPase, V1 domain|vacuolar hydrogen ion-transporting ATPase V1 domain
 go:0000222	MNXC20	plasma membrane proton-transporting V-type ATPase, V0 domain|plasma membrane hydrogen ion-transporting ATPase V0 domain
 go:0000223	MNXC20	plasma membrane proton-transporting V-type ATPase, V1 domain|plasma membrane hydrogen ion-transporting ATPase V1 domain
 go:0000228	MNXC6	nuclear chromosome
 go:0000229	MNXC3	cytoplasmic chromosome
-go:0000230	MNXC1	nuclear mitotic chromosome
-go:0000231	MNXC1	cytoplasmic mitotic chromosome
-go:0000232	MNXC1	nuclear interphase chromosome
-go:0000233	MNXC1	cytoplasmic interphase chromosome
+go:0000230	MNXC0	nuclear mitotic chromosome
+go:0000231	MNXC0	cytoplasmic mitotic chromosome
+go:0000232	MNXC0	nuclear interphase chromosome
+go:0000233	MNXC0	cytoplasmic interphase chromosome
 go:0000235	MNXC3	astral microtubule
 go:0000242	MNXC3	pericentriolar material
 go:0000243	MNXC6	commitment complex
@@ -289,9 +289,9 @@ go:0000307	MNXC1	cyclin-dependent protein kinase holoenzyme complex|CDK holoenzy
 go:0000308	MNXC3	cytoplasmic cyclin-dependent protein kinase holoenzyme complex
 go:0000311	MNXC18	plastid large ribosomal subunit
 go:0000312	MNXC18	plastid small ribosomal subunit
-go:0000313	MNXC1	organellar ribosome
-go:0000314	MNXC1	organellar small ribosomal subunit
-go:0000315	MNXC1	organellar large ribosomal subunit
+go:0000313	MNXC0	organellar ribosome
+go:0000314	MNXC0	organellar small ribosomal subunit
+go:0000315	MNXC0	organellar large ribosomal subunit
 go:0000322	MNXC9	storage vacuole
 go:0000323	MNXC9	lytic vacuole
 go:0000324	MNXC9	fungal-type vacuole|vacuole, cell cycle-correlated morphology
@@ -320,56 +320,56 @@ go:0000428	MNXC1	DNA-directed RNA polymerase complex
 go:0000438	MNXC6	core TFIIH complex portion of holo TFIIH complex
 go:0000439	MNXC6	core TFIIH complex
 go:0000440	MNXC6	core TFIIH complex portion of NEF3 complex
-go:0000441	MNXC1	SSL2-core TFIIH complex
+go:0000441	MNXC0	SSL2-core TFIIH complex
 go:0000442	MNXC6	SSL2-core TFIIH complex portion of NEF3 complex
 go:0000443	MNXC6	SSL2-core TFIIH complex portion of holo TFIIH complex
-go:0000444	MNXC1	MIS12/MIND type complex
+go:0000444	MNXC0	MIS12/MIND type complex
 go:0000445	MNXC6	THO complex part of transcription export complex|THO complex part of TREX complex
 go:0000446	MNXC6	nucleoplasmic THO complex
 go:0000500	MNXC6	RNA polymerase I upstream activating factor complex|UAF|RNA polymerase I upstream activation factor complex
 go:0000502	MNXC1	proteasome complex
-go:0000504	MNXC1	proteasome regulatory particle (sensu Bacteria)
+go:0000504	MNXC0	proteasome regulatory particle (sensu Bacteria)
 go:0000506	MNXC11	glycosylphosphatidylinositol-N-acetylglucosaminyltransferase (GPI-GnT) complex|GPI-GnT complex|GPI-N-acetylglucosaminyltransferase complex|GPI-GlcNAc transferase complex
-go:0000775	MNXC1	chromosome, centromeric region|chromosome, centric region
-go:0000776	MNXC1	kinetochore
-go:0000777	MNXC1	condensed chromosome kinetochore
+go:0000775	MNXC0	chromosome, centromeric region|chromosome, centric region
+go:0000776	MNXC0	kinetochore
+go:0000777	MNXC0	condensed chromosome kinetochore
 go:0000778	MNXC6	condensed nuclear chromosome kinetochore
-go:0000779	MNXC1	condensed chromosome, centromeric region|condensed chromosome, centric region
+go:0000779	MNXC0	condensed chromosome, centromeric region|condensed chromosome, centric region
 go:0000780	MNXC6	condensed nuclear chromosome, centromeric region|condensed nuclear chromosome, centric region
-go:0000781	MNXC1	chromosome, telomeric region
-go:0000782	MNXC1	telomere cap complex
+go:0000781	MNXC0	chromosome, telomeric region
+go:0000782	MNXC0	telomere cap complex
 go:0000783	MNXC6	nuclear telomere cap complex
 go:0000784	MNXC6	nuclear chromosome, telomeric region|nuclear chromosome, telomere
-go:0000785	MNXC1	chromatin
-go:0000786	MNXC1	nucleosome
+go:0000785	MNXC0	chromatin
+go:0000786	MNXC0	nucleosome
 go:0000787	MNXC3	cytoplasmic nucleosome
 go:0000788	MNXC6	nuclear nucleosome
 go:0000789	MNXC3	cytoplasmic chromatin
 go:0000790	MNXC6	nuclear chromatin
-go:0000791	MNXC1	euchromatin
-go:0000792	MNXC1	heterochromatin
-go:0000793	MNXC1	condensed chromosome
+go:0000791	MNXC0	euchromatin
+go:0000792	MNXC0	heterochromatin
+go:0000793	MNXC0	condensed chromosome
 go:0000794	MNXC6	condensed nuclear chromosome
 go:0000795	MNXC6	synaptonemal complex
-go:0000796	MNXC1	condensin complex
-go:0000797	MNXC1	condensin core heterodimer
+go:0000796	MNXC0	condensin complex
+go:0000797	MNXC0	condensin core heterodimer
 go:0000798	MNXC6	nuclear cohesin complex
 go:0000799	MNXC6	nuclear condensin complex
 go:0000800	MNXC6	lateral element|axial element
 go:0000801	MNXC6	central element
 go:0000802	MNXC6	transverse filament
-go:0000803	MNXC1	sex chromosome
-go:0000804	MNXC1	W chromosome
-go:0000805	MNXC1	X chromosome
-go:0000806	MNXC1	Y chromosome
-go:0000807	MNXC1	Z chromosome
-go:0000808	MNXC1	origin recognition complex|origin of replication recognition complex|ORC
+go:0000803	MNXC0	sex chromosome
+go:0000804	MNXC0	W chromosome
+go:0000805	MNXC0	X chromosome
+go:0000806	MNXC0	Y chromosome
+go:0000807	MNXC0	Z chromosome
+go:0000808	MNXC0	origin recognition complex|origin of replication recognition complex|ORC
 go:0000809	MNXC3	cytoplasmic origin of replication recognition complex|cytoplasmic ORC
 go:0000811	MNXC6	GINS complex|Go, Ichi, Ni and San complex
 go:0000812	MNXC6	Swr1 complex|SWR-C
-go:0000813	MNXC1	ESCRT I complex
-go:0000814	MNXC1	ESCRT II complex
-go:0000815	MNXC1	ESCRT III complex
+go:0000813	MNXC0	ESCRT I complex
+go:0000814	MNXC0	ESCRT II complex
+go:0000815	MNXC0	ESCRT III complex
 go:0000817	MNXC6	COMA complex|Ctf19p-Okp1p-Mcm1p-Ame1p complex
 go:0000818	MNXC6	nuclear MIS12/MIND type complex|MIND complex|Mtw1p Including Nnf1p-Nsl1p-Dsn1p complex
 go:0000835	MNXC12	ER ubiquitin ligase complex
@@ -377,7 +377,7 @@ go:0000836	MNXC12	Hrd1p ubiquitin ligase complex
 go:0000837	MNXC12	Doa10p ubiquitin ligase complex|Ssm4p ubiquitin ligase complex
 go:0000838	MNXC12	Hrd1p ubiquitin ligase ERAD-M complex
 go:0000839	MNXC12	Hrd1p ubiquitin ligase ERAD-L complex
-go:0000922	MNXC1	spindle pole
+go:0000922	MNXC0	spindle pole
 go:0000923	MNXC3	equatorial microtubule organizing center|EMTOC|equatorial microtubule organising centre
 go:0000924	MNXC3	gamma-tubulin ring complex, centrosomal|gamma-tubulin large complex, centrosomal
 go:0000927	MNXC3	gamma-tubulin small complex, centrosomal
@@ -391,48 +391,48 @@ go:0000935	MNXC1	barrier septum|complete septum
 go:0000936	MNXC1	primary cell septum
 go:0000937	MNXC1	dolipore septum
 go:0000938	MNXC15	GARP complex|Golgi associated retrograde protein complex|Vps fifty three tethering complex|VFT tethering complex
-go:0000939	MNXC1	condensed chromosome inner kinetochore|inner kinetochore of condensed chromosome
-go:0000940	MNXC1	condensed chromosome outer kinetochore|outer kinetochore of condensed chromosome
+go:0000939	MNXC0	condensed chromosome inner kinetochore|inner kinetochore of condensed chromosome
+go:0000940	MNXC0	condensed chromosome outer kinetochore|outer kinetochore of condensed chromosome
 go:0000941	MNXC6	condensed nuclear chromosome inner kinetochore|inner kinetochore of condensed nuclear chromosome
 go:0000942	MNXC6	condensed nuclear chromosome outer kinetochore|outer kinetochore of condensed nuclear chromosome
 go:0000943	MNXC6	retrotransposon nucleocapsid|VLP|Virus-like particle
-go:0000974	MNXC1	Prp19 complex
-go:0001114	MNXC1	protein-DNA-RNA complex
+go:0000974	MNXC0	Prp19 complex
+go:0001114	MNXC0	protein-DNA-RNA complex
 go:0001400	MNXC1	mating projection base
 go:0001401	MNXC5	mitochondrial sorting and assembly machinery complex|SAM complex|TOB complex
 go:0001405	MNXC5	presequence translocase-associated import motor|pre-sequence translocase-associated import motor|PAM complex|mitochondrial import motor
 go:0001411	MNXC1	hyphal tip
 go:0001518	MNXC20	voltage-gated sodium channel complex|voltage-sensitive sodium channel complex|voltage gated sodium channel complex|voltage-dependent sodium channel complex
-go:0001520	MNXC1	outer dense fiber|outer dense fibre
-go:0001527	MNXC1	microfibril|extended fibrils
-go:0001529	MNXC1	elastin
-go:0001533	MNXC1	cornified envelope
-go:0001534	MNXC1	radial spoke
-go:0001535	MNXC1	radial spokehead
-go:0001536	MNXC1	radial spoke stalk
+go:0001520	MNXC0	outer dense fiber|outer dense fibre
+go:0001527	MNXC0	microfibril|extended fibrils
+go:0001529	MNXC0	elastin
+go:0001533	MNXC0	cornified envelope
+go:0001534	MNXC0	radial spoke
+go:0001535	MNXC0	radial spokehead
+go:0001536	MNXC0	radial spoke stalk
 go:0001650	MNXC6	fibrillar center|fibrillar centre
 go:0001651	MNXC6	dense fibrillar component
 go:0001652	MNXC6	granular component
 go:0001669	MNXC3	acrosomal vesicle|acrosomal granule
 go:0001673	MNXC6	male germ cell nucleus|male germ-cell nucleus
 go:0001674	MNXC6	female germ cell nucleus|female germ-cell nucleus
-go:0001683	MNXC1	axonemal dynein heavy chain
-go:0001684	MNXC1	axonemal dynein intermediate chain
-go:0001685	MNXC1	axonemal dynein intermediate light chain
-go:0001686	MNXC1	axonemal dynein light chain
-go:0001687	MNXC1	cytoplasmic dynein heavy chain
-go:0001688	MNXC1	cytoplasmic dynein intermediate chain
-go:0001689	MNXC1	cytoplasmic dynein intermediate light chain
-go:0001690	MNXC1	cytoplasmic dynein light chain
-go:0001721	MNXC1	intermediate filament associated protein|IFAP
-go:0001722	MNXC1	type I intermediate filament associated protein
-go:0001723	MNXC1	type II intermediate filament associated protein
-go:0001724	MNXC1	type III intermediate filament associated protein
-go:0001725	MNXC1	stress fiber|stress fibre
+go:0001683	MNXC0	axonemal dynein heavy chain
+go:0001684	MNXC0	axonemal dynein intermediate chain
+go:0001685	MNXC0	axonemal dynein intermediate light chain
+go:0001686	MNXC0	axonemal dynein light chain
+go:0001687	MNXC0	cytoplasmic dynein heavy chain
+go:0001688	MNXC0	cytoplasmic dynein intermediate chain
+go:0001689	MNXC0	cytoplasmic dynein intermediate light chain
+go:0001690	MNXC0	cytoplasmic dynein light chain
+go:0001721	MNXC0	intermediate filament associated protein|IFAP
+go:0001722	MNXC0	type I intermediate filament associated protein
+go:0001723	MNXC0	type II intermediate filament associated protein
+go:0001724	MNXC0	type III intermediate filament associated protein
+go:0001725	MNXC0	stress fiber|stress fibre
 go:0001726	MNXC1	ruffle
 go:0001739	MNXC6	sex chromatin
 go:0001740	MNXC6	Barr body
-go:0001741	MNXC1	XY body
+go:0001741	MNXC0	XY body
 go:0001750	MNXC1	photoreceptor outer segment
 go:0001772	MNXC20	immunological synapse|supramolecular activation cluster
 go:0001891	MNXC20	phagocytic cup
@@ -441,90 +441,90 @@ go:0001931	MNXC1	uropod|uropodium
 go:0001939	MNXC6	female pronucleus
 go:0001940	MNXC6	male pronucleus
 go:0001950	MNXC1	plasma membrane enriched fraction
-go:0002079	MNXC1	inner acrosomal membrane
+go:0002079	MNXC0	inner acrosomal membrane
 go:0002080	MNXC3	acrosomal membrane
-go:0002081	MNXC1	outer acrosomal membrane
+go:0002081	MNXC0	outer acrosomal membrane
 go:0002095	MNXC20	caveolar macromolecular signaling complex|caveolar macromolecular signalling complex
 go:0002096	MNXC3	polkadots
-go:0002102	MNXC1	podosome
+go:0002102	MNXC0	podosome
 go:0002111	MNXC6	BRCA2-BRAF35 complex
-go:0002116	MNXC1	semaphorin receptor complex|plexin-neurophilin complex
-go:0002133	MNXC1	polycystin complex
+go:0002116	MNXC0	semaphorin receptor complex|plexin-neurophilin complex
+go:0002133	MNXC0	polycystin complex
 go:0002137	MNXC6	nuclear cluster
 go:0002139	MNXC1	stereocilia coupling link
 go:0002140	MNXC1	stereocilia tip link
 go:0002141	MNXC1	stereocilia ankle link
 go:0002142	MNXC1	stereocilia ankle link complex
 go:0002144	MNXC3	cytosolic tRNA wobble base thiouridylase complex
-go:0002167	MNXC1	VRK3/VHR/ERK complex
+go:0002167	MNXC0	VRK3/VHR/ERK complex
 go:0002169	MNXC4	3-methylcrotonyl-CoA carboxylase complex, mitochondrial
-go:0002177	MNXC1	manchette
-go:0002178	MNXC1	palmitoyltransferase complex
-go:0002179	MNXC1	homodimeric serine palmitoyltransferase complex
+go:0002177	MNXC0	manchette
+go:0002178	MNXC0	palmitoyltransferase complex
+go:0002179	MNXC0	homodimeric serine palmitoyltransferase complex
 go:0002180	MNXC7	5-lipoxygenase complex
-go:0002185	MNXC1	creatine kinase complex
+go:0002185	MNXC0	creatine kinase complex
 go:0002186	MNXC3	cytosolic creatine kinase complex
 go:0002187	MNXC4	mitochondrial creatine kinase complex
-go:0002189	MNXC1	ribose phosphate diphosphokinase complex|PRPP synthetase complex|phosphoribosylpyrophosphate synthetase complex
-go:0002193	MNXC1	MAML1-RBP-Jkappa- ICN1 complex|MAML1-CSL-ICN1|MAML1-CSL-Notch1 complex|MAML1-RBP-Jkappa-Notch1 complex
-go:0002197	MNXC1	xanthine dehydrogenase complex
-go:0002199	MNXC1	sperm protein complex
-go:0002929	MNXC1	MECO complex|meta-coactivator complex
-go:0003675	MNXC1	protein
-go:0005559	MNXC1	ribozyme
-go:0005561	MNXC1	nucleic acid
-go:0005562	MNXC1	RNA
-go:0005564	MNXC1	cytosolic tRNA
-go:0005565	MNXC1	mitochondrial tRNA
-go:0005567	MNXC1	cytosolic ribosomal RNA
-go:0005568	MNXC1	mitochondrial rRNA
-go:0005571	MNXC1	untranslated RNA
-go:0005572	MNXC1	RNA polymerase II transcribed untranslated RNA
-go:0005573	MNXC1	telomerase RNA
-go:0005574	MNXC1	DNA
-go:0005575	MNXC1	cellular_component|cellular component
+go:0002189	MNXC0	ribose phosphate diphosphokinase complex|PRPP synthetase complex|phosphoribosylpyrophosphate synthetase complex
+go:0002193	MNXC0	MAML1-RBP-Jkappa- ICN1 complex|MAML1-CSL-ICN1|MAML1-CSL-Notch1 complex|MAML1-RBP-Jkappa-Notch1 complex
+go:0002197	MNXC0	xanthine dehydrogenase complex
+go:0002199	MNXC0	sperm protein complex
+go:0002929	MNXC0	MECO complex|meta-coactivator complex
+go:0003675	MNXC0	protein
+go:0005559	MNXC0	ribozyme
+go:0005561	MNXC0	nucleic acid
+go:0005562	MNXC0	RNA
+go:0005564	MNXC0	cytosolic tRNA
+go:0005565	MNXC0	mitochondrial tRNA
+go:0005567	MNXC0	cytosolic ribosomal RNA
+go:0005568	MNXC0	mitochondrial rRNA
+go:0005571	MNXC0	untranslated RNA
+go:0005572	MNXC0	RNA polymerase II transcribed untranslated RNA
+go:0005573	MNXC0	telomerase RNA
+go:0005574	MNXC0	DNA
+go:0005575	MNXC0	cellular_component|cellular component
 go:0005576	MNXC2	extracellular region|extracellular
 go:0005577	MNXC2	fibrinogen complex|fibrinogen
 go:0005578	MNXC2	proteinaceous extracellular matrix
 go:0005579	MNXC20	membrane attack complex|terminal complement complex|MAC|TCC
-go:0005580	MNXC1	membrane attack complex protein alphaM chain
-go:0005581	MNXC1	collagen
-go:0005582	MNXC1	collagen type XV
-go:0005583	MNXC1	fibrillar collagen
-go:0005584	MNXC1	collagen type I
-go:0005585	MNXC1	collagen type II
-go:0005586	MNXC1	collagen type III
-go:0005587	MNXC1	collagen type IV
-go:0005588	MNXC1	collagen type V
-go:0005589	MNXC1	collagen type VI
-go:0005590	MNXC1	collagen type VII
-go:0005591	MNXC1	collagen type VIII
-go:0005592	MNXC1	collagen type XI
-go:0005593	MNXC1	FACIT collagen
-go:0005594	MNXC1	collagen type IX
-go:0005595	MNXC1	collagen type XII
-go:0005596	MNXC1	collagen type XIV
-go:0005597	MNXC1	collagen type XVI
-go:0005598	MNXC1	short-chain collagen
-go:0005599	MNXC1	collagen type X
-go:0005600	MNXC1	collagen type XIII
+go:0005580	MNXC0	membrane attack complex protein alphaM chain
+go:0005581	MNXC0	collagen
+go:0005582	MNXC0	collagen type XV
+go:0005583	MNXC0	fibrillar collagen
+go:0005584	MNXC0	collagen type I
+go:0005585	MNXC0	collagen type II
+go:0005586	MNXC0	collagen type III
+go:0005587	MNXC0	collagen type IV
+go:0005588	MNXC0	collagen type V
+go:0005589	MNXC0	collagen type VI
+go:0005590	MNXC0	collagen type VII
+go:0005591	MNXC0	collagen type VIII
+go:0005592	MNXC0	collagen type XI
+go:0005593	MNXC0	FACIT collagen
+go:0005594	MNXC0	collagen type IX
+go:0005595	MNXC0	collagen type XII
+go:0005596	MNXC0	collagen type XIV
+go:0005597	MNXC0	collagen type XVI
+go:0005598	MNXC0	short-chain collagen
+go:0005599	MNXC0	collagen type X
+go:0005600	MNXC0	collagen type XIII
 go:0005601	MNXC2	classical-complement-pathway C3/C5 convertase complex
 go:0005602	MNXC2	complement component C1 complex
-go:0005603	MNXC1	complement component C2 complex
-go:0005604	MNXC1	basement membrane
-go:0005605	MNXC1	basal lamina|basement lamina
-go:0005606	MNXC1	laminin-1 complex
-go:0005607	MNXC1	laminin-2 complex
-go:0005608	MNXC1	laminin-3 complex
-go:0005609	MNXC1	laminin-4 complex
-go:0005610	MNXC1	laminin-5 complex
-go:0005611	MNXC1	laminin-6 complex
-go:0005612	MNXC1	laminin-7 complex
-go:0005613	MNXC1	laminin receptor protein
+go:0005603	MNXC0	complement component C2 complex
+go:0005604	MNXC0	basement membrane
+go:0005605	MNXC0	basal lamina|basement lamina
+go:0005606	MNXC0	laminin-1 complex
+go:0005607	MNXC0	laminin-2 complex
+go:0005608	MNXC0	laminin-3 complex
+go:0005609	MNXC0	laminin-4 complex
+go:0005610	MNXC0	laminin-5 complex
+go:0005611	MNXC0	laminin-6 complex
+go:0005612	MNXC0	laminin-7 complex
+go:0005613	MNXC0	laminin receptor protein
 go:0005614	MNXC2	interstitial matrix
 go:0005615	MNXC2	extracellular space
 go:0005616	MNXC2	larval serum protein complex
-go:0005617	MNXC1	larval serum protein-1|LSP1
+go:0005617	MNXC0	larval serum protein-1|LSP1
 go:0005618	MNXC22	cell wall
 go:0005619	MNXC22	ascospore wall
 go:0005621	MNXC22	cellular bud scar
@@ -533,8 +533,8 @@ go:0005623	MNXC1	cell
 go:0005624	MNXC1	membrane fraction
 go:0005625	MNXC1	soluble fraction
 go:0005626	MNXC1	insoluble fraction
-go:0005627	MNXC1	ascus
-go:0005628	MNXC1	prospore membrane|FSM|ascospore-type prospore membrane
+go:0005627	MNXC0	ascus
+go:0005628	MNXC0	prospore membrane|FSM|ascospore-type prospore membrane
 go:0005630	MNXC22	dityrosine layer of spore wall
 go:0005631	MNXC22	chitosan layer of spore wall
 go:0005632	MNXC22	inner layer of spore wall
@@ -546,32 +546,32 @@ go:0005638	MNXC6	lamin filament|type V intermediate filament
 go:0005639	MNXC7	integral to nuclear inner membrane
 go:0005640	MNXC7	nuclear outer membrane|perinuclear membrane
 go:0005641	MNXC6	nuclear envelope lumen|nuclear intermembrane space|perinuclear space
-go:0005642	MNXC1	annulate lamellae
+go:0005642	MNXC0	annulate lamellae
 go:0005643	MNXC6	nuclear pore|NPC|nucleopore|nuclear pore complex
-go:0005645	MNXC1	RAN-binding protein
-go:0005646	MNXC1	importin|karyopherin
-go:0005647	MNXC1	importin, alpha-subunit|karyopherin-alpha
-go:0005648	MNXC1	importin, beta-subunit|karyopherin-beta1
-go:0005649	MNXC1	transportin|karyopherin-beta2
-go:0005650	MNXC1	importin, alpha-subunit transport factor
-go:0005651	MNXC1	exportin
+go:0005645	MNXC0	RAN-binding protein
+go:0005646	MNXC0	importin|karyopherin
+go:0005647	MNXC0	importin, alpha-subunit|karyopherin-alpha
+go:0005648	MNXC0	importin, beta-subunit|karyopherin-beta1
+go:0005649	MNXC0	transportin|karyopherin-beta2
+go:0005650	MNXC0	importin, alpha-subunit transport factor
+go:0005651	MNXC0	exportin
 go:0005652	MNXC6	nuclear lamina
 go:0005654	MNXC6	nucleoplasm
 go:0005655	MNXC6	nucleolar ribonuclease P complex|nucleolar RNase P complex
 go:0005656	MNXC6	pre-replicative complex|pre-RC
-go:0005657	MNXC1	replication fork
+go:0005657	MNXC0	replication fork
 go:0005658	MNXC6	alpha DNA polymerase:primase complex|DNA polymerase alpha:primase complex|heterotetrameric polymerase alpha holoenzyme
-go:0005660	MNXC1	delta-DNA polymerase cofactor complex|delta DNA polymerase cofactor complex
+go:0005660	MNXC0	delta-DNA polymerase cofactor complex|delta DNA polymerase cofactor complex
 go:0005662	MNXC6	DNA replication factor A complex|replication protein A|RPA
-go:0005663	MNXC1	DNA replication factor C complex|activator 1 complex|RFC complex
+go:0005663	MNXC0	DNA replication factor C complex|activator 1 complex|RFC complex
 go:0005664	MNXC6	nuclear origin of replication recognition complex|nuclear ORC|eukaryotic ORC
 go:0005665	MNXC6	DNA-directed RNA polymerase II, core complex
 go:0005666	MNXC6	DNA-directed RNA polymerase III complex
 go:0005667	MNXC6	transcription factor complex
 go:0005668	MNXC6	RNA polymerase transcription factor SL1 complex|selectivity factor SL1 complex|TIF-IB
 go:0005669	MNXC6	transcription factor TFIID complex
-go:0005670	MNXC1	transcription-activating factor, 30kD
-go:0005671	MNXC1	Ada2/Gcn5/Ada3 transcription activator complex|Ada Two-A containing complex|Ada-Two-A-containing complex|ATAC complex
+go:0005670	MNXC0	transcription-activating factor, 30kD
+go:0005671	MNXC0	Ada2/Gcn5/Ada3 transcription activator complex|Ada Two-A containing complex|Ada-Two-A-containing complex|ATAC complex
 go:0005672	MNXC6	transcription factor TFIIA complex
 go:0005673	MNXC6	transcription factor TFIIE complex
 go:0005674	MNXC6	transcription factor TFIIF complex
@@ -592,32 +592,32 @@ go:0005690	MNXC6	U4atac snRNP|snRNP U4atac
 go:0005691	MNXC6	U6atac snRNP|snRNP U6atac
 go:0005692	MNXC6	U11 snRNP|snRNP U11
 go:0005693	MNXC6	U12 snRNP|snRNP U12
-go:0005694	MNXC1	chromosome
-go:0005695	MNXC1	chromatid
-go:0005696	MNXC1	telomere
+go:0005694	MNXC0	chromosome
+go:0005695	MNXC0	chromatid
+go:0005696	MNXC0	telomere
 go:0005697	MNXC6	telomerase holoenzyme complex
-go:0005698	MNXC1	centromere
-go:0005700	MNXC1	polytene chromosome
-go:0005701	MNXC1	polytene chromosome chromocenter|polytene chromosome chromocentre
-go:0005702	MNXC1	polytene chromosome weak point
-go:0005703	MNXC1	polytene chromosome puff
-go:0005704	MNXC1	polytene chromosome band
-go:0005705	MNXC1	polytene chromosome interband
-go:0005706	MNXC1	polytene chromosome ectopic fiber|polytene chromosome ectopic fibre
-go:0005707	MNXC1	interphase chromosome
-go:0005708	MNXC1	mitotic chromosome
-go:0005709	MNXC1	prophase chromosome
-go:0005710	MNXC1	metaphase chromosome
-go:0005711	MNXC1	meiotic chromosome
+go:0005698	MNXC0	centromere
+go:0005700	MNXC0	polytene chromosome
+go:0005701	MNXC0	polytene chromosome chromocenter|polytene chromosome chromocentre
+go:0005702	MNXC0	polytene chromosome weak point
+go:0005703	MNXC0	polytene chromosome puff
+go:0005704	MNXC0	polytene chromosome band
+go:0005705	MNXC0	polytene chromosome interband
+go:0005706	MNXC0	polytene chromosome ectopic fiber|polytene chromosome ectopic fibre
+go:0005707	MNXC0	interphase chromosome
+go:0005708	MNXC0	mitotic chromosome
+go:0005709	MNXC0	prophase chromosome
+go:0005710	MNXC0	metaphase chromosome
+go:0005711	MNXC0	meiotic chromosome
 go:0005712	MNXC6	chiasma
 go:0005713	MNXC6	recombination nodule
 go:0005714	MNXC6	early recombination nodule
 go:0005715	MNXC6	late recombination nodule
 go:0005719	MNXC6	nuclear euchromatin
 go:0005720	MNXC6	nuclear heterochromatin
-go:0005721	MNXC1	centromeric heterochromatin|centric heterochromatin
-go:0005722	MNXC1	beta-heterochromatin
-go:0005723	MNXC1	alpha-heterochromatin
+go:0005721	MNXC0	centromeric heterochromatin|centric heterochromatin
+go:0005722	MNXC0	beta-heterochromatin
+go:0005723	MNXC0	alpha-heterochromatin
 go:0005724	MNXC6	nuclear telomeric heterochromatin
 go:0005725	MNXC6	intercalary heterochromatin
 go:0005726	MNXC6	perichromatin fibrils
@@ -625,11 +625,11 @@ go:0005727	MNXC1	extrachromosomal circular DNA
 go:0005728	MNXC1	extrachromosomal rDNA circle|extrachromosomal ribosomal DNA circle
 go:0005729	MNXC1	2-micrometer circle DNA
 go:0005730	MNXC6	nucleolus
-go:0005731	MNXC1	nucleolus organizer region|NOR|nucleolus organiser region
-go:0005732	MNXC1	small nucleolar ribonucleoprotein complex|small nucleolar ribonucleoprotein|snoRNP
-go:0005733	MNXC1	small nucleolar RNA|snoRNA
-go:0005734	MNXC1	box C + D snoRNP protein
-go:0005735	MNXC1	box H + ACA snoRNP protein
+go:0005731	MNXC0	nucleolus organizer region|NOR|nucleolus organiser region
+go:0005732	MNXC0	small nucleolar ribonucleoprotein complex|small nucleolar ribonucleoprotein|snoRNP
+go:0005733	MNXC0	small nucleolar RNA|snoRNA
+go:0005734	MNXC0	box C + D snoRNP protein
+go:0005735	MNXC0	box H + ACA snoRNP protein
 go:0005736	MNXC6	DNA-directed RNA polymerase I complex
 go:0005737	MNXC3	cytoplasm
 go:0005739	MNXC4	mitochondrion|mitochondria
@@ -638,7 +638,7 @@ go:0005741	MNXC5	mitochondrial outer membrane|outer mitochondrial membrane
 go:0005742	MNXC5	mitochondrial outer membrane translocase complex
 go:0005743	MNXC5	mitochondrial inner membrane|inner mitochondrial membrane
 go:0005744	MNXC5	mitochondrial inner membrane presequence translocase complex|mitochondrial inner membrane pre-sequence translocase complex|mitochondrial inner membrane translocase complex
-go:0005745	MNXC1	m-AAA complex
+go:0005745	MNXC0	m-AAA complex
 go:0005746	MNXC5	mitochondrial respiratory chain|mitochondrial electron transport chain
 go:0005747	MNXC5	mitochondrial respiratory chain complex I
 go:0005749	MNXC5	mitochondrial respiratory chain complex II|mitochondrial fumarate reductase complex
@@ -646,7 +646,7 @@ go:0005750	MNXC5	mitochondrial respiratory chain complex III|mitochondrial cytoc
 go:0005751	MNXC5	mitochondrial respiratory chain complex IV
 go:0005753	MNXC5	mitochondrial proton-transporting ATP synthase complex|mitochondrial respiratory chain complex V
 go:0005754	MNXC5	mitochondrial proton-transporting ATP synthase, catalytic core
-go:0005755	MNXC1	hydrogen-transporting ATP synthase, coupling factor CF(0)
+go:0005755	MNXC0	hydrogen-transporting ATP synthase, coupling factor CF(0)
 go:0005756	MNXC5	mitochondrial proton-transporting ATP synthase, central stalk
 go:0005757	MNXC4	mitochondrial permeability transition pore complex|mitochondrial PT pore complex
 go:0005758	MNXC4	mitochondrial intermembrane space|mitochondrial envelope lumen
@@ -671,7 +671,7 @@ go:0005777	MNXC13	peroxisome
 go:0005778	MNXC14	peroxisomal membrane|peroxisome membrane
 go:0005779	MNXC14	integral to peroxisomal membrane
 go:0005780	MNXC14	extrinsic to intraperoxisomal membrane
-go:0005781	MNXC1	peroxisome targeting signal receptor complex
+go:0005781	MNXC0	peroxisome targeting signal receptor complex
 go:0005782	MNXC13	peroxisomal matrix|peroxisomal lumen
 go:0005783	MNXC11	endoplasmic reticulum|ER
 go:0005784	MNXC12	Sec61 translocon complex
@@ -689,45 +689,45 @@ go:0005795	MNXC15	Golgi stack|Golgi cisternae
 go:0005796	MNXC15	Golgi lumen
 go:0005797	MNXC15	Golgi medial cisterna
 go:0005798	MNXC15	Golgi-associated vesicle
-go:0005799	MNXC1	coatomer
-go:0005800	MNXC1	COPII vesicle
-go:0005801	MNXC1	cis-Golgi network|cis Golgi network
-go:0005802	MNXC1	trans-Golgi network|trans Golgi network|TGN
-go:0005803	MNXC1	secretory vesicle
-go:0005804	MNXC1	secretory vesicle membrane
-go:0005805	MNXC1	ER-Golgi transport vesicle
-go:0005806	MNXC1	Golgi-ER transport vesicle
-go:0005808	MNXC1	Golgi-plasma membrane transport vesicle
-go:0005809	MNXC1	Golgi-vacuole transport vesicle
-go:0005810	MNXC1	endocytotic transport vesicle
+go:0005799	MNXC0	coatomer
+go:0005800	MNXC0	COPII vesicle
+go:0005801	MNXC0	cis-Golgi network|cis Golgi network
+go:0005802	MNXC0	trans-Golgi network|trans Golgi network|TGN
+go:0005803	MNXC0	secretory vesicle
+go:0005804	MNXC0	secretory vesicle membrane
+go:0005805	MNXC0	ER-Golgi transport vesicle
+go:0005806	MNXC0	Golgi-ER transport vesicle
+go:0005808	MNXC0	Golgi-plasma membrane transport vesicle
+go:0005809	MNXC0	Golgi-vacuole transport vesicle
+go:0005810	MNXC0	endocytotic transport vesicle
 go:0005811	MNXC3	lipid particle|lipid body|adiposome|lipid droplet
 go:0005813	MNXC3	centrosome
 go:0005814	MNXC3	centriole
 go:0005815	MNXC3	microtubule organizing center|microtubule organising centre|MTOC
 go:0005816	MNXC3	spindle pole body|SPB
-go:0005817	MNXC1	centrosomal mitotic factor
-go:0005818	MNXC1	aster
-go:0005819	MNXC1	spindle
+go:0005817	MNXC0	centrosomal mitotic factor
+go:0005818	MNXC0	aster
+go:0005819	MNXC0	spindle
 go:0005821	MNXC3	intermediate layer of spindle pole body
 go:0005822	MNXC3	inner plaque of spindle pole body
 go:0005823	MNXC3	central plaque of spindle pole body
 go:0005824	MNXC3	outer plaque of spindle pole body
 go:0005825	MNXC3	half bridge of spindle pole body
 go:0005826	MNXC3	actomyosin contractile ring|CAR|contractile actomyosin ring
-go:0005827	MNXC1	polar microtubule|pole-to-pole microtubule
-go:0005828	MNXC1	kinetochore microtubule|pole-to-kinetochore microtubule
+go:0005827	MNXC0	polar microtubule|pole-to-pole microtubule
+go:0005828	MNXC0	kinetochore microtubule|pole-to-kinetochore microtubule
 go:0005829	MNXC3	cytosol
 go:0005831	MNXC3	steroid hormone aporeceptor complex
 go:0005832	MNXC3	chaperonin-containing T-complex|TriC|CCT particle
 go:0005833	MNXC3	hemoglobin complex|haemoglobin complex
-go:0005834	MNXC1	heterotrimeric G-protein complex
+go:0005834	MNXC0	heterotrimeric G-protein complex
 go:0005835	MNXC3	fatty acid synthase complex|fatty acid synthetase complex|cytosolic type I fatty acid synthase complex|cytosolic fatty acid synthase complex|cytosolic FAS complex|cytosolic type I FAS complex|FAS complex
 go:0005836	MNXC3	fatty-acyl-CoA synthase complex|fatty acyl CoA synthase complex
-go:0005837	MNXC1	26S proteasome
+go:0005837	MNXC0	26S proteasome
 go:0005838	MNXC1	proteasome regulatory particle|PA700-dependent proteasome activator
 go:0005839	MNXC1	proteasome core complex|macropain
 go:0005840	MNXC3	ribosome
-go:0005844	MNXC1	polysome|polyribosome
+go:0005844	MNXC0	polysome|polyribosome
 go:0005845	MNXC1	mRNA cap binding complex
 go:0005846	MNXC1	nuclear cap binding complex
 go:0005847	MNXC6	mRNA cleavage and polyadenylation specificity factor complex
@@ -738,32 +738,32 @@ go:0005851	MNXC3	eukaryotic translation initiation factor 2B complex|eif2B|eIF-2
 go:0005852	MNXC3	eukaryotic translation initiation factor 3 complex|eIF3|eIF-3
 go:0005853	MNXC3	eukaryotic translation elongation factor 1 complex
 go:0005854	MNXC3	nascent polypeptide-associated complex|NACA|NAC
-go:0005856	MNXC1	cytoskeleton
-go:0005858	MNXC1	axonemal dynein complex
+go:0005856	MNXC0	cytoskeleton
+go:0005858	MNXC0	axonemal dynein complex
 go:0005859	MNXC3	muscle myosin complex
 go:0005861	MNXC3	troponin complex
 go:0005862	MNXC3	muscle thin filament tropomyosin
 go:0005863	MNXC3	striated muscle myosin thick filament
 go:0005865	MNXC3	striated muscle thin filament
 go:0005868	MNXC3	cytoplasmic dynein complex
-go:0005869	MNXC1	dynactin complex
-go:0005870	MNXC1	actin capping protein of dynactin complex
-go:0005871	MNXC1	kinesin complex
-go:0005872	MNXC1	minus-end kinesin complex
-go:0005873	MNXC1	plus-end kinesin complex
-go:0005874	MNXC1	microtubule|microtubuli|microtubulus
-go:0005875	MNXC1	microtubule associated complex
-go:0005876	MNXC1	spindle microtubule
-go:0005879	MNXC1	axonemal microtubule
+go:0005869	MNXC0	dynactin complex
+go:0005870	MNXC0	actin capping protein of dynactin complex
+go:0005871	MNXC0	kinesin complex
+go:0005872	MNXC0	minus-end kinesin complex
+go:0005873	MNXC0	plus-end kinesin complex
+go:0005874	MNXC0	microtubule|microtubuli|microtubulus
+go:0005875	MNXC0	microtubule associated complex
+go:0005876	MNXC0	spindle microtubule
+go:0005879	MNXC0	axonemal microtubule
 go:0005880	MNXC6	nuclear microtubule
 go:0005881	MNXC3	cytoplasmic microtubule
-go:0005882	MNXC1	intermediate filament
+go:0005882	MNXC0	intermediate filament
 go:0005883	MNXC1	neurofilament|type IV intermediate filament
-go:0005884	MNXC1	actin filament|microfilament
-go:0005885	MNXC1	Arp2/3 protein complex
+go:0005884	MNXC0	actin filament|microfilament
+go:0005885	MNXC0	Arp2/3 protein complex
 go:0005886	MNXC20	plasma membrane|cytoplasmic membrane|plasmalemma|cell membrane
 go:0005887	MNXC20	integral to plasma membrane
-go:0005888	MNXC1	proteoglycan integral to plasma membrane
+go:0005888	MNXC0	proteoglycan integral to plasma membrane
 go:0005889	MNXC20	hydrogen:potassium-exchanging ATPase complex|hydrogen/potassium-exchanging ATPase complex
 go:0005890	MNXC20	sodium:potassium-exchanging ATPase complex|sodium/potassium-exchanging ATPase complex
 go:0005891	MNXC20	voltage-gated calcium channel complex|voltage gated calcium channel complex|voltage-dependent calcium channel complex|voltage-sensitive calcium channel complex
@@ -779,40 +779,40 @@ go:0005900	MNXC20	oncostatin-M receptor complex
 go:0005901	MNXC20	caveola|caveolae
 go:0005902	MNXC1	microvillus
 go:0005903	MNXC1	brush border
-go:0005905	MNXC1	coated pit
-go:0005906	MNXC1	clathrin adaptor
-go:0005907	MNXC1	HA1 clathrin adaptor
-go:0005908	MNXC1	HA2 clathrin adaptor
-go:0005911	MNXC1	cell-cell junction|intercellular junction
-go:0005912	MNXC1	adherens junction
-go:0005913	MNXC1	cell-cell adherens junction
-go:0005914	MNXC1	spot adherens junction|punctum adherens
+go:0005905	MNXC0	coated pit
+go:0005906	MNXC0	clathrin adaptor
+go:0005907	MNXC0	HA1 clathrin adaptor
+go:0005908	MNXC0	HA2 clathrin adaptor
+go:0005911	MNXC0	cell-cell junction|intercellular junction
+go:0005912	MNXC0	adherens junction
+go:0005913	MNXC0	cell-cell adherens junction
+go:0005914	MNXC0	spot adherens junction|punctum adherens
 go:0005915	MNXC20	zonula adherens|zonula adhaerens|belt desmosome|fascia adhaerens|intermediate junction|adhesion belt
-go:0005916	MNXC1	fascia adherens
-go:0005917	MNXC1	nephrocyte diaphragm
+go:0005916	MNXC0	fascia adherens
+go:0005917	MNXC0	nephrocyte diaphragm
 go:0005918	MNXC20	septate junction
 go:0005919	MNXC20	pleated septate junction
 go:0005920	MNXC20	smooth septate junction|zonula continua
-go:0005921	MNXC1	gap junction|macula communicans|communicating junction|zonula communicans
+go:0005921	MNXC0	gap junction|macula communicans|communicating junction|zonula communicans
 go:0005922	MNXC20	connexon complex
 go:0005923	MNXC20	tight junction|zonula occludens
-go:0005924	MNXC1	cell-substrate adherens junction
-go:0005925	MNXC1	focal adhesion|focal contact
-go:0005926	MNXC1	connecting hemi-adherens junction
-go:0005927	MNXC1	muscle tendon junction|myotendinous junction
-go:0005928	MNXC1	apical hemi-adherens junction|apical dense plaque|apical cell-substrate adherens junction
+go:0005924	MNXC0	cell-substrate adherens junction
+go:0005925	MNXC0	focal adhesion|focal contact
+go:0005926	MNXC0	connecting hemi-adherens junction
+go:0005927	MNXC0	muscle tendon junction|myotendinous junction
+go:0005928	MNXC0	apical hemi-adherens junction|apical dense plaque|apical cell-substrate adherens junction
 go:0005929	MNXC1	cilium
-go:0005930	MNXC1	axoneme
-go:0005931	MNXC1	nexin complex
+go:0005930	MNXC0	axoneme
+go:0005931	MNXC0	nexin complex
 go:0005932	MNXC3	microtubule basal body
 go:0005933	MNXC1	cellular bud
 go:0005934	MNXC1	cellular bud tip
 go:0005935	MNXC1	cellular bud neck
-go:0005936	MNXC1	shmoo
+go:0005936	MNXC0	shmoo
 go:0005937	MNXC1	mating projection
 go:0005938	MNXC3	cell cortex
 go:0005940	MNXC3	septin ring
-go:0005941	MNXC1	unlocalized protein complex
+go:0005941	MNXC0	unlocalized protein complex
 go:0005942	MNXC3	phosphatidylinositol 3-kinase complex|1-phosphatidylinositol 3-kinase complex|PI3K complex|phosphoinositide 3-kinase complex
 go:0005943	MNXC3	1-phosphatidylinositol-4-phosphate 3-kinase, class IA complex|1-phosphatidylinositol-4-phosphate kinase, class IA complex|class IA PI3K complex|phosphoinositide 3-kinase complex, class IA
 go:0005944	MNXC3	1-phosphatidylinositol-4-phosphate 3-kinase, class IB complex|class IB PI3K complex|phosphoinositide 3-kinase complex, class IB
@@ -820,7 +820,7 @@ go:0005945	MNXC3	6-phosphofructokinase complex
 go:0005946	MNXC3	alpha,alpha-trehalose-phosphate synthase complex (UDP-forming)|trehalose-6-phosphate synthase/phosphatase|UDP-glucose-glucosephosphate glucosyltransferase complex|trehalose-6-phosphate synthase complex
 go:0005947	MNXC4	mitochondrial alpha-ketoglutarate dehydrogenase complex
 go:0005948	MNXC3	acetolactate synthase complex|acetohydroxyacid synthase complex
-go:0005949	MNXC1	aminoadipate-semialdehyde dehydrogenase complex
+go:0005949	MNXC0	aminoadipate-semialdehyde dehydrogenase complex
 go:0005950	MNXC3	anthranilate synthase complex
 go:0005951	MNXC3	carbamoyl-phosphate synthase complex|carbamoyl phosphate synthase complex
 go:0005952	MNXC1	cAMP-dependent protein kinase complex|cyclic AMP-dependent protein kinase complex|3',5' cAMP-dependent protein kinase complex|adenosine 3',5'-cyclophosphate-dependent protein kinase complex|3',5'-cAMP-dependent protein kinase complex
@@ -828,7 +828,7 @@ go:0005953	MNXC1	CAAX-protein geranylgeranyltransferase complex
 go:0005954	MNXC1	calcium- and calmodulin-dependent protein kinase complex|CAMK2|calcium/calmodulin-dependent protein kinase complex
 go:0005955	MNXC1	calcineurin complex|protein phosphatase type 2B complex
 go:0005956	MNXC1	protein kinase CK2 complex|casein kinase II complex
-go:0005957	MNXC1	debranching enzyme
+go:0005957	MNXC0	debranching enzyme
 go:0005958	MNXC6	DNA-dependent protein kinase-DNA ligase 4 complex
 go:0005960	MNXC3	glycine cleavage complex|glycine cleavage system|glycine dehydrogenase (decarboxylating) complex|glycine decarboxylase complex|glycine synthase complex
 go:0005962	MNXC4	mitochondrial isocitrate dehydrogenase complex (NAD+)
@@ -840,18 +840,18 @@ go:0005967	MNXC4	mitochondrial pyruvate dehydrogenase complex
 go:0005968	MNXC3	Rab-protein geranylgeranyltransferase complex|RabGGTase complex|Rab geranylgeranyltransferase complex|GGTase-II complex|RAB-protein geranylgeranyltransferase complex
 go:0005969	MNXC3	serine-pyruvate aminotransferase complex
 go:0005971	MNXC3	ribonucleoside-diphosphate reductase complex|RNR complex|ribonucleotide reductase complex
-go:0005972	MNXC1	fibrinogen alpha chain
-go:0005973	MNXC1	fibrinogen beta chain
-go:0005974	MNXC1	fibrinogen gamma chain
-go:0008002	MNXC1	lamina lucida
-go:0008003	MNXC1	lamina densa
-go:0008004	MNXC1	lamina reticularis
-go:0008008	MNXC1	membrane attack complex protein beta2 chain
-go:0008021	MNXC1	synaptic vesicle
+go:0005972	MNXC0	fibrinogen alpha chain
+go:0005973	MNXC0	fibrinogen beta chain
+go:0005974	MNXC0	fibrinogen gamma chain
+go:0008002	MNXC0	lamina lucida
+go:0008003	MNXC0	lamina densa
+go:0008004	MNXC0	lamina reticularis
+go:0008008	MNXC0	membrane attack complex protein beta2 chain
+go:0008021	MNXC0	synaptic vesicle
 go:0008023	MNXC6	transcription elongation factor complex
 go:0008024	MNXC6	positive transcription elongation factor complex b|P-TEFb
 go:0008043	MNXC1	intracellular ferritin complex
-go:0008051	MNXC1	farnesyl-diphosphate farnesyl transferase complex
+go:0008051	MNXC0	farnesyl-diphosphate farnesyl transferase complex
 go:0008074	MNXC3	guanylate cyclase complex, soluble
 go:0008076	MNXC20	voltage-gated potassium channel complex|voltage-dependent potassium channel complex|voltage-sensitive potassium channel complex|voltage gated potassium channel complex
 go:0008087	MNXC20	light-activated voltage-gated calcium channel complex|light-activated voltage-dependent calcium channel complex|light-activated voltage-sensitive calcium channel complex|light-activated voltage gated calcium channel complex
@@ -860,22 +860,22 @@ go:0008180	MNXC6	signalosome|CSN
 go:0008230	MNXC6	ecdysone receptor holocomplex
 go:0008231	MNXC6	repressor ecdysone receptor complex
 go:0008232	MNXC6	activator ecdysone receptor complex
-go:0008245	MNXC1	lysosomal membrane hydrogen-transporting ATPase
-go:0008247	MNXC1	1-alkyl-2-acetylglycerophosphocholine esterase complex|platelet-activating factor acetylhydrolase complex|2-acetyl-1-alkylglycerophosphocholine esterase complex
+go:0008245	MNXC0	lysosomal membrane hydrogen-transporting ATPase
+go:0008247	MNXC0	1-alkyl-2-acetylglycerophosphocholine esterase complex|platelet-activating factor acetylhydrolase complex|2-acetyl-1-alkylglycerophosphocholine esterase complex
 go:0008250	MNXC12	oligosaccharyltransferase complex|OST complex|oligosaccharyl transferase complex
 go:0008274	MNXC3	gamma-tubulin ring complex|gammaTuRC
 go:0008275	MNXC3	gamma-tubulin small complex|gammaTuSC
-go:0008278	MNXC1	cohesin complex|SMC/kleisin ring complex
-go:0008280	MNXC1	cohesin core heterodimer
+go:0008278	MNXC0	cohesin complex|SMC/kleisin ring complex
+go:0008280	MNXC0	cohesin core heterodimer
 go:0008282	MNXC20	ATP-sensitive potassium channel complex
 go:0008287	MNXC1	protein serine/threonine phosphatase complex
-go:0008290	MNXC1	F-actin capping protein complex
+go:0008290	MNXC0	F-actin capping protein complex
 go:0008303	MNXC3	caspase complex
-go:0008304	MNXC1	eukaryotic translation initiation factor 4 complex|eIF-4
+go:0008304	MNXC0	eukaryotic translation initiation factor 4 complex|eIF-4
 go:0008305	MNXC20	integrin complex
 go:0008328	MNXC20	ionotropic glutamate receptor complex
 go:0008352	MNXC3	katanin complex
-go:0008370	MNXC1	obsolete cellular component
+go:0008370	MNXC0	obsolete cellular component
 go:0008385	MNXC3	IkappaB kinase complex|IKK complex|trimeric IKK complex|heterotrimeric IKK complex
 go:0008537	MNXC1	proteasome activator complex
 go:0008540	MNXC1	proteasome regulatory particle, base subcomplex
@@ -886,16 +886,16 @@ go:0009274	MNXC22	peptidoglycan-based cell wall
 go:0009275	MNXC22	Gram-positive-bacterium-type cell wall|cell wall of Gram-positive Bacteria|20-80nm peptidoglycan-based cell wall
 go:0009276	MNXC22	Gram-negative-bacterium-type cell wall|1-2nm peptidoglycan-based cell wall|cell wall inner membrane
 go:0009277	MNXC22	fungal-type cell wall
-go:0009278	MNXC1	murein sacculus
+go:0009278	MNXC0	murein sacculus
 go:0009279	MNXC21	cell outer membrane|outer membrane of cell
-go:0009280	MNXC1	cell wall inner membrane
+go:0009280	MNXC0	cell wall inner membrane
 go:0009288	MNXC28	bacterial-type flagellum|flagellin-based flagellum
 go:0009289	MNXC1	pilus|fimbrium|fimbriae|fimbria|pili
-go:0009295	MNXC1	nucleoid
+go:0009295	MNXC0	nucleoid
 go:0009316	MNXC3	3-isopropylmalate dehydratase complex|isopropylmalate isomerase complex
 go:0009317	MNXC3	acetyl-CoA carboxylase complex|ACCase complex
 go:0009318	MNXC1	exodeoxyribonuclease VII complex
-go:0009319	MNXC1	cytochrome o ubiquinol oxidase complex
+go:0009319	MNXC0	cytochrome o ubiquinol oxidase complex
 go:0009320	MNXC3	phosphoribosylaminoimidazole carboxylase complex
 go:0009321	MNXC3	alkyl hydroperoxide reductase complex
 go:0009322	MNXC1	trimethylamine-N-oxide reductase complex
@@ -911,13 +911,13 @@ go:0009331	MNXC3	glycerol-3-phosphate dehydrogenase complex
 go:0009332	MNXC3	glutamate-tRNA ligase complex
 go:0009333	MNXC3	cysteine synthase complex
 go:0009334	MNXC1	3-phenylpropionate dioxygenase complex
-go:0009335	MNXC1	holo-[acyl-carrier protein] synthase complex|holo-ACP synthase complex
+go:0009335	MNXC0	holo-[acyl-carrier protein] synthase complex|holo-ACP synthase complex
 go:0009336	MNXC3	sulfate adenylyltransferase complex (ATP)|sulphate adenylyltransferase complex (ATP)
 go:0009337	MNXC1	sulfite reductase complex (NADPH)|sulphite reductase complex (NADPH)
 go:0009338	MNXC1	exodeoxyribonuclease V complex
 go:0009339	MNXC3	glycolate oxidase complex
 go:0009340	MNXC3	DNA topoisomerase IV complex
-go:0009341	MNXC1	beta-galactosidase complex
+go:0009341	MNXC0	beta-galactosidase complex
 go:0009342	MNXC1	glutamate synthase complex (NADPH)
 go:0009343	MNXC3	biotin carboxylase complex
 go:0009344	MNXC1	nitrite reductase complex [NAD(P)H]
@@ -927,10 +927,10 @@ go:0009347	MNXC1	aspartate carbamoyltransferase complex
 go:0009348	MNXC3	ornithine carbamoyltransferase complex
 go:0009349	MNXC1	riboflavin synthase complex
 go:0009350	MNXC1	ethanolamine ammonia-lyase complex
-go:0009351	MNXC1	dihydrolipoamide S-acyltransferase complex
-go:0009352	MNXC1	dihydrolipoyl dehydrogenase complex|dihydrolipoamide dehydrogenase complex
+go:0009351	MNXC0	dihydrolipoamide S-acyltransferase complex
+go:0009352	MNXC0	dihydrolipoyl dehydrogenase complex|dihydrolipoamide dehydrogenase complex
 go:0009353	MNXC4	mitochondrial oxoglutarate dehydrogenase complex
-go:0009354	MNXC1	dihydrolipoamide S-succinyltransferase complex
+go:0009354	MNXC0	dihydrolipoamide S-succinyltransferase complex
 go:0009355	MNXC1	DNA polymerase V complex
 go:0009356	MNXC1	aminodeoxychorismate synthase complex|ADC synthase complex
 go:0009357	MNXC3	protein-N(PI)-phosphohistidine-sugar phosphotransferase complex
@@ -938,9 +938,9 @@ go:0009358	MNXC1	polyphosphate kinase complex
 go:0009359	MNXC3	Type II site-specific deoxyribonuclease complex|Type II restriction enzyme complex
 go:0009360	MNXC1	DNA polymerase III complex
 go:0009361	MNXC3	succinate-CoA ligase complex (ADP-forming)|succinyl-CoA synthetase, ADP-forming
-go:0009365	MNXC1	protein histidine kinase complex
+go:0009365	MNXC0	protein histidine kinase complex
 go:0009366	MNXC1	enterobactin synthetase complex|enterochelin synthetase complex
-go:0009367	MNXC1	prepilin peptidase complex
+go:0009367	MNXC0	prepilin peptidase complex
 go:0009368	MNXC1	endopeptidase Clp complex
 go:0009375	MNXC1	ferredoxin hydrogenase complex
 go:0009376	MNXC3	HslUV protease complex|ClpYQ protease complex
@@ -948,7 +948,7 @@ go:0009379	MNXC1	Holliday junction helicase complex
 go:0009380	MNXC1	excinuclease repair complex|UvrABC excinuclease complex|excinuclease ABC complex
 go:0009382	MNXC3	imidazoleglycerol-phosphate synthase complex|imidazoleglycerol phosphate synthase complex
 go:0009390	MNXC1	dimethyl sulfoxide reductase complex|dimethyl sulphoxide reductase complex
-go:0009417	MNXC1	fimbrin
+go:0009417	MNXC0	fimbrin
 go:0009418	MNXC1	pilus shaft|fimbrial shaft
 go:0009419	MNXC1	pilus tip|fimbrial tip
 go:0009420	MNXC28	bacterial-type flagellum filament|flagellar filament|flagellin-based flagellum filament
@@ -964,27 +964,27 @@ go:0009431	MNXC28	bacterial-type flagellum basal body, MS ring|flagellin-based f
 go:0009433	MNXC28	bacterial-type flagellum basal body, C ring|flagellar basal body, C ring|flagellin-based flagellum basal body, C ring
 go:0009434	MNXC28	microtubule-based flagellum
 go:0009501	MNXC18	amyloplast
-go:0009502	MNXC1	photosynthetic electron transport chain
+go:0009502	MNXC0	photosynthetic electron transport chain
 go:0009503	MNXC8	thylakoid light-harvesting complex
 go:0009504	MNXC3	cell plate
 go:0009505	MNXC22	plant-type cell wall|cellulose and pectin-containing cell wall
-go:0009506	MNXC1	plasmodesma|plasmodesmata
+go:0009506	MNXC0	plasmodesma|plasmodesmata
 go:0009507	MNXC8	chloroplast
 go:0009508	MNXC18	plastid chromosome
 go:0009509	MNXC18	chromoplast
 go:0009510	MNXC20	plasmodesmatal desmotubule
 go:0009511	MNXC11	plasmodesmatal endoplasmic reticulum|plasmodesmatal ER
-go:0009512	MNXC1	cytochrome b6f complex|cytochrome b6-f complex|cyt b(6)f complex|cyt b6f complex|cyt b6/f complex|cyt b6-f complex|cytochrome b6/f complex|cytochrome b(6)f complex
+go:0009512	MNXC0	cytochrome b6f complex|cytochrome b6-f complex|cyt b(6)f complex|cyt b6f complex|cyt b6/f complex|cyt b6-f complex|cytochrome b6/f complex|cytochrome b(6)f complex
 go:0009513	MNXC18	etioplast
 go:0009514	MNXC24	glyoxysome
 go:0009515	MNXC8	granal stacked thylakoid|chloroplast stacked thylakoid
 go:0009516	MNXC18	leucoplast
 go:0009517	MNXC8	PSII associated light-harvesting complex II|LHCII
 go:0009518	MNXC8	PSI associated light-harvesting complex I|LHCI
-go:0009519	MNXC1	middle lamella
-go:0009521	MNXC1	photosystem
-go:0009522	MNXC1	photosystem I
-go:0009523	MNXC1	photosystem II
+go:0009519	MNXC0	middle lamella
+go:0009521	MNXC0	photosystem
+go:0009522	MNXC0	photosystem I
+go:0009523	MNXC0	photosystem II
 go:0009524	MNXC3	phragmoplast
 go:0009525	MNXC3	phragmosome
 go:0009526	MNXC18	plastid envelope
@@ -999,8 +999,8 @@ go:0009534	MNXC8	chloroplast thylakoid
 go:0009535	MNXC8	chloroplast thylakoid membrane
 go:0009536	MNXC18	plastid
 go:0009537	MNXC18	proplastid
-go:0009538	MNXC1	photosystem I reaction center|photosystem I reaction centre
-go:0009539	MNXC1	photosystem II reaction center|photosystem II reaction centre
+go:0009538	MNXC0	photosystem I reaction center|photosystem I reaction centre
+go:0009539	MNXC0	photosystem II reaction center|photosystem II reaction centre
 go:0009541	MNXC18	etioplast prolamellar body
 go:0009542	MNXC8	granum
 go:0009543	MNXC8	chloroplast thylakoid lumen
@@ -1010,8 +1010,8 @@ go:0009546	MNXC20	plasmodesmatal cytoplasmic sleeve|plasmodesmatal cytoplasmic a
 go:0009547	MNXC18	plastid ribosome
 go:0009548	MNXC20	plasmodesmatal plasma membrane
 go:0009549	MNXC22	cellulose microfibril
-go:0009550	MNXC1	primary plasmodesma|simple plasmodesma
-go:0009551	MNXC1	secondary plasmodesma
+go:0009550	MNXC0	primary plasmodesma|simple plasmodesma
+go:0009551	MNXC0	secondary plasmodesma
 go:0009568	MNXC18	amyloplast starch grain|amyloplast starch granule
 go:0009569	MNXC8	chloroplast starch grain|chloroplast starch granule
 go:0009570	MNXC8	chloroplast stroma
@@ -1023,16 +1023,16 @@ go:0009576	MNXC18	leucoplast stroma
 go:0009577	MNXC18	elaioplast stroma
 go:0009578	MNXC18	etioplast stroma
 go:0009579	MNXC1	thylakoid
-go:0009580	MNXC1	thylakoid (sensu Bacteria)
-go:0009654	MNXC1	oxygen evolving complex
+go:0009580	MNXC0	thylakoid (sensu Bacteria)
+go:0009654	MNXC0	oxygen evolving complex
 go:0009655	MNXC8	PSII associated light-harvesting complex II, core complex
 go:0009656	MNXC8	PSII associated light-harvesting complex II, peripheral complex
 go:0009705	MNXC10	plant-type vacuole membrane|tonoplast|membrane of vacuole with cell cycle-independent morphology
 go:0009706	MNXC8	chloroplast inner membrane|chloroplast inner envelope
 go:0009707	MNXC21	chloroplast outer membrane|chloroplast outer envelope
-go:0009782	MNXC1	photosystem I antenna complex
-go:0009783	MNXC1	photosystem II antenna complex
-go:0009839	MNXC1	SCF complex substrate recognition subunit
+go:0009782	MNXC0	photosystem I antenna complex
+go:0009783	MNXC0	photosystem II antenna complex
+go:0009839	MNXC0	SCF complex substrate recognition subunit
 go:0009840	MNXC8	chloroplastic endopeptidase Clp complex
 go:0009841	MNXC4	mitochondrial endopeptidase Clp complex
 go:0009842	MNXC18	cyanelle|cyanoplast|muroplast
@@ -1049,27 +1049,27 @@ go:0010005	MNXC3	cortical microtubule, transverse to long axis
 go:0010006	MNXC8	Toc complex
 go:0010007	MNXC8	magnesium chelatase complex
 go:0010008	MNXC3	endosome membrane
-go:0010009	MNXC1	external side of endosome membrane
-go:0010168	MNXC1	ER body|endoplasmic reticulum body
+go:0010009	MNXC0	external side of endosome membrane
+go:0010168	MNXC0	ER body|endoplasmic reticulum body
 go:0010169	MNXC3	thioglucosidase complex|myrosinase complex
 go:0010170	MNXC1	glucose-1-phosphate adenylyltransferase complex
 go:0010240	MNXC18	plastid pyruvate dehydrogenase complex
 go:0010278	MNXC8	chloroplast outer membrane translocon
 go:0010282	MNXC9	senescence-associated vacuole|senescence associated vacuole
 go:0010287	MNXC8	plastoglobule|PG|plastoglobuli
-go:0010316	MNXC1	pyrophosphate-dependent phosphofructokinase complex
-go:0010317	MNXC1	pyrophosphate-dependent phosphofructokinase complex, alpha-subunit complex
-go:0010318	MNXC1	pyrophosphate-dependent phosphofructokinase complex, beta-subunit complex
+go:0010316	MNXC0	pyrophosphate-dependent phosphofructokinase complex
+go:0010317	MNXC0	pyrophosphate-dependent phosphofructokinase complex, alpha-subunit complex
+go:0010318	MNXC0	pyrophosphate-dependent phosphofructokinase complex, beta-subunit complex
 go:0010319	MNXC18	stromule
-go:0010330	MNXC1	cellulose synthase complex|CESA complex
+go:0010330	MNXC0	cellulose synthase complex|CESA complex
 go:0010339	MNXC22	external side of cell wall
 go:0010367	MNXC2	extracellular isoamylase complex
 go:0010368	MNXC8	chloroplast isoamylase complex
-go:0010369	MNXC1	chromocenter
-go:0010370	MNXC1	perinucleolar chromocenter
+go:0010369	MNXC0	chromocenter
+go:0010370	MNXC0	perinucleolar chromocenter
 go:0010445	MNXC6	nuclear dicing body|D body
 go:0010494	MNXC3	cytoplasmic stress granule|stress granule|cytoplasmic mRNP granule
-go:0010598	MNXC1	NAD(P)H dehydrogenase complex (plastoquinone)
+go:0010598	MNXC0	NAD(P)H dehydrogenase complex (plastoquinone)
 go:0012505	MNXC1	endomembrane system
 go:0012506	MNXC1	vesicle membrane
 go:0012507	MNXC3	ER to Golgi transport vesicle membrane|ER-Golgi transport vesicle membrane|ER to Golgi constitutive secretory pathway transport vesicle membrane|endoplasmic reticulum-Golgi transport vesicle membrane|endoplasmic reticulum to Golgi transport vesicle membrane|COPII coated vesicle membrane
@@ -1077,12 +1077,12 @@ go:0012508	MNXC16	Golgi to ER transport vesicle membrane|Golgi-endoplasmic retic
 go:0012509	MNXC16	inter-Golgi transport vesicle membrane|inter-Golgi transport constitutive secretory pathway transport vesicle membrane
 go:0012510	MNXC16	trans-Golgi network transport vesicle membrane|TGN transport vesicle membrane|trans-Golgi network constitutive secretory pathway transport vesicle membrane
 go:0012511	MNXC3	monolayer-surrounded lipid storage body|oil body|spherosome|oleosome|oilbody
-go:0014069	MNXC1	postsynaptic density|post-synaptic density|post synaptic density
+go:0014069	MNXC0	postsynaptic density|post-synaptic density|post synaptic density
 go:0014701	MNXC12	junctional sarcoplasmic reticulum membrane
 go:0014702	MNXC12	free sarcoplasmic reticulum membrane
-go:0014704	MNXC1	intercalated disc|intercalated disk
+go:0014704	MNXC0	intercalated disc|intercalated disk
 go:0014705	MNXC3	C zone
-go:0014731	MNXC1	spectrin-associated cytoskeleton
+go:0014731	MNXC0	spectrin-associated cytoskeleton
 go:0014801	MNXC11	longitudinal sarcoplasmic reticulum
 go:0014802	MNXC11	terminal cisterna
 go:0014803	MNXC11	longitudinal sarcoplasmic reticulum lumen
@@ -1090,10 +1090,10 @@ go:0014804	MNXC11	terminal cisterna lumen
 go:0015030	MNXC6	Cajal body|Gems|coiled body
 go:0015050	MNXC1	methane monooxygenase complex
 go:0015627	MNXC1	type II protein secretion system complex|T2SS-associated complexes|MTB|main terminal branch
-go:0015629	MNXC1	actin cytoskeleton
-go:0015630	MNXC1	microtubule cytoskeleton
-go:0015934	MNXC1	large ribosomal subunit|ribosomal large subunit
-go:0015935	MNXC1	small ribosomal subunit|ribosomal small subunit
+go:0015629	MNXC0	actin cytoskeleton
+go:0015630	MNXC0	microtubule cytoskeleton
+go:0015934	MNXC0	large ribosomal subunit|ribosomal large subunit
+go:0015935	MNXC0	small ribosomal subunit|ribosomal small subunit
 go:0016006	MNXC4	Nebenkern
 go:0016007	MNXC4	mitochondrial derivative
 go:0016008	MNXC4	major mitochondrial derivative
@@ -1103,13 +1103,13 @@ go:0016011	MNXC20	dystroglycan complex
 go:0016012	MNXC20	sarcoglycan complex|sarcoglycan-sarcospan complex
 go:0016013	MNXC20	syntrophin complex
 go:0016014	MNXC20	dystrobrevin complex
-go:0016020	MNXC1	membrane
-go:0016021	MNXC1	integral to membrane
+go:0016020	MNXC0	membrane
+go:0016021	MNXC0	integral to membrane
 go:0016023	MNXC3	cytoplasmic membrane-bounded vesicle|cytoplasmic membrane bounded vesicle|cytoplasmic membrane-enclosed vesicle
 go:0016027	MNXC20	inaD signaling complex|inaD signalling complex
 go:0016028	MNXC1	rhabdomere
 go:0016029	MNXC11	subrhabdomeral cisterna|submicrovillar cisterna
-go:0016035	MNXC1	zeta DNA polymerase complex
+go:0016035	MNXC0	zeta DNA polymerase complex
 go:0016222	MNXC11	procollagen-proline 4-dioxygenase complex|procollagen-proline, 2-oxoglutarate-4-dioxygenase complex
 go:0016234	MNXC1	inclusion body
 go:0016235	MNXC1	aggresome
@@ -1120,20 +1120,20 @@ go:0016323	MNXC20	basolateral plasma membrane
 go:0016324	MNXC20	apical plasma membrane
 go:0016327	MNXC20	apicolateral plasma membrane
 go:0016328	MNXC20	lateral plasma membrane
-go:0016341	MNXC1	other collagen
+go:0016341	MNXC0	other collagen
 go:0016342	MNXC20	catenin complex
 go:0016363	MNXC6	nuclear matrix|nucleoskeleton
-go:0016442	MNXC1	RNA-induced silencing complex|RISC complex
+go:0016442	MNXC0	RNA-induced silencing complex|RISC complex
 go:0016456	MNXC6	X chromosome located dosage compensation complex, transcription activating
-go:0016459	MNXC1	myosin complex
-go:0016460	MNXC1	myosin II complex
-go:0016461	MNXC1	unconventional myosin complex
+go:0016459	MNXC0	myosin complex
+go:0016460	MNXC0	myosin II complex
+go:0016461	MNXC0	unconventional myosin complex
 go:0016465	MNXC3	chaperonin ATPase complex
-go:0016469	MNXC1	proton-transporting two-sector ATPase complex|hydrogen-transporting two-sector ATPase complex
+go:0016469	MNXC0	proton-transporting two-sector ATPase complex|hydrogen-transporting two-sector ATPase complex
 go:0016471	MNXC10	vacuolar proton-transporting V-type ATPase complex|vacuolar hydrogen-translocating V-type ATPase complex
-go:0016472	MNXC1	sodium ion-transporting two-sector ATPase complex|sodium-transporting two-sector ATPase complex
-go:0016473	MNXC1	sodium ion-transporting F-type ATPase complex|sodium-translocating F-type ATPase complex
-go:0016474	MNXC1	sodium ion-transporting V-type ATPase complex|sodium-translocating V-type ATPase complex
+go:0016472	MNXC0	sodium ion-transporting two-sector ATPase complex|sodium-transporting two-sector ATPase complex
+go:0016473	MNXC0	sodium ion-transporting F-type ATPase complex|sodium-translocating F-type ATPase complex
+go:0016474	MNXC0	sodium ion-transporting V-type ATPase complex|sodium-translocating V-type ATPase complex
 go:0016507	MNXC4	mitochondrial fatty acid beta-oxidation multienzyme complex
 go:0016513	MNXC6	core-binding factor complex|CBF complex
 go:0016514	MNXC6	SWI/SNF complex|SWI-SNF complex
@@ -1163,18 +1163,18 @@ go:0016612	MNXC1	molybdenum-iron nitrogenase complex
 go:0016613	MNXC1	vanadium-iron nitrogenase complex
 go:0016914	MNXC2	follicle-stimulating hormone complex|FSH complex|follicle stimulating hormone complex
 go:0016935	MNXC20	glycine-gated chloride channel complex
-go:0016938	MNXC1	kinesin I complex
-go:0016939	MNXC1	kinesin II complex
+go:0016938	MNXC0	kinesin I complex
+go:0016939	MNXC0	kinesin II complex
 go:0016942	MNXC2	insulin-like growth factor binding protein complex|IGF binding protein complex
 go:0017023	MNXC1	myosin phosphatase complex
-go:0017052	MNXC1	insulin-like growth factor binding protein
+go:0017052	MNXC0	insulin-like growth factor binding protein
 go:0017053	MNXC6	transcriptional repressor complex
 go:0017054	MNXC6	negative cofactor 2 complex
 go:0017059	MNXC12	serine C-palmitoyltransferase complex
-go:0017071	MNXC1	intracellular cyclic nucleotide activated cation channel complex
+go:0017071	MNXC0	intracellular cyclic nucleotide activated cation channel complex
 go:0017086	MNXC4	3-methyl-2-oxobutanoate dehydrogenase (lipoamide) complex|branched-chain alpha-ketoacid dehydrogenase complex|BCADH
 go:0017087	MNXC4	mitochondrial processing peptidase complex
-go:0017090	MNXC1	meprin A complex|PABA peptide hydrolase complex
+go:0017090	MNXC0	meprin A complex|PABA peptide hydrolase complex
 go:0017101	MNXC1	aminoacyl-tRNA synthetase multienzyme complex|multisynthetase complex|aminoacyl-tRNA synthetase complex
 go:0017102	MNXC3	methionyl glutamyl tRNA synthetase complex
 go:0017109	MNXC3	glutamate-cysteine ligase complex|gamma-glutamylcysteine synthetase complex
@@ -1186,7 +1186,7 @@ go:0017146	MNXC20	N-methyl-D-aspartate selective glutamate receptor complex|NMDA
 go:0017177	MNXC11	glucosidase II complex
 go:0018444	MNXC3	translation release factor complex|eukaryotic peptide chain release factor
 go:0018995	MNXC2	host|host organism
-go:0018998	MNXC1	metaxin
+go:0018998	MNXC0	metaxin
 go:0019005	MNXC1	SCF ubiquitin ligase complex|CDL1 complex|cullin-RING ligase 1|Skp1/Cul1/F-box protein complex|CRL1 complex|Cul1-RING ubiquitin ligase complex|SCF complex
 go:0019008	MNXC1	molybdopterin synthase complex|molybdopterin converting factor complex
 go:0019012	MNXC27	virion|complete virus particle
@@ -1208,7 +1208,7 @@ go:0019028	MNXC27	viral capsid
 go:0019029	MNXC27	helical viral capsid
 go:0019030	MNXC27	icosahedral viral capsid|quasispherical viral capsid
 go:0019031	MNXC27	viral envelope|viral membrane
-go:0019032	MNXC1	viral glycoprotein
+go:0019032	MNXC0	viral glycoprotein
 go:0019033	MNXC27	viral tegument
 go:0019034	MNXC6	viral replication complex
 go:0019035	MNXC6	viral integration complex
@@ -1223,12 +1223,12 @@ go:0019718	MNXC1	rough microsome
 go:0019719	MNXC1	smooth microsome
 go:0019773	MNXC1	proteasome core complex, alpha-subunit complex
 go:0019774	MNXC1	proteasome core complex, beta-subunit complex
-go:0019804	MNXC1	quinolinate synthetase complex
+go:0019804	MNXC0	quinolinate synthetase complex
 go:0019812	MNXC3	Type I site-specific deoxyribonuclease complex|Type I restriction enzyme complex
 go:0019813	MNXC3	Type III site-specific deoxyribonuclease complex|Type III restriction enzyme complex
-go:0019814	MNXC1	immunoglobulin complex
+go:0019814	MNXC0	immunoglobulin complex
 go:0019815	MNXC20	B cell receptor complex|BCR complex|B lymphocyte receptor complex|B-cell receptor complex|B-lymphocyte receptor complex|immunoglobulin complex, membrane bound
-go:0019816	MNXC1	B cell receptor accessory molecule complex
+go:0019816	MNXC0	B cell receptor accessory molecule complex
 go:0019819	MNXC13	P1 peroxisome
 go:0019820	MNXC13	P2 peroxisome
 go:0019821	MNXC13	P3 peroxisome
@@ -1239,13 +1239,13 @@ go:0019861	MNXC28	flagellum
 go:0019866	MNXC1	organelle inner membrane
 go:0019867	MNXC21	outer membrane
 go:0019897	MNXC20	extrinsic to plasma membrane|peripheral plasma membrane protein
-go:0019898	MNXC1	extrinsic to membrane|peripheral membrane protein
+go:0019898	MNXC0	extrinsic to membrane|peripheral membrane protein
 go:0019907	MNXC6	cyclin-dependent protein kinase activating kinase holoenzyme complex|CAK complex|CDK-activating kinase complex
 go:0019908	MNXC6	nuclear cyclin-dependent protein kinase holoenzyme complex
 go:0019910	MNXC4	mitochondrial pyruvate dehydrogenase (lipoamide) phosphatase complex
 go:0020002	MNXC2	host cell plasma membrane
 go:0020003	MNXC2	symbiont-containing vacuole|parasitophorous vacuole
-go:0020004	MNXC1	symbiont-containing vacuolar space|parasitophorous vacuolar space
+go:0020004	MNXC0	symbiont-containing vacuolar space|parasitophorous vacuolar space
 go:0020005	MNXC2	symbiont-containing vacuole membrane|parasitophorous vacuolar membrane
 go:0020006	MNXC2	symbiont-containing vacuolar membrane network|symbiont-containing vacuole membrane network|parasitophorous vacuolar membrane network
 go:0020007	MNXC1	apical complex
@@ -1277,20 +1277,20 @@ go:0022628	MNXC8	chloroplast large ribosomal subunit|chloroplast ribosomal LSU c
 go:0022629	MNXC8	chloroplast small ribosomal subunit|chloroplast ribosomal SSU complex|chloroplast ribosomal small subunit complex
 go:0030008	MNXC15	TRAPP complex|transport protein particle
 go:0030014	MNXC1	CCR4-NOT complex
-go:0030015	MNXC1	CCR4-NOT core complex
+go:0030015	MNXC0	CCR4-NOT core complex
 go:0030016	MNXC3	myofibril|striated muscle fibre|striated muscle fiber
 go:0030017	MNXC3	sarcomere
 go:0030018	MNXC3	Z disc|Z band|Z disk|Z line
 go:0030027	MNXC1	lamellipodium
-go:0030054	MNXC1	cell junction
-go:0030055	MNXC1	cell-substrate junction|cell-matrix junction
+go:0030054	MNXC0	cell junction
+go:0030055	MNXC0	cell-substrate junction|cell-matrix junction
 go:0030056	MNXC20	hemidesmosome
-go:0030057	MNXC1	desmosome|spot desmosome|macula adherens
+go:0030057	MNXC0	desmosome|spot desmosome|macula adherens
 go:0030061	MNXC5	mitochondrial crista|mitochondrial cristae
 go:0030062	MNXC4	mitochondrial tricarboxylic acid cycle enzyme complex
-go:0030063	MNXC1	murein sacculus|peptidoglycan layer
-go:0030064	MNXC1	cell wall inner membrane
-go:0030074	MNXC1	thylakoid (sensu Proteobacteria)
+go:0030063	MNXC0	murein sacculus|peptidoglycan layer
+go:0030064	MNXC0	cell wall inner membrane
+go:0030074	MNXC0	thylakoid (sensu Proteobacteria)
 go:0030075	MNXC1	plasma membrane-derived thylakoid
 go:0030076	MNXC1	light-harvesting complex
 go:0030077	MNXC3	plasma membrane light-harvesting complex
@@ -1302,10 +1302,10 @@ go:0030082	MNXC3	B800-850 antenna complex|light harvesting complex II|LH2 comple
 go:0030083	MNXC8	PSI associated light-harvesting complex I, LHCIa subcomplex
 go:0030084	MNXC8	PSI associated light-harvesting complex I, LHCIb subcomplex
 go:0030085	MNXC8	PSII associated light-harvesting complex II, peripheral complex, LHCIIb subcomplex
-go:0030086	MNXC1	PSII associated light-harvesting complex II, core complex, LHCIIa subcomplex
-go:0030087	MNXC1	PSII associated light-harvesting complex II, core complex, LHCIIc subcomplex
-go:0030088	MNXC1	PSII associated light-harvesting complex II, core complex, LHCIId subcomplex
-go:0030089	MNXC1	phycobilisome
+go:0030086	MNXC0	PSII associated light-harvesting complex II, core complex, LHCIIa subcomplex
+go:0030087	MNXC0	PSII associated light-harvesting complex II, core complex, LHCIIc subcomplex
+go:0030088	MNXC0	PSII associated light-harvesting complex II, core complex, LHCIId subcomplex
+go:0030089	MNXC0	phycobilisome
 go:0030093	MNXC8	chloroplast photosystem I
 go:0030094	MNXC20	plasma membrane-derived photosystem I|plasma membrane photosystem I
 go:0030095	MNXC8	chloroplast photosystem II
@@ -1325,7 +1325,7 @@ go:0030125	MNXC3	clathrin vesicle coat
 go:0030126	MNXC15	COPI vesicle coat|coatomer
 go:0030127	MNXC3	COPII vesicle coat
 go:0030128	MNXC3	clathrin coat of endocytic vesicle|clathrin coat of endocytotic vesicle
-go:0030129	MNXC1	clathrin coat of synaptic vesicle
+go:0030129	MNXC0	clathrin coat of synaptic vesicle
 go:0030130	MNXC15	clathrin coat of trans-Golgi network vesicle|clathrin coat of TGN vesicle
 go:0030131	MNXC3	clathrin adaptor complex
 go:0030132	MNXC20	clathrin coat of coated pit
@@ -1345,8 +1345,8 @@ go:0030176	MNXC12	integral to endoplasmic reticulum membrane|integral to ER memb
 go:0030232	MNXC6	insulin control element activator complex|ICE activator complex
 go:0030256	MNXC1	type I protein secretion system complex
 go:0030257	MNXC1	type III protein secretion system complex|TTSS complex|T3SS complex
-go:0030285	MNXC1	integral to synaptic vesicle membrane
-go:0030286	MNXC1	dynein complex
+go:0030285	MNXC0	integral to synaptic vesicle membrane
+go:0030286	MNXC0	dynein complex
 go:0030287	MNXC19	cell wall-bounded periplasmic space|cell wall-enclosed periplasmic space|cell wall bounded periplasmic space
 go:0030288	MNXC19	outer membrane-bounded periplasmic space|outer membrane bounded periplasmic space|outer membrane-enclosed periplasmic space
 go:0030289	MNXC1	protein phosphatase 4 complex
@@ -1365,12 +1365,12 @@ go:0030445	MNXC22	yeast-form cell wall
 go:0030446	MNXC22	hyphal cell wall
 go:0030478	MNXC3	actin cap
 go:0030479	MNXC3	actin cortical patch|actin patch
-go:0030484	MNXC1	muscle fiber|muscle fibre
+go:0030484	MNXC0	muscle fiber|muscle fibre
 go:0030485	MNXC3	smooth muscle contractile fiber|smooth muscle fibre
 go:0030486	MNXC3	smooth muscle dense body
 go:0030496	MNXC1	midbody
 go:0030526	MNXC20	granulocyte macrophage colony-stimulating factor receptor complex|granulocyte macrophage colony stimulating factor receptor complex
-go:0030529	MNXC1	ribonucleoprotein complex|protein-RNA complex|RNP|RNA-protein complex|ribonucleoprotein
+go:0030529	MNXC0	ribonucleoprotein complex|protein-RNA complex|RNP|RNA-protein complex|ribonucleoprotein
 go:0030530	MNXC6	heterogeneous nuclear ribonucleoprotein complex|hnRNP|heterogeneous nuclear ribonucleoprotein
 go:0030531	MNXC3	small cytoplasmic ribonucleoprotein complex|small cytoplasmic ribonucleoprotein|scRNP
 go:0030532	MNXC6	small nuclear ribonucleoprotein complex|small nuclear ribonucleoprotein|snRNP
@@ -1387,25 +1387,25 @@ go:0030668	MNXC3	merozoite dense granule membrane
 go:0030669	MNXC3	clathrin-coated endocytic vesicle membrane
 go:0030670	MNXC3	phagocytic vesicle membrane|phagosome membrane
 go:0030671	MNXC3	clathrin-coated phagocytic vesicle membrane
-go:0030672	MNXC1	synaptic vesicle membrane
+go:0030672	MNXC0	synaptic vesicle membrane
 go:0030673	MNXC20	axolemma|axonal membrane
-go:0030677	MNXC1	ribonuclease P complex|RNase P complex
+go:0030677	MNXC0	ribonuclease P complex|RNase P complex
 go:0030678	MNXC4	mitochondrial ribonuclease P complex|mitochondrial RNase P complex
 go:0030679	MNXC18	cyanelle ribonuclease P complex|cyanelle RNase P complex
-go:0030680	MNXC1	dimeric ribonuclease P complex|dimeric RNase P complex
-go:0030681	MNXC1	multimeric ribonuclease P complex|multimeric RNase P complex
-go:0030684	MNXC1	preribosome
+go:0030680	MNXC0	dimeric ribonuclease P complex|dimeric RNase P complex
+go:0030681	MNXC0	multimeric ribonuclease P complex|multimeric RNase P complex
+go:0030684	MNXC0	preribosome
 go:0030685	MNXC6	nucleolar preribosome
-go:0030686	MNXC1	90S preribosome
-go:0030687	MNXC1	preribosome, large subunit precursor
-go:0030688	MNXC1	preribosome, small subunit precursor
+go:0030686	MNXC0	90S preribosome
+go:0030687	MNXC0	preribosome, large subunit precursor
+go:0030688	MNXC0	preribosome, small subunit precursor
 go:0030689	MNXC6	Noc complex
 go:0030690	MNXC3	Noc1p-Noc2p complex
 go:0030691	MNXC3	Noc2p-Noc3p complex
 go:0030692	MNXC3	Noc4p-Nop14p complex|Nop7 complex|Nop7 subcomplex
 go:0030694	MNXC28	bacterial-type flagellum basal body, rod|flagellin-based flagellum basal body, rod|flagellar basal body, rod
 go:0030700	MNXC3	glycine reductase complex
-go:0030849	MNXC1	autosome
+go:0030849	MNXC0	autosome
 go:0030863	MNXC3	cortical cytoskeleton
 go:0030864	MNXC3	cortical actin cytoskeleton
 go:0030867	MNXC12	rough endoplasmic reticulum membrane|rough ER membrane|RER membrane
@@ -1418,45 +1418,45 @@ go:0030876	MNXC20	interleukin-20 receptor complex|IL-20 receptor complex
 go:0030877	MNXC3	beta-catenin destruction complex|beta-catenin degradation complex
 go:0030880	MNXC1	RNA polymerase complex|multisubunit RNA polymerase
 go:0030891	MNXC3	VCB complex|pVHL-elongin C-elongin B complex|VHL complex|von Hippel-Lindau tumor suppressor complex
-go:0030892	MNXC1	mitotic cohesin complex
-go:0030893	MNXC1	meiotic cohesin complex
-go:0030894	MNXC1	replisome
+go:0030892	MNXC0	mitotic cohesin complex
+go:0030893	MNXC0	meiotic cohesin complex
+go:0030894	MNXC0	replisome
 go:0030895	MNXC6	apolipoprotein B mRNA editing enzyme complex|APOBEC|apoB mRNA editing enzyme complex
 go:0030896	MNXC6	checkpoint clamp complex|Rad9-Hus1-Rad1 (9-1-1) clamp complex|CCC
 go:0030897	MNXC10	HOPS complex
-go:0030904	MNXC1	retromer complex
-go:0030905	MNXC1	retromer complex, outer shell
-go:0030906	MNXC1	retromer complex, inner shell
+go:0030904	MNXC0	retromer complex
+go:0030905	MNXC0	retromer complex, outer shell
+go:0030906	MNXC0	retromer complex, inner shell
 go:0030907	MNXC6	MBF transcription complex|MBF|DSC1 transcription factor complex|Mlu1-box binding factor
 go:0030914	MNXC6	STAGA complex|STAGA coactivator complex|SPT3-TAF9-GCN5 acetylase complex
-go:0030915	MNXC1	Smc5-Smc6 complex
+go:0030915	MNXC0	Smc5-Smc6 complex
 go:0030929	MNXC3	ADPG pyrophosphorylase complex
 go:0030930	MNXC3	homotetrameric ADPG pyrophosphorylase complex
 go:0030931	MNXC3	heterotetrameric ADPG pyrophosphorylase complex
 go:0030932	MNXC18	amyloplast ADPG pyrophosphorylase complex
 go:0030933	MNXC8	chloroplast ADPG pyrophosphorylase complex
-go:0030934	MNXC1	anchoring collagen|connecting collagen|linking collagen
-go:0030935	MNXC1	sheet-forming collagen|network-forming collagen
-go:0030936	MNXC1	transmembrane collagen|MACIT
-go:0030937	MNXC1	collagen type XVII
-go:0030938	MNXC1	collagen type XVIII
+go:0030934	MNXC0	anchoring collagen|connecting collagen|linking collagen
+go:0030935	MNXC0	sheet-forming collagen|network-forming collagen
+go:0030936	MNXC0	transmembrane collagen|MACIT
+go:0030937	MNXC0	collagen type XVII
+go:0030938	MNXC0	collagen type XVIII
 go:0030956	MNXC1	glutamyl-tRNA(Gln) amidotransferase complex
 go:0030958	MNXC6	RITS complex
-go:0030964	MNXC1	NADH dehydrogenase complex|Complex I
+go:0030964	MNXC0	NADH dehydrogenase complex|Complex I
 go:0030981	MNXC3	cortical microtubule cytoskeleton
 go:0030988	MNXC20	high molecular weight kininogen receptor complex
-go:0030990	MNXC1	intraflagellar transport particle|intraflagellar transport complex
-go:0030991	MNXC1	intraflagellar transport particle A|intraflagellar transport  complex  A
-go:0030992	MNXC1	intraflagellar transport particle B|intraflagellar transport complex B
-go:0030993	MNXC1	axonemal heterotrimeric kinesin-II complex
+go:0030990	MNXC0	intraflagellar transport particle|intraflagellar transport complex
+go:0030991	MNXC0	intraflagellar transport particle A|intraflagellar transport  complex  A
+go:0030992	MNXC0	intraflagellar transport particle B|intraflagellar transport complex B
+go:0030993	MNXC0	axonemal heterotrimeric kinesin-II complex
 go:0030998	MNXC6	linear element
-go:0031002	MNXC1	actin rod
-go:0031003	MNXC1	actin tubule
+go:0031002	MNXC0	actin rod
+go:0031003	MNXC0	actin tubule
 go:0031004	MNXC20	potassium ion-transporting ATPase complex|Kdp system complex
 go:0031009	MNXC18	plastid ADPG pyrophosphorylase complex
 go:0031010	MNXC6	ISWI complex
 go:0031011	MNXC6	Ino80 complex|INO80 chromatin remodeling complex
-go:0031012	MNXC1	extracellular matrix
+go:0031012	MNXC0	extracellular matrix
 go:0031015	MNXC6	karyopherin docking complex
 go:0031019	MNXC4	mitochondrial mRNA editing complex|mitochondrial editosome
 go:0031020	MNXC18	plastid mRNA editing complex|plastid editosome
@@ -1474,13 +1474,13 @@ go:0031084	MNXC3	BLOC-2 complex
 go:0031085	MNXC3	BLOC-3 complex
 go:0031088	MNXC3	platelet dense granule membrane
 go:0031089	MNXC3	platelet dense granule lumen
-go:0031090	MNXC1	organelle membrane
+go:0031090	MNXC0	organelle membrane
 go:0031091	MNXC3	platelet alpha granule|platelet alpha-granule
 go:0031092	MNXC3	platelet alpha granule membrane|platelet alpha-granule membrane
 go:0031093	MNXC3	platelet alpha granule lumen|platelet alpha-granule lumen
-go:0031094	MNXC1	platelet dense tubular network
+go:0031094	MNXC0	platelet dense tubular network
 go:0031095	MNXC1	platelet dense tubular network membrane
-go:0031096	MNXC1	platelet dense tubular network lumen
+go:0031096	MNXC0	platelet dense tubular network lumen
 go:0031097	MNXC3	medial cortex|medial ring
 go:0031105	MNXC3	septin complex
 go:0031143	MNXC1	pseudopodium|pseudopod
@@ -1488,14 +1488,14 @@ go:0031160	MNXC22	spore wall|spore coat
 go:0031164	MNXC10	contractile vacuolar membrane|contractile vacuole membrane
 go:0031165	MNXC10	integral to contractile vacuolar membrane
 go:0031166	MNXC10	integral to vacuolar membrane
-go:0031201	MNXC1	SNARE complex
+go:0031201	MNXC0	SNARE complex
 go:0031205	MNXC12	endoplasmic reticulum Sec complex
 go:0031207	MNXC11	Sec62/Sec63 complex|Sec62/63 complex|ER protein translocation subcomplex
 go:0031209	MNXC3	SCAR complex|WAVE complex
 go:0031211	MNXC12	endoplasmic reticulum palmitoyltransferase complex
 go:0031213	MNXC6	RSF complex|remodeling and spacing factor complex
-go:0031224	MNXC1	intrinsic to membrane
-go:0031225	MNXC1	anchored to membrane
+go:0031224	MNXC0	intrinsic to membrane
+go:0031225	MNXC0	anchored to membrane
 go:0031226	MNXC20	intrinsic to plasma membrane
 go:0031227	MNXC12	intrinsic to endoplasmic reticulum membrane
 go:0031228	MNXC16	intrinsic to Golgi membrane
@@ -1528,13 +1528,13 @@ go:0031258	MNXC20	lamellipodium membrane
 go:0031259	MNXC20	uropod membrane|uropodium membrane
 go:0031260	MNXC20	pseudopodium membrane
 go:0031261	MNXC6	DNA replication preinitiation complex|pre-IC
-go:0031262	MNXC1	Ndc80 complex|Nuf2-Ndc80 complex
+go:0031262	MNXC0	Ndc80 complex|Nuf2-Ndc80 complex
 go:0031264	MNXC20	death-inducing signaling complex|DISC|death receptor-induced signaling complex|death-inducing signalling complex|DISC protein complex|death receptor-induced signalling complex
 go:0031265	MNXC20	CD95 death-inducing signaling complex|CD95 death-inducing signalling complex|CD95 DISC|Fas death-inducing signaling complex
 go:0031266	MNXC20	TRAIL death-inducing signaling complex|TRAIL death-inducing signalling complex|TRAIL DISC
 go:0031298	MNXC6	replication fork protection complex|replisome progression complex
-go:0031300	MNXC1	intrinsic to organelle membrane
-go:0031301	MNXC1	integral to organelle membrane
+go:0031300	MNXC0	intrinsic to organelle membrane
+go:0031301	MNXC0	integral to organelle membrane
 go:0031302	MNXC3	intrinsic to endosome membrane
 go:0031303	MNXC3	integral to endosome membrane
 go:0031304	MNXC5	intrinsic to mitochondrial inner membrane
@@ -1545,13 +1545,13 @@ go:0031308	MNXC7	intrinsic to nuclear outer membrane
 go:0031309	MNXC7	integral to nuclear outer membrane
 go:0031310	MNXC10	intrinsic to vacuolar membrane
 go:0031311	MNXC10	intrinsic to contractile vacuolar membrane
-go:0031312	MNXC1	extrinsic to organelle membrane
+go:0031312	MNXC0	extrinsic to organelle membrane
 go:0031313	MNXC3	extrinsic to endosome membrane
 go:0031314	MNXC5	extrinsic to mitochondrial inner membrane
 go:0031315	MNXC5	extrinsic to mitochondrial outer membrane
 go:0031316	MNXC7	extrinsic to nuclear outer membrane
 go:0031317	MNXC1	tripartite ATP-independent periplasmic transporter complex|TRAP-T transporter complex|TRAP transporter complex
-go:0031332	MNXC1	RNAi effector complex
+go:0031332	MNXC0	RNAi effector complex
 go:0031350	MNXC18	intrinsic to plastid membrane
 go:0031351	MNXC18	integral to plastid membrane
 go:0031352	MNXC18	intrinsic to plastid inner membrane
@@ -1562,22 +1562,22 @@ go:0031356	MNXC8	intrinsic to chloroplast inner membrane
 go:0031357	MNXC8	integral to chloroplast inner membrane
 go:0031358	MNXC8	intrinsic to chloroplast outer membrane
 go:0031359	MNXC8	integral to chloroplast outer membrane
-go:0031360	MNXC1	intrinsic to thylakoid membrane
+go:0031360	MNXC0	intrinsic to thylakoid membrane
 go:0031361	MNXC1	integral to thylakoid membrane
 go:0031362	MNXC20	anchored to external side of plasma membrane
 go:0031371	MNXC1	ubiquitin conjugating enzyme complex
 go:0031372	MNXC1	UBC13-MMS2 complex
-go:0031375	MNXC1	type II fatty acid synthase complex|type II FAS complex|type II FAS|type II fatty acid synthase
-go:0031376	MNXC1	cytosolic type II fatty acid synthase complex|cytosolic type II FAS complex
-go:0031377	MNXC1	mitochondrial type II fatty acid synthase complex|mitochondrial type II FAS complex
-go:0031378	MNXC1	plastid type II fatty acid synthase complex|plastid type II FAS complex
+go:0031375	MNXC0	type II fatty acid synthase complex|type II FAS complex|type II FAS|type II fatty acid synthase
+go:0031376	MNXC0	cytosolic type II fatty acid synthase complex|cytosolic type II FAS complex
+go:0031377	MNXC0	mitochondrial type II fatty acid synthase complex|mitochondrial type II FAS complex
+go:0031378	MNXC0	plastid type II fatty acid synthase complex|plastid type II FAS complex
 go:0031379	MNXC1	RNA-directed RNA polymerase complex
 go:0031380	MNXC6	nuclear RNA-directed RNA polymerase complex|RDRC
 go:0031381	MNXC1	viral RNA-directed RNA polymerase complex
 go:0031387	MNXC1	MPF complex
-go:0031389	MNXC1	Rad17 RFC-like complex|RFC (Rad17)|Rad24p RFC-like complex|Rad17-RLC|Rad17-RFC
-go:0031390	MNXC1	Ctf18 RFC-like complex|Ctf18-RFC|RFC (Ctf18)|Ctf18-RLC
-go:0031391	MNXC1	Elg1 RFC-like complex|RFC (Elg1)|Elg1-RFC|Elg1-RLC
+go:0031389	MNXC0	Rad17 RFC-like complex|RFC (Rad17)|Rad24p RFC-like complex|Rad17-RLC|Rad17-RFC
+go:0031390	MNXC0	Ctf18 RFC-like complex|Ctf18-RFC|RFC (Ctf18)|Ctf18-RLC
+go:0031391	MNXC0	Elg1 RFC-like complex|RFC (Elg1)|Elg1-RFC|Elg1-RLC
 go:0031395	MNXC2	bursicon neuropeptide hormone complex
 go:0031410	MNXC3	cytoplasmic vesicle
 go:0031411	MNXC3	gas vesicle
@@ -1586,7 +1586,7 @@ go:0031415	MNXC3	NatA complex|N-terminal acetyltransferase A complex
 go:0031416	MNXC3	NatB complex|N-terminal acetyltransferase B complex
 go:0031417	MNXC3	NatC complex|N-terminal acetyltransferase C complex
 go:0031421	MNXC1	invertasome
-go:0031422	MNXC1	RecQ helicase-Topo III complex
+go:0031422	MNXC0	RecQ helicase-Topo III complex
 go:0031428	MNXC6	box C/D snoRNP complex|box C/D snoRNP ribose-2'-O-methyltransferase complex|box C/D snoRNP ribose 2'-O methylase complex
 go:0031429	MNXC6	box H/ACA snoRNP complex|box H/ACA snoRNP pseudouridylase complex
 go:0031430	MNXC3	M band|M disc|mesophragma
@@ -1599,41 +1599,41 @@ go:0031464	MNXC1	Cul4A-RING ubiquitin ligase complex|CRL4 complex|cullin-RING li
 go:0031465	MNXC1	Cul4B-RING ubiquitin ligase complex|cullin-RING ligase 4B
 go:0031466	MNXC1	Cul5-RING ubiquitin ligase complex|CDL5 complex|cullin-RING ligase 5|CRL5 complex
 go:0031467	MNXC1	Cul7-RING ubiquitin ligase complex|CRL7 complex|SCF7 complex|CDL7 complex|cullin-RING ligase 7
-go:0031469	MNXC1	polyhedral organelle
-go:0031470	MNXC1	carboxysome
-go:0031471	MNXC1	ethanolamine degradation polyhedral organelle
-go:0031472	MNXC1	propanediol degradation polyhedral organelle
-go:0031474	MNXC1	myosin IV complex
-go:0031475	MNXC1	myosin V complex
-go:0031476	MNXC1	myosin VI complex
-go:0031477	MNXC1	myosin VII complex
-go:0031478	MNXC1	myosin VIII complex
-go:0031479	MNXC1	myosin IX complex
-go:0031480	MNXC1	myosin X complex
-go:0031481	MNXC1	myosin XI complex
-go:0031482	MNXC1	myosin XII complex
-go:0031483	MNXC1	myosin XIII complex
-go:0031484	MNXC1	myosin XIV complex
-go:0031485	MNXC1	myosin XV complex
-go:0031486	MNXC1	myosin XVI complex
-go:0031487	MNXC1	myosin XVII complex
-go:0031488	MNXC1	myosin XVIII complex
+go:0031469	MNXC0	polyhedral organelle
+go:0031470	MNXC0	carboxysome
+go:0031471	MNXC0	ethanolamine degradation polyhedral organelle
+go:0031472	MNXC0	propanediol degradation polyhedral organelle
+go:0031474	MNXC0	myosin IV complex
+go:0031475	MNXC0	myosin V complex
+go:0031476	MNXC0	myosin VI complex
+go:0031477	MNXC0	myosin VII complex
+go:0031478	MNXC0	myosin VIII complex
+go:0031479	MNXC0	myosin IX complex
+go:0031480	MNXC0	myosin X complex
+go:0031481	MNXC0	myosin XI complex
+go:0031482	MNXC0	myosin XII complex
+go:0031483	MNXC0	myosin XIII complex
+go:0031484	MNXC0	myosin XIV complex
+go:0031485	MNXC0	myosin XV complex
+go:0031486	MNXC0	myosin XVI complex
+go:0031487	MNXC0	myosin XVII complex
+go:0031488	MNXC0	myosin XVIII complex
 go:0031499	MNXC6	TRAMP complex
 go:0031500	MNXC3	Tea1 cell-end complex
 go:0031501	MNXC1	mannosyltransferase complex
 go:0031502	MNXC12	dolichyl-phosphate-mannose-protein mannosyltransferase complex|protein O-mannosyltransferase complex
 go:0031510	MNXC6	SUMO activating enzyme complex|SAE|SUMO E1 activator enzyme complex
-go:0031511	MNXC1	Mis6-Sim4 complex|Sim4 complex|Mis6-Mal2-Sim4 centromere complex
+go:0031511	MNXC0	Mis6-Sim4 complex|Sim4 complex|Mis6-Mal2-Sim4 centromere complex
 go:0031512	MNXC1	motile primary cilium|motile primary cilia
 go:0031513	MNXC1	nonmotile primary cilium|immotile primary cilium|sensory cilium|nonmotile primary cilia
 go:0031514	MNXC1	motile cilium|motile cilia
 go:0031515	MNXC3	tRNA (m1A) methyltransferase complex
-go:0031518	MNXC1	CBF3 complex
+go:0031518	MNXC0	CBF3 complex
 go:0031519	MNXC6	PcG protein complex|Polycomb Group protein complex
 go:0031520	MNXC20	plasma membrane of cell tip
 go:0031521	MNXC1	spitzenkorper
 go:0031522	MNXC1	cell envelope Sec protein transport complex
-go:0031523	MNXC1	Myb complex|Myeloblastosis proto-oncogene protein complex
+go:0031523	MNXC0	Myb complex|Myeloblastosis proto-oncogene protein complex
 go:0031526	MNXC20	brush border membrane
 go:0031527	MNXC20	filopodium membrane
 go:0031528	MNXC20	microvillus membrane
@@ -1644,7 +1644,7 @@ go:0031562	MNXC3	hyphal tip polarisome
 go:0031563	MNXC1	mating projection tip polarisome
 go:0031588	MNXC1	AMP-activated protein kinase complex|5'-AMP-activated protein kinase complex
 go:0031592	MNXC3	centrosomal corona
-go:0031594	MNXC1	neuromuscular junction
+go:0031594	MNXC0	neuromuscular junction
 go:0031595	MNXC6	nuclear proteasome complex
 go:0031596	MNXC11	ER proteasome complex
 go:0031597	MNXC3	cytosolic proteasome complex
@@ -1667,7 +1667,7 @@ go:0031613	MNXC6	nuclear proteasome regulatory particle, lid subcomplex
 go:0031614	MNXC11	ER proteasome regulatory particle, lid subcomplex
 go:0031615	MNXC3	cytosolic proteasome regulatory particle, lid subcomplex
 go:0031616	MNXC3	spindle pole centrosome
-go:0031617	MNXC1	NMS complex|Ndc80-MIND-Spc7 complex
+go:0031617	MNXC0	NMS complex|Ndc80-MIND-Spc7 complex
 go:0031618	MNXC6	nuclear centromeric heterochromatin|nuclear centric heterochromatin
 go:0031633	MNXC3	xanthophore
 go:0031672	MNXC3	A band|anisotropic disc|A disc|transverse disc|Q disc
@@ -1675,7 +1675,7 @@ go:0031673	MNXC3	H zone|H disc|H band
 go:0031674	MNXC3	I band|J disc|isotropic disc|I disc
 go:0031676	MNXC20	plasma membrane-derived thylakoid membrane|plasma membrane thylakoid membrane
 go:0031680	MNXC3	G-protein beta/gamma-subunit complex|G-beta/G-gamma complex
-go:0031838	MNXC1	haptoglobin-hemoglobin complex
+go:0031838	MNXC0	haptoglobin-hemoglobin complex
 go:0031897	MNXC8	Tic complex|chloroplast inner membrane translocase complex
 go:0031898	MNXC18	chromoplast envelope
 go:0031899	MNXC18	chromoplast inner membrane
@@ -1694,38 +1694,38 @@ go:0031912	MNXC1	oral apparatus
 go:0031913	MNXC20	contractile vacuole pore
 go:0031931	MNXC1	TORC1 complex|rapamycin and nutrient-sensitive TOR complex|TORC1|TORC 1 complex|TOR complex 1|nutrient sensitive complex
 go:0031932	MNXC1	TORC2 complex|TORC2|TORC 2 complex|rapamycin and nutrient-insensitive TOR complex|TOR complex 2
-go:0031933	MNXC1	telomeric heterochromatin
-go:0031934	MNXC1	mating-type region heterochromatin
-go:0031941	MNXC1	filamentous actin|F-actin
+go:0031933	MNXC0	telomeric heterochromatin
+go:0031934	MNXC0	mating-type region heterochromatin
+go:0031941	MNXC0	filamentous actin|F-actin
 go:0031942	MNXC5	i-AAA complex
 go:0031965	MNXC7	nuclear membrane
 go:0031966	MNXC5	mitochondrial membrane
 go:0031967	MNXC1	organelle envelope
 go:0031968	MNXC21	organelle outer membrane
 go:0031969	MNXC8	chloroplast membrane
-go:0031970	MNXC1	organelle envelope lumen|organelle intermembrane space
+go:0031970	MNXC0	organelle envelope lumen|organelle intermembrane space
 go:0031972	MNXC8	chloroplast intermembrane space|chloroplast envelope lumen
 go:0031973	MNXC18	chromoplast intermembrane space|chromoplast envelope lumen
-go:0031974	MNXC1	membrane-enclosed lumen
+go:0031974	MNXC0	membrane-enclosed lumen
 go:0031975	MNXC1	envelope
 go:0031976	MNXC18	plastid thylakoid
 go:0031977	MNXC1	thylakoid lumen
 go:0031978	MNXC18	plastid thylakoid lumen
 go:0031979	MNXC20	plasma membrane-derived thylakoid lumen|plasma membrane thylakoid lumen
 go:0031981	MNXC6	nuclear lumen
-go:0031982	MNXC1	vesicle
-go:0031983	MNXC1	vesicle lumen
-go:0031984	MNXC1	organelle subcompartment|suborganelle compartment
+go:0031982	MNXC0	vesicle
+go:0031983	MNXC0	vesicle lumen
+go:0031984	MNXC0	organelle subcompartment|suborganelle compartment
 go:0031985	MNXC15	Golgi cisterna
 go:0031986	MNXC18	proteinoplast
-go:0031988	MNXC1	membrane-bounded vesicle|membrane-enclosed vesicle
+go:0031988	MNXC0	membrane-bounded vesicle|membrane-enclosed vesicle
 go:0032002	MNXC20	interleukin-28 receptor complex|IL-28 receptor complex
 go:0032009	MNXC3	early phagosome|early phagocytic vesicle
 go:0032010	MNXC17	phagolysosome
 go:0032019	MNXC3	mitochondrial cloud|Balbiani body
 go:0032021	MNXC6	NELF complex|negative elongation factor complex
 go:0032039	MNXC6	integrator complex
-go:0032040	MNXC1	small-subunit processome|small subunit processome|SSU processome
+go:0032040	MNXC0	small-subunit processome|small subunit processome|SSU processome
 go:0032044	MNXC6	DSIF complex|DRB sensitivity inducing factor complex|Spt4-Spt5 complex|5,6-Dichloro-1-beta-D-ribofuranosylbenzimidazole sensitivity inducing factor complex|Spt5-Spt4 complex
 go:0032045	MNXC1	guanyl-nucleotide exchange factor complex
 go:0032046	MNXC9	micropexophagy-specific membrane apparatus|micropexophagic apparatus|MIPA
@@ -1733,45 +1733,45 @@ go:0032047	MNXC3	mitosome|crypton
 go:0032059	MNXC1	bleb
 go:0032068	MNXC3	Type IV site-specific deoxyribonuclease complex|Type IV restriction enzyme complex
 go:0032116	MNXC6	SMC loading complex
-go:0032117	MNXC1	horsetail-astral microtubule array|HAA
+go:0032117	MNXC0	horsetail-astral microtubule array|HAA
 go:0032123	MNXC1	deep fiber|deep fibre
 go:0032126	MNXC3	eisosome
 go:0032127	MNXC3	dense core granule membrane|dense core vesicle membrane
-go:0032133	MNXC1	chromosome passenger complex|CPC complex|chromosomal passenger complex
+go:0032133	MNXC0	chromosome passenger complex|CPC complex|chromosomal passenger complex
 go:0032144	MNXC1	4-aminobutyrate transaminase complex|GABA transaminase complex|GABA-T complex|ABAT complex
 go:0032151	MNXC3	mitotic septin complex
 go:0032152	MNXC3	meiotic septin complex
 go:0032153	MNXC1	cell division site|cell division plane
 go:0032154	MNXC1	cleavage furrow
 go:0032155	MNXC1	cell division site part|cell division plane part
-go:0032156	MNXC1	septin cytoskeleton
+go:0032156	MNXC0	septin cytoskeleton
 go:0032157	MNXC3	prospore contractile ring
-go:0032158	MNXC1	septin band
-go:0032159	MNXC1	septin cap
-go:0032160	MNXC1	septin filament array
+go:0032158	MNXC0	septin band
+go:0032159	MNXC0	septin cap
+go:0032160	MNXC0	septin filament array
 go:0032161	MNXC3	cleavage apparatus septin structure
 go:0032162	MNXC1	mating projection septin band
-go:0032163	MNXC1	hyphal septin band
-go:0032164	MNXC1	hyphal septin cap
-go:0032165	MNXC1	prospore septin filament array
-go:0032166	MNXC1	chlamydospore septin filament array
-go:0032167	MNXC1	septin patch
+go:0032163	MNXC0	hyphal septin band
+go:0032164	MNXC0	hyphal septin cap
+go:0032165	MNXC0	prospore septin filament array
+go:0032166	MNXC0	chlamydospore septin filament array
+go:0032167	MNXC0	septin patch
 go:0032168	MNXC3	hyphal septin ring
 go:0032169	MNXC3	prospore septin ring
 go:0032170	MNXC3	pseudohyphal septin ring
 go:0032171	MNXC1	germ tube septin cap
 go:0032172	MNXC1	germ tube septin ring
-go:0032173	MNXC1	septin collar
+go:0032173	MNXC0	septin collar
 go:0032174	MNXC3	cellular bud neck septin collar
 go:0032175	MNXC1	mating projection septin ring
-go:0032176	MNXC1	split septin rings
+go:0032176	MNXC0	split septin rings
 go:0032177	MNXC3	cellular bud neck split septin rings
 go:0032178	MNXC20	medial membrane band
 go:0032179	MNXC1	germ tube
 go:0032195	MNXC9	post-lysosomal vacuole
 go:0032221	MNXC6	Rpd3S complex|Clr6 histone deacetylase complex II'|Rpd3C(S)|Clr6S complex
-go:0032279	MNXC1	asymmetric synapse
-go:0032280	MNXC1	symmetric synapse
+go:0032279	MNXC0	asymmetric synapse
+go:0032280	MNXC0	symmetric synapse
 go:0032281	MNXC20	alpha-amino-3-hydroxy-5-methyl-4-isoxazolepropionic acid selective glutamate receptor complex|AMPA-selective glutamate receptor complex
 go:0032282	MNXC18	plastid acetyl-CoA carboxylase complex|plastid ACCase complex
 go:0032283	MNXC18	plastid acetate CoA-transferase complex
@@ -1786,29 +1786,29 @@ go:0032390	MNXC6	MutLbeta complex|MLH1/PMS1 complex
 go:0032391	MNXC1	photoreceptor connecting cilium
 go:0032398	MNXC20	MHC class Ib protein complex
 go:0032419	MNXC17	extrinsic to lysosome membrane|extrinsic to lysosomal membrane
-go:0032420	MNXC1	stereocilium
-go:0032421	MNXC1	stereocilium bundle|stereocilia bundle
-go:0032426	MNXC1	stereocilium bundle tip
-go:0032432	MNXC1	actin filament bundle
+go:0032420	MNXC0	stereocilium
+go:0032421	MNXC0	stereocilium bundle|stereocilia bundle
+go:0032426	MNXC0	stereocilium bundle tip
+go:0032432	MNXC0	actin filament bundle
 go:0032433	MNXC1	filopodium tip
 go:0032437	MNXC3	cuticular plate
 go:0032444	MNXC6	activin responsive factor complex|ARF complex
 go:0032449	MNXC3	CBM complex|CARMA1-BCL10-Malt1 complex
 go:0032473	MNXC5	external side of mitochondrial outer membrane|cytosolic side of mitochondrial outer membrane
-go:0032476	MNXC1	decaprenyl diphosphate synthase complex
+go:0032476	MNXC0	decaprenyl diphosphate synthase complex
 go:0032477	MNXC3	homodimeric decaprenyl diphosphate synthase complex
 go:0032478	MNXC5	heterotetrameric decaprenyl diphosphate synthase complex
 go:0032517	MNXC1	SOD1-calcineurin complex
 go:0032541	MNXC11	cortical endoplasmic reticulum|cortical ER
 go:0032545	MNXC6	CURI complex
 go:0032578	MNXC3	aleurone grain membrane
-go:0032579	MNXC1	apical lamina of hyaline layer
+go:0032579	MNXC0	apical lamina of hyaline layer
 go:0032580	MNXC16	Golgi cisterna membrane|Golgi stack membrane
 go:0032584	MNXC20	growth cone membrane
 go:0032585	MNXC3	multivesicular body membrane|multivesicular endosome membrane|MVB membrane|MVE membrane
 go:0032586	MNXC10	protein storage vacuole membrane
 go:0032587	MNXC20	ruffle membrane
-go:0032588	MNXC1	trans-Golgi network membrane|trans Golgi network membrane
+go:0032588	MNXC0	trans-Golgi network membrane|trans Golgi network membrane
 go:0032589	MNXC20	neuron projection membrane
 go:0032590	MNXC20	dendrite membrane
 go:0032591	MNXC20	dendritic spine membrane
@@ -1826,15 +1826,15 @@ go:0032838	MNXC3	cell projection cytoplasm
 go:0032839	MNXC3	dendrite cytoplasm|dendritic cytoplasm
 go:0032865	MNXC5	ERMES complex|MMM1 complex|mitochore|Mdm10/Mdm12/Mmm1 complex|ER-mitochondria encounter structure
 go:0032921	MNXC3	sarcosine oxidase complex
-go:0032936	MNXC1	SREBP-SCAP complex|Sre1-Scp1 complex
+go:0032936	MNXC0	SREBP-SCAP complex|Sre1-Scp1 complex
 go:0032937	MNXC11	SREBP-SCAP-Insig complex
-go:0032969	MNXC1	endosomal scaffold complex|endosomal adaptor complex|MP1-p14 scaffolding complex
-go:0032982	MNXC1	myosin filament
+go:0032969	MNXC0	endosomal scaffold complex|endosomal adaptor complex|MP1-p14 scaffolding complex
+go:0032982	MNXC0	myosin filament
 go:0032983	MNXC20	kainate selective glutamate receptor complex
-go:0032991	MNXC1	macromolecular complex|macromolecule complex
-go:0032992	MNXC1	protein-carbohydrate complex
-go:0032993	MNXC1	protein-DNA complex|DNA-protein complex
-go:0032994	MNXC1	protein-lipid complex
+go:0032991	MNXC0	macromolecular complex|macromolecule complex
+go:0032992	MNXC0	protein-carbohydrate complex
+go:0032993	MNXC0	protein-DNA complex|DNA-protein complex
+go:0032994	MNXC0	protein-lipid complex
 go:0032996	MNXC1	Bcl3-Bcl10 complex
 go:0032997	MNXC20	Fc receptor complex|Fc-receptor complex|FcR complex
 go:0032998	MNXC20	Fc-epsilon receptor I complex|FceRI complex
@@ -1842,7 +1842,7 @@ go:0032999	MNXC20	Fc-alpha receptor I complex|FcaRI complex
 go:0033000	MNXC20	Fc-gamma receptor I complex|FcgRI complex
 go:0033001	MNXC20	Fc-gamma receptor III complex|FcgRIII complex
 go:0033009	MNXC18	nucleomorph
-go:0033010	MNXC1	paranodal junction
+go:0033010	MNXC0	paranodal junction
 go:0033011	MNXC3	perinuclear theca
 go:0033012	MNXC20	porosome
 go:0033016	MNXC1	rhoptry membrane
@@ -1859,13 +1859,13 @@ go:0033095	MNXC3	aleurone grain|aleurone body
 go:0033096	MNXC18	amyloplast envelope
 go:0033097	MNXC18	amyloplast membrane
 go:0033098	MNXC18	amyloplast inner membrane
-go:0033099	MNXC1	attachment organelle
+go:0033099	MNXC0	attachment organelle
 go:0033100	MNXC6	NuA3 histone acetyltransferase complex
 go:0033101	MNXC20	cellular bud membrane|cellular bud plasma membrane
 go:0033102	MNXC29	acidocalcisome membrane
 go:0033104	MNXC1	type VI protein secretion system complex|T6SS complex
-go:0033105	MNXC1	chlorosome envelope|chlorosome membrane
-go:0033106	MNXC1	cis-Golgi network membrane|cis Golgi network membrane
+go:0033105	MNXC0	chlorosome envelope|chlorosome membrane
+go:0033106	MNXC0	cis-Golgi network membrane|cis Golgi network membrane
 go:0033107	MNXC3	CVT vesicle
 go:0033110	MNXC3	CVT vesicle membrane
 go:0033111	MNXC1	attachment organelle membrane
@@ -1885,15 +1885,15 @@ go:0033167	MNXC6	ARC complex|argonaute siRNA chaperone complex
 go:0033172	MNXC3	gas vesicle shell|gas vesicle wall
 go:0033174	MNXC8	chloroplast proton-transporting ATP synthase complex, catalytic core CF(1)|chloroplast proton-transporting F-type ATPase complex, catalytic core CF(1)
 go:0033175	MNXC8	chloroplast proton-transporting ATP synthase complex, coupling factor CF(o)|chloroplast proton-transporting F-type ATPase complex, coupling factor CF(o)|chloroplast proton-transporting ATP synthase complex, coupling factor CF(0)
-go:0033176	MNXC1	proton-transporting V-type ATPase complex|hydrogen-translocating V-type ATPase complex
-go:0033177	MNXC1	proton-transporting two-sector ATPase complex, proton-transporting domain
-go:0033178	MNXC1	proton-transporting two-sector ATPase complex, catalytic domain
-go:0033179	MNXC1	proton-transporting V-type ATPase, V0 domain
-go:0033180	MNXC1	proton-transporting V-type ATPase, V1 domain
+go:0033176	MNXC0	proton-transporting V-type ATPase complex|hydrogen-translocating V-type ATPase complex
+go:0033177	MNXC0	proton-transporting two-sector ATPase complex, proton-transporting domain
+go:0033178	MNXC0	proton-transporting two-sector ATPase complex, catalytic domain
+go:0033179	MNXC0	proton-transporting V-type ATPase, V0 domain
+go:0033180	MNXC0	proton-transporting V-type ATPase, V1 domain
 go:0033181	MNXC20	plasma membrane proton-transporting V-type ATPase complex|plasma membrane hydrogen ion-transporting ATPase
 go:0033185	MNXC1	dolichol-phosphate-mannose synthase complex|DPM synthase complex|dolichyl-phosphate beta-D-mannosyltransferase complex
 go:0033186	MNXC6	CAF-1 complex|chromatin assembly factor 1 complex
-go:0033193	MNXC1	Lsd1/2 complex|Swm complex|SAPHIRE complex
+go:0033193	MNXC0	Lsd1/2 complex|Swm complex|SAPHIRE complex
 go:0033202	MNXC1	DNA helicase complex
 go:0033203	MNXC6	DNA helicase A complex
 go:0033254	MNXC3	vacuolar transporter chaperone complex|VTC complex
@@ -1907,15 +1907,15 @@ go:0033269	MNXC1	internode region of axon|internode
 go:0033270	MNXC1	paranode region of axon|paranode
 go:0033276	MNXC6	transcription factor TFTC complex
 go:0033281	MNXC20	TAT protein transport complex
-go:0033282	MNXC1	protein C inhibitor-acrosin complex|SERPINA5-acrosin complex|PCI-acrosin complex|plasma serine protease inhibitor-acrosin complex|serpin A5-acrosin complex|PCI-ACR complex
+go:0033282	MNXC0	protein C inhibitor-acrosin complex|SERPINA5-acrosin complex|PCI-acrosin complex|plasma serine protease inhibitor-acrosin complex|serpin A5-acrosin complex|PCI-ACR complex
 go:0033289	MNXC1	intraconoid microtubule
 go:0033290	MNXC3	eukaryotic 48S preinitiation complex|eukaryotic 48S pre-initiation complex
 go:0033291	MNXC3	eukaryotic 80S initiation complex
 go:0033309	MNXC6	SBF transcription complex|SBF complex
 go:0033391	MNXC3	chromatoid body
 go:0033503	MNXC1	HULC complex
-go:0033551	MNXC1	monopolin complex
-go:0033553	MNXC1	rDNA heterochromatin|ribosomal DNA heterochromatin
+go:0033551	MNXC0	monopolin complex
+go:0033553	MNXC0	rDNA heterochromatin|ribosomal DNA heterochromatin
 go:0033557	MNXC6	Slx1-Slx4 complex
 go:0033565	MNXC3	ESCRT-0 complex|Vps27p-Hse1p complex|Hrs/STAM complex
 go:0033573	MNXC20	high affinity iron permease complex
@@ -1953,14 +1953,14 @@ go:0034082	MNXC3	type II polyketide synthase complex|type II PKS complex|type II
 go:0034083	MNXC3	type III polyketide synthase complex|type III PKS|type III PKS complex|type III polyketide synthase
 go:0034098	MNXC12	Cdc48p-Npl4p-Ufd1p AAA ATPase complex
 go:0034099	MNXC11	luminal surveillance complex
-go:0034206	MNXC1	enhanceosome
+go:0034206	MNXC0	enhanceosome
 go:0034245	MNXC4	mitochondrial DNA-directed RNA polymerase complex|mitochondrial RNA polymerase holoenzyme complex
 go:0034270	MNXC3	CVT complex
 go:0034271	MNXC3	phosphatidylinositol 3-kinase complex I|PtdIns-3-kinase complex I
 go:0034272	MNXC3	phosphatidylinositol 3-kinase complex II|PtdIns-3-kinase complex II
 go:0034273	MNXC3	Atg1p signaling complex|Atg1p signalling complex
 go:0034274	MNXC3	Atg12-Atg5-Atg16 complex
-go:0034357	MNXC1	photosynthetic membrane
+go:0034357	MNXC0	photosynthetic membrane
 go:0034358	MNXC2	plasma lipoprotein particle
 go:0034359	MNXC2	mature chylomicron
 go:0034360	MNXC2	chylomicron remnant
@@ -1976,7 +1976,7 @@ go:0034399	MNXC6	nuclear periphery
 go:0034400	MNXC18	gerontoplast
 go:0034422	MNXC3	aleurone grain lumen
 go:0034423	MNXC9	autophagic vacuole lumen
-go:0034424	MNXC1	Vps55/Vps68 complex
+go:0034424	MNXC0	Vps55/Vps68 complex
 go:0034425	MNXC18	etioplast envelope
 go:0034426	MNXC18	etioplast membrane
 go:0034430	MNXC3	monolayer-surrounded lipid storage body outer lipid monolayer|lipid storage body surface lipid monolayer|oleosome outer lipid monolayer|oil body outer lipid monolayer|spherosome outer lipid monolayer
@@ -1986,7 +1986,7 @@ go:0034451	MNXC3	centriolar satellite
 go:0034455	MNXC6	t-UTP complex|Nan1p-containing subcomplex of 90S preribosome
 go:0034456	MNXC6	UTP-C complex|Rrp7p-containing subcomplex of 90S preribosome
 go:0034457	MNXC6	Mpp10 complex
-go:0034464	MNXC1	BBSome|Bardet-Biedl syndrome complex
+go:0034464	MNXC0	BBSome|Bardet-Biedl syndrome complex
 go:0034466	MNXC3	chromaffin granule lumen
 go:0034467	MNXC3	esterosome lumen
 go:0034468	MNXC23	glycosome lumen
@@ -1995,15 +1995,15 @@ go:0034492	MNXC3	hydrogenosome lumen
 go:0034493	MNXC3	melanosome lumen
 go:0034494	MNXC1	microneme lumen
 go:0034495	MNXC9	protein storage vacuole lumen
-go:0034506	MNXC1	chromosome, centromeric core region
-go:0034507	MNXC1	chromosome, centromeric outer repeat region
+go:0034506	MNXC0	chromosome, centromeric core region
+go:0034507	MNXC0	chromosome, centromeric outer repeat region
 go:0034515	MNXC3	proteasome storage granule|PSG
-go:0034518	MNXC1	RNA cap binding complex
-go:0034519	MNXC1	cytoplasmic RNA cap binding complex
+go:0034518	MNXC0	RNA cap binding complex
+go:0034519	MNXC0	cytoplasmic RNA cap binding complex
 go:0034591	MNXC1	rhoptry lumen
-go:0034592	MNXC1	synaptic vesicle lumen
+go:0034592	MNXC0	synaptic vesicle lumen
 go:0034615	MNXC1	GCH1 complex|GTP cyclohydrolase I complex
-go:0034646	MNXC1	organelle-enclosing lipid monolayer
+go:0034646	MNXC0	organelle-enclosing lipid monolayer
 go:0034657	MNXC1	GID complex
 go:0034662	MNXC20	CFTR-NHERF-ezrin complex
 go:0034663	MNXC11	endoplasmic reticulum chaperone complex|ER chaperone complex
@@ -2034,12 +2034,12 @@ go:0034690	MNXC20	alphaD-beta2 integrin complex
 go:0034691	MNXC20	alphaE-beta7 integrin complex
 go:0034692	MNXC6	E.F.G complex
 go:0034693	MNXC6	U11/U12 snRNP|snRNP U11/U12
-go:0034702	MNXC1	ion channel complex
-go:0034703	MNXC1	cation channel complex
-go:0034704	MNXC1	calcium channel complex
-go:0034705	MNXC1	potassium channel complex
-go:0034706	MNXC1	sodium channel complex
-go:0034707	MNXC1	chloride channel complex
+go:0034702	MNXC0	ion channel complex
+go:0034703	MNXC0	cation channel complex
+go:0034704	MNXC0	calcium channel complex
+go:0034705	MNXC0	potassium channel complex
+go:0034706	MNXC0	sodium channel complex
+go:0034707	MNXC0	chloride channel complex
 go:0034708	MNXC1	methyltransferase complex
 go:0034709	MNXC3	methylosome|20S methylosome|20S methyltransferase complex
 go:0034715	MNXC3	pICln-Sm protein complex|6S pICln complex
@@ -2088,14 +2088,14 @@ go:0034998	MNXC12	oligosaccharyltransferase I complex|OSTCI
 go:0034999	MNXC12	oligosaccharyltransferase II complex|OSTCII
 go:0035000	MNXC12	oligosaccharyltransferase III complex|OSTCIII
 go:0035003	MNXC20	subapical complex
-go:0035012	MNXC1	polytene chromosome, telomeric region
+go:0035012	MNXC0	polytene chromosome, telomeric region
 go:0035032	MNXC3	phosphatidylinositol 3-kinase complex, class III|class III PI3K complex|phosphoinositide 3-kinase complex, class III
 go:0035059	MNXC6	RCAF complex|replication-coupling assembly factor complex
 go:0035060	MNXC6	brahma complex|BRM complex
 go:0035061	MNXC6	interchromatin granule|ICG
 go:0035062	MNXC6	omega speckle
-go:0035068	MNXC1	micro-ribonucleoprotein complex|miRNP complex
-go:0035085	MNXC1	cilium axoneme
+go:0035068	MNXC0	micro-ribonucleoprotein complex|miRNP complex
+go:0035085	MNXC0	cilium axoneme
 go:0035086	MNXC3	flagellar axoneme|flagellum axoneme
 go:0035097	MNXC6	histone methyltransferase complex
 go:0035098	MNXC6	ESC/E(Z) complex|PRC2 complex|Extra Sex Combs/Enhancer of Zeste complex
@@ -2111,17 +2111,17 @@ go:0035267	MNXC6	NuA4 histone acetyltransferase complex|TIP60 histone acetyltran
 go:0035301	MNXC1	Hedgehog signaling complex|HSC|Hedgehog signalling complex
 go:0035323	MNXC2	male germline ring canal
 go:0035324	MNXC2	female germline ring canal
-go:0035327	MNXC1	transcriptionally active chromatin
-go:0035328	MNXC1	transcriptionally silent chromatin|transcriptionally inactive chromatin
+go:0035327	MNXC0	transcriptionally active chromatin
+go:0035328	MNXC0	transcriptionally silent chromatin|transcriptionally inactive chromatin
 go:0035339	MNXC12	SPOTS complex
 go:0035354	MNXC20	Toll-like receptor 1-Toll-like receptor 2 protein complex|TLR2:TLR1 heterodimer|TLR1-TLR2 protein complex|TLR1:TLR2 complex|toll-like receptor TLR1:TLR2 heterodimeric complex
 go:0035355	MNXC20	Toll-like receptor 2-Toll-like receptor 6 protein complex|TLR2:TLR6 heterodimer|TLR2-TLR6 protein complex|toll-like receptor TLR6:TLR2 heterodimeric complex|TLR6:TLR2 complex
 go:0035361	MNXC1	Cul8-RING ubiquitin ligase complex
 go:0035363	MNXC6	histone locus body|HLB
-go:0035369	MNXC1	pre-B cell receptor complex|pre-BCR
+go:0035369	MNXC0	pre-B cell receptor complex|pre-BCR
 go:0035370	MNXC1	UBC13-UEV1A complex
-go:0035371	MNXC1	microtubule plus end|microtubule plus-end|growing microtubule plus end
-go:0035448	MNXC1	extrinsic to thylakoid membrane|peripheral to thylakoid membrane
+go:0035371	MNXC0	microtubule plus end|microtubule plus-end|growing microtubule plus end
+go:0035448	MNXC0	extrinsic to thylakoid membrane|peripheral to thylakoid membrane
 go:0035449	MNXC18	extrinsic to plastid thylakoid membrane|peripheral to plastid thylakoid membrane
 go:0035450	MNXC18	extrinsic to lumenal side of plastid thylakoid membrane|peripheral to lumenal side of plastid thylakoid membrane
 go:0035451	MNXC18	extrinsic to stromal side of plastid thylakoid membrane|peripheral to stromal side of plastid thylakoid membrane
@@ -2139,17 +2139,17 @@ go:0035618	MNXC1	root hair
 go:0035619	MNXC1	root hair tip|root hair cell tip
 go:0035631	MNXC20	CD40 receptor complex
 go:0035632	MNXC5	mitochondrial prohibitin complex|mitochondrial inner membrane prohibitin complex
-go:0035649	MNXC1	Nrd1 complex
+go:0035649	MNXC0	Nrd1 complex
 go:0035657	MNXC1	eRF1 methyltransferase complex|eRF1 MTase complex
 go:0035658	MNXC3	Mon1-Ccz1 complex
 go:0035686	MNXC28	flagellar fibrous sheath|flagellum fibrous sheath
-go:0035692	MNXC1	macrophage migration inhibitory factor receptor complex
-go:0035693	MNXC1	NOS2-CD74 complex
+go:0035692	MNXC0	macrophage migration inhibitory factor receptor complex
+go:0035693	MNXC0	NOS2-CD74 complex
 go:0035748	MNXC1	myelin sheath abaxonal region
 go:0035749	MNXC1	myelin sheath adaxonal region
 go:0035770	MNXC3	ribonucleoprotein granule|mRNP granule|RNP granule
 go:0035792	MNXC2	other organism postsynaptic membrane
-go:0035796	MNXC1	ATP-binding cassette (ABC) transporter complex, transmembrane substrate-binding subunit-containing|ATP-binding cassette (ABC) transporter complex, ECF-type|energy-coupling factor transporter|energy coupling factor (ECF)-type ABC transporter
+go:0035796	MNXC0	ATP-binding cassette (ABC) transporter complex, transmembrane substrate-binding subunit-containing|ATP-binding cassette (ABC) transporter complex, ECF-type|energy-coupling factor transporter|energy coupling factor (ECF)-type ABC transporter
 go:0035805	MNXC1	egg coat
 go:0035808	MNXC6	meiotic recombination initiation complex
 go:0035838	MNXC1	growing cell tip|growing cell end
@@ -2158,15 +2158,15 @@ go:0035840	MNXC1	old growing cell tip|old growing cell end
 go:0035841	MNXC1	new growing cell tip|post-NETO new cell tip|post-new end take-off new cell tip|post-NETO new cell end|new cell tip after activation of bipolar cell growth
 go:0035842	MNXC1	old cell tip after activation of bipolar cell growth|post-new end take-off old cell tip|post-NETO old cell tip|post-NETO old cell end
 go:0035843	MNXC6	endonuclear canal
-go:0035859	MNXC1	Seh1-associated complex|SEA complex
-go:0035861	MNXC1	site of double-strand break|site of DSB
+go:0035859	MNXC0	Seh1-associated complex|SEA complex
+go:0035861	MNXC0	site of double-strand break|site of DSB
 go:0035866	MNXC20	alphav-beta3 integrin-PKCalpha complex|alphav-beta3 integrin-PKCa complex|alphav-beta3 integrin-protein kinase C alpha complex
 go:0035867	MNXC20	alphav-beta3 integrin-IGF-1-IGF1R complex
 go:0035868	MNXC20	alphav-beta3 integrin-HMGB1 complex|alphaV-beta3 integrin-HMGB1 complex|alphav-beta3 integrin-high mobility group box 1 complex
 go:0035869	MNXC1	ciliary transition zone
 go:0035974	MNXC3	meiotic spindle pole body
 go:0035976	MNXC6	AP1 complex|transcription factor AP-1 complex|AP-1 complex|Activating protein 1 complex|transcription factor AP1 complex
-go:0035985	MNXC1	senescence-associated heterochromatin focus|SAHF|senescence-associated heterochromatin foci
+go:0035985	MNXC0	senescence-associated heterochromatin focus|SAHF|senescence-associated heterochromatin foci
 go:0035996	MNXC1	rhabdomere microvillus
 go:0035997	MNXC20	rhabdomere microvillus membrane
 go:0036000	MNXC3	mucocyst
@@ -2177,39 +2177,39 @@ go:0036014	MNXC18	cyanelle intermembrane space|cyanelle periplasm|cyanelle envel
 go:0036019	MNXC17	endolysosome
 go:0036020	MNXC17	endolysosome membrane|endolysosomal membrane
 go:0036021	MNXC17	endolysosome lumen|endolysosomal lumen
-go:0036024	MNXC1	protein C inhibitor-TMPRSS7 complex|serpin A5-TMPRSS7 complex|plasma serine protease inhibitor-TMPRSS7 complex|PCI-TMPRSS7 complex|protein C inhibitor-transmembrane protease serine 7 complex|SERPINA5-TMPRSS7 complex|protein C inhibitor-matriptase-3 complex
-go:0036025	MNXC1	protein C inhibitor-TMPRSS11E complex|plasma serine protease inhibitor-TMPRSS11E complex|PCI-TMPRSS11E complex|serpin A5-TMPRSS11E complex|protein C inhibitor-transmembrane protease serine 11E complex|SERPINA5-TMPRSS11E complex
-go:0036026	MNXC1	protein C inhibitor-PLAT complex|plasma serine protease inhibitor-PLAT complex|protein C inhibitor-tPA complex|serpin A5-PLAT complex|protein C inhibitor-tissue-type plasminogen activator complex|SERPINA5-PLAT complex|PCI-PLAT complex
-go:0036027	MNXC1	protein C inhibitor-PLAU complex|serpin A5-PLAU complex|plasma serine protease inhibitor-PLAU complex|protein C inhibitor-U-plasminogen activator complex|PCI-PLAU complex|SERPINA5-PLAU complex|protein C inhibitor-urokinase-type plasminogen activator complex|protein C inhibitor-uPA complex
-go:0036028	MNXC1	protein C inhibitor-thrombin complex|plasma serine protease inhibitor-thrombin complex|protein C inhibitor-coagulation factor II complex|serpin A5-thrombin complex|SERPINA5-thrombin complex|PCI-thrombin complex|protein C inhibitor-F2 complex
-go:0036029	MNXC1	protein C inhibitor-KLK3 complex|protein C inhibitor-prostate-specific antigen complex|protein C inhibitor-kallikrein-3 complex|SERPINA5-KLK3 complex|plasma serine protease inhibitor-KLK3 complex|PCI-KLK3 complex|serpin A5-KLK3 complex
-go:0036030	MNXC1	protein C inhibitor-plasma kallikrein complex|protein C inhibitor-KLKB1 complex|SERPINA5-plasma kallikrein complex|plasma serine protease inhibitor-plasma kallikrein complex|serpin A5-plasma kallikrein complex|PCI-plasma kallikrein complex
-go:0036038	MNXC1	TCTN-B9D complex
-go:0036043	MNXC1	microspike
-go:0036053	MNXC1	glomerular endothelium fenestra|GEnC fenestration|glomerular endothelial cell fenestration
-go:0036056	MNXC1	filtration diaphragm
-go:0036057	MNXC1	slit diaphragm
-go:0036062	MNXC1	presynaptic periactive zone|periactive zone
+go:0036024	MNXC0	protein C inhibitor-TMPRSS7 complex|serpin A5-TMPRSS7 complex|plasma serine protease inhibitor-TMPRSS7 complex|PCI-TMPRSS7 complex|protein C inhibitor-transmembrane protease serine 7 complex|SERPINA5-TMPRSS7 complex|protein C inhibitor-matriptase-3 complex
+go:0036025	MNXC0	protein C inhibitor-TMPRSS11E complex|plasma serine protease inhibitor-TMPRSS11E complex|PCI-TMPRSS11E complex|serpin A5-TMPRSS11E complex|protein C inhibitor-transmembrane protease serine 11E complex|SERPINA5-TMPRSS11E complex
+go:0036026	MNXC0	protein C inhibitor-PLAT complex|plasma serine protease inhibitor-PLAT complex|protein C inhibitor-tPA complex|serpin A5-PLAT complex|protein C inhibitor-tissue-type plasminogen activator complex|SERPINA5-PLAT complex|PCI-PLAT complex
+go:0036027	MNXC0	protein C inhibitor-PLAU complex|serpin A5-PLAU complex|plasma serine protease inhibitor-PLAU complex|protein C inhibitor-U-plasminogen activator complex|PCI-PLAU complex|SERPINA5-PLAU complex|protein C inhibitor-urokinase-type plasminogen activator complex|protein C inhibitor-uPA complex
+go:0036028	MNXC0	protein C inhibitor-thrombin complex|plasma serine protease inhibitor-thrombin complex|protein C inhibitor-coagulation factor II complex|serpin A5-thrombin complex|SERPINA5-thrombin complex|PCI-thrombin complex|protein C inhibitor-F2 complex
+go:0036029	MNXC0	protein C inhibitor-KLK3 complex|protein C inhibitor-prostate-specific antigen complex|protein C inhibitor-kallikrein-3 complex|SERPINA5-KLK3 complex|plasma serine protease inhibitor-KLK3 complex|PCI-KLK3 complex|serpin A5-KLK3 complex
+go:0036030	MNXC0	protein C inhibitor-plasma kallikrein complex|protein C inhibitor-KLKB1 complex|SERPINA5-plasma kallikrein complex|plasma serine protease inhibitor-plasma kallikrein complex|serpin A5-plasma kallikrein complex|PCI-plasma kallikrein complex
+go:0036038	MNXC0	TCTN-B9D complex
+go:0036043	MNXC0	microspike
+go:0036053	MNXC0	glomerular endothelium fenestra|GEnC fenestration|glomerular endothelial cell fenestration
+go:0036056	MNXC0	filtration diaphragm
+go:0036057	MNXC0	slit diaphragm
+go:0036062	MNXC0	presynaptic periactive zone|periactive zone
 go:0036063	MNXC15	acroblast|spermatid acroblast
 go:0036064	MNXC3	cilium basal body|ciliary basal body
-go:0036087	MNXC1	glutathione synthase complex|glutathione synthetase complex
+go:0036087	MNXC0	glutathione synthase complex|glutathione synthetase complex
 go:0036117	MNXC2	hyaluranon cable|HA cable
-go:0036125	MNXC1	fatty acid beta-oxidation multienzyme complex
+go:0036125	MNXC0	fatty acid beta-oxidation multienzyme complex
 go:0036126	MNXC28	sperm flagellum|sperm tail
 go:0036128	MNXC20	CatSper complex|CATSPER channel|CatSper channel complex
-go:0036156	MNXC1	inner dynein arm|inner dynein arm complex
-go:0036157	MNXC1	outer dynein arm|outer dynein arm complex
+go:0036156	MNXC0	inner dynein arm|inner dynein arm complex
+go:0036157	MNXC0	outer dynein arm|outer dynein arm complex
 go:0036186	MNXC3	early phagosome membrane|early phagocytic vesicle membrane
 go:0036194	MNXC1	muscle cell projection|myocyte projection
 go:0036195	MNXC20	muscle cell projection membrane
 go:0036224	MNXC6	pairing center|homolog recognition region
 go:0036240	MNXC19	septal periplasm|cell wall-enclosed septal periplasm
-go:0038037	MNXC1	G-protein coupled receptor dimeric complex|G-protein coupled receptor dimer|GPCR dimer
-go:0038038	MNXC1	G-protein coupled receptor homodimeric complex|G-protein coupled receptor homodimer|GPCR homodimer
-go:0038039	MNXC1	G-protein coupled receptor heterodimeric complex|G-protein coupled receptor heterodimer|GPCR heterodimer
-go:0038045	MNXC1	large latent transforming growth factor-beta complex|LLC|large latent complex
-go:0038059	MNXC1	IKKalpha-IKKalpha complex|IKKalpha homodimeric complex|IKKalpha-IKKalpha protein complex|IkappaB kinase-alpha homodimer|IKKalpha homodimer|IkappaB kinase alpha homodimer
-go:0038104	MNXC1	nodal receptor complex
+go:0038037	MNXC0	G-protein coupled receptor dimeric complex|G-protein coupled receptor dimer|GPCR dimer
+go:0038038	MNXC0	G-protein coupled receptor homodimeric complex|G-protein coupled receptor homodimer|GPCR homodimer
+go:0038039	MNXC0	G-protein coupled receptor heterodimeric complex|G-protein coupled receptor heterodimer|GPCR heterodimer
+go:0038045	MNXC0	large latent transforming growth factor-beta complex|LLC|large latent complex
+go:0038059	MNXC0	IKKalpha-IKKalpha complex|IKKalpha homodimeric complex|IKKalpha-IKKalpha protein complex|IkappaB kinase-alpha homodimer|IKKalpha homodimer|IkappaB kinase alpha homodimer
+go:0038104	MNXC0	nodal receptor complex
 go:0038139	MNXC20	ERBB4-EGFR complex|EGFR-ERBB4 complex|ERBB4:EGFR heterodimer
 go:0038140	MNXC20	ERBB4-ERBB3 complex|ERBB3-ERBB4 complex|ERBB4:ERBB3 heterodimer
 go:0038141	MNXC20	ERBB4-ERBB4 complex|ERBB4 homodimer
@@ -2223,11 +2223,11 @@ go:0042105	MNXC20	alpha-beta T cell receptor complex|alpha-beta TCR complex|alph
 go:0042106	MNXC20	gamma-delta T cell receptor complex|gamma-delta T lymphocyte receptor complex|gamma-delta T-lymphocyte receptor complex|gamma-delta TCR complex|gamma-delta T-cell receptor complex
 go:0042151	MNXC3	nematocyst|cnidocyst
 go:0042170	MNXC18	plastid membrane
-go:0042175	MNXC1	nuclear outer membrane-endoplasmic reticulum membrane network|nuclear membrane-ER network|nuclear membrane-endoplasmic reticulum continuum
+go:0042175	MNXC0	nuclear outer membrane-endoplasmic reticulum membrane network|nuclear membrane-ER network|nuclear membrane-endoplasmic reticulum continuum
 go:0042272	MNXC6	nuclear RNA export factor complex|TAP-p15 complex|NXF1-NXT1 complex|Mex67-Mtr2 complex
 go:0042382	MNXC6	paraspeckles
 go:0042383	MNXC20	sarcolemma
-go:0042385	MNXC1	myosin III complex
+go:0042385	MNXC0	myosin III complex
 go:0042405	MNXC6	nuclear inclusion body
 go:0042406	MNXC12	extrinsic to endoplasmic reticulum membrane|extrinsic to ER membrane
 go:0042470	MNXC3	melanosome
@@ -2259,12 +2259,12 @@ go:0042603	MNXC1	capsule
 go:0042611	MNXC20	MHC protein complex
 go:0042612	MNXC20	MHC class I protein complex
 go:0042613	MNXC20	MHC class II protein complex
-go:0042622	MNXC1	photoreceptor outer segment membrane
+go:0042622	MNXC0	photoreceptor outer segment membrane
 go:0042627	MNXC2	chylomicron
 go:0042629	MNXC17	mast cell granule
-go:0042641	MNXC1	actomyosin|actomyosin complex|actomyosin structure
-go:0042642	MNXC1	actomyosin, myosin complex part
-go:0042643	MNXC1	actomyosin, actin part
+go:0042641	MNXC0	actomyosin|actomyosin complex|actomyosin structure
+go:0042642	MNXC0	actomyosin, myosin complex part
+go:0042643	MNXC0	actomyosin, actin part
 go:0042644	MNXC8	chloroplast nucleoid
 go:0042645	MNXC4	mitochondrial nucleoid
 go:0042646	MNXC18	plastid nucleoid
@@ -2272,7 +2272,7 @@ go:0042647	MNXC18	proplastid nucleoid
 go:0042648	MNXC8	chloroplast chromosome
 go:0042649	MNXC18	prothylakoid
 go:0042650	MNXC18	prothylakoid membrane
-go:0042651	MNXC1	thylakoid membrane
+go:0042651	MNXC0	thylakoid membrane
 go:0042652	MNXC5	mitochondrial respiratory chain complex I, peripheral segment
 go:0042653	MNXC5	mitochondrial respiratory chain complex I, membrane segment
 go:0042709	MNXC3	succinate-CoA ligase complex
@@ -2283,7 +2283,7 @@ go:0042719	MNXC4	mitochondrial intermembrane space protein transporter complex
 go:0042720	MNXC5	mitochondrial inner membrane peptidase complex
 go:0042721	MNXC5	mitochondrial inner membrane protein insertion complex
 go:0042729	MNXC6	DASH complex|condensed nuclear chromosome kinetochore-associated DASH complex|DDD complex|Duo1p-Dam1p-Dad1p complex|Dam1 complex
-go:0042734	MNXC1	presynaptic membrane
+go:0042734	MNXC0	presynaptic membrane
 go:0042735	MNXC3	protein body
 go:0042757	MNXC1	giant axon
 go:0042763	MNXC1	intracellular immature spore
@@ -2298,58 +2298,58 @@ go:0042995	MNXC1	cell projection|cellular projection
 go:0043005	MNXC1	neuron projection|neuronal cell projection|neuron protrusion|neuron process
 go:0043020	MNXC20	NADPH oxidase complex
 go:0043025	MNXC1	neuronal cell body|neuronal cell soma|neuron cell body
-go:0043033	MNXC1	isoamylase complex
+go:0043033	MNXC0	isoamylase complex
 go:0043034	MNXC3	costamere
 go:0043036	MNXC18	starch grain|starch granule
 go:0043073	MNXC6	germ cell nucleus|germ-cell nucleus
-go:0043075	MNXC1	sperm cell nucleus (sensu Magnoliophyta)|pollen germ-cell nucleus|pollen germ cell nucleus
+go:0043075	MNXC0	sperm cell nucleus (sensu Magnoliophyta)|pollen germ-cell nucleus|pollen germ cell nucleus
 go:0043076	MNXC6	megasporocyte nucleus|megaspore mother cell nucleus
 go:0043078	MNXC6	polar nucleus
 go:0043079	MNXC6	antipodal cell nucleus
 go:0043082	MNXC6	megagametophyte egg cell nucleus
-go:0043083	MNXC1	synaptic cleft
+go:0043083	MNXC0	synaptic cleft
 go:0043159	MNXC9	acrosomal matrix
 go:0043160	MNXC17	acrosomal lumen
 go:0043186	MNXC3	P granule|germline granule|polar granule
 go:0043187	MNXC1	cell septum surface
 go:0043188	MNXC22	cell septum edging
 go:0043189	MNXC6	H4/H2A histone acetyltransferase complex|H4/H2A HAT complex
-go:0043190	MNXC1	ATP-binding cassette (ABC) transporter complex
+go:0043190	MNXC0	ATP-binding cassette (ABC) transporter complex
 go:0043194	MNXC1	initial segment
-go:0043195	MNXC1	terminal button|presynaptic bouton|bouton|terminal bouton|synaptic bouton
+go:0043195	MNXC0	terminal button|presynaptic bouton|bouton|terminal bouton|synaptic bouton
 go:0043196	MNXC1	varicosity
 go:0043197	MNXC1	dendritic spine|dendrite spine
 go:0043198	MNXC1	dendritic shaft
 go:0043202	MNXC17	lysosomal lumen
 go:0043203	MNXC1	axon hillock
 go:0043204	MNXC1	perikaryon
-go:0043205	MNXC1	fibril
+go:0043205	MNXC0	fibril
 go:0043209	MNXC1	myelin sheath|Schwann Cell Myelin Sheath
 go:0043218	MNXC1	compact myelin|Schwann Cell Compact Myelin
 go:0043219	MNXC1	lateral loop
 go:0043220	MNXC1	Schmidt-Lanterman incisure|Schmidt-Lanterman cleft
 go:0043223	MNXC3	cytoplasmic SCF ubiquitin ligase complex|cytoplasmic Skp1/Cul1/F-box protein complex|cytoplasmic SCF complex|cytoplasmic cullin complex
 go:0043224	MNXC6	nuclear SCF ubiquitin ligase complex|nuclear Skp1/Cul1/F-box protein complex|nuclear SCF complex|nuclear cullin complex
-go:0043226	MNXC1	organelle
-go:0043227	MNXC1	membrane-bounded organelle|membrane-enclosed organelle
-go:0043228	MNXC1	non-membrane-bounded organelle|non-membrane-enclosed organelle
-go:0043229	MNXC1	intracellular organelle
+go:0043226	MNXC0	organelle
+go:0043227	MNXC0	membrane-bounded organelle|membrane-enclosed organelle
+go:0043228	MNXC0	non-membrane-bounded organelle|non-membrane-enclosed organelle
+go:0043229	MNXC0	intracellular organelle
 go:0043230	MNXC2	extracellular organelle
-go:0043231	MNXC1	intracellular membrane-bounded organelle|intracellular membrane-enclosed organelle
-go:0043232	MNXC1	intracellular non-membrane-bounded organelle|intracellular non-membrane-enclosed organelle
-go:0043233	MNXC1	organelle lumen
-go:0043234	MNXC1	protein complex|protein-protein complex
-go:0043235	MNXC1	receptor complex
+go:0043231	MNXC0	intracellular membrane-bounded organelle|intracellular membrane-enclosed organelle
+go:0043232	MNXC0	intracellular non-membrane-bounded organelle|intracellular non-membrane-enclosed organelle
+go:0043233	MNXC0	organelle lumen
+go:0043234	MNXC0	protein complex|protein-protein complex
+go:0043235	MNXC0	receptor complex
 go:0043240	MNXC6	Fanconi anaemia nuclear complex|FA nuclear complex|Fanconi anaemia complex|FA core complex|FA complex
 go:0043245	MNXC2	extraorganismal space
 go:0043246	MNXC17	megasome
 go:0043253	MNXC8	chloroplast ribosome
-go:0043256	MNXC1	laminin complex
-go:0043257	MNXC1	laminin-8 complex
-go:0043258	MNXC1	laminin-9 complex
-go:0043259	MNXC1	laminin-10 complex
-go:0043260	MNXC1	laminin-11 complex
-go:0043261	MNXC1	laminin-12 complex
+go:0043256	MNXC0	laminin complex
+go:0043257	MNXC0	laminin-8 complex
+go:0043258	MNXC0	laminin-9 complex
+go:0043259	MNXC0	laminin-10 complex
+go:0043260	MNXC0	laminin-11 complex
+go:0043261	MNXC0	laminin-12 complex
 go:0043263	MNXC2	cellulosome
 go:0043264	MNXC2	extracellular non-membrane-bounded organelle|extracellular non-membrane-enclosed organelle
 go:0043265	MNXC3	ectoplasm
@@ -2360,9 +2360,9 @@ go:0043294	MNXC4	mitochondrial glutamate synthase complex (NADH)
 go:0043296	MNXC20	apical junction complex|apical cell junction complex
 go:0043332	MNXC1	mating projection tip
 go:0043384	MNXC20	pre-T cell receptor complex|pre-T-lymphocyte receptor complex|pre-TCR complex|pre-T lymphocyte receptor complex|pre-T-cell receptor complex
-go:0043493	MNXC1	phage terminase complex
+go:0043493	MNXC0	phage terminase complex
 go:0043494	MNXC1	CLRC ubiquitin ligase complex|Rik1-E3 ubiquitin ligase complex|Rik1 E3 ubiquitin ligase complex|CLRC complex|Clr4-Rik1-Cul4 complex
-go:0043505	MNXC1	centromere-specific nucleosome|centromere specific nucleosome|centromeric nucleosome
+go:0043505	MNXC0	centromere-specific nucleosome|centromere specific nucleosome|centromeric nucleosome
 go:0043509	MNXC2	activin A complex
 go:0043510	MNXC2	activin B complex
 go:0043511	MNXC2	inhibin complex
@@ -2375,7 +2375,7 @@ go:0043529	MNXC11	GET complex|Golgi to ER Traffic complex
 go:0043540	MNXC3	6-phosphofructo-2-kinase/fructose-2,6-biphosphatase 1 complex
 go:0043541	MNXC12	UDP-N-acetylglucosamine transferase complex
 go:0043564	MNXC6	Ku70:Ku80 complex|Ku70:Ku80 heterodimer
-go:0043590	MNXC1	bacterial nucleoid
+go:0043590	MNXC0	bacterial nucleoid
 go:0043591	MNXC22	endospore external encapsulating structure|endospore wall|peptidoglycan-based spore wall
 go:0043592	MNXC22	exosporium
 go:0043593	MNXC22	endospore coat
@@ -2401,18 +2401,18 @@ go:0043662	MNXC3	peribacteroid fluid
 go:0043663	MNXC2	host bacteroid-containing symbiosome
 go:0043664	MNXC2	host peribacteroid membrane
 go:0043665	MNXC2	host peribacteroid fluid
-go:0043667	MNXC1	pollen wall|microspore wall
-go:0043668	MNXC1	exine
-go:0043669	MNXC1	ectexine
-go:0043670	MNXC1	foot layer|nexine 1
-go:0043671	MNXC1	endexine
-go:0043672	MNXC1	nexine
-go:0043673	MNXC1	sexine
-go:0043674	MNXC1	columella|sexine 1
-go:0043675	MNXC1	sculpture element
-go:0043676	MNXC1	tectum|sexine 2
-go:0043677	MNXC1	germination pore|germ pore
-go:0043678	MNXC1	intine
+go:0043667	MNXC0	pollen wall|microspore wall
+go:0043668	MNXC0	exine
+go:0043669	MNXC0	ectexine
+go:0043670	MNXC0	foot layer|nexine 1
+go:0043671	MNXC0	endexine
+go:0043672	MNXC0	nexine
+go:0043673	MNXC0	sexine
+go:0043674	MNXC0	columella|sexine 1
+go:0043675	MNXC0	sculpture element
+go:0043676	MNXC0	tectum|sexine 2
+go:0043677	MNXC0	germination pore|germ pore
+go:0043678	MNXC0	intine
 go:0043679	MNXC1	axon terminus|nerve ending|axon terminal
 go:0043680	MNXC22	filiform apparatus
 go:0043684	MNXC1	type IV secretion system complex|T4SS complex
@@ -2421,13 +2421,13 @@ go:0043699	MNXC3	leucosome|refractosome
 go:0043700	MNXC3	pterinosome
 go:0043701	MNXC3	cyanosome
 go:0043702	MNXC3	carotenoid vesicle
-go:0043769	MNXC1	Tpg-containing telomere binding complex
+go:0043769	MNXC0	Tpg-containing telomere binding complex
 go:0043845	MNXC1	DNA polymerase III, proofreading complex|DNA polymerase III, proof-reading complex|DNA polymerase III, proof-reading subcomplex|DNA polymerase III, proofreading subcomplex
 go:0043846	MNXC1	DNA polymerase III, DnaX complex|DNA polymerase III, DnaX subcomplex|DNA polymerase III, clamp loader complex
 go:0043847	MNXC1	DNA polymerase III, DnaX complex, chi/psi subcomplex|DNA polymerase III, clamp loader chi/psi subcomplex
-go:0043850	MNXC1	RecFOR complex
+go:0043850	MNXC0	RecFOR complex
 go:0043853	MNXC1	methanol-CoM methyltransferase complex|methanol:coenzyme M methyltransferase complex|methanol:CoM methyltransferase complex|methanol: CoM methyltransferase complex|methanol: coenzyme M methyltransferase complex|methanol-coenzyme M methyltransferase complex
-go:0043913	MNXC1	chromosome segregation-directing complex|chromosome segregation directing complex|longitudinal peptidoglycan synthesis-directing complex
+go:0043913	MNXC0	chromosome segregation-directing complex|chromosome segregation directing complex|longitudinal peptidoglycan synthesis-directing complex
 go:0044084	MNXC2	host cell membrane pore complex|pore complex in host cell membrane
 go:0044094	MNXC2	host cell nuclear part
 go:0044095	MNXC2	host cell nucleoplasm
@@ -2478,7 +2478,7 @@ go:0044202	MNXC2	host cell nuclear outer membrane
 go:0044203	MNXC2	host cell nuclear lamina
 go:0044204	MNXC2	host cell nuclear matrix
 go:0044207	MNXC3	translation initiation ternary complex|translation initiation (ternary) complex
-go:0044214	MNXC1	fully spanning plasma membrane
+go:0044214	MNXC0	fully spanning plasma membrane
 go:0044215	MNXC2	other organism
 go:0044216	MNXC2	other organism cell
 go:0044217	MNXC2	other organism part
@@ -2496,17 +2496,17 @@ go:0044228	MNXC2	host cell surface
 go:0044229	MNXC2	host cell periplasmic space
 go:0044230	MNXC2	host cell envelope
 go:0044231	MNXC2	host cell presynaptic membrane
-go:0044232	MNXC1	organelle membrane contact site|inter-organelle junction|MCS|interorganelle junction
+go:0044232	MNXC0	organelle membrane contact site|inter-organelle junction|MCS|interorganelle junction
 go:0044233	MNXC5	ER-mitochondrion membrane contact site|endoplasmic-reticulum-mitochondrion membrane contact site
 go:0044279	MNXC2	other organism membrane
 go:0044280	MNXC20	subplasmalemmal coating
 go:0044284	MNXC5	mitochondrial crista junction|crista junction|cristae junction
 go:0044285	MNXC5	bridge contact site
-go:0044286	MNXC1	peg and socket contact|ball and socket contact
+go:0044286	MNXC0	peg and socket contact|ball and socket contact
 go:0044288	MNXC20	puncta adhaerentia
 go:0044289	MNXC5	contact site
 go:0044290	MNXC4	mitochondrial intracristal space
-go:0044291	MNXC1	cell-cell contact zone|cell cell contact zone
+go:0044291	MNXC0	cell-cell contact zone|cell cell contact zone
 go:0044292	MNXC1	dendrite terminus|dendrite terminal|terminal specialization of a dendrite
 go:0044293	MNXC1	dendriole
 go:0044294	MNXC1	dendritic growth cone|dendrite growth cone
@@ -2542,17 +2542,17 @@ go:0044385	MNXC2	integral to membrane of host cell
 go:0044386	MNXC2	integral to host endoplasmic reticulum membrane
 go:0044391	MNXC3	ribosomal subunit
 go:0044393	MNXC1	microspike
-go:0044420	MNXC1	extracellular matrix part
+go:0044420	MNXC0	extracellular matrix part
 go:0044421	MNXC2	extracellular region part
-go:0044422	MNXC1	organelle part
+go:0044422	MNXC0	organelle part
 go:0044423	MNXC27	virion part
 go:0044424	MNXC1	intracellular part
-go:0044425	MNXC1	membrane part
+go:0044425	MNXC0	membrane part
 go:0044426	MNXC22	cell wall part
-go:0044427	MNXC1	chromosomal part|chromosomal component|chromosome part|chromosome component
+go:0044427	MNXC0	chromosomal part|chromosomal component|chromosome part|chromosome component
 go:0044428	MNXC6	nuclear part|nucleus component
 go:0044429	MNXC4	mitochondrial part|mitochondrion component
-go:0044430	MNXC1	cytoskeletal part|cytoskeleton component
+go:0044430	MNXC0	cytoskeletal part|cytoskeleton component
 go:0044431	MNXC15	Golgi apparatus part|Golgi component
 go:0044432	MNXC11	endoplasmic reticulum part|ER component
 go:0044433	MNXC3	cytoplasmic vesicle part
@@ -2568,8 +2568,8 @@ go:0044442	MNXC28	microtubule-based flagellum part
 go:0044443	MNXC1	pilus part|fimbrium component|fimbrial part|pilus component
 go:0044444	MNXC3	cytoplasmic part|cytoplasm component
 go:0044445	MNXC3	cytosolic part|cytosol component
-go:0044446	MNXC1	intracellular organelle part
-go:0044447	MNXC1	axoneme part
+go:0044446	MNXC0	intracellular organelle part
+go:0044447	MNXC0	axoneme part
 go:0044448	MNXC3	cell cortex part
 go:0044449	MNXC3	contractile fiber part|contractile fibre component
 go:0044450	MNXC3	microtubule organizing center part|MTOC component|microtubule organizing centre component
@@ -2578,7 +2578,7 @@ go:0044452	MNXC6	nucleolar part|nucleolus component
 go:0044453	MNXC7	nuclear membrane part
 go:0044454	MNXC6	nuclear chromosome part
 go:0044455	MNXC5	mitochondrial membrane part
-go:0044456	MNXC1	synapse part
+go:0044456	MNXC0	synapse part
 go:0044457	MNXC1	cell septum part
 go:0044459	MNXC20	plasma membrane part
 go:0044460	MNXC28	flagellum part|flagellum component
@@ -2589,27 +2589,27 @@ go:0044464	MNXC1	cell part
 go:0044530	MNXC6	supraspliceosomal complex|supraspliceosome complex
 go:0044538	MNXC2	host cell periphery
 go:0044545	MNXC6	NSL complex|non-specific lethal complex
-go:0044567	MNXC1	primary cell wall cellulose synthase complex|primary cell-wall cellulose synthase complex|primary cell wall CESA complex
-go:0044568	MNXC1	secondary cell wall cellulose synthase complex|secondary cell wall  CESA complex|secondary cell-wall cellulose synthase complex|secondary cell wall  CesA complex
-go:0044569	MNXC1	[Ni-Fe] hydrogenase complex|nickel-iron hydrogenase complex|Ni-Fe hydrogenase complex
+go:0044567	MNXC0	primary cell wall cellulose synthase complex|primary cell-wall cellulose synthase complex|primary cell wall CESA complex
+go:0044568	MNXC0	secondary cell wall cellulose synthase complex|secondary cell wall  CESA complex|secondary cell-wall cellulose synthase complex|secondary cell wall  CesA complex
+go:0044569	MNXC0	[Ni-Fe] hydrogenase complex|nickel-iron hydrogenase complex|Ni-Fe hydrogenase complex
 go:0044570	MNXC21	starch utilization system complex|Sus complex
 go:0044599	MNXC3	AP-5 adaptor complex|adaptor protein-5 adaptor complex
 go:0044609	MNXC1	DBIRD complex
 go:0045009	MNXC3	chitosome
 go:0045025	MNXC4	mitochondrial degradosome|mtEXO
 go:0045092	MNXC20	interleukin-18 receptor complex|IL-18 receptor complex
-go:0045095	MNXC1	keratin filament
-go:0045096	MNXC1	acidic keratin|type I intermediate filament
-go:0045097	MNXC1	basic/neutral keratin|type II intermediate filament
-go:0045098	MNXC1	type III intermediate filament
-go:0045099	MNXC1	vimentin
-go:0045100	MNXC1	desmin
-go:0045101	MNXC1	glial fibrillary acidic protein|GFAP
-go:0045102	MNXC1	peripherin
-go:0045111	MNXC1	intermediate filament cytoskeleton
+go:0045095	MNXC0	keratin filament
+go:0045096	MNXC0	acidic keratin|type I intermediate filament
+go:0045097	MNXC0	basic/neutral keratin|type II intermediate filament
+go:0045098	MNXC0	type III intermediate filament
+go:0045099	MNXC0	vimentin
+go:0045100	MNXC0	desmin
+go:0045101	MNXC0	glial fibrillary acidic protein|GFAP
+go:0045102	MNXC0	peripherin
+go:0045111	MNXC0	intermediate filament cytoskeleton
 go:0045120	MNXC6	pronucleus
-go:0045121	MNXC1	membrane raft|lipid raft
-go:0045160	MNXC1	myosin I complex
+go:0045121	MNXC0	membrane raft|lipid raft
+go:0045160	MNXC0	myosin I complex
 go:0045169	MNXC3	fusome
 go:0045170	MNXC3	spectrosome
 go:0045171	MNXC2	intercellular bridge
@@ -2618,9 +2618,9 @@ go:0045177	MNXC1	apical part of cell
 go:0045178	MNXC1	basal part of cell
 go:0045179	MNXC3	apical cortex
 go:0045180	MNXC3	basal cortex
-go:0045202	MNXC1	synapse|synaptic junction
+go:0045202	MNXC0	synapse|synaptic junction
 go:0045203	MNXC21	integral to cell outer membrane
-go:0045211	MNXC1	postsynaptic membrane|post-synaptic membrane
+go:0045211	MNXC0	postsynaptic membrane|post-synaptic membrane
 go:0045239	MNXC3	tricarboxylic acid cycle enzyme complex|TCA cycle enzyme complex
 go:0045240	MNXC3	dihydrolipoyl dehydrogenase complex|alpha-ketoglutarate dehydrogenase complex|2-oxoglutarate dehydrogenase complex
 go:0045241	MNXC3	cytosolic alpha-ketoglutarate dehydrogenase complex
@@ -2636,7 +2636,7 @@ go:0045251	MNXC3	electron transfer flavoprotein complex
 go:0045252	MNXC1	oxoglutarate dehydrogenase complex|dihydrolipoamide S-succinyltransferase complex
 go:0045253	MNXC3	pyruvate dehydrogenase (lipoamide) phosphatase complex
 go:0045254	MNXC3	pyruvate dehydrogenase complex|pyruvate dehydrogenase complex (lipoamide)
-go:0045257	MNXC1	succinate dehydrogenase complex (ubiquinone)
+go:0045257	MNXC0	succinate dehydrogenase complex (ubiquinone)
 go:0045258	MNXC20	plasma membrane succinate dehydrogenase complex (ubiquinone)
 go:0045259	MNXC1	proton-transporting ATP synthase complex|hydrogen-transporting ATP synthase complex|hydrogen-translocating F-type ATPase complex
 go:0045260	MNXC20	plasma membrane proton-transporting ATP synthase complex|plasma membrane hydrogen-translocating F-type ATPase complex|hydrogen-transporting ATP synthase
@@ -2644,26 +2644,26 @@ go:0045261	MNXC1	proton-transporting ATP synthase complex, catalytic core F(1)|h
 go:0045262	MNXC20	plasma membrane proton-transporting ATP synthase complex, catalytic core F(1)
 go:0045263	MNXC1	proton-transporting ATP synthase complex, coupling factor F(o)|hydrogen-transporting ATP synthase, F0 sector|hydrogen-transporting ATP synthase complex, coupling factor F(o)|proton-transporting ATP synthase complex, coupling factor F(0)
 go:0045264	MNXC20	plasma membrane proton-transporting ATP synthase complex, coupling factor F(o)
-go:0045265	MNXC1	proton-transporting ATP synthase, stator stalk|hydrogen-transporting ATP synthase, stator stalk
+go:0045265	MNXC0	proton-transporting ATP synthase, stator stalk|hydrogen-transporting ATP synthase, stator stalk
 go:0045266	MNXC20	plasma membrane proton-transporting ATP synthase, stator stalk
-go:0045267	MNXC1	proton-transporting ATP synthase, catalytic core|hydrogen-transporting ATP synthase, catalytic core
+go:0045267	MNXC0	proton-transporting ATP synthase, catalytic core|hydrogen-transporting ATP synthase, catalytic core
 go:0045268	MNXC20	plasma membrane proton-transporting ATP synthase, catalytic core
-go:0045269	MNXC1	proton-transporting ATP synthase, central stalk|hydrogen-transporting ATP synthase, central stalk
+go:0045269	MNXC0	proton-transporting ATP synthase, central stalk|hydrogen-transporting ATP synthase, central stalk
 go:0045270	MNXC20	plasma membrane proton-transporting ATP synthase, central stalk
-go:0045271	MNXC1	respiratory chain complex I|NADH dehydrogenase (ubiquinone) complex|NADH-Q oxidoreductase complex|NADH dehydrogenase complex (ubiquinone)
+go:0045271	MNXC0	respiratory chain complex I|NADH dehydrogenase (ubiquinone) complex|NADH-Q oxidoreductase complex|NADH dehydrogenase complex (ubiquinone)
 go:0045272	MNXC20	plasma membrane respiratory chain complex I
-go:0045273	MNXC1	respiratory chain complex II
+go:0045273	MNXC0	respiratory chain complex II
 go:0045274	MNXC20	plasma membrane respiratory chain complex II
-go:0045275	MNXC1	respiratory chain complex III|ubiquinol-cytochrome c oxidoreductase complex|cytochrome bc1 complex|complex III|ubiquinol-cytochrome-c reductase complex|cytochrome bc(1) complex
+go:0045275	MNXC0	respiratory chain complex III|ubiquinol-cytochrome c oxidoreductase complex|cytochrome bc1 complex|complex III|ubiquinol-cytochrome-c reductase complex|cytochrome bc(1) complex
 go:0045276	MNXC20	plasma membrane respiratory chain complex III|plasma membrane ubiquinol-cytochrome-c reductase complex
-go:0045277	MNXC1	respiratory chain complex IV|cytochrome c oxidase complex
+go:0045277	MNXC0	respiratory chain complex IV|cytochrome c oxidase complex
 go:0045278	MNXC20	plasma membrane respiratory chain complex IV
-go:0045281	MNXC1	succinate dehydrogenase complex
+go:0045281	MNXC0	succinate dehydrogenase complex
 go:0045282	MNXC20	plasma membrane succinate dehydrogenase complex
-go:0045283	MNXC1	fumarate reductase complex
+go:0045283	MNXC0	fumarate reductase complex
 go:0045284	MNXC20	plasma membrane fumarate reductase complex
 go:0045293	MNXC3	mRNA editing complex|editosome
-go:0045298	MNXC1	tubulin complex
+go:0045298	MNXC0	tubulin complex
 go:0045320	MNXC8	chloroplast proton-transporting ATP synthase complex|chloroplast hydrogen-translocating F-type ATPase complex|chloroplast proton-transporting F-type ATPase complex
 go:0045323	MNXC20	interleukin-1 receptor complex|IL-1 receptor complex
 go:0045334	MNXC3	clathrin-coated endocytic vesicle
@@ -2672,30 +2672,30 @@ go:0045336	MNXC3	clathrin-coated phagocytic vesicle|clathrin-coated phagosome
 go:0045495	MNXC3	pole plasm|polar plasm
 go:0046536	MNXC6	dosage compensation complex
 go:0046540	MNXC6	U4/U6 x U5 tri-snRNP complex|U4/U6.U5 snRNP complex
-go:0046581	MNXC1	intercellular canaliculus
+go:0046581	MNXC0	intercellular canaliculus
 go:0046610	MNXC17	lysosomal proton-transporting V-type ATPase, V0 domain|lysosomal hydrogen ion-transporting ATPase V0 domain
 go:0046611	MNXC17	lysosomal proton-transporting V-type ATPase complex|lysosomal hydrogen-translocating V-type ATPase complex
 go:0046612	MNXC17	lysosomal proton-transporting V-type ATPase, V1 domain|lysosomal hydrogen ion-transporting ATPase V1 domain
 go:0046658	MNXC20	anchored to plasma membrane
 go:0046691	MNXC20	intracellular canaliculus
 go:0046695	MNXC6	SLIK (SAGA-like) complex|SAGA (alt) complex|SLIK/SALSA complex|SALSA complex
-go:0046696	MNXC1	lipopolysaccharide receptor complex|LPS receptor complex
+go:0046696	MNXC0	lipopolysaccharide receptor complex|LPS receptor complex
 go:0046727	MNXC27	capsomere|capsomer
 go:0046729	MNXC27	viral procapsid
 go:0046798	MNXC27	viral portal complex
 go:0046806	MNXC27	viral scaffold
 go:0046808	MNXC6	assemblon
 go:0046809	MNXC6	replication compartment
-go:0046816	MNXC1	virion transport vesicle
+go:0046816	MNXC0	virion transport vesicle
 go:0046818	MNXC6	dense nuclear body
 go:0046821	MNXC1	extrachromosomal DNA
-go:0046858	MNXC1	chlorosome
+go:0046858	MNXC0	chlorosome
 go:0046859	MNXC3	hydrogenosomal membrane|hydrogenosome membrane
 go:0046860	MNXC14	glycosome membrane
 go:0046861	MNXC14	glyoxysomal membrane|glyoxysome membrane
 go:0046862	MNXC18	chromoplast membrane
 go:0046868	MNXC20	mesosome
-go:0046930	MNXC1	pore complex|pore
+go:0046930	MNXC0	pore complex|pore
 go:0048046	MNXC2	apoplast
 go:0048179	MNXC20	activin receptor complex
 go:0048180	MNXC2	activin complex
@@ -2714,7 +2714,7 @@ go:0048238	MNXC11	smooth endoplasmic reticulum lumen|SER lumen|smooth ER lumen
 go:0048269	MNXC1	methionine adenosyltransferase complex|MAT complex
 go:0048353	MNXC6	primary endosperm nucleus
 go:0048471	MNXC3	perinuclear region of cytoplasm
-go:0048475	MNXC1	coated membrane
+go:0048475	MNXC0	coated membrane
 go:0048476	MNXC1	Holliday junction resolvase complex|resolvasome
 go:0048492	MNXC3	ribulose bisphosphate carboxylase complex|RubisCO complex
 go:0048493	MNXC20	plasma membrane-derived thylakoid ribulose bisphosphate carboxylase complex|plasma membrane ribulose bisphosphate carboxylase complex
@@ -2724,11 +2724,11 @@ go:0048501	MNXC3	signal recognition particle, plasma membrane targeting
 go:0048555	MNXC6	generative cell nucleus
 go:0048556	MNXC6	microsporocyte nucleus|pollen mother cell nucleus|microspore mother cell nucleus
 go:0048770	MNXC3	pigment granule
-go:0048786	MNXC1	presynaptic active zone|pre-synaptic active zone
-go:0048787	MNXC1	presynaptic active zone membrane|active zone plasma membrane|active zone presynaptic plasma membrane|active zone pre-synaptic plasma membrane|pre-synaptic active zone membrane
-go:0048788	MNXC1	presynaptic cytoskeletal matrix assembled at active zones|presynaptic cytomatrix assembled at active zones
+go:0048786	MNXC0	presynaptic active zone|pre-synaptic active zone
+go:0048787	MNXC0	presynaptic active zone membrane|active zone plasma membrane|active zone presynaptic plasma membrane|active zone pre-synaptic plasma membrane|pre-synaptic active zone membrane
+go:0048788	MNXC0	presynaptic cytoskeletal matrix assembled at active zones|presynaptic cytomatrix assembled at active zones
 go:0051077	MNXC1	secondary cell septum
-go:0051233	MNXC1	spindle midzone|spindle equator|central spindle
+go:0051233	MNXC0	spindle midzone|spindle equator|central spindle
 go:0051285	MNXC3	cell cortex of cell tip|cell cortex of cell end
 go:0051286	MNXC1	cell tip|cell end
 go:0052718	MNXC1	tRNA-specific adenosine-34 deaminase complex|tRNA-A34 deaminase complex
@@ -2743,29 +2743,29 @@ go:0055037	MNXC3	recycling endosome
 go:0055038	MNXC3	recycling endosome membrane
 go:0055039	MNXC2	trichocyst
 go:0055040	MNXC19	periplasmic flagellum
-go:0055044	MNXC1	symplast
-go:0055051	MNXC1	ATP-binding cassette (ABC) transporter complex, integrated substrate binding
-go:0055052	MNXC1	ATP-binding cassette (ABC) transporter complex, substrate-binding subunit-containing
+go:0055044	MNXC0	symplast
+go:0055051	MNXC0	ATP-binding cassette (ABC) transporter complex, integrated substrate binding
+go:0055052	MNXC0	ATP-binding cassette (ABC) transporter complex, substrate-binding subunit-containing
 go:0055087	MNXC3	Ski complex
 go:0055120	MNXC3	striated muscle dense body
 go:0055125	MNXC6	Nic96 complex
 go:0055126	MNXC6	Nup82 complex
-go:0060053	MNXC1	neurofilament cytoskeleton
-go:0060076	MNXC1	excitatory synapse
-go:0060077	MNXC1	inhibitory synapse
-go:0060091	MNXC1	kinocilium
+go:0060053	MNXC0	neurofilament cytoskeleton
+go:0060076	MNXC0	excitatory synapse
+go:0060077	MNXC0	inhibitory synapse
+go:0060091	MNXC0	kinocilium
 go:0060102	MNXC2	collagen and cuticulin-based cuticle extracellular matrix
-go:0060103	MNXC1	collagen and cuticulin-based cuticle extracellular matrix part
-go:0060104	MNXC1	surface coat of collagen and cuticulin-based cuticle extracellular matrix
-go:0060105	MNXC1	epicuticle of collagen and cuticulin-based cuticle extracellular matrix
-go:0060106	MNXC1	cortical layer of collagen and cuticulin-based cuticle extracellular matrix
-go:0060107	MNXC1	annuli extracellular matrix
-go:0060108	MNXC1	annular furrow extracellular matrix
-go:0060109	MNXC1	medial layer of collagen and cuticulin-based cuticle extracellular matrix
-go:0060110	MNXC1	basal layer of collagen and cuticulin-based cuticle extracellular matrix
-go:0060111	MNXC1	alae of collagen and cuticulin-based cuticle extracellular matrix
+go:0060103	MNXC0	collagen and cuticulin-based cuticle extracellular matrix part
+go:0060104	MNXC0	surface coat of collagen and cuticulin-based cuticle extracellular matrix
+go:0060105	MNXC0	epicuticle of collagen and cuticulin-based cuticle extracellular matrix
+go:0060106	MNXC0	cortical layer of collagen and cuticulin-based cuticle extracellular matrix
+go:0060107	MNXC0	annuli extracellular matrix
+go:0060108	MNXC0	annular furrow extracellular matrix
+go:0060109	MNXC0	medial layer of collagen and cuticulin-based cuticle extracellular matrix
+go:0060110	MNXC0	basal layer of collagen and cuticulin-based cuticle extracellular matrix
+go:0060111	MNXC0	alae of collagen and cuticulin-based cuticle extracellular matrix
 go:0060170	MNXC20	cilium membrane
-go:0060171	MNXC1	stereocilium membrane
+go:0060171	MNXC0	stereocilium membrane
 go:0060187	MNXC1	cell pole
 go:0060198	MNXC3	clathrin sculpted vesicle
 go:0060199	MNXC3	clathrin sculpted glutamate transport vesicle|clathrin sculpted glutamate constitutive secretory pathway transport vesicle
@@ -2776,22 +2776,22 @@ go:0060203	MNXC3	clathrin sculpted glutamate transport vesicle membrane|clathrin
 go:0060204	MNXC3	clathrin sculpted glutamate transport vesicle lumen|clathrin sculpted glutamate constitutive secretory pathway transport vesicle lumen
 go:0060205	MNXC3	cytoplasmic membrane-bounded vesicle lumen|cytoplasmic membrane-enclosed vesicle lumen
 go:0060293	MNXC3	germ plasm
-go:0060342	MNXC1	photoreceptor inner segment membrane
+go:0060342	MNXC0	photoreceptor inner segment membrane
 go:0060387	MNXC1	fertilization envelope
 go:0060388	MNXC1	vitelline envelope
 go:0060417	MNXC3	yolk
 go:0060418	MNXC3	yolk plasma
 go:0060473	MNXC3	cortical granule
-go:0060987	MNXC1	lipid tube
-go:0061174	MNXC1	type I terminal button|type I terminal bouton
-go:0061175	MNXC1	type II terminal button|type II terminal bouton
-go:0061176	MNXC1	type Ib terminal button|type Ib terminal bouton
-go:0061177	MNXC1	type Is terminal button
+go:0060987	MNXC0	lipid tube
+go:0061174	MNXC0	type I terminal button|type I terminal bouton
+go:0061175	MNXC0	type II terminal button|type II terminal bouton
+go:0061176	MNXC0	type Ib terminal button|type Ib terminal bouton
+go:0061177	MNXC0	type Is terminal button
 go:0061200	MNXC3	clathrin sculpted gamma-aminobutyric acid transport vesicle|clathrin sculpted GABA transport vesicle
 go:0061201	MNXC3	clathrin sculpted gamma-aminobutyric acid transport vesicle lumen|clathrin sculpted GABA transport vesicle lumen
 go:0061202	MNXC3	clathrin sculpted gamma-aminobutyric acid transport vesicle membrane|clathrin sculpted GABA transport vesicle membrane
 go:0065010	MNXC2	extracellular membrane-bounded organelle|extracellular membrane-enclosed organelle
-go:0070013	MNXC1	intracellular organelle lumen
+go:0070013	MNXC0	intracellular organelle lumen
 go:0070014	MNXC20	sucrase-isomaltase complex
 go:0070017	MNXC20	alphav-beta3 integrin-thrombospondin complex
 go:0070018	MNXC20	transforming growth factor beta type I receptor homodimeric complex|TGFBR1 homodimer|transforming growth factor beta type I receptor complex|TGF-beta type I receptor complex|TGF-beta type I receptor dimer
@@ -2804,22 +2804,22 @@ go:0070024	MNXC20	CD19-Vav-PIK3R1 complex|CD19-Vav-PI 3-kinase (p85 subunit) com
 go:0070029	MNXC20	alphav-beta3 integrin-osteopontin complex
 go:0070030	MNXC20	alphav-beta1 integrin-osteopontin complex
 go:0070031	MNXC20	alphav-beta5 integrin-osteopontin complex
-go:0070032	MNXC1	synaptobrevin 2-SNAP-25-syntaxin-1a-complexin I complex
-go:0070033	MNXC1	synaptobrevin 2-SNAP-25-syntaxin-1a-complexin II complex
-go:0070044	MNXC1	synaptobrevin 2-SNAP-25-syntaxin-1a complex
-go:0070045	MNXC1	synaptobrevin 2-SNAP-25-syntaxin-2 complex
-go:0070046	MNXC1	synaptobrevin 2-SNAP-25-syntaxin-3 complex
-go:0070047	MNXC1	synaptobrevin 2-SNAP-25-syntaxin-4 complex
-go:0070048	MNXC1	endobrevin-SNAP-25-syntaxin-1a complex
-go:0070049	MNXC1	endobrevin-SNAP-25-syntaxin-2 complex
-go:0070056	MNXC1	prospore membrane leading edge|forespore membrane leading edge
-go:0070057	MNXC1	prospore membrane spindle pole body attachment site|forespore membrane spindle pole body attachment site|prospore membrane SPB attachment site|forespore membrane SPB attachment site
+go:0070032	MNXC0	synaptobrevin 2-SNAP-25-syntaxin-1a-complexin I complex
+go:0070033	MNXC0	synaptobrevin 2-SNAP-25-syntaxin-1a-complexin II complex
+go:0070044	MNXC0	synaptobrevin 2-SNAP-25-syntaxin-1a complex
+go:0070045	MNXC0	synaptobrevin 2-SNAP-25-syntaxin-2 complex
+go:0070046	MNXC0	synaptobrevin 2-SNAP-25-syntaxin-3 complex
+go:0070047	MNXC0	synaptobrevin 2-SNAP-25-syntaxin-4 complex
+go:0070048	MNXC0	endobrevin-SNAP-25-syntaxin-1a complex
+go:0070049	MNXC0	endobrevin-SNAP-25-syntaxin-2 complex
+go:0070056	MNXC0	prospore membrane leading edge|forespore membrane leading edge
+go:0070057	MNXC0	prospore membrane spindle pole body attachment site|forespore membrane spindle pole body attachment site|prospore membrane SPB attachment site|forespore membrane SPB attachment site
 go:0070062	MNXC2	extracellular vesicular exosome
-go:0070065	MNXC1	cellubrevin-VAMP4-syntaxin-16 complex
-go:0070066	MNXC1	cellubrevin-VAMP4-endobrevin-syntaxin-6 complex
-go:0070067	MNXC1	syntaxin-6-syntaxin-16-Vti1a complex
-go:0070068	MNXC1	VAMP4-syntaxin-6-syntaxin-16-Vti1a complex
-go:0070069	MNXC1	cytochrome complex
+go:0070065	MNXC0	cellubrevin-VAMP4-syntaxin-16 complex
+go:0070066	MNXC0	cellubrevin-VAMP4-endobrevin-syntaxin-6 complex
+go:0070067	MNXC0	syntaxin-6-syntaxin-16-Vti1a complex
+go:0070068	MNXC0	VAMP4-syntaxin-6-syntaxin-16-Vti1a complex
+go:0070069	MNXC0	cytochrome complex
 go:0070074	MNXC1	mononeme
 go:0070081	MNXC3	clathrin sculpted monoamine transport vesicle|clathrin sculpted monoamine constitutive secretory pathway transport vesicle
 go:0070082	MNXC3	clathrin sculpted monoamine transport vesicle lumen|clathrin sculpted monoamine constitutive secretory pathway transport vesicle lumen
@@ -2835,12 +2835,12 @@ go:0070115	MNXC3	organellar chromatophore intermembrane space|Paulinella-type ch
 go:0070116	MNXC3	organellar chromatophore thylakoid|Paulinella-type chromatophore thylakoid
 go:0070117	MNXC3	organellar chromatophore thylakoid lumen|Paulinella-type chromatophore thylakoid lumen
 go:0070118	MNXC3	organellar chromatophore thylakoid membrane|Paulinella-type chromatophore thylakoid membrane
-go:0070160	MNXC1	occluding junction|occluding cell junction
-go:0070161	MNXC1	anchoring junction|anchoring cell junction
+go:0070160	MNXC0	occluding junction|occluding cell junction
+go:0070161	MNXC0	anchoring junction|anchoring cell junction
 go:0070176	MNXC6	DRM complex|DP/Rb/MuvB
 go:0070187	MNXC6	telosome|Pot1 complex|shelterin complex|Pot1-Tpz1 complex
 go:0070188	MNXC6	Stn1-Ten1 complex
-go:0070195	MNXC1	growth hormone receptor complex
+go:0070195	MNXC0	growth hormone receptor complex
 go:0070209	MNXC6	ASTRA complex
 go:0070210	MNXC6	Rpd3L-Expanded complex|Clr6-LE complex
 go:0070211	MNXC6	Snt2C complex
@@ -2850,7 +2850,7 @@ go:0070258	MNXC1	inner membrane complex
 go:0070263	MNXC22	external side of fungal-type cell wall
 go:0070264	MNXC6	transcription factor TFIIIE complex
 go:0070274	MNXC6	RES complex|pre-mRNA retention and splicing complex
-go:0070288	MNXC1	ferritin complex
+go:0070288	MNXC0	ferritin complex
 go:0070289	MNXC2	extracellular ferritin complex
 go:0070310	MNXC6	ATR-ATRIP complex
 go:0070311	MNXC6	nucleosomal methylation activator complex|NUMAC
@@ -2863,8 +2863,8 @@ go:0070333	MNXC20	alpha6-beta4 integrin-Shc-Grb2 complex
 go:0070334	MNXC20	alpha6-beta4 integrin-laminin 5 complex
 go:0070353	MNXC6	GATA1-TAL1-TCF3-Lmo2 complex
 go:0070354	MNXC6	GATA2-TAL1-TCF3-Lmo2 complex
-go:0070355	MNXC1	synaptotagmin-synaptobrevin 2-SNAP-25-syntaxin-1a-syntaxin-1b-Rab3a-complexin II complex
-go:0070356	MNXC1	synaptotagmin-synaptobrevin 2-SNAP-25-syntaxin-1a-syntaxin-1b-Rab3a complex
+go:0070355	MNXC0	synaptotagmin-synaptobrevin 2-SNAP-25-syntaxin-1a-syntaxin-1b-Rab3a-complexin II complex
+go:0070356	MNXC0	synaptotagmin-synaptobrevin 2-SNAP-25-syntaxin-1a-syntaxin-1b-Rab3a complex
 go:0070357	MNXC20	alphav-beta3 integrin-CD47 complex
 go:0070369	MNXC3	beta-catenin-TCF7L2 complex|beta-catenin-TCF4 complex
 go:0070381	MNXC3	endosome to plasma membrane transport vesicle|endosome-plasma membrane transport vesicle|endosome to plasma membrane constitutive secretory pathway transport vesicle
@@ -2896,10 +2896,10 @@ go:0070464	MNXC20	alphav-beta3 integrin-collagen alpha3(VI) complex
 go:0070465	MNXC20	alpha1-beta1 integrin-alpha3(VI) complex
 go:0070466	MNXC20	alpha2-beta1 integrin-alpha3(VI) complex
 go:0070467	MNXC6	RC-1 DNA recombination complex|DNA recombination complex RC-1|RC-1 complex (recombination complex 1)
-go:0070469	MNXC1	respiratory chain|membrane electron transport chain
+go:0070469	MNXC0	respiratory chain|membrane electron transport chain
 go:0070470	MNXC20	plasma membrane respiratory chain|plasma membrane electron transport chain
 go:0070477	MNXC1	endospore core
-go:0070505	MNXC1	pollen coat|tryphine|pollenkitt
+go:0070505	MNXC0	pollen coat|tryphine|pollenkitt
 go:0070514	MNXC6	SRF-myogenin-E12 complex
 go:0070515	MNXC20	alphaIIb-beta3 integrin-talin complex
 go:0070516	MNXC6	CAK-ERCC2 complex|cyclin-dependent protein kinase activating kinase holoenzyme-ERCC2 complex
@@ -2914,13 +2914,13 @@ go:0070532	MNXC6	BRCA1-B complex
 go:0070533	MNXC6	BRCA1-C complex
 go:0070545	MNXC6	PeBoW complex
 go:0070552	MNXC6	BRISC complex
-go:0070554	MNXC1	synaptobrevin 2-SNAP-25-syntaxin-3-complexin complex
+go:0070554	MNXC0	synaptobrevin 2-SNAP-25-syntaxin-3-complexin complex
 go:0070556	MNXC6	TAF4B-containing transcription factor TFIID complex
 go:0070557	MNXC6	PCNA-p21 complex
 go:0070558	MNXC20	alphaM-beta2 integrin-CD63 complex
 go:0070559	MNXC17	lysosomal multienzyme complex
-go:0070565	MNXC1	telomere-telomerase complex
-go:0070578	MNXC1	RISC-loading complex|microRNA loading complex|miRLC
+go:0070565	MNXC0	telomere-telomerase complex
+go:0070578	MNXC0	RISC-loading complex|microRNA loading complex|miRLC
 go:0070603	MNXC6	SWI/SNF-type complex|SWI-SNF-type complex
 go:0070604	MNXC6	PBAF complex|Polybromo- and BAF containing complex|SWI/SNF complex B
 go:0070618	MNXC20	Grb2-Sos complex
@@ -2928,9 +2928,9 @@ go:0070619	MNXC20	Shc-Grb2-Sos complex
 go:0070620	MNXC20	EGFR-Grb2-Sos complex
 go:0070621	MNXC20	EGFR-Shc-Grb2-Sos complex
 go:0070622	MNXC17	UDP-N-acetylglucosamine-lysosomal-enzyme N-acetylglucosaminephosphotransferase complex|UDP-N-acetylglucosamine:lysosomal-enzyme N-acetylglucosamine-1-phosphotransferase complex
-go:0070645	MNXC1	Ubisch body|orbicule
-go:0070648	MNXC1	formin-nucleated actin cable
-go:0070652	MNXC1	HAUS complex|HAUS augmin complex
+go:0070645	MNXC0	Ubisch body|orbicule
+go:0070648	MNXC0	formin-nucleated actin cable
+go:0070652	MNXC0	HAUS complex|HAUS augmin complex
 go:0070685	MNXC1	macropinocytic cup|crown
 go:0070686	MNXC20	macropinocytic cup membrane|crown membrane
 go:0070687	MNXC3	macropinocytic cup cytoskeleton|crown cytoskeleton
@@ -2953,14 +2953,14 @@ go:0070732	MNXC1	spindle envelope
 go:0070743	MNXC2	interleukin-23 complex|IL-23 complex
 go:0070744	MNXC2	interleukin-27 complex|IL-27 complex
 go:0070745	MNXC2	interleukin-35 complex|IL-35 complex
-go:0070761	MNXC1	pre-snoRNP complex|pre-small nucleolar ribonucleoprotein complex
+go:0070761	MNXC0	pre-snoRNP complex|pre-small nucleolar ribonucleoprotein complex
 go:0070762	MNXC6	NDC1 complex|NDC1 subcomplex
 go:0070763	MNXC20	Delta1 complex|Delta1 homodimer complex
 go:0070764	MNXC20	gamma-secretase-Delta1 complex
 go:0070765	MNXC20	gamma-secretase complex
-go:0070766	MNXC1	endobrevin-synaptobrevin 2-alpha-SNAP-NSF-syntaxin-4 complex
+go:0070766	MNXC0	endobrevin-synaptobrevin 2-alpha-SNAP-NSF-syntaxin-4 complex
 go:0070767	MNXC6	BRCA1-Rad51 complex
-go:0070768	MNXC1	synaptotagmin-synaptobrevin 2-SNAP-25-syntaxin-1a-syntaxin-1b-Unc13 complex
+go:0070768	MNXC0	synaptotagmin-synaptobrevin 2-SNAP-25-syntaxin-1a-syntaxin-1b-Unc13 complex
 go:0070769	MNXC20	alphaIIb-beta3 integrin-CIB complex
 go:0070770	MNXC20	alphaIIb-beta3 integrin-CD47-FAK complex
 go:0070771	MNXC20	alphaIIb-beta3 integrin-CD47-Src complex
@@ -3153,12 +3153,12 @@ go:0071541	MNXC3	eukaryotic translation initiation factor 3 complex, eIF3m|eIF3m
 go:0071546	MNXC3	pi-body|intermitochondrial cement
 go:0071547	MNXC3	piP-body
 go:0071556	MNXC12	integral to lumenal side of endoplasmic reticulum membrane|integral to ER membrane, lumenal side|integral to lumenal side of ER membrane
-go:0071561	MNXC1	nucleus-vacuole junction|NVJ|NV junction|nucleus-vacuole membrane contact site
+go:0071561	MNXC0	nucleus-vacuole junction|NVJ|NV junction|nucleus-vacuole membrane contact site
 go:0071563	MNXC3	Myo2p-Vac17p-Vac8p transport complex
 go:0071564	MNXC6	npBAF complex
 go:0071565	MNXC6	nBAF complex
 go:0071575	MNXC20	integral to external side of plasma membrane
-go:0071595	MNXC1	Nem1-Spo7 phosphatase complex
+go:0071595	MNXC0	Nem1-Spo7 phosphatase complex
 go:0071597	MNXC22	cellular birth scar
 go:0071598	MNXC3	neuronal ribonucleoprotein granule|neuronal RNP granule
 go:0071601	MNXC6	sphere organelle
@@ -3166,23 +3166,23 @@ go:0071627	MNXC10	integral to fungal-type vacuolar membrane
 go:0071628	MNXC10	intrinsic to fungal-type vacuolar membrane
 go:0071664	MNXC3	catenin-TCF7L2 complex|catenin-TCF4 complex
 go:0071665	MNXC3	gamma-catenin-TCF7L2 complex|gamma-catenin-TCF4 complex|plakoglobin-TCF4 complex
-go:0071666	MNXC1	Slit-Robo signaling complex|Slit-Robo signalling complex
+go:0071666	MNXC0	Slit-Robo signaling complex|Slit-Robo signalling complex
 go:0071682	MNXC3	endocytic vesicle lumen
 go:0071683	MNXC1	sensory dendrite
 go:0071685	MNXC18	NADH dehydrogenase complex (plastoquinone)
 go:0071686	MNXC6	horsetail nucleus
 go:0071687	MNXC6	horsetail nucleus leading edge
-go:0071735	MNXC1	IgG immunoglobulin complex
+go:0071735	MNXC0	IgG immunoglobulin complex
 go:0071736	MNXC2	IgG immunoglobulin complex, circulating
 go:0071737	MNXC20	IgG B cell receptor complex
-go:0071738	MNXC1	IgD immunoglobulin complex
+go:0071738	MNXC0	IgD immunoglobulin complex
 go:0071739	MNXC2	IgD immunoglobulin complex, circulating|IgD antibody
 go:0071740	MNXC20	IgD B cell receptor complex|surface IgD|membrane-bound IgD
-go:0071741	MNXC1	IgD immunoglobulin complex, GPI-anchored|GPI-anchored IgD
-go:0071742	MNXC1	IgE immunoglobulin complex
+go:0071741	MNXC0	IgD immunoglobulin complex, GPI-anchored|GPI-anchored IgD
+go:0071742	MNXC0	IgE immunoglobulin complex
 go:0071743	MNXC2	IgE immunoglobulin complex, circulating|IgE antibody
 go:0071744	MNXC20	IgE B cell receptor complex|surface IgE|membrane-bound IgE
-go:0071745	MNXC1	IgA immunoglobulin complex
+go:0071745	MNXC0	IgA immunoglobulin complex
 go:0071746	MNXC2	IgA immunoglobulin complex, circulating|IgA antibody
 go:0071747	MNXC20	IgA B cell receptor complex
 go:0071748	MNXC2	monomeric IgA immunoglobulin complex|monomeric IgA antibody
@@ -3190,22 +3190,22 @@ go:0071749	MNXC2	polymeric IgA immunoglobulin complex|pIgA antibody|polymeric Ig
 go:0071750	MNXC2	dimeric IgA immunoglobulin complex|dimeric IgA antibody
 go:0071751	MNXC2	secretory IgA immunoglobulin complex|sIgA antibody|secretory IgA antibody
 go:0071752	MNXC2	secretory dimeric IgA immunoglobulin complex|secretory dimeric IgA antibody
-go:0071753	MNXC1	IgM immunoglobulin complex
+go:0071753	MNXC0	IgM immunoglobulin complex
 go:0071754	MNXC2	IgM immunoglobulin complex, circulating|IgM antibody
 go:0071755	MNXC20	IgM B cell receptor complex
 go:0071756	MNXC2	pentameric IgM immunoglobulin complex|pentameric IgM antibody
 go:0071757	MNXC2	hexameric IgM immunoglobulin complex|hexameric IgM antibody
-go:0071758	MNXC1	IgW immunoglobulin complex
-go:0071759	MNXC1	IgX immunoglobulin complex
-go:0071760	MNXC1	IgY immunoglobulin complex
-go:0071761	MNXC1	IgZ immunoglobulin complex|IgT immunoglobulin complex
-go:0071762	MNXC1	heavy chain immunoglobulin complex
+go:0071758	MNXC0	IgW immunoglobulin complex
+go:0071759	MNXC0	IgX immunoglobulin complex
+go:0071760	MNXC0	IgY immunoglobulin complex
+go:0071761	MNXC0	IgZ immunoglobulin complex|IgT immunoglobulin complex
+go:0071762	MNXC0	heavy chain immunoglobulin complex
 go:0071778	MNXC6	WINAC complex
 go:0071781	MNXC11	endoplasmic reticulum cisternal network|ER cisternal network
 go:0071782	MNXC11	endoplasmic reticulum tubular network|ER tubular network
 go:0071797	MNXC1	LUBAC complex
-go:0071808	MNXC1	satellite fibril
-go:0071817	MNXC1	MMXD complex|MMS19-MIP18-XPD complex
+go:0071808	MNXC0	satellite fibril
+go:0071817	MNXC0	MMXD complex|MMS19-MIP18-XPD complex
 go:0071818	MNXC3	BAT3 complex
 go:0071819	MNXC6	DUBm complex|deubiquitinating module|deubiquitination module
 go:0071821	MNXC6	FANCM-MHF complex
@@ -3214,10 +3214,10 @@ go:0071920	MNXC6	cleavage body
 go:0071942	MNXC6	XPC complex
 go:0071943	MNXC6	Myc-Max complex
 go:0071944	MNXC1	cell periphery
-go:0071953	MNXC1	elastic fiber|elastic fibre|elastin fiber
+go:0071953	MNXC0	elastic fiber|elastic fibre|elastin fiber
 go:0071957	MNXC3	old spindle pole body|old SPB
 go:0071958	MNXC3	new spindle pole body|new SPB
-go:0071986	MNXC1	Ragulator complex|MAPKSP1/ROBLD3/C11orf59 complex
+go:0071986	MNXC0	Ragulator complex|MAPKSP1/ROBLD3/C11orf59 complex
 go:0072324	MNXC2	ascus epiplasm
 go:0072357	MNXC1	PTW/PP1 phosphatase complex
 go:0072372	MNXC1	primary cilium
@@ -3230,7 +3230,7 @@ go:0072494	MNXC2	host multivesicular body|host cell multivesicular body
 go:0072495	MNXC2	host cell Cajal body|host cell coiled body|coiled body of host
 go:0072516	MNXC3	viral assembly compartment|virion assembly compartment
 go:0072517	MNXC2	host cell viral assembly compartment|host cell virion assembly compartment
-go:0072534	MNXC1	perineuronal net|PNN
+go:0072534	MNXC0	perineuronal net|PNN
 go:0072536	MNXC20	interleukin-23 receptor complex|IL-23 receptor complex
 go:0072546	MNXC12	ER membrane protein complex|endoplasmic reticulum membrane protein complex|EMC
 go:0072556	MNXC2	other organism presynaptic membrane
@@ -3239,11 +3239,11 @@ go:0072558	MNXC1	NLRP1 inflammasome complex|NALP1 inflammasome complex
 go:0072559	MNXC1	NLRP3 inflammasome complex|NALP3 inflammasome complex
 go:0072562	MNXC2	blood microparticle|cell membrane microparticle
 go:0072563	MNXC2	endothelial microparticle
-go:0072588	MNXC1	box H/ACA RNP complex
+go:0072588	MNXC0	box H/ACA RNP complex
 go:0072589	MNXC6	box H/ACA scaRNP complex|nucleoplasmic box H/ACA RNP pseudouridylase complex
 go:0072669	MNXC1	tRNA-splicing ligase complex|tRNA splicing ligase complex
-go:0072686	MNXC1	mitotic spindle
-go:0072687	MNXC1	meiotic spindle
+go:0072686	MNXC0	mitotic spindle
+go:0072687	MNXC0	meiotic spindle
 go:0075341	MNXC2	host cell PML body|host cell PML nuclear body|host cell PML NB
 go:0080008	MNXC1	CUL4 RING ubiquitin ligase complex
 go:0080085	MNXC3	signal recognition particle, chloroplast targeting
@@ -3269,19 +3269,19 @@ go:0097015	MNXC3	bacterial-type flagellar cytoplasm|bacterial-type flagellum cyt
 go:0097025	MNXC20	MPP7-DLG1-LIN7 complex
 go:0097038	MNXC11	perinuclear endoplasmic reticulum|perinuclear ER
 go:0097042	MNXC10	extrinsic to fungal-type vacuolar membrane
-go:0097047	MNXC1	DNA replication termination region|TER
-go:0097057	MNXC1	TRAF2-GSTP1 complex
+go:0097047	MNXC0	DNA replication termination region|TER
+go:0097057	MNXC0	TRAF2-GSTP1 complex
 go:0097058	MNXC2	CRLF-CLCF1 complex
 go:0097059	MNXC2	CNTFR-CLCF1 complex
-go:0097060	MNXC1	synaptic membrane
-go:0097071	MNXC1	interferon regulatory factor complex|IRF complex
-go:0097072	MNXC1	interferon regulatory factor 3 complex|IRF3:IRF3 complex
-go:0097073	MNXC1	interferon regulatory factor 5 complex|IRF5:IRF5 complex
-go:0097074	MNXC1	interferon regulatory factor 7 complex|IRF7:IRF7 complex
-go:0097075	MNXC1	interferon regulatory factor 3-interferon regulatory factor 7 complex|IRF3:IRF7 complex
-go:0097076	MNXC1	transforming growth factor beta activated kinase 1 complex|TAK1 kinase complex
-go:0097078	MNXC1	FAl1-SGD1 complex
-go:0097085	MNXC1	interferon regulatory factor 3-interferon regulatory factor 5 complex|IRF3:IRF5 complex
+go:0097060	MNXC0	synaptic membrane
+go:0097071	MNXC0	interferon regulatory factor complex|IRF complex
+go:0097072	MNXC0	interferon regulatory factor 3 complex|IRF3:IRF3 complex
+go:0097073	MNXC0	interferon regulatory factor 5 complex|IRF5:IRF5 complex
+go:0097074	MNXC0	interferon regulatory factor 7 complex|IRF7:IRF7 complex
+go:0097075	MNXC0	interferon regulatory factor 3-interferon regulatory factor 7 complex|IRF3:IRF7 complex
+go:0097076	MNXC0	transforming growth factor beta activated kinase 1 complex|TAK1 kinase complex
+go:0097078	MNXC0	FAl1-SGD1 complex
+go:0097085	MNXC0	interferon regulatory factor 3-interferon regulatory factor 5 complex|IRF3:IRF5 complex
 go:0097121	MNXC1	cyclin A1-CDK1 complex
 go:0097122	MNXC1	cyclin A2-CDK1 complex
 go:0097123	MNXC1	cyclin A1-CDK2 complex
@@ -3297,29 +3297,29 @@ go:0097132	MNXC1	cyclin D2-CDK6 complex
 go:0097133	MNXC1	cyclin D3-CDK6 complex
 go:0097134	MNXC1	cyclin E1-CDK2 complex
 go:0097135	MNXC1	cyclin E2-CDK2 complex
-go:0097136	MNXC1	Bcl-2 family protein complex
-go:0097137	MNXC1	BAD-BCL-xl complex
-go:0097138	MNXC1	BAD-BCL-2 complex
-go:0097139	MNXC1	BID-BCL-2 complex
-go:0097140	MNXC1	BIM-BCL-xl complex
-go:0097141	MNXC1	BIM-BCL-2 complex
-go:0097142	MNXC1	PUMA-BCL-2 complex
-go:0097143	MNXC1	PUMA-BCL-xl complex
-go:0097144	MNXC1	BAX complex
-go:0097145	MNXC1	BAK complex
-go:0097146	MNXC1	NOXA-BCL-xl complex
-go:0097147	MNXC1	NOXA-BCL-2 complex
-go:0097148	MNXC1	BCL-2 complex
-go:0097149	MNXC1	centralspindlin complex
+go:0097136	MNXC0	Bcl-2 family protein complex
+go:0097137	MNXC0	BAD-BCL-xl complex
+go:0097138	MNXC0	BAD-BCL-2 complex
+go:0097139	MNXC0	BID-BCL-2 complex
+go:0097140	MNXC0	BIM-BCL-xl complex
+go:0097141	MNXC0	BIM-BCL-2 complex
+go:0097142	MNXC0	PUMA-BCL-2 complex
+go:0097143	MNXC0	PUMA-BCL-xl complex
+go:0097144	MNXC0	BAX complex
+go:0097145	MNXC0	BAK complex
+go:0097146	MNXC0	NOXA-BCL-xl complex
+go:0097147	MNXC0	NOXA-BCL-2 complex
+go:0097148	MNXC0	BCL-2 complex
+go:0097149	MNXC0	centralspindlin complex
 go:0097165	MNXC3	nuclear stress granule
 go:0097169	MNXC1	AIM2 inflammasome complex
-go:0097179	MNXC1	protease inhibitor complex|peptidase inhibitor complex
-go:0097180	MNXC1	serine protease inhibitor complex|serine-type endopeptidase inhibitor complex|serpin complex
-go:0097181	MNXC1	protein C inhibitor-coagulation factor V complex|protein C inhibitor-F5 complex|plasma serine protease inhibitor-coagulation factor V complex|serpin A5-coagulation factor V complex|SERPINA5-coagulation factor V complex|PCI-coagulation factor V complex
-go:0097182	MNXC1	protein C inhibitor-coagulation factor Xa complex|serpin A5-coagulation factor Xa complex|SERPINA5-coagulation factor Xa complex|plasma serine protease inhibitor-coagulation factor Xa complex|PCI-coagulation factor Xa complex
-go:0097183	MNXC1	protein C inhibitor-coagulation factor XI complex|PCI-coagulation factor XI complex|plasma serine protease inhibitor-coagulation factor XI complex|serpin A5-coagulation factor XI complex|SERPINA5-coagulation factor XI complex|protein C inhibitor-F11 complex
+go:0097179	MNXC0	protease inhibitor complex|peptidase inhibitor complex
+go:0097180	MNXC0	serine protease inhibitor complex|serine-type endopeptidase inhibitor complex|serpin complex
+go:0097181	MNXC0	protein C inhibitor-coagulation factor V complex|protein C inhibitor-F5 complex|plasma serine protease inhibitor-coagulation factor V complex|serpin A5-coagulation factor V complex|SERPINA5-coagulation factor V complex|PCI-coagulation factor V complex
+go:0097182	MNXC0	protein C inhibitor-coagulation factor Xa complex|serpin A5-coagulation factor Xa complex|SERPINA5-coagulation factor Xa complex|plasma serine protease inhibitor-coagulation factor Xa complex|PCI-coagulation factor Xa complex
+go:0097183	MNXC0	protein C inhibitor-coagulation factor XI complex|PCI-coagulation factor XI complex|plasma serine protease inhibitor-coagulation factor XI complex|serpin A5-coagulation factor XI complex|SERPINA5-coagulation factor XI complex|protein C inhibitor-F11 complex
 go:0097189	MNXC2	apoptotic body
-go:0097196	MNXC1	Shu complex
+go:0097196	MNXC0	Shu complex
 go:0097197	MNXC20	tetraspanin-enriched microdomain|TEM|membrane tetraspanin-enriched microdomain
 go:0097203	MNXC20	phagocytic cup lip
 go:0097204	MNXC20	phagocytic cup base
@@ -3341,8 +3341,8 @@ go:0097232	MNXC3	lamellar body membrane
 go:0097233	MNXC3	alveolar lamellar body membrane
 go:0097234	MNXC3	epidermal lamellar body membrane
 go:0097249	MNXC5	mitochondrial respiratory chain supercomplex|mitochondrial respirasome|mitochondrial respiratory supercomplex
-go:0097255	MNXC1	R2TP complex
+go:0097255	MNXC0	R2TP complex
 go:0097268	MNXC1	cytoophidium
-go:0097311	MNXC1	biofilm matrix
-go:0097312	MNXC1	biofilm matrix part
-go:0097313	MNXC1	biofilm matrix surface
+go:0097311	MNXC0	biofilm matrix
+go:0097312	MNXC0	biofilm matrix part
+go:0097313	MNXC0	biofilm matrix surface
