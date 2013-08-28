@@ -13139,14 +13139,14 @@
           </html>
         </notes>
       </species>
-      <species id="M_tcb_c" name="tcb_c" compartment="c" charge="0">
+      <species id="M_tcb_c" name="tricarballylate" compartment="c" charge="-3">
         <notes>
           <html xmlns="http://www.w3.org/1999/xhtml">
-            <p>FORMULA: </p>
-            <p>PUBCHEM: 3333</p>
+            <p>FORMULA: C6H5O6 </p>
+            <p>PUBCHEM: 135626273</p>
             <p>CHARGE: -3</p>
-            <p>CHEBI: 4167</p>
-            <p>KEGG: 0</p>
+            <p>CHEBI: 62517</p>
+            <p>KEGG: C19806</p>
           </html>
         </notes>
       </species>
@@ -13161,17 +13161,17 @@
           </html>
         </notes>
       </species>
-      <species id="M_tcb_e" name="tcb_e" compartment="e" charge="0">
+      <species id="M_tcb_e" name="tricarballylate" compartment="e" charge="-3">
         <notes>
           <html xmlns="http://www.w3.org/1999/xhtml">
-            <p>FORMULA: </p>
-            <p>PUBCHEM: 3333</p>
+            <p>FORMULA: C6H5O6 </p>
+            <p>PUBCHEM: 135626273</p>
             <p>CHARGE: -3</p>
-            <p>CHEBI: 4167</p>
-            <p>KEGG: 0</p>
+            <p>CHEBI: 62517</p>
+            <p>KEGG: C19806</p>
           </html>
         </notes>
-      </species>
+      </species>i
       <species id="M_thex2eACP_c" name="trans-Hex-2-enoyl-acyl-carrier-protein" compartment="c" charge="-1">
         <notes>
           <html xmlns="http://www.w3.org/1999/xhtml">
@@ -13216,14 +13216,14 @@
           </html>
         </notes>
       </species>
-      <species id="M_tcb_p" name="tcb_p" compartment="p" charge="0">
+      <species id="M_tcb_p" name="tricarballylate" compartment="p" charge="-3">
         <notes>
           <html xmlns="http://www.w3.org/1999/xhtml">
-            <p>FORMULA: </p>
-            <p>PUBCHEM: 3333</p>
+            <p>FORMULA: C6H5O6 </p>
+            <p>PUBCHEM: 135626273</p>
             <p>CHARGE: -3</p>
-            <p>CHEBI: 4167</p>
-            <p>KEGG: 0</p>
+            <p>CHEBI: 62517</p>
+            <p>KEGG: C19806</p>
           </html>
         </notes>
       </species>
@@ -23545,14 +23545,14 @@
           </html>
         </notes>
       </species>
-      <species id="M_tcb_e_boundary" name="tcb_e" compartment="e" boundaryCondition="true" charge="0">
+      <species id="M_tcb_e_boundary" name="tricarballylate" compartment="e" boundaryCondition="true" charge="-3">
         <notes>
           <html xmlns="http://www.w3.org/1999/xhtml">
-            <p>FORMULA: </p>
-            <p>PUBCHEM: 3333</p>
+            <p>FORMULA: C6H5O6 </p>
+            <p>PUBCHEM: 135626273</p>
             <p>CHARGE: -3</p>
-            <p>CHEBI: 4167</p>
-            <p>KEGG: 0</p>
+            <p>CHEBI: 62517</p>
+            <p>KEGG: C19806</p>
           </html>
         </notes>
       </species>
