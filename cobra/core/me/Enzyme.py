@@ -14,7 +14,15 @@ class Modification(Object):
         #and the stoichiometries as the values.
         self.logic = None
 
-    
+
+    @property
+    def modifiers(self):
+        return(self._modification_dict.keys())
+
+
+    @property
+    def composition(self):
+        return(self._modification_dict)
     
     def add_species(self, species, stoichiometry):
         """Species must be a cobra model species
