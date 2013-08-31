@@ -101,7 +101,6 @@ def convert_to_irreversible(cobra_model):
     cobra_model: A Model object which will be modified in place.
 
     
-    TODO: Can we just use a -1*guided_copy or something else?
     """
     reactions_to_add = []
     for reaction in cobra_model.reactions:
@@ -112,6 +111,12 @@ def convert_to_irreversible(cobra_model):
             reverse_reaction = Reaction(reaction.id + "_reverse")
             reverse_reaction.lower_bound = 0
             reverse_reaction.upper_bound = reaction.lower_bound * -1
+            #Deal with the case where the reaction was originally constrained to
+            #run in the reverse direction: i.e., lower_bound < upper_bound< 0
+            if reaction.upper_bound < 0:
+                reverse_reaction.lower_bound = reaction.upper_bound * -1
+                reaction.upper_bound = 0
+                
             reaction.lower_bound = 0
             #Make the directions aware of each other
             reaction.reflection = reverse_reaction
@@ -141,12 +146,16 @@ def revert_to_reversible(cobra_model):
 
     for the_reaction in reversible_reactions:
         the_reflection = the_reaction.reflection
-        the_reaction.lower_bound = -the_reflection.lower_bound
+        the_reaction.lower_bound = -the_reflection.upper_bound
+        #Deal with cases where the initial reaction was constrained to a
+        #negative flux; i.e., lower_bound < upper_bound < 0
+        if the_reaction.upper_bound = 0 and the_reflection.lower_bound > 0:
+            the_reaction.upper_bound = -the_reflection.lower_bound
         the_reaction.reflection = None
         #Since the metabolites and genes are all still in
         #use we can do this faster removal step.  We can
         #probably speed things up here.
-        cobra_model.reactions.remove(the_reaction)
+        cobra_model.reactions.remove(the_reflection)
 
    
 def convert_rule_to_boolean_rule(cobra_model, the_rule,
