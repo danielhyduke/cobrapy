@@ -399,6 +399,14 @@ class Reaction(Object):
         return self.build_reaction_string()
 
 
+    @property
+    def genes(self):
+        return(self.get_gene())
+
+    @property
+    def model(self):
+        return(self._model)
+    
     def _parse_reaction(self, reaction_string):
         warn("deprecated")
         """
