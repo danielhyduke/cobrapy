@@ -149,7 +149,7 @@ def revert_to_reversible(cobra_model):
         the_reaction.lower_bound = -the_reflection.upper_bound
         #Deal with cases where the initial reaction was constrained to a
         #negative flux; i.e., lower_bound < upper_bound < 0
-        if the_reaction.upper_bound = 0 and the_reflection.lower_bound > 0:
+        if the_reaction.upper_bound == 0 and the_reflection.lower_bound > 0:
             the_reaction.upper_bound = -the_reflection.lower_bound
         the_reaction.reflection = None
         #Since the metabolites and genes are all still in
