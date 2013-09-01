@@ -18,37 +18,11 @@ from ..core import Reaction, Metabolite
 #from cobra.core.Metabolite import Metabolite
 from ..manipulation import initialize_growth_medium, delete_model_genes
 from warnings import warn
-#TODO: Add in an option for using matrices instead of objects because it
-#appears that there might be a performance penalty (especially for repetitions)
-#when using objects.
-#
-#
-#Using solver: cplex with lp_method: 1
-#
-#older optimized matrix method:
-#    Passed MOMA with tpiA deletion in 5.0713 seconds
-#    Passed MOMA reusing Model with tpiA deletion in 4.0048 seconds
-#    Passed MOMA reusing Model and model with tpiA deletion in 0.6579 seconds
-#    Passed MOMA single_deletion with tpiA & metN deletion in 14.6137 seconds
-#    Passed MOMA double_deletion with tpiA & metN deletion in 41.2922 seconds
-#
-#new unoptimized object method:
-#    add time 7.898585
-#    Took 8.954579 seconds to construct combined model
-#    Took 0.017424 seconds to update combined model
-#    Took 1.043317 seconds to solve problem
-#    Took 0.002228 seconds to assemble solution
-#    Passed MOMA with tpiA deletion in 10.1922 seconds
-#    Passed MOMA single_deletion with tpiA & metN deletion in 30.0383 seconds
-#    Passed MOMA double_deletion with tpiA & metN deletion in 69.8822 seconds
-#
-#  The major penalties are related to adding two models (cobra.core.Model.__add__)
-
 
 def moma(wt_model, mutant_model, objective_sense='maximize', solver='gurobi',
          tolerance_optimality=1e-8, tolerance_feasibility=1e-8,
          minimize_norm=False, the_problem='return', lp_method=0,
-         combined_model=None, norm_type='euclidean', print_time=False):
+         combined_model=None, norm_type='euclidean', parsimonious=False):
     """Runs the minimization of metabolic adjustment method described in
     Segre et al 2002 PNAS 99(23): 15112-7.
 
@@ -78,8 +52,14 @@ def moma(wt_model, mutant_model, objective_sense='maximize', solver='gurobi',
     to be solved.  when this is not none.  only assume that bounds have changed
     for the mutant or wild-type.  This saves 0.2 seconds in stacking matrices.
 
+
+    parsimonious: Boolean.  If true then constrain the wt model to the parsimonious solution space
+
+    NOTE: Current function makes too many assumptions about the structures of the models
+
+    TODO: Add in a parameter for performing parsimonious MOMA.
+
     """
-    warn('MOMA is currently non-functional.  check back later')
     if solver.lower() == 'cplex' and lp_method == 0:
         #print 'for moma, solver method 0 is very slow for cplex. changing to method 1'
         lp_method = 1
@@ -105,12 +85,15 @@ def moma(wt_model, mutant_model, objective_sense='maximize', solver='gurobi',
 
     wt_model.optimize(solver=solver)
     wt_solution = deepcopy(wt_model.solution)
+    if parsimonious:
+        from .parsimonious import flux_balance_analysis
+        minimum_flux, optimal_value = flux_balance_analysis(wt_model)
     if objective_sense == 'maximize':
         wt_optimal = floor(wt_solution.f/tolerance_optimality)*tolerance_optimality
     else:
         wt_optimal = ceil(wt_solution.f/tolerance_optimality)*tolerance_optimality
     if norm_type == 'euclidean':
-        quadratic_component = eye(wt_solution.x.shape[0],wt_solution.x.shape[0])
+        quadratic_component = eye(len(wt_solution.x),len(wt_solution.x))
     elif norm_type == 'linear':
         raise Exception('linear MOMA is not currently implmented')
         quadratic_component = None
@@ -127,8 +110,6 @@ def moma(wt_model, mutant_model, objective_sense='maximize', solver='gurobi',
         #by a simple cobra_model.optimize call may be too far from the mutant.
         #This only needs to be adjusted if we update mutant_model._S after deleting reactions
 
-        if print_time:
-            start_time = time()
         number_of_reactions = len(mutant_model.reactions)
         if norm_type == 'euclidean':
             reaction_coefficient = 1
@@ -139,37 +120,10 @@ def moma(wt_model, mutant_model, objective_sense='maximize', solver='gurobi',
             objective_reaction_coefficient_dict = dict([(x.id, x.objective_coefficient)
                                                         for x in wt_model.reactions
                                                         if x.objective_coefficient])
-            #This does a deepcopy of both models which might result in a huge overhead.
-            #Update cobra.core.Model to improve performance.
-            combined_model = wt_model + mutant_model
-            if print_time:
-                print 'add time %f'%(time()-start_time)
-            [setattr(x, 'objective_coefficient', 0.)
-             for x in combined_model.reactions]
-            #Add in the difference reactions.  The mutant reactions and metabolites are already added.
-            #This must be a list to maintain the correct order when adding the difference_metabolites
-
-            difference_reactions = [Reaction('difference_%i'%i)
-                                        for i in range(reaction_coefficient*number_of_reactions)]
-            [setattr(x, 'lower_bound', -1000)
-             for x in difference_reactions]
-            combined_model.add_reactions(difference_reactions)
-            index_to_reaction = combined_model.reactions
-            id_to_reaction = combined_model.reactions._object_dict
-            #This is slow
-            #Add in difference metabolites
-            difference_metabolite_dict = dict([(i, Metabolite('difference_%i'%i))
-                                           for i in xrange(number_of_reactions)])
-            combined_model.add_metabolites(difference_metabolite_dict.values())
-            for i, tmp_metabolite in difference_metabolite_dict.iteritems():
-                if norm_type == 'linear':
-                    tmp_metabolite._constraint_sense = 'G'
-                index_to_reaction[i].add_metabolites({tmp_metabolite: -1.},
-                                                     add_to_container_model=False)
-                index_to_reaction[i+number_of_reactions].add_metabolites({tmp_metabolite: 1.}, add_to_container_model=False)
-                index_to_reaction[i+2*number_of_reactions].add_metabolites({tmp_metabolite: 1.}, add_to_container_model=False)
-
-            #Add in the virtual objective metabolite
+            
+            combined_model = construct_difference_model(wt_model, mutant_model, reaction_coefficient, norm_type)
+            #Add in the virtual objective metabolite to constrain the wt_model to the space where
+            #the objective was maximal
             objective_metabolite = Metabolite('wt_optimal')
             objective_metabolite._bound = wt_optimal
             if objective_sense == 'maximize':
@@ -178,12 +132,18 @@ def moma(wt_model, mutant_model, objective_sense='maximize', solver='gurobi',
                 objective_metabolite._constraint_sense = 'L'
             #TODO: this couples the wt_model objective reaction to the virtual metabolite
             #Currently, assumes a single objective reaction; however, this may be extended
-            [id_to_reaction[k].add_metabolites({objective_metabolite: v})
+            [combined_model.reactions.get_by_id(k).add_metabolites({objective_metabolite: v})
              for k, v in objective_reaction_coefficient_dict.items()]
-
-            if print_time:
-                print 'Took %f seconds to construct combined model'%(time()-start_time)
-                start_time = time()
+            if parsimonious:
+                #Add in a parsimonious metabolite and set its bound to the minimum flux
+                parsimonious_metabolite = Metabolite('wt_parsimonious')
+                parsimonious_metabolite._bound = minimum_flux
+                parsimonious_metabolite._constraint_sense = 'E'
+                [combined_model.reactions.get_by_id(k.id).add_metabolites({parsimonious_metabolite: 1})
+                 for k in wt_model.reactions]
+                
+            
+            
 
 
 
@@ -197,9 +157,6 @@ def moma(wt_model, mutant_model, objective_sense='maximize', solver='gurobi',
     combined_model.norm_type = norm_type
     cobra_model = combined_model
 
-    if print_time:
-        print 'Took %f seconds to update combined model'%(time()-start_time)
-        start_time = time()
     the_result = combined_model.optimize(objective_sense='minimize',
                                          quadratic_component=quadratic_component,
                                          solver=solver,
@@ -209,9 +166,6 @@ def moma(wt_model, mutant_model, objective_sense='maximize', solver='gurobi',
     the_problem = the_result
     the_solution = combined_model.solution
 
-    if print_time:
-        print 'Took %f seconds to solve problem'%(time()-start_time)
-        start_time = time()
     mutant_dict = {}
     x_vector = the_solution.x
     if hasattr(x_vector, 'flatten'):
@@ -226,10 +180,43 @@ def moma(wt_model, mutant_model, objective_sense='maximize', solver='gurobi',
     mutant_dict['flux_difference'] = flux_difference = sum((wt_model.solution.x - mutant_fluxes)**2)
     mutant_dict['the_problem'] = the_problem
     mutant_dict['combined_model'] = combined_model
-    if print_time:
-        print 'Took %f seconds to assemble solution'%(time()-start_time)
     
     del wt_model, mutant_model, quadratic_component, the_solution
     return(mutant_dict)
 
 
+def construct_difference_model(model_1, model_2, variable_extension_coefficient, norm_type='euclidean'):
+    """Combine two models into a larger model that is designed to calculate differences
+    between the models
+
+    """
+    #This does a deepcopy of both models which might result in a huge overhead.
+    #Update cobra.core.Model to improve performance.
+    number_of_reactions = len(model_2.reactions) #Note this assumes too much about model_1 and model_2 structure
+    
+    combined_model = model_1 + model_2
+    [setattr(x, 'objective_coefficient', 0.)
+     for x in combined_model.reactions]
+    #Add in the difference reactions.  The mutant reactions and metabolites are already added.
+    #This must be a list to maintain the correct order when adding the difference_metabolites
+
+    difference_reactions = [Reaction('difference_%i'%i)
+                                for i in range(variable_extension_coefficient*number_of_reactions)]
+    [setattr(x, 'lower_bound', -1000)
+     for x in difference_reactions]
+    combined_model.add_reactions(difference_reactions)
+    index_to_reaction = combined_model.reactions
+    #This is slow
+    #Add in difference metabolites
+    difference_metabolite_dict = dict([(i, Metabolite('difference_%i'%i))
+                                   for i in xrange(number_of_reactions)])
+    combined_model.add_metabolites(difference_metabolite_dict.values())
+    for i, tmp_metabolite in difference_metabolite_dict.iteritems():
+        if norm_type == 'linear':
+            tmp_metabolite._constraint_sense = 'G'
+        index_to_reaction[i].add_metabolites({tmp_metabolite: -1.},
+                                             add_to_container_model=False)
+        index_to_reaction[i+number_of_reactions].add_metabolites({tmp_metabolite: 1.}, add_to_container_model=False)
+        index_to_reaction[i+2*number_of_reactions].add_metabolites({tmp_metabolite: 1.}, add_to_container_model=False)
+
+    return(combined_model)
