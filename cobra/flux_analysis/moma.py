@@ -17,6 +17,7 @@ from scipy.sparse import vstack as s_vstack
 from ..core import Reaction, Metabolite
 #from cobra.core.Metabolite import Metabolite
 from ..manipulation import initialize_growth_medium, delete_model_genes
+from ..manipulation.modify import convert_to_irreversible
 from warnings import warn
 
 def moma(wt_model, mutant_model, objective_sense='maximize', solver='gurobi',
@@ -64,7 +65,12 @@ def moma(wt_model, mutant_model, objective_sense='maximize', solver='gurobi',
         #print 'for moma, solver method 0 is very slow for cplex. changing to method 1'
         lp_method = 1
     if solver.lower() == 'glpk' and norm_type == 'euclidean':
-        print "GLPK can't solve quadratic problems like MOMA.  Switching to linear MOMA"
+        try:
+            from gurobipy import Model
+            solver = 'gurobi'
+            print "GLPK can't solve quadratic problems like MOMA.  Switched solver to %s"%solver
+        except:
+            print "GLPK can't solve quadratic problems like MOMA.  Switching to linear MOMA"
 
     if norm_type == 'euclidean':
         #Reusing the basis can get the solver stuck.
@@ -74,27 +80,34 @@ def moma(wt_model, mutant_model, objective_sense='maximize', solver='gurobi',
                                                                                         norm_type)
         print 'Defaulting to user-specified norm_type'
         combined_model = None
-    #Add a prefix in front of the mutant_model metabolites and reactions to prevent
-    #name collisions in DictList
-    for the_dict_list in [mutant_model.metabolites,
-                          mutant_model.reactions]:
-        [setattr(x, 'id', 'mutant_%s'%x.id)
-         for x in the_dict_list]
-        the_dict_list._generate_index() #Update the DictList.dicts
 
 
-    wt_model.optimize(solver=solver)
-    wt_solution = deepcopy(wt_model.solution)
+
     if parsimonious:
         from .parsimonious import flux_balance_analysis
         minimum_flux, optimal_value = flux_balance_analysis(wt_model)
+        if minimum_flux is None:
+            warn("parsimonious fba didn't work on %s"%wt_model.id +\
+                 "\n *switching to regular MOMA")
+            parsimonious = False
+            
+        else:
+            parsimonious_flux_ceiling = ceil(minimum_flux/tolerance_optimality)*tolerance_optimality
+            wt_model = wt_model.copy()
+            mutant_model = mutant_model.copy()
+            map(convert_to_irreversible, [wt_model, mutant_model])
+  
+    number_of_reactions_in_common = len(set([x.id for x in wt_model.reactions]).intersection([x.id for x in mutant_model.reactions]))
+    number_of_reactions = len(wt_model.reactions) + len(mutant_model.reactions)
+
+    #Get the optimal wt objective value and adjust based on optimality tolerances
+    wt_model.optimize(solver=solver)
+    wt_optimal = deepcopy(wt_model.solution.f)
     if objective_sense == 'maximize':
-        wt_optimal = floor(wt_solution.f/tolerance_optimality)*tolerance_optimality
+        wt_optimal = floor(wt_optimal/tolerance_optimality)*tolerance_optimality
     else:
-        wt_optimal = ceil(wt_solution.f/tolerance_optimality)*tolerance_optimality
-    if norm_type == 'euclidean':
-        quadratic_component = eye(len(wt_solution.x),len(wt_solution.x))
-    elif norm_type == 'linear':
+        wt_optimal = ceil(wt_optimal/tolerance_optimality)*tolerance_optimality
+    if norm_type == 'linear':
         raise Exception('linear MOMA is not currently implmented')
         quadratic_component = None
     if minimize_norm:
@@ -109,19 +122,14 @@ def moma(wt_model, mutant_model, objective_sense='maximize', solver='gurobi',
         #often multiple equivalent solutions with M matrices and the one returned
         #by a simple cobra_model.optimize call may be too far from the mutant.
         #This only needs to be adjusted if we update mutant_model._S after deleting reactions
-
-        number_of_reactions = len(mutant_model.reactions)
-        if norm_type == 'euclidean':
-            reaction_coefficient = 1
-        elif norm_type == 'linear':
-            reaction_coefficient = 2
         if not combined_model:
             #Collect the set of wt reactions contributing to the objective.
             objective_reaction_coefficient_dict = dict([(x.id, x.objective_coefficient)
                                                         for x in wt_model.reactions
                                                         if x.objective_coefficient])
             
-            combined_model = construct_difference_model(wt_model, mutant_model, reaction_coefficient, norm_type)
+            
+            combined_model = construct_difference_model(wt_model, mutant_model, norm_type)
             #Add in the virtual objective metabolite to constrain the wt_model to the space where
             #the objective was maximal
             objective_metabolite = Metabolite('wt_optimal')
@@ -130,6 +138,7 @@ def moma(wt_model, mutant_model, objective_sense='maximize', solver='gurobi',
                 objective_metabolite._constraint_sense = 'G'
             else:
                 objective_metabolite._constraint_sense = 'L'
+
             #TODO: this couples the wt_model objective reaction to the virtual metabolite
             #Currently, assumes a single objective reaction; however, this may be extended
             [combined_model.reactions.get_by_id(k).add_metabolites({objective_metabolite: v})
@@ -137,8 +146,8 @@ def moma(wt_model, mutant_model, objective_sense='maximize', solver='gurobi',
             if parsimonious:
                 #Add in a parsimonious metabolite and set its bound to the minimum flux
                 parsimonious_metabolite = Metabolite('wt_parsimonious')
-                parsimonious_metabolite._bound = minimum_flux
-                parsimonious_metabolite._constraint_sense = 'E'
+                parsimonious_metabolite._bound = 1.5*parsimonious_flux_ceiling #BUG: Leaving too much slack in the parsimonious metabolite
+                parsimonious_metabolite._constraint_sense = 'L'
                 [combined_model.reactions.get_by_id(k.id).add_metabolites({parsimonious_metabolite: 1})
                  for k in wt_model.reactions]
                 
@@ -148,75 +157,105 @@ def moma(wt_model, mutant_model, objective_sense='maximize', solver='gurobi',
 
 
         if norm_type == 'euclidean':
-            quadratic_component = s_vstack((lil_matrix((2*number_of_reactions, 3*number_of_reactions)),
-                                            s_hstack((lil_matrix((number_of_reactions, 2*number_of_reactions)),
-                                                      quadratic_component))))
+            #Makes assumptions about the structure of combined model
+            quadratic_component = s_vstack((lil_matrix((number_of_reactions, number_of_reactions + number_of_reactions_in_common )),
+                                            s_hstack((lil_matrix((number_of_reactions_in_common, number_of_reactions)),
+                                                      eye(number_of_reactions_in_common,number_of_reactions_in_common)))))
+    
         elif norm_type == 'linear':
             quadratic_component = None
 
     combined_model.norm_type = norm_type
     cobra_model = combined_model
 
-    the_result = combined_model.optimize(objective_sense='minimize',
+    the_problem = combined_model.optimize(objective_sense='minimize',
                                          quadratic_component=quadratic_component,
                                          solver=solver,
                                          tolerance_optimality=tolerance_optimality,
                                          tolerance_feasibility=tolerance_feasibility,
                                          lp_method=lp_method, reuse_basis=reuse_basis)
-    the_problem = the_result
-    the_solution = combined_model.solution
 
+    if combined_model.solution.status != 'optimal':
+        warn('optimal moma solution not found: solver status %s'%combined_model.solution.status +\
+             ' returning the problem, the_combined model, and the quadratic component for trouble shooting')
+        return(the_problem, combined_model, quadratic_component)
+             
+    combined_model.solution.dress_results(combined_model)
+    solution = combined_model.solution
     mutant_dict = {}
-    x_vector = the_solution.x
-    if hasattr(x_vector, 'flatten'):
-        x_vector = x_vector.flatten()
-    mutant_dict['x'] = mutant_fluxes = array(x_vector[1*number_of_reactions:2*number_of_reactions])
+    #Might be faster to quey based on mutant_model.reactions with the 'mutant_' prefix added
+    _reaction_list = [x for x in combined_model.reactions if x.id.startswith('mutant_')]
+    mutant_f = sum([mutant_model.reactions.get_by_id(x.id[len('mutant_'):]).objective_coefficient *
+                    x.x for x in _reaction_list])
+    mutant_dict['objective_value'] = mutant_f
+    wild_type_flux_total = sum([abs(solution.x_dict[x.id]) for x in wt_model.reactions])
+    mutant_flux_total = sum(abs(x.x) for x in _reaction_list)
+    print 'wt flux: %f'%wild_type_flux_total
+    print 'mutant flux: %f'%mutant_flux_total
+    if parsimonious:
+        print 'wt flux ceiling: %f'%parsimonious_flux_ceiling
     #Need to use the new solution as there are multiple ways to achieve an optimal solution in
     #simulations with M matrices.
-    wt_model.solution.x = array(x_vector[:number_of_reactions])
-    mutant_dict['objective_value'] = mutant_f = float(matrix(mutant_fluxes)*matrix([x.objective_coefficient
-                                                                                    for x in mutant_model.reactions]).T)
-    mutant_dict['status'] = the_solution.status
-    mutant_dict['flux_difference'] = flux_difference = sum((wt_model.solution.x - mutant_fluxes)**2)
+    wt_model.solution.dress_results(wt_model)
+    mutant_dict['status'] = solution.status
+    #TODO: Deal with maximize / minimize issues for a reversible model that's been converted to irreversibl
+    mutant_dict['flux_difference'] = flux_difference = sum([(solution.x_dict[x.id[len('mutant_'):]]
+                                                             - x.x)**2 for x in _reaction_list])
     mutant_dict['the_problem'] = the_problem
     mutant_dict['combined_model'] = combined_model
     
-    del wt_model, mutant_model, quadratic_component, the_solution
+    del wt_model, mutant_model, quadratic_component, solution
     return(mutant_dict)
 
 
-def construct_difference_model(model_1, model_2, variable_extension_coefficient, norm_type='euclidean'):
+def construct_difference_model(model_1, model_2, norm_type='euclidean'):
     """Combine two models into a larger model that is designed to calculate differences
     between the models
 
     """
-    #This does a deepcopy of both models which might result in a huge overhead.
-    #Update cobra.core.Model to improve performance.
-    number_of_reactions = len(model_2.reactions) #Note this assumes too much about model_1 and model_2 structure
+    #Get index mappings
+    common_dict = {}
+    #Using copies of the models so things are modified above
+    combined_model = model_1 = model_1.copy()
+    model_2 = model_2.copy()
+    for reaction_1 in model_1.reactions:
+        try:
+            reaction_2 = model_2.reactions.get_by_id(reaction_1.id)
+            common_dict[reaction_1] = reaction_2
+        except:
+            continue
+            
+    #Add a prefix in front of the mutant_model metabolites and reactions to prevent
+    #name collisions in DictList
+    for the_dict_list in [model_2.metabolites,
+                          model_2.reactions]:
+        [setattr(x, 'id', 'mutant_%s'%x.id)
+         for x in the_dict_list]
+        the_dict_list._generate_index() #Update the DictList.dicts
+
     
-    combined_model = model_1 + model_2
+    combined_model.add_reactions(model_2.reactions)
     [setattr(x, 'objective_coefficient', 0.)
      for x in combined_model.reactions]
     #Add in the difference reactions.  The mutant reactions and metabolites are already added.
     #This must be a list to maintain the correct order when adding the difference_metabolites
-
-    difference_reactions = [Reaction('difference_%i'%i)
-                                for i in range(variable_extension_coefficient*number_of_reactions)]
-    [setattr(x, 'lower_bound', -1000)
-     for x in difference_reactions]
-    combined_model.add_reactions(difference_reactions)
-    index_to_reaction = combined_model.reactions
-    #This is slow
-    #Add in difference metabolites
-    difference_metabolite_dict = dict([(i, Metabolite('difference_%i'%i))
-                                   for i in xrange(number_of_reactions)])
-    combined_model.add_metabolites(difference_metabolite_dict.values())
-    for i, tmp_metabolite in difference_metabolite_dict.iteritems():
+    difference_reactions = [] #Add the difference reactions at the end to speed things up
+    difference_metabolites = []
+    for reaction_1, reaction_2 in common_dict.iteritems():
+        reaction_1._difference_partner = reaction_2
+        reaction_2._difference_partner = reaction_1
+        difference_reaction = Reaction('difference_%s'%reaction_1.id)
+        difference_reactions.append(difference_reaction)
+        difference_reaction.lower_bound = -1000
+        difference_metabolite = Metabolite('difference_%s'%reaction_1.id)
+        difference_metabolites.append(difference_metabolite)
         if norm_type == 'linear':
-            tmp_metabolite._constraint_sense = 'G'
-        index_to_reaction[i].add_metabolites({tmp_metabolite: -1.},
-                                             add_to_container_model=False)
-        index_to_reaction[i+number_of_reactions].add_metabolites({tmp_metabolite: 1.}, add_to_container_model=False)
-        index_to_reaction[i+2*number_of_reactions].add_metabolites({tmp_metabolite: 1.}, add_to_container_model=False)
+            difference_metabolite._constraint_sense = 'G'
+        reaction_1.add_metabolites({difference_metabolite: -1.}, add_to_container_model=False)
+        reaction_2.add_metabolites({difference_metabolite: 1.}, add_to_container_model=False)
+        difference_reaction.add_metabolites({difference_metabolite: 1.}, add_to_container_model=False)
 
+    combined_model.add_metabolites(difference_metabolites)
+    combined_model.add_reactions(difference_reactions)
     return(combined_model)
+

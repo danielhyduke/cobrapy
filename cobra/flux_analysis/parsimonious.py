@@ -39,27 +39,15 @@ def flux_balance_analysis(model, minimize_spontaneous_reactions=False, linear_ob
     objective_reactions = [x for x in model.reactions if x.objective_coefficient != 0]
     linear_solution = model.solution.f
     for reaction in objective_reactions:
-        reaction.lower_bound = reaction.upper_bound = reaction.objective_coefficient * linear_solution
+        reaction_target_flux = reaction.objective_coefficient * linear_solution
+        #Potential bug
+        reaction.lower_bound = reaction_target_flux
+        #reaction.upper_bound = reaction_target_flux
+        
         reaction.objective_coefficient = 0
 
-    #2. Check whether the model is irreversible or not.
-    #Preferable to work with model where all reactions are in one direction
-    lower_bounds = [x.lower_bound for x in model.reactions]
-    minimum_lower_bound = min(lower_bounds)
-    maximum_lower_bound = max(lower_bounds)
-    upper_bounds = [x.upper_bound for x in model.reactions]
-    minimum_upper_bound = min(upper_bounds)
-    maximum_upper_bound = max(upper_bounds)
-
-    if minimum_lower_bound < 0 and maximum_upper_bound > 0:
-        irreversible = False
-    elif minimium_lower_bound < 0 and maximum_lower_bound > 0:
-        irreversible = False
-    elif minmium_upper_bound < 0 and maximum_upper_bound > 0:
-        irreversible = False
-
-    if not irreversible:
-        convert_to_irreversible(model)
+    #2. Convert model to irreversible form where all variable lower bounds are > 0.
+    convert_to_irreversible(model)
 
     #3. Calculate the minimum flux through the network subject to the initial optimization
     #Create a metabolite to measure the flux in the model
@@ -79,7 +67,9 @@ def flux_balance_analysis(model, minimize_spontaneous_reactions=False, linear_ob
          for x in model.reactions if len(x.genes) > 0]
     
     
-    model.optimize(objective_sense='minimize')
+    model.optimize(objective_sense='minimize', new_objective=flux_measure_reaction)
+    ## from pdb import set_trace
+    ## set_trace()
     return(model.solution.f, linear_solution)
     
     
