@@ -23,7 +23,8 @@ from warnings import warn
 def moma(wt_model, mutant_model, objective_sense='maximize', solver='gurobi',
          tolerance_optimality=1e-8, tolerance_feasibility=1e-8,
          minimize_norm=False, the_problem='return', lp_method=0,
-         combined_model=None, norm_type='euclidean', parsimonious=False):
+         combined_model=None, norm_type='euclidean', parsimonious=False,
+         parsimonious_slack=1.5):
     """Runs the minimization of metabolic adjustment method described in
     Segre et al 2002 PNAS 99(23): 15112-7.
 
@@ -56,11 +57,18 @@ def moma(wt_model, mutant_model, objective_sense='maximize', solver='gurobi',
 
     parsimonious: Boolean.  If true then constrain the wt model to the parsimonious solution space
 
+    parsimonious_slack: Float. [1, inf)  Amount of 'slack' to allow in the parsimonious minimum flux.
+
     NOTE: Current function makes too many assumptions about the structures of the models
 
     TODO: Add in a parameter for performing parsimonious MOMA.
 
     """
+    if combined_model is not None or the_problem not in ['return']:
+        warn("moma currently does not support reusing models or problems. " +\
+             "continuing without them")
+        combined_model = None
+        the_problem = 'return'
     if solver.lower() == 'cplex' and lp_method == 0:
         #print 'for moma, solver method 0 is very slow for cplex. changing to method 1'
         lp_method = 1
@@ -87,7 +95,7 @@ def moma(wt_model, mutant_model, objective_sense='maximize', solver='gurobi',
         from .parsimonious import flux_balance_analysis
         minimum_flux, optimal_value = flux_balance_analysis(wt_model)
         if minimum_flux is None:
-            warn("parsimonious fba didn't work on %s"%wt_model.id +\
+            print("parsimonious fba didn't work on %s"%wt_model.id +\
                  "\n *switching to regular MOMA")
             parsimonious = False
             
@@ -146,7 +154,7 @@ def moma(wt_model, mutant_model, objective_sense='maximize', solver='gurobi',
             if parsimonious:
                 #Add in a parsimonious metabolite and set its bound to the minimum flux
                 parsimonious_metabolite = Metabolite('wt_parsimonious')
-                parsimonious_metabolite._bound = 1.5*parsimonious_flux_ceiling #BUG: Leaving too much slack in the parsimonious metabolite
+                parsimonious_metabolite._bound = parsimonious_slack*parsimonious_flux_ceiling #BUG: Leaving too much slack in the parsimonious metabolite
                 parsimonious_metabolite._constraint_sense = 'L'
                 [combined_model.reactions.get_by_id(k.id).add_metabolites({parsimonious_metabolite: 1})
                  for k in wt_model.reactions]
@@ -190,10 +198,10 @@ def moma(wt_model, mutant_model, objective_sense='maximize', solver='gurobi',
     mutant_dict['objective_value'] = mutant_f
     wild_type_flux_total = sum([abs(solution.x_dict[x.id]) for x in wt_model.reactions])
     mutant_flux_total = sum(abs(x.x) for x in _reaction_list)
-    print 'wt flux: %f'%wild_type_flux_total
-    print 'mutant flux: %f'%mutant_flux_total
     if parsimonious:
-        print 'wt flux ceiling: %f'%parsimonious_flux_ceiling
+        mutant_dict['parsimonious'] = {'wild_type': wild_type_flux_total,
+                                       'mutant': mutant_flux_total,
+                                       'ceiling': parsimonious_flux_ceiling}
     #Need to use the new solution as there are multiple ways to achieve an optimal solution in
     #simulations with M matrices.
     wt_model.solution.dress_results(wt_model)
@@ -246,7 +254,8 @@ def construct_difference_model(model_1, model_2, norm_type='euclidean'):
         reaction_2._difference_partner = reaction_1
         difference_reaction = Reaction('difference_%s'%reaction_1.id)
         difference_reactions.append(difference_reaction)
-        difference_reaction.lower_bound = -1000
+        difference_reaction.upper_bound = 100000
+        difference_reaction.lower_bound = -1* difference_reaction.upper_bound
         difference_metabolite = Metabolite('difference_%s'%reaction_1.id)
         difference_metabolites.append(difference_metabolite)
         if norm_type == 'linear':
