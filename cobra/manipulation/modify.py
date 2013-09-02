@@ -116,7 +116,7 @@ def convert_to_irreversible(cobra_model):
             if reaction.upper_bound < 0:
                 reverse_reaction.lower_bound = reaction.upper_bound * -1
                 reaction.upper_bound = 0
-                
+            reverse_reaction.objective_coefficient = reaction.objective_coefficient * -1
             reaction.lower_bound = 0
             #Make the directions aware of each other
             reaction.reflection = reverse_reaction
