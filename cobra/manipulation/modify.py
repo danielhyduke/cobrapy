@@ -2,6 +2,47 @@
 from copy import deepcopy
 from cobra.core.Reaction import Reaction
 from warnings import warn
+def decompartmentalize(element, in_place=False):
+    """Removes the compartment suffix from the id of an element.
+
+
+    element: A single instance of or a list of objects with id and compartment attributes.
+
+    in_place: Boolean.  Indicates whether the modification should occur in place or on a copy.
+
+    returns: list of decompartmentalized_elements or decompartmentalized element.  If an element is not in a compartment, it is
+    considered a decompartmentalized element and included in the dictionary.
+
+    TODO: Let the function decompartmentalize the components of a Model
+    
+    """
+    if hasattr(element, 'id'):
+        ##Allow the function to be applied to a single element.
+        element = [element]
+
+    #Run the attribute check first so we don't modify anything in place
+    if in_place:
+        for e in element:
+            if not(hasattr(e, 'id') and hasattr(e, 'compartment')):
+                raise(Exception('%s appears to be missing either the id or compartment attribute'%repr(k)))
+
+    decompartmentalized_elements = []                    
+    for e in element:
+        if not in_place:
+            e = e.copy()
+        if hasattr(e, 'species'):
+            decompartmentalize(e.species, in_place=True)
+        suffix_string = '_' + e.compartment
+        if e.id.endswith(suffix_string):
+            e.id = e.id[:-len(suffix_string)]
+        decompartmentalized_elements.append(e)
+    if len(element) == 1:
+        decompartmentalized_elements = decompartmentalized_elements.pop()
+    return(decompartmentalized_elements)
+
+
+
+    
 def initialize_growth_medium(cobra_model, the_medium='MgM', 
                              external_boundary_compartment='e',
                              external_boundary_reactions=None,
