@@ -8,26 +8,21 @@ class CatalyzedReaction(Reaction):
 
     
     """
-    def __init__(self, name=None):
+    def __init__(self, name=None, _create_catalyst_from_gene_association=True):
         """
 
         update_container_model_references: Boolean.  If name is a cobra.Reaction and True
         then update the name._model.reaction to refer to the new catalyzed reaction.
 
 
+        _create_catalyst_from_gene_association:  Boolean.  If True then uses logic (aka gene reaction rule)
+        to construct a catalyst.
+
         WARNING: If name is a cobra.Reaction and name._model is not None then name._model.reactions will
         be updated with CatalyzedReaction(name) and references to the cobra.Reaction will be removed by
         calling name.delete().
         
         """
-        
-        warn("CatalyzedReaction does not yet deal with modifications to " +\
-             "Complexes b/c this information is not included in the gene " +\
-             "reaction rules.")
-        ## if isinstance(name, CatalyzedReaction):
-        ##     warn("CatalyzedReactions cannot be converted into catalyzed reactions")
-        ##     return name
-
         self._catalyst = set()
         #self._complex = set() removed complex because a catalyst catalyzes the reaction.
         self._genes = set() #Replacing the stoichiometry dict from superclass reaction with
@@ -59,13 +54,10 @@ class CatalyzedReaction(Reaction):
                     if self.logic.count('(')  == self.logic.count(')'):
                         if self.logic.endswith(')'):
                             self.logic = self.logic[1:-1].strip()
-                        
-            self.__create_catalytic_reaction()
+
+            if _create_catalyst_from_gene_association:
+                self.__create_catalytic_reaction()
                 #Assume that no modifications are necessary for the catalysts to be active
-                #NOTE: This introduces a potential bug where a catalyst of a fixed name can
-                #catalyze multiple reactions
-                #NOTE: This fails
-                #self._catalyst = set([x.create_catalyst() for x in self._complex])
 
     def __setstate__(self, state):
         """
@@ -174,8 +166,8 @@ class CatalyzedReaction(Reaction):
                 except:
                     the_model.complexes.append(tmp_complex)
                     [x._complex.add(tmp_complex) for x in tmp_complex._subunits.iterkeys()]
-            self._complex.add(tmp_complex)
-            tmp_complex._reaction.add(self)
+            tmp_catalyst = tmp_complex.create_catalyst()
+            self.add_catalyst(tmp_catalyst)
 
 
     def add_catalyst(self, catalyst):
@@ -193,7 +185,7 @@ class CatalyzedReaction(Reaction):
         if self._model is not None:
             if self._model != catalyst._model:
                 catalyst._model = self._model
-                self._model.catalyst.add(catalyst)
+                self._model.catalysts.append(catalyst)
 
         
         

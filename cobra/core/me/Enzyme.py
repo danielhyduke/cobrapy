@@ -223,15 +223,29 @@ class Complex(Species):
                 except KeyError:
                     self.model.modifications.append(modification)
             catalyst.modify(modification)
+            #Since the id changes after modification, it's necessary to repeat
+            #the following 6 lines
+            if self.model is not None and hasattr(self.model, 'catalysts'):
+                try:
+                    catalyst = self.model.catalysts.get_by_id(catalyst.id)
+                except:
+                    self.model.catalysts.append(catalyst)
+                    catalyst._model = self.model
             self._modification_to_catalyst[modification.id] = catalyst
         else:
+            #Since the id changes after modification, it's necessary to repeat
+            #the following 6 lines
+            if self.model is not None and hasattr(self.model, 'catalysts'):
+                try:
+                    catalyst = self.model.catalysts.get_by_id(catalyst.id)
+                except:
+                    self.model.catalysts.append(catalyst)
+                    catalyst._model = self.model
             self._modification_to_catalyst[modification] = catalyst
         self._catalysts.add(catalyst)
         self._modifications.add(modification)
         if data_source is not None:
             catalyst.source = data_source
-        if self.model is not None and hasattr(self.model, 'catalysts'):
-            self.model.catalysts.append(catalyst)
         return(catalyst)
 
 
@@ -303,6 +317,7 @@ class Catalyst(Species):
         id: String or :class:`cobra.me.Complex`
 
         """
+        self._model = None
         self._complex = None
         self._reaction = set()
         if isinstance(id, Complex):
