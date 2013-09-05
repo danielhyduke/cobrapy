@@ -188,6 +188,7 @@ class CatalyzedReaction(Reaction):
         
         """
         self._catalyst.add(catalyst)
+        catalyst._reaction.add(self)
         map(self.add_gene, catalyst.complex.subunits)
         if self._model is not None:
             if self._model != catalyst._model:
