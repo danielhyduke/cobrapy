@@ -398,7 +398,12 @@ class Reaction(Object):
     def reaction(self):
         return self.build_reaction_string()
 
-
+    @property
+    def species(self):
+        if hasattr(self, '_species'):
+            return self._species.keys()
+        else:
+            return self._metabolites.keys()
     @property
     def genes(self):
         return(self.get_gene())

@@ -29,7 +29,7 @@ class CatalyzedReaction(Reaction):
         ##     return name
 
         self._catalyst = set()
-        self._complex = set()
+        #self._complex = set() removed complex because a catalyst catalyzes the reaction.
         self._genes = set() #Replacing the stoichiometry dict from superclass reaction with
         #a set because a single Gene may be in multiple Complexes, that catalyze the
         #CatalyzedReaction, with different Stoichiometries
@@ -50,7 +50,7 @@ class CatalyzedReaction(Reaction):
             if hasattr(name._genes, 'keys'):
                 self._genes = set(name._genes.keys())
             [x._reaction.add(self) for x in self._genes]
-            self.logic = self.gene_reaction_rule
+            self.logic = self.gene_reaction_rule #Deprecated
             if self.logic in ['', ' ', None]:
                 warn("%s does not have an associated gene logic string"%self.id)
             else:
@@ -74,11 +74,10 @@ class CatalyzedReaction(Reaction):
         #Possibly unnecessary as genes are currently the only form
         #of catalyst and their reaction set is updated in the call
         #to the parent Reaction.__setstate__
-        for the_complex in state['_complex']:
-            the_complex._reaction.add(self)
-            for the_subunit in the_complex._subunits.keys():
+        for the_catalyst in state['_catalyst']:
+            the_catalyst._reaction.add(self)
+            for the_subunit in the_catalyst.complex.subunits:
                 the_subunit._reaction.add(self)
-        [k._reaction.add(self) for k in state['_catalyst']]
 
 
         
@@ -179,8 +178,26 @@ class CatalyzedReaction(Reaction):
             tmp_complex._reaction.add(self)
 
 
+    def add_catalyst(self, catalyst):
+        """associates a catalyst with the reaction.
+        
+        catalyst: :class:`~cobra.core.me.Enzyme.Catalyst`
+
+        TODO: Add in an option to check whether the subunits
+        exist in the model if self._model is not None.
+        
+        """
+        self._catalyst.add(catalyst)
+        map(self.add_gene, catalyst.complex.subunits)
+        if self._model is not None:
+            if self._model != catalyst._model:
+                catalyst._model = self._model
+                self._model.catalyst.add(catalyst)
+
+        
+        
     def guided_copy(self, model, metabolite_dict=None, subunit_dict=None,
-                    modification_dict=None, complex_dict=None):
+                    modification_dict=None, catalyst_dict=None):
         """Should the complexes be guided_copy here?
 
         model: The new container cobra.Model
@@ -189,7 +206,7 @@ class CatalyzedReaction(Reaction):
 
         subunit_dict: A dictionary of the cobra.me.Enzyme.Subunit objects that are in the model (Subunit.id, Subunit)
 
-        complex_dict: A dictionary of the cobra.me.Enzyme.Complex objects that are in the model (Complex.id, Complex)
+        catalyst_dict: A dictionary of the cobra.me.Enzyme.Catalyst objects that are in the model (Catalyst.id, Catalyst)
 
          modification_dict:  A dictionary of the cobra.me.Enzyme.Modification objects in the model (Modification.id, Modification).
 
@@ -197,25 +214,15 @@ class CatalyzedReaction(Reaction):
          
         """
         the_copy = Reaction.guided_copy(self, model, metabolite_dict, subunit_dict)
-
+        warn("CatalyzedReaction.guided_copy has not yet been thoroughly auditted")
         #Associate ME_Model versions of the Objects with a copy of the CatalyzedReaction
-        the_copy._complex = set()
+        the_copy._catalyst = set()
         the_copy._genes = set()
-        for the_complex in self._complex:
-            model_complex = complex_dict[the_complex.id]
-            model_complex._reaction.add(the_copy)
-            the_copy._complex.add(model_complex)
-            #Update awareness for the catalysts
-            for the_catalyst in model_complex._catalysts:
-                the_catalyst._reaction.add(the_copy)
-                the_copy._catalyst.add(the_catalyst)
-            ## for the_modification in the_complex._modifications:
-            ##     try:
-            ##         the_catalyst = model_complex._modification_to_catalyst[the_modification.id]
-            ##     except:
-            ##         the_catalyst = model_complex.create_catalyst(modification_dict[the_modification.id])
-            ##     the_copy._catalyst.add(the_catalyst)
-            for the_gene in model_complex._subunits:
+        for the_catalyst in self._catalyst:
+            model_catalyst = catalyst_dict[the_catalyst.id]
+            model_catalyst._reaction.add(the_copy)
+            the_copy._catalyst.add(model_catalyst)
+            for the_gene in model_catalyst.complex.subunits:
                 the_gene._reaction.add(the_copy)
                 the_copy._genes.add(the_gene)
         return the_copy

@@ -81,6 +81,7 @@ class Complex(Species):
 
     def __init__(self, id=''):
         Species.__init__(self,id)
+        del self._reaction #A complex isn't directly associated with reactions.
         self._subunits = {}
         #The next two attributes will speed up operations that are only interested in
         #the subset of subunits that falls into the RNA or Polypeptide class
@@ -109,6 +110,13 @@ class Complex(Species):
     @property
     def modifications(self):
         return list(self._modifications)
+
+    @property
+    def reactions(self):
+        _reactions = set()
+        [_reactions.update(k.reactions) for k in self.catalysts]
+        return(list(_reactions))
+        
     
     def add_subunit(self, subunit, stoichiometry=1, update_subunit_awareness=True):
         """
