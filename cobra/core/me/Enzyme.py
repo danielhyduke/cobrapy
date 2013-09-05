@@ -145,28 +145,26 @@ class Complex(Species):
             self.pids.add(subunit.pid)
             self._update_id(self._subunits)
 
-    def update_subunit_stoichiometry(self, subunit_stoichiometry_dict):
+    def update_subunit_stoichiometry(self, subunit_stoichiometry_dict, _update_model=True):
         """Function that lets one update the stoichiometry for a Subunit or
         Subunits in a list.
 
         subunit_stoichiometry_dict: A dictionary where the k is the Subunit and
         the value is the new stoichiometry.
 
+        _update_model: Updates model.catalyst upon change of the catalyst id.  If modifying
+        a large number of complexes, it might be best to update the model.catalysts dictlist
+        after updating all of the complexes.
         
         """
         [self._subunits.update({k: v})
          for k, v in subunit_stoichiometry_dict.iteritems()]
         for the_catalyst in self._catalysts:
+            _old_id = the_catalyst.id
             the_catalyst._update_id(subunit_stoichiometry_dict)
             the_catalyst._update_id(the_catalyst._modifications)
-            if self.model is not None:
-                #Remove from the catalyst from the model.catalysts DictList because
-                #the id might be changing due to the current convention of
-                #constructing the id based on the complex composition.
-                self.model.catalyst.remove(the_catalyst)
-                #Add the catalyst back in so the name is regenerated
-                self.model.catalyst.append(the_catalyst)
-
+            if self.model is not None and _old_id != the_catalyst.id:
+                self.model.catalysts._generate_index()
         self._update_id(self._subunits)
         
                                                                           
