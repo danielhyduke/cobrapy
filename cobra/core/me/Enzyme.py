@@ -196,7 +196,8 @@ class Complex(Species):
         for the_catalyst in self._catalysts:
             _old_id = the_catalyst.id
             the_catalyst._update_id(subunit_stoichiometry_dict)
-            the_catalyst._update_id(the_catalyst._modifications)
+            the_catalyst._update_id(the_catalyst._modifications, prefix=the_catalyst.id)
+            
             if self.model is not None and _old_id != the_catalyst.id:
                 self.model.catalysts._generate_index()
         self._update_id(self._subunits)
@@ -243,18 +244,24 @@ class Complex(Species):
 
             
         if modification in self.modifications:
+            modification = [x for x in self.modifications if x.id == modification.id][0]
             from warnings import warn
             warn("%s has already been applied to complex %s"%(repr(modification),
                                                               self.id) +\
                  "returning the catalyst ")
 
-            catalyst_id = set([x.id for x in modification.targets]).intersection([y.id for y in self.catalysts])
-            catalyst = [x for x in self.catalysts if x.id == catalyst_id]
-            if len(catalyst) > 1:
+            catalyst_id = list(set([x.id for x in modification.targets]).intersection([y.id for y in self.catalysts]))
+          
+            if len(catalyst_id) > 1:
                 raise Exception("%s modifies complex %s into multiple catalysts %s"%(modification.id,
                                                                                      self.id,
                                                                                      repr(list(catalyst))))
             else:
+                if len(catalyst_id) == 0:
+                    from pdb import set_trace
+                    set_trace()
+                catalyst_id = catalyst_id[0]
+                catalyst = [x for x in self.catalysts if x.id == catalyst_id]
                 return(catalyst.pop())
 
                                                               
