@@ -2,6 +2,25 @@
 from cobra import Gene, Species, Object
 from warnings import warn
 #TODO: Generalize the updating of ids after adding in elements.
+class Modifier(Species):
+    """A Modifier is a Species that modifies Complexes into Catalysts.
+    
+    The class is primarily used to track the relationship between the Modifier and
+    associated modifications.  While not necessary for simple modifications, it will
+    be useful for complex Modifications where n Modifications may use 1 species.
+    
+    """
+    def __init__(self, id):
+        raise Exception('not implemented yet')
+        if isinstance(id, Species):
+            self = id
+            self._modifications = set()
+            #update type
+            #return(self)
+        else:
+            Species.__init__(self, id)
+            self._modifications = set()
+            
 class Modification(Object):
     """This is a rough way for modifying enzymes.  Eventually, it will be better to build
     a reaction class for each type of modification and then use them to create Catalysts
@@ -13,13 +32,23 @@ class Modification(Object):
         self._modification_dict = {} #A dictionary that holds the modifications as the keys
         #and the stoichiometries as the values.
         self.logic = None
-
+        self._targets = set() #Used to account for which Objects are modified by a modifier
+        #This is helpful when running the remove_from model function.
 
     @property
     def modifiers(self):
         return(self._modification_dict.keys())
 
+    @property
+    def targets(self):
+        return list(self._targets)
 
+    def remove_target(self, target):
+        """
+        """
+        self._targets.remove(target)
+        target._modifications.pop(self)
+        
     @property
     def composition(self):
         return(self._modification_dict)
@@ -64,11 +93,11 @@ class Modification(Object):
         if len(the_copy._modification_dict) > 0:
             the_copy.__update_id(self._modification_dict)
         return the_copy
-    def remove_from_model(self):
-        """
 
-        """
-        warn("%s.remove_from_model is not yet implemented"%(str(type(self))))
+
+
+
+ 
 
 #Blank modification that allows a Complex to become a Catalyst without a Modification
 _empty_modification = Modification()
@@ -91,9 +120,6 @@ class Complex(Species):
         #to render it functional.  If None is in the set then the Complex can perform an operation
         #without any modifications.
         self._catalysts = set() #The set of Catalyst objects that are derived from the specific Complex
-        #Map the modifications to specific catalyst objects - Useful for
-        #situations where the catalyst can catalyze multiple reactions.
-        self._modification_to_catalyst = {}
         self._subcomplexes = set() #Track complexes that were used to assemble a super-complex
         self._supercomplexes = set() #Track super-complexes that contain this complex
         self.pids = set() #set of protein ids associated with a complex
@@ -207,13 +233,30 @@ class Complex(Species):
         modification: A Modification object or None.
         
         """
-        if modification in self._modifications:
+        if isinstance(modification, list) or isinstance(modification, tuple) or isinstance(modification, set):
+            if len(modification) > 1:
+                raise Exception("Complex.create_catalyst only supports the use of a single modification.  " +\
+                                "A dirty way to do things at the moment is to consider merging modifications into a larger one. " +\
+                                "Eventually, we'll add in support for multi modifications")
+            else:
+                modification = list(modification)[0]
+
+            
+        if modification in self.modifications:
             from warnings import warn
             warn("%s has already been applied to complex %s"%(repr(modification),
-                                                              self.id))
-            if modification is not None:
-                modification = modification.id
-            return self._modification_to_catalyst[modification]
+                                                              self.id) +\
+                 "returning the catalyst ")
+
+            catalyst_id = set([x.id for x in modification.targets]).intersection([y.id for y in self.catalysts])
+            catalyst = [x for x in self.catalysts if x.id == catalyst_id]
+            if len(catalyst) > 1:
+                raise Exception("%s modifies complex %s into multiple catalysts %s"%(modification.id,
+                                                                                     self.id,
+                                                                                     repr(list(catalyst))))
+            else:
+                return(catalyst.pop())
+
                                                               
         catalyst = Catalyst(self)
         if modification is not None:
@@ -223,25 +266,26 @@ class Complex(Species):
                 except KeyError:
                     self.model.modifications.append(modification)
             catalyst.modify(modification)
-            #Since the id changes after modification, it's necessary to repeat
-            #the following 6 lines
-            if self.model is not None and hasattr(self.model, 'catalysts'):
-                try:
-                    catalyst = self.model.catalysts.get_by_id(catalyst.id)
-                except:
-                    self.model.catalysts.append(catalyst)
-                    catalyst._model = self.model
-            self._modification_to_catalyst[modification.id] = catalyst
-        else:
-            #Since the id changes after modification, it's necessary to repeat
-            #the following 6 lines
-            if self.model is not None and hasattr(self.model, 'catalysts'):
-                try:
-                    catalyst = self.model.catalysts.get_by_id(catalyst.id)
-                except:
-                    self.model.catalysts.append(catalyst)
-                    catalyst._model = self.model
-            self._modification_to_catalyst[modification] = catalyst
+        if self.model is not None and hasattr(self.model, 'catalysts'):
+            try:
+                catalyst = self.model.catalysts.get_by_id(catalyst.id)
+            except:
+                self.model.catalysts.append(catalyst)
+                catalyst._model = self.model
+        if catalyst.complex is not None and catalyst.complex != self:
+            raise Exception("Trying to add a catalyst (%s) for %s, but it's already associated with %s in %s"%(catalyst.id,
+                                                                                                               self.id,
+                                                                                                               catalyst.complex.id,
+                                                                                                               self.model))
+        else:       
+            catalyst._complex = self  #Add in the reference to the complex
+        if catalyst in self.catalysts:
+            from warnings import warn
+            warn("%s already activated for %s.  returning the already actived form"%(catalyst.id,
+                                                                                     self.id))
+            catalyst = [x for x in self.catalysts if x.id == catalyst.id][0]
+            return(catalyst)
+
         self._catalysts.add(catalyst)
         self._modifications.add(modification)
         if data_source is not None:
@@ -293,7 +337,13 @@ subunit_dict: A dictionary of the cobra.me.Enzyme.Subunit objects that are in th
             [the_copy.create_catalyst(k) for k in self._modifications]
         return the_copy
         
-
+    
+    def delete_catalyst(self, catalyst):
+        """
+        
+        """
+        catalyst.delete()
+                    
     def remove_from_model(self):
         """
 
@@ -368,6 +418,7 @@ class Catalyst(Species):
             else:
                 self._modifications[modification] = stoichiometry
             self._update_id(self._modifications,prefix=self.id)
+            modification._targets.add(self)
 
     def _update_id(self, stoichiometry_dict, prefix='Catalyst'):
         """Ids are derived from their basic composition following this structure:
@@ -381,8 +432,31 @@ class Catalyst(Species):
         for k, v in _tmp_list:
             self.id += '__%s_%s'%(repr(v), k.id)
         _update_logic(self, stoichiometry_dict)
- 
- 
+
+
+
+    def _remove_from_complex(self, complex):
+        """
+        """
+        [x.remove_catalyst(self) for x in self.reactions]
+        self._complex = None
+        map(complex._modifications.remove, self.modifications)
+        complex._catalysts.remove(self)
+
+
+    def delete(self):
+        self._remove_from_complex(self.complex)
+        [x.remove_target(self) for x in self.modifications]
+        if self.model is not None:
+            self.model.catalysts.remove(self)
+            self._model = None
+            for modification in self.modifications:
+                if len(modification.targets) == 0:
+                    self.model.modifications.remove(modification)
+                    modification._model = None
+
+        self._modifications = {}
+
         
 class Subunit(Gene):
     """Subunits are Genes that have been transformed to a functional component state

@@ -59,6 +59,16 @@ class CatalyzedReaction(Reaction):
                 self.__create_catalytic_reaction()
                 #Assume that no modifications are necessary for the catalysts to be active
 
+    @property
+    def catalysts(self):
+        return(list(self._catalyst))
+
+    @property
+    def complexes(self):
+        complexes = set()
+        [complexes.add(x.complex) for x in self.catalysts]
+        return(list(complexes))
+
     def __setstate__(self, state):
         """
         """
@@ -186,6 +196,20 @@ class CatalyzedReaction(Reaction):
             if self._model != catalyst._model:
                 catalyst._model = self._model
                 self._model.catalysts.append(catalyst)
+
+    def remove_catalyst(self, catalyst):
+        """
+        TODO: Add in a parameter to remove the CatalyzedReaction from the model if no Catalysts are
+        associated with the CatalyzedReaction after deleting the Catalyst
+        
+        """
+        self._catalyst.remove(catalyst)
+        #Remove the genes from the reaction that are not associated with any
+        #remaining catalysts for the reaction.
+        _active_subunits = set()
+        [_active_subunits.update(k.complex.subunits) for k in self.catalysts]
+        _inactive_subunits = set(catalyst.complex.subunits).difference(_active_subunits)
+        map(self.remove_gene, _inactive_subunits)
 
         
         
