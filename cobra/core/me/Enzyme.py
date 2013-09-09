@@ -248,7 +248,7 @@ class Complex(Species):
             from warnings import warn
             warn("%s has already been applied to complex %s"%(repr(modification),
                                                               self.id) +\
-                 "returning the catalyst ")
+                 " returning the catalyst ")
 
             catalyst_id = list(set([x.id for x in modification.targets]).intersection([y.id for y in self.catalysts]))
           
