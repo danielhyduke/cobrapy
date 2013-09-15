@@ -965,6 +965,84 @@ except:
          "(easy_install cobra) or adding it to your PYTHONPATH")
 
 
+
+promiscuous_metabolites ={'h': 'MNXM1',
+                          'h2o': 'MNXM2',
+                          'nad': 'MNXM8',
+                          'nadh': 'MNXM10',
+                          'nadp': 'MNXM5',
+                          'nadph': 'MNXM6',
+                          'None': None}
+def generate_mnx_reaction_signature(reaction, include_stoichiometry=True,
+                                    exclude_promiscuous=True,
+                                    include_directionality=True):
+    """Creates a string of the mnx ids associated with all of the
+    species in a reaction.  The string is based on sorting the mnx ids
+    and joining by _.
+
+    reaction: ~:class:`~cobra.core.Reaction` object
+
+    include stoichiometry: Boolean.  Include the stoichiometry for each
+    metabolite in the signature.
+    
+    exclude_promiscuous:  Boolean.  If True then return None for signatures
+    that will only be comprised of None or promiscuous metabolites.
+
+    include_directionality: Boolean.  Differentiates between reactants and
+    products by maintaining the negative / positive stoichiometry.
+
+    if none of the species have an mnx id then return None
+    
+    """
+    species = reaction.species
+    mnx_ids = [x.mnx_id for x in species]
+    if exclude_promiscuous:
+        if len(set(mnx_ids).difference(promiscuous_metabolites.values())) == 0:
+            return None
+    elif len(set(mnx_ids).difference([None])) == 0:
+        return None
+    if include_stoichiometry:
+        stoichiometry = reaction.get_coefficients(species)
+        if not include_directionality:
+            stoichiometry = map(abs, stoichiometry)
+        reaction_signature = ['%s_%s'%(str(s), str(k))
+                              for s, k in zip(stoichiometry, mnx_ids)]
+            
+    else:
+        if include_directionality:
+            reaction_signature = ['-%s'%str(x.mnx_id)
+                                  for x in reaction.get_reactants()] + \
+                                 [str(x.mnx_id)
+                                  for x in reaction.get_products()]
+        else:
+            reaction_signature = mnx_ids
+    reaction_signature.sort()
+    if len(reaction_signature) > 0:
+        if len(set(reaction_signature)) == 1 and reaction_signature[0] is None:
+            reaction_signature = None
+        else:
+            reaction_signature = '_'.join(map(str, reaction_signature))
+    else:
+        reaction_signature = None
+    return(reaction_signature)
+
+def generate_mnx_reaction_signatures(object_list):
+    """
+    object_list: a list of objects that have an iterable attribute that is
+    a collection of :class:`~cobra.core.Reaction` objects
+
+    returns a dictionary of (reaction_signature, [objects]) 
+    
+    """
+    _signature_dict = defaultdict(list)
+    for complex in object_list:
+        for reaction in complex.reactions:
+            reaction_signature = generate_mnx_reaction_signature(reaction)
+            if reaction_signature is None:
+                continue
+            _signature_dict[reaction_signature].append(complex)
+    return(_signature_dict)
+
 del __join, __abspath, __split, __sep
 
 
