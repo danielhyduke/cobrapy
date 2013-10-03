@@ -381,6 +381,7 @@ class Catalyst(Species):
             #self._copy_parent_attributes(id)
             self.id = 'Catalyst' + id.id.lstrip('Complex')
             self._complex = id
+            self._model = self._complex.model
         elif isinstance(id, str):
             Species.__init__(self, id)
             #Complex.__init__(self, id)
@@ -442,6 +443,8 @@ class Catalyst(Species):
 
 
 
+
+    
     def _remove_from_complex(self, complex):
         """
         """
@@ -452,14 +455,15 @@ class Catalyst(Species):
 
 
     def delete(self):
+        model = self.model
         self._remove_from_complex(self.complex)
         [x.remove_target(self) for x in self.modifications]
-        if self.model is not None:
-            self.model.catalysts.remove(self)
+        if model is not None:
+            model.catalysts.remove(self)
             self._model = None
             for modification in self.modifications:
                 if len(modification.targets) == 0:
-                    self.model.modifications.remove(modification)
+                    model.modifications.remove(modification)
                     modification._model = None
 
         self._modifications = {}
