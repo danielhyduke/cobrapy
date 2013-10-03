@@ -47,7 +47,7 @@ class ME_Model(Model):
         self.__dict__.update(state)
         [[setattr(x, '_model', self)
           for x in self.__dict__[y]]
-         for y in ['complexes', 'subunits', 'metabolites', 'reactions']]
+         for y in ['complexes', 'subunits', 'metabolites', 'reactions', 'catalysts']]
 
         
     def copy(self):
