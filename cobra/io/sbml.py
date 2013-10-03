@@ -134,7 +134,13 @@ def create_cobra_model_from_sbml_file(sbml_filename, old_sbml=False, legacy_meta
         for the_key in tmp_metabolite.notes.keys():
             if the_key.lower() == 'formula':
                 tmp_formula = tmp_metabolite.notes.pop(the_key)[0]
-                break
+            if the_key.lower() == 'charge': #Let Charge value in NOTES override sbml attribute
+                tmp_charge = tmp_metabolite.notes.pop(the_key)[0]
+                try:
+                    tmp_metabolite.charge = int(tmp_charge)
+                except:
+                    tmp_charge = tmp_metabolite.charge
+
         if tmp_formula == '' and old_sbml:
             tmp_formula = tmp_metabolite.name.split('_')[-1]
             tmp_metabolite.name = tmp_metabolite.name[:-len(tmp_formula)-1]
