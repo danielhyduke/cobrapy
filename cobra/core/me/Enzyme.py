@@ -186,9 +186,7 @@ class Complex(Species):
         subunit_stoichiometry_dict: A dictionary where the k is the Subunit and
         the value is the new stoichiometry.
 
-        _update_model: Updates model.catalyst upon change of the catalyst id.  If modifying
-        a large number of complexes, it might be best to update the model.catalysts dictlist
-        after updating all of the complexes.
+        _update_model: Updates model.catalyst upon change of the catalyst id.
         
         """
         [self._subunits.update({k: v})
@@ -198,8 +196,11 @@ class Complex(Species):
             the_catalyst._update_id(subunit_stoichiometry_dict)
             the_catalyst._update_id(the_catalyst._modifications, prefix=the_catalyst.id)
             
-            if self.model is not None and _old_id != the_catalyst.id:
-                self.model.catalysts._generate_index()
+            if self.model is not None and _old_id != the_catalyst.id and _update_model:
+                _object_dict = self.model.catalysts._object_dict
+                _object_dict.pop(_old_id)
+                _object_dict[the_catalyst.id] = the_catalyst
+                #self.model.catalysts._generate_index()
         self._update_id(self._subunits)
         
                                                                           
@@ -213,7 +214,7 @@ class Complex(Species):
             #Remove from the complex from the DictList because
             #the id might be changing due to the current convention of
             #constructing the id based on the complex composition.
-            self.model.complexes.remove(self)
+            self.model.complexes._object_dict.pop(self.id)
             
         self.id = prefix
         _tmp_list = stoichiometry_dict.items()
@@ -223,7 +224,8 @@ class Complex(Species):
         _update_logic(self, stoichiometry_dict)
         if self.model is not None:
             #Add the complex back in with its new id
-            self.model.complexes.append(self)
+            self.model.complexes._object_dict[self.id] = self
+
         
 
 
