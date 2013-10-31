@@ -246,3 +246,19 @@ class CatalyzedReaction(Reaction):
 
 
 
+    def add_to_model(self, model):
+        """
+        model: cobra.core.me.ME_Model
+        
+        """
+        if self.model is not model:
+            if self.model is not None:
+                raise(Exception('CatalyzedReaction (%s) already associated with model (%s) cannot add to %s.'%(self.id, self.model.id,
+                                                                                                  model.id)  +\
+                                'Have not implemented code to change association to a different model'))
+            self._model = model
+            model.add_reaction(self)
+            [x.add_to_model(model) for x in self._catalyst];
+
+
+        

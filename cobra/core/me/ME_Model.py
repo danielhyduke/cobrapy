@@ -2,9 +2,8 @@
 #the Reaction object and GPRs in favor of CatalyzedReactions
 from copy import deepcopy
 from cobra import Model, DictList, Object
-from cobra.core.me.CatalyzedReaction import CatalyzedReaction
-from cobra.core.me.Enzyme import Modification
-#from .CatalyzedReaction import CatalyzedReaction
+from .Enzyme import Modification, Complex, Catalyst
+from .CatalyzedReaction import CatalyzedReaction
 class ME_Model(Model):
     """An ME_Model is a cobra.Model that provides support for
     explicit representation of gene products.
@@ -49,6 +48,42 @@ class ME_Model(Model):
           for x in self.__dict__[y]]
          for y in ['complexes', 'subunits', 'metabolites', 'reactions', 'catalysts']]
 
+    def add_complex(self, complex):
+        """Adds a complex and associated catalysts to the model.
+
+        complex: a cobra.core.me.Enzyme.Complex
+        
+
+        """
+        complex.add_to_model(self)
+
+
+    def add_catalyst(self, catalyst):
+        """Adds a catalyst and associated catalysts to the model.
+
+        catalyst: a cobra.core.me.Enzyme.Catalyst
+        
+
+        """
+        catalyst.add_to_model(self)
+
+    def add_reaction(self, reaction):
+        """Adds a reaction and associated catalysts to the model.
+
+        reaction: a cobra.core.me.Enzyme.Reaction
+        
+
+        """
+        reaction.add_to_model(self)
+
+    def add_modification(self, modification):
+        """Adds a modification and associated catalysts to the model.
+
+        modification: a cobra.core.me.Enzyme.Modification
+        
+
+        """
+        modifcation.add_to_model(self)
         
     def copy(self):
         """Provides a partial 'deepcopy' of the ME_Model.  All of the Metabolite, Gene,

@@ -96,8 +96,15 @@ class Modification(Object):
 
 
 
-
- 
+    def add_to_model(self, model):
+        """
+        model: cobra.core.me.ME_Model
+        
+        """
+        if self not in model.modifications:
+            model.add_metabolites(self.modifiers)
+            [x.add_to_model(model) for x in self.targets];
+            model.modifications.append(self)
 
 #Blank modification that allows a Complex to become a Catalyst without a Modification
 _empty_modification = Modification()
@@ -143,7 +150,25 @@ class Complex(Species):
         [_reactions.update(k.reactions) for k in self.catalysts]
         return(list(_reactions))
         
-    
+    def add_to_model(self, model):
+        """
+        model: cobra.core.me.ME_Model
+        
+        """
+        if self.model is not model:
+            if self.model is not None:
+                raise(Exception('(%s) already associated with model (%s) cannot add to %s.'%(self.id, self.model.id,
+                                                                                             model.id)  +\
+                                'Have not implemented code to change association to a different model'))
+            self._model = model
+            model.complexes.append(self)
+            [x.add_to_model(model) for x in self._subcomplexes];
+            [x.add_to_model(model) for x in self._supercomplexes];
+            [x.add_to_model(model) for x in self._subunits];
+            [x.add_to_model(model) for x in self._catalysts];
+            
+            
+
     def add_subunit(self, subunit, stoichiometry=1, update_subunit_awareness=True):
         """
         subunit:  A Subunit object.  If a Complex then add the Subunits of the Complex instead
@@ -406,10 +431,19 @@ class Catalyst(Species):
 
     def add_reaction(self, reaction):
         """
-        TODO Q: Should the reaction also be associated with the _complex?
+
         
         """
-        self._reaction.add(reaction)
+        if reaction.model is not None:
+            if catalyst.model is not None and catalyst.model is not reaction.model:
+                raise(Exception('Cannot add %s to %s because they are associated with '%(reaction.id,
+                                                                                         self.id) + \
+                                'different reactions %s and %s, respectively'%(reaction.model.id,
+                                                                               self.model.id)))
+            self.add_to_model(reaction.model)
+            self._reaction.add(reaction)
+            reaction.catalysts.add(self)
+
         
     def modify(self, modification, stoichiometry=1):
         """
@@ -470,6 +504,21 @@ class Catalyst(Species):
 
         self._modifications = {}
 
+    def add_to_model(self, model):
+        if self.model is not model:
+            if self.model is not None:
+                raise(Exception('(%s) already associated with model (%s) cannot add to %s.'%(self.id, self.model.id,
+                                                                                                  model.id)  +\
+                                'Have not implemented code to change association to a different model'))
+
+            model.catalysts.append(self)
+            self._model = model
+            self.complex.add_to_model(model)
+
+            [x.add_to_model(model) for x in self.modifications]
+
+
+
         
 class Subunit(Gene):
     """Subunits are Genes that have been transformed to a functional component state
@@ -525,6 +574,22 @@ class Subunit(Gene):
 
         """
         warn("%s.remove_from_model is not yet implemented"%(str(type(self))))
+
+    def add_to_model(self, model):
+        """
+        model: cobra.core.me.ME_Model
+        
+        """
+
+        if self.model is not model:
+            if self.model is not None:
+                raise(Exception('Gene (%s) already associated with model (%s) cannot add to %s.'%(self.id, self.model.id,
+                                                                                                  model.id)  +\
+                                'Have not implemented code to change association to a different model'))
+            self._model = model
+            model.subunits.append(self)
+            model.genes = model.subunits
+            [x.add_to_model(model) for x in self._complex]
 
     @property
     def complexes(self):
