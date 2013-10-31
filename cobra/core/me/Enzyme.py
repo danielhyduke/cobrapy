@@ -106,9 +106,13 @@ class Modification(Object):
             [x.add_to_model(model) for x in self.targets];
             model.modifications.append(self)
 
-#Blank modification that allows a Complex to become a Catalyst without a Modification
-_empty_modification = Modification()
+"""
+Deprecated because of referencing problems.
 
+#Blank modification that allows a Complex to become a Catalyst without a Modification
+
+_empty_modification = Modification()
+"""
 class Complex(Species):
     """
     TODO: Add in method for batch addition of subunits
@@ -164,7 +168,16 @@ class Complex(Species):
             model.complexes.append(self)
             [x.add_to_model(model) for x in self._subcomplexes];
             [x.add_to_model(model) for x in self._supercomplexes];
-            [x.add_to_model(model) for x in self._subunits];
+            #Make sure subunits aren't already in the model.
+            _stoichiometry_dict = {}
+            for subunit, stoichiometry in self._subunits.iteritems():
+                try:
+                    subunit = model.subunits.get_by_id(subunit.id)
+                except:
+                    subunit.add_to_model(model)
+                _stoichiometry_dict[subunit] = stoichiometry
+            self._subunits = _stoichiometry_dict
+            
             [x.add_to_model(model) for x in self._catalysts];
             
             
@@ -254,7 +267,7 @@ class Complex(Species):
         
 
 
-    def create_catalyst(self, modification=_empty_modification, stoichiometry=1, data_source=None):
+    def create_catalyst(self, modification=None, stoichiometry=1, data_source=None):
         """Modifies the complex according to the modification
         and creates a specific enzyme.
 
@@ -269,7 +282,8 @@ class Complex(Species):
             else:
                 modification = list(modification)[0]
 
-            
+        if modification is None:
+            modification = Modification()
         if modification in self.modifications:
             modification = [x for x in self.modifications if x.id == modification.id][0]
             from warnings import warn
@@ -435,14 +449,17 @@ class Catalyst(Species):
         
         """
         if reaction.model is not None:
-            if catalyst.model is not None and catalyst.model is not reaction.model:
+            if self.model is not None and self.model is not reaction.model:
                 raise(Exception('Cannot add %s to %s because they are associated with '%(reaction.id,
                                                                                          self.id) + \
                                 'different reactions %s and %s, respectively'%(reaction.model.id,
                                                                                self.model.id)))
             self.add_to_model(reaction.model)
-            self._reaction.add(reaction)
-            reaction.catalysts.add(self)
+        else:
+            if self.model is not None:
+                self.model.add_reaction(reaction)
+        self._reaction.add(reaction)
+        reaction._catalyst.add(self)
 
         
     def modify(self, modification, stoichiometry=1):
@@ -505,6 +522,8 @@ class Catalyst(Species):
         self._modifications = {}
 
     def add_to_model(self, model):
+        ## from pdb import set_trace
+        ## set_trace()
         if self.model is not model:
             if self.model is not None:
                 raise(Exception('(%s) already associated with model (%s) cannot add to %s.'%(self.id, self.model.id,
@@ -513,10 +532,9 @@ class Catalyst(Species):
 
             model.catalysts.append(self)
             self._model = model
-            self.complex.add_to_model(model)
-
             [x.add_to_model(model) for x in self.modifications]
-
+            [x.add_to_model(model) for x in self.reactions]
+            self.complex.add_to_model(model)
 
 
         

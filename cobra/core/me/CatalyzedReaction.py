@@ -251,6 +251,8 @@ class CatalyzedReaction(Reaction):
         model: cobra.core.me.ME_Model
         
         """
+        ## from pdb import set_trace
+        ## set_trace()
         if self.model is not model:
             if self.model is not None:
                 raise(Exception('CatalyzedReaction (%s) already associated with model (%s) cannot add to %s.'%(self.id, self.model.id,

@@ -67,14 +67,7 @@ class ME_Model(Model):
         """
         catalyst.add_to_model(self)
 
-    def add_reaction(self, reaction):
-        """Adds a reaction and associated catalysts to the model.
 
-        reaction: a cobra.core.me.Enzyme.Reaction
-        
-
-        """
-        reaction.add_to_model(self)
 
     def add_modification(self, modification):
         """Adds a modification and associated catalysts to the model.
