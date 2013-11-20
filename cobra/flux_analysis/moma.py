@@ -206,7 +206,7 @@ def moma(wt_model, mutant_model, objective_sense='maximize', solver='gurobi',
     #simulations with M matrices.
     wt_model.solution.dress_results(wt_model)
     mutant_dict['status'] = solution.status
-    #TODO: Deal with maximize / minimize issues for a reversible model that's been converted to irreversibl
+    #TODO: Deal with maximize / minimize issues for a reversible model that's been converted to irreversible
     mutant_dict['flux_difference'] = flux_difference = sum([(solution.x_dict[x.id[len('mutant_'):]]
                                                              - x.x)**2 for x in _reaction_list])
     mutant_dict['the_problem'] = the_problem

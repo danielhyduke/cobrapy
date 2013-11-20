@@ -35,11 +35,16 @@ def flux_balance_analysis(model, minimize_spontaneous_reactions=False, linear_ob
         model.optimize(new_objective=linear_objective)
 
 
-    #Constrain the 
+    #Constrain the variables in the linear objective to the 'optimal' value.
     objective_reactions = [x for x in model.reactions if x.objective_coefficient != 0]
+    if len(objective_reactions) > 1:
+        raise(Exception('parsimonious FBA only works with a single non-zero objective_coefficient'))
+    #To run parsimonious FBA with a linear objective with multiple non-zero objective_coefficients
+    #it would be necessary to perform sampling to 'account' for the possibility of multiple
+    #equivalent optima.
     linear_solution = model.solution.f
     for reaction in objective_reactions:
-        reaction_target_flux = reaction.objective_coefficient * linear_solution
+        reaction_target_flux = linear_solution / reaction.objective_coefficient
         #Potential bug
         reaction.lower_bound = reaction_target_flux
         #reaction.upper_bound = reaction_target_flux
@@ -68,8 +73,8 @@ def flux_balance_analysis(model, minimize_spontaneous_reactions=False, linear_ob
     
     
     model.optimize(objective_sense='minimize', new_objective=flux_measure_reaction)
-    ## from pdb import set_trace
-    ## set_trace()
+    from pdb import set_trace
+    set_trace()
     return(model.solution.f, linear_solution)
     
     
