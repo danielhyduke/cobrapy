@@ -6,3 +6,6 @@ documentation
 cobra.egg-info
 build/
 cobra/curation/data/mnxref_*
+.DS_Store
+setuptools-*egg
+setuptools-*.tar.gz
