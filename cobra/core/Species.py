@@ -48,17 +48,19 @@ class Species(Object):
         self.compartment = compartment
         #self.model is None or refers to the cobra.Model that
         #contains self
-        self._model =  self.charge = None
+        self.charge = None
         self._reaction = set() #references to reactions that operate on this species
 
 
     @property
     def reactions(self):
-        return self._reaction
+        return(self._reaction)
 
-    @property
-    def model(self):
-        return self._model
+
+    def get_reaction(self):
+        from warnings import warn
+        warn('get_reaction is deprecated. please use reactions instead')
+        return(self.reactions)
     
     def parse_composition(self):
         """Breaks the chemical formula down by element.
@@ -99,17 +101,6 @@ class Species(Object):
         the_copy._reaction = set()
         return(the_copy)
 
-    def get_reaction(self):
-        """Returns a list of Reactions that contain this Species
-
-        """
-        return list(self._reaction)
-    
-    def get_model(self):
-        """Returns the Model object that contain this Object
-
-        """
-        return self._model
 #
 #END Class Species
 ########################

@@ -16,6 +16,7 @@ class Object(object):
         #formatting notes and annotation
         self.notes = {}
         self.annotation = {}
+        self._model = None
 
     def __getstate__(self):
         """To prevent excessive replication during deepcopy.
@@ -34,7 +35,8 @@ class Object(object):
         """
         the_copy = self.__class__(self.id)
         [setattr(the_copy, k, v)
-         for k, v in self.__dict__.iteritems()]
+         for k, v in self.__dict__.iteritems()
+         if not isinstance(getattr(type(self), k, None), property)] #Don't try to set properties.
         return(the_copy)
     def _copy_parent_attributes(self, gene_object):
         """Helper function for shallow copying attributes from a parent object
@@ -43,19 +45,14 @@ class Object(object):
         """
         [setattr(self, k, v) for k, v in gene_object.__dict__.iteritems()]
 
-    ## def __setstate__(self, state):
-    ##     self.__dict__.update(state)
-    ## def __getstate__(self):
-    ##     the_dict = dict([(x, eval('self.%s'%x))
-    ##                      for x in self.__slots__])
-    ##     return(the_dict)
-    ## def __setstate__(self, the_dict):
-    ##     self.id = the_dict.pop('id')
-    #Allows comparison of Objects based on ids and with ids
-    #
-    #Not the best idea.  This will be removed in the next major
-    #release
-    #
+
+    @property
+    def model(self):
+        return(self._model)
+
+    @model.setter
+    def model(self, model):
+        self._model = model
 
     def __lt__(self, other):
         if hasattr(other, 'id'):

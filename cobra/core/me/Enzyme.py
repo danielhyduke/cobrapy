@@ -121,7 +121,6 @@ class Complex(Species):
 
     def __init__(self, id=''):
         Species.__init__(self,id)
-        del self._reaction #A complex isn't directly associated with reactions.
         self._subunits = {}
         #The next two attributes will speed up operations that are only interested in
         #the subset of subunits that falls into the RNA or Polypeptide class
@@ -415,19 +414,18 @@ class Catalyst(Species):
         id: String or :class:`cobra.me.Complex`
 
         """
-        self._model = None
-        self._complex = None
-        self._reaction = set()
+
         if isinstance(id, Complex):
-            #self._copy_parent_attributes(id)
-            self.id = 'Catalyst' + id.id.lstrip('Complex')
-            self._complex = id
-            self._model = self._complex.model
+            _complex = id
+            id = 'Catalyst' + _complex.id.lstrip('Complex')
+            _model = _complex.model
         elif isinstance(id, str):
-            Species.__init__(self, id)
-            #Complex.__init__(self, id)
-            #self._complex = None #Changed to deal with deepcopy / pickle issues
-            #self._complex = self
+            _complex = None
+            _model = None
+        Species.__init__(self, id)
+        self._complex = _complex
+        self.model = _model
+
         self._modifications = {} #The set of modifications that are required
         #to make the enzyme functional
 
@@ -496,8 +494,6 @@ class Catalyst(Species):
 
 
 
-
-    
     def _remove_from_complex(self, complex):
         """
         """
@@ -537,7 +533,6 @@ class Catalyst(Species):
             self.complex.add_to_model(model)
 
 
-        
 class Subunit(Gene):
     """Subunits are Genes that have been transformed to a functional component state
     where they may be combined with other Subunits to form a Complex.
