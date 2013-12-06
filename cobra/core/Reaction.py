@@ -437,33 +437,38 @@ class Reaction(Object):
         """Generate a human readable reaction string.
         
         """
-        reactant_dict = {}
-        product_dict = {}
-        id_type = 'id'
-        if use_metabolite_names:
-            id_type = 'name'
-        for the_metabolite, the_coefficient in self._metabolites.items():
-            the_key = str(getattr(the_metabolite, id_type))
-            if the_coefficient > 0:
-                product_dict[the_key] = repr(the_coefficient)
-            else:
-                reactant_dict[the_key] = repr(abs(the_coefficient))
+        _products = self.products
+        _reactants = self.reactants
+        _products.sort()
+        _reactants.sort()
         reaction_string = ''
-        for the_key in reactant_dict:
-            reaction_string += ' + %s %s'%(reactant_dict[the_key],
-                                         the_key)
-        if not self.reversibility:
+        for _species in _reactants:
+            coefficient = repr(abs(self._metabolites[_species]))
+            if use_metabolite_names:
+                id = _species.name
+            else:
+                id = _species.id
+            reaction_string += ' + %s %s'%(coefficient, id)
+
+        if self.reversibility:
+            reaction_string += ' <=> '
+        else:
             if self.lower_bound < 0 and self.upper_bound <=0:
                 reaction_string += ' <- '
             else:
                 reaction_string += ' -> '                
-        else:
-            reaction_string += ' <=> '
-        for the_key in product_dict:
-            reaction_string += "%s %s + "%(product_dict[the_key],
-                                      the_key)
+        for _species in _products:
+            coefficient = repr(self._metabolites[_species])
+            if use_metabolite_names:
+                id = _species.name
+            else:
+                id = _species.id
+            reaction_string += ' + %s %s'%(coefficient, id)
+
+
+
         reaction_string = reaction_string.lstrip(' + ').rstrip(' + ')
-        return reaction_string
+        return(reaction_string)
 
 
     def check_mass_balance(self):
