@@ -32,7 +32,7 @@ class Species(Object):
         of the metabolite.  Used when in a cobra.Reaction or Model
         object
         
-	mnx_id: None or a String of the MetaNetX.org ID for the object.
+        mnx_id: None or a String of the MetaNetX.org ID for the object.
 
         """
         Object.__init__(self, id, mnx_id=mnx_id)
@@ -48,20 +48,13 @@ class Species(Object):
         self.compartment = compartment
         #self.model is None or refers to the cobra.Model that
         #contains self
-        self.charge = None
+        self._model =  self.charge = None
         self._reaction = set() #references to reactions that operate on this species
-
 
     @property
     def reactions(self):
-        return(self._reaction)
+        return frozenset(self._reaction)
 
-
-    def get_reaction(self):
-        from warnings import warn
-        warn('get_reaction is deprecated. please use reactions instead')
-        return(self.reactions)
-    
     def parse_composition(self):
         """Breaks the chemical formula down by element.
         Useful for making sure Reactions are balanced.'
