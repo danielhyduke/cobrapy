@@ -53254,7 +53254,7 @@
       <reaction id="R_GLCptspp" name="D glucose transport via PEPPyr PTS periplasm " reversible="false">
         <notes>
           <html xmlns="http://www.w3.org/1999/xhtml">
-            <p>GENE_ASSOCIATION: ( ( STM2433  and  STM1203  and  STM2431  and  STM2432 )  or  ( STM1830  and  STM1831  and  STM1832  and  STM2431  and  STM2432 )  or  ( STM2433  and  STM1465  and  STM2431  and  STM2432 ) )</p>
+            <p>GENE_ASSOCIATION: ( ( STM2433  and  STM1203  and  STM2431  and  STM2432 )  or  ( STM1830  and  STM1831  and  STM1832  and  STM2431  and  STM2432 )  or  ( STM2433  and   STM2431  and  STM2432 ) )</p>
             <p>SUBSYSTEM: Transport Inner Membrane</p>
           </html>
         </notes>
@@ -62068,7 +62068,7 @@
       <reaction id="R_MALTptspp" name="maltose transport via PEPPyr PTS periplasm " reversible="false">
         <notes>
           <html xmlns="http://www.w3.org/1999/xhtml">
-            <p>GENE_ASSOCIATION: ( STM2433  and  STM1465  and  STM2431  and  STM2432 )</p>
+            <p>GENE_ASSOCIATION: ( STM2433  and  STM2431  and  STM2432 )</p>
             <p>SUBSYSTEM: Transport Inner Membrane</p>
           </html>
         </notes>
@@ -78965,7 +78965,7 @@
       <reaction id="R_TREptspp" name="trehalose transport via PEPPyr PTS periplasm " reversible="false">
         <notes>
           <html xmlns="http://www.w3.org/1999/xhtml">
-            <p>GENE_ASSOCIATION: ( STM2433  and  STM2431  and  STM2432  and  STM4454 )</p>
+            <p>GENE_ASSOCIATION: ( STM2433  and  STM2431  and  STM2432 )</p>
             <p>SUBSYSTEM: Transport Inner Membrane</p>
           </html>
         </notes>

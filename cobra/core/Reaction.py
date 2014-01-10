@@ -448,6 +448,9 @@ class Reaction(Object):
                                 for k, v in metabolites.items()])
         self.add_metabolites(metabolites)
 
+    @property
+    def reaction(self):
+        return self.build_reaction_string()
 
 
     def build_reaction_string(self, use_metabolite_names=False):
