@@ -35,6 +35,7 @@ def decompartmentalize(element, in_place=False):
         suffix_string = '_' + e.compartment
         if e.id.endswith(suffix_string):
             e.id = e.id[:-len(suffix_string)]
+        e.compartment = None
         decompartmentalized_elements.append(e)
     if len(element) == 1:
         decompartmentalized_elements = decompartmentalized_elements.pop()
