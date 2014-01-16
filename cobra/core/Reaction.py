@@ -64,7 +64,8 @@ class Reaction(Object):
     # read-only
     @property
     def metabolites(self):
-        return make_dictproxy(self._metabolites)
+        # TODO make read-only
+        return self._metabolites
 
     @property
     def genes(self):

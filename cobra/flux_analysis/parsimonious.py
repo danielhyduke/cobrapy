@@ -1,82 +1,69 @@
-from __future__ import with_statement
-#cobra.flux_analysis.parsimonious.py
-#Implement parsimonious flux balance analysis as described in {Lewis et al., 2010, Mol Syst Biol, 6, 390}
-from ..manipulation.modify import convert_to_irreversible
-from cobra import Metabolite, Reaction
-def flux_balance_analysis(model, minimize_spontaneous_reactions=False, linear_objective=None):
-    """Implements parsimonious flux balance analysis as described in {Lewis et al., 2010, Mol Syst Biol, 6, 390}
+from ..manipulation import modify
 
-    Q: Would this be better as an option to Model.optimize() so we could allow for more control of what
-    type of initial optimization is performed?
+def optimize_minimal_flux(model, already_irreversible=False,
+        **optimize_kwargs):
+    """Perform basic pFBA (parsimonius FBA) and minimize total flux.
 
-    model: :class:`~cobra.cobra.Model`
+    The function attempts to act as a drop-in replacement for optimize. It
+    will make the reaction reversible and perform an optimization, then
+    force the objective value to remain the same and minimize the total
+    flux. Finally, it will convert the reaction back to the irreversible
+    form it was in before. See http://dx.doi.org/10.1038/msb.2010.47
 
-    minimize_spontaneous_reactions: Boolean.  If True then minimize spontaneous reactions in
-    addition to catalyzed reactions.
+    Parameters
+    ----------
+    model : :class:`~cobra.core.Model` object
 
-    linear_objective: None or a dictionary of {:class:`~cobra.core.Reaction`: objective_coefficient}
+    already_irreversible : bool, optional
+        By default, the model is converted to an irreversible one.
+        However, if the model is already irreversible, this step can be
+        skipped.
 
-
-    Returns the minimum flux that can support maximization of the linear objective.
-
-    
-    Q: Do we want to denote which reactions are active in the parsimonious flux space?  Possibly
-    in a separate function?
-    
     """
-    irreversible = True
-
-    _initial_model = model
-    model = model.copy() #We'll be modifying model structure so we want an independent copy
-    #1. Optimize for the initial linear objective
-    if linear_objective is None:
-        model.optimize()
-    else:
-        model.optimize(new_objective=linear_objective)
-
-
-    #Constrain the variables in the linear objective to the 'optimal' value.
-    objective_reactions = [x for x in model.reactions if x.objective_coefficient != 0]
-    if len(objective_reactions) > 1:
-        raise(Exception('parsimonious FBA only works with a single non-zero objective_coefficient'))
-    #To run parsimonious FBA with a linear objective with multiple non-zero objective_coefficients
-    #it would be necessary to perform sampling to 'account' for the possibility of multiple
-    #equivalent optima.
-    linear_solution = model.solution.f
-    for reaction in objective_reactions:
-        reaction_target_flux = linear_solution / reaction.objective_coefficient
-        #Potential bug
-        reaction.lower_bound = reaction_target_flux
-        #reaction.upper_bound = reaction_target_flux
-        
-        reaction.objective_coefficient = 0
-
-    #2. Convert model to irreversible form where all variable lower bounds are > 0.
-    convert_to_irreversible(model)
-
-    #3. Calculate the minimum flux through the network subject to the initial optimization
-    #Create a metabolite to measure the flux in the model
-    flux_measure_metabolite = Metabolite('flux_measure')
-    #Create a reaction to use to monitor the flux measurement metabolite
-    flux_measure_reaction = Reaction('net_flux')
-    flux_measure_reaction.add_metabolites({flux_measure_metabolite: -1})
-    flux_measure_reaction.objective_coefficient = 1.
-    model.add_reaction(flux_measure_reaction)
-    
-    model.add_metabolites([flux_measure_metabolite])
-    if minimize_spontaneous_reactions:
-        [x.add_metabolites({flux_measure_metabolite: 1}, add_to_container_model=False)
-         for x in model.reactions]
-    else:
-        [x.add_metabolites({flux_measure_metabolite: 1}, add_to_container_model=False)
-         for x in model.reactions if len(x.genes) > 0]
-    
-    
-    model.optimize(objective_sense='minimize', new_objective=flux_measure_reaction)
-    from pdb import set_trace
-    set_trace()
-    return(model.solution.f, linear_solution)
-    
-    
+    if "new_objective" in optimize_kwargs:
+        raise ValueError("Not implemented yet, use objective coefficients")
+    if not already_irreversible:
+        modify.convert_to_irreversible(model)
+    hot_start = model.optimize(**optimize_kwargs)
+    # if the problem is infeasible
+    if model.solution.f is None:
+        return
+    old_f = model.solution.f
+    old_objective_coefficients = {}
+    old_lower_bounds = {}
+    old_upper_bounds = {}
+    for reaction in model.reactions:
+        # if the reaction has a nonzero objective coefficient, then
+        # the same flux should be maintained through that reaction
+        if reaction.objective_coefficient != 0:
+            old_objective_coefficients[reaction] = \
+                reaction.objective_coefficient
+            old_lower_bounds[reaction] = reaction.lower_bound
+            old_upper_bounds[reaction] = reaction.upper_bound
+            x = model.solution.x_dict[reaction.id]
+            reaction.lower_bound = x
+            reaction.upper_bound = x
+            reaction.objective_coefficient = 0
+        else:
+            reaction.objective_coefficient = 1
+    # set to minimize flux
+    optimize_kwargs["objective_sense"] = "minimize"
+    model.optimize(**optimize_kwargs)
+    # make the model back the way it was
+    for reaction in model.reactions:
+        if reaction in old_objective_coefficients:
+            reaction.objective_coefficient = old_objective_coefficients[reaction]
+            reaction.lower_bound = old_lower_bounds[reaction]
+            reaction.upper_bound = old_upper_bounds[reaction]
+        else:
+            reaction.objective_coefficient = 0
+    # if the minimization problem was successful
+    if model.solution.f is not None:
+        model.solution.f = old_f
+    modify.revert_to_reversible(model)
 
 
+if __name__ == "__main__":
+    import cobra.test
+    model = cobra.test.create_test_model(cobra.test.ecoli_pickle)
+    optimize_minimal_flux(model)
