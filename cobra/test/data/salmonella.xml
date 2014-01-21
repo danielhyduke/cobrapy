@@ -36106,7 +36106,7 @@
       <reaction id="R_CYSTL" name="cystathionine b lyase" reversible="false">
         <notes>
           <html xmlns="http://www.w3.org/1999/xhtml">
-            <p>GENE_ASSOCIATION: ( STM1464  or  STM3161 or STM1557 )</p>
+            <p>GENE_ASSOCIATION: ( STM3161 or STM1557 )</p>
             <p>SUBSYSTEM: Methionine Metabolism</p>
           </html>
         </notes>
@@ -50759,7 +50759,7 @@
       <reaction id="R_FUCtpp" name="L fucose transport via proton symport periplasm " reversible="true">
         <notes>
           <html xmlns="http://www.w3.org/1999/xhtml">
-            <p>GENE_ASSOCIATION: STM2975</p>
+            <p>GENE_ASSOCIATION: s0001</p>
             <p>SUBSYSTEM: Transport Inner Membrane</p>
           </html>
         </notes>
@@ -52799,7 +52799,7 @@
       <reaction id="R_GLCDpp" name="Glucose dehydrogenase ubiquinone 8 as acceptor  periplasm " reversible="false">
         <notes>
           <html xmlns="http://www.w3.org/1999/xhtml">
-            <p>GENE_ASSOCIATION: ( STM0861  or  STM0169 )</p>
+            <p>GENE_ASSOCIATION: ( STM0169 )</p>
             <p>SUBSYSTEM: Oxidative Phosphorylation</p>
           </html>
         </notes>
@@ -68586,7 +68586,7 @@
       <reaction id="R_P5CD" name="1 pyrroline 5 carboxylate dehydrogenase" reversible="false">
         <notes>
           <html xmlns="http://www.w3.org/1999/xhtml">
-            <p>GENE_ASSOCIATION: STM1124</p>
+            <p>GENE_ASSOCIATION: s0001</p>
             <p>SUBSYSTEM: Arginine and Proline Metabolism</p>
           </html>
         </notes>
@@ -73618,7 +73618,7 @@
       <reaction id="R_PROD2" name="Proline dehydrogenase" reversible="false">
         <notes>
           <html xmlns="http://www.w3.org/1999/xhtml">
-            <p>GENE_ASSOCIATION: STM1124</p>
+            <p>GENE_ASSOCIATION: s0001</p>
             <p>SUBSYSTEM: Arginine and Proline Metabolism</p>
           </html>
         </notes>
@@ -74709,7 +74709,7 @@
       <reaction id="R_PUNP4" name="purine nucleoside phosphorylase Deoxyguanosine " reversible="true">
         <notes>
           <html xmlns="http://www.w3.org/1999/xhtml">
-            <p>GENE_ASSOCIATION: ( STM2422  or  STM4570 )</p>
+            <p>GENE_ASSOCIATION: ( STM4570 )</p>
             <p>SUBSYSTEM: Nucleotide Salvage Pathway</p>
           </html>
         </notes>
@@ -74790,7 +74790,7 @@
       <reaction id="R_PUNP7" name="purine nucleoside phosphorylase Xanthosine " reversible="true">
         <notes>
           <html xmlns="http://www.w3.org/1999/xhtml">
-            <p>GENE_ASSOCIATION: STM2422</p>
+            <p>GENE_ASSOCIATION: s0001</p>
             <p>SUBSYSTEM: Nucleotide Salvage Pathway</p>
           </html>
         </notes>

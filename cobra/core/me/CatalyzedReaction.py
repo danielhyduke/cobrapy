@@ -128,6 +128,8 @@ class CatalyzedReaction(Reaction):
         for the_gene in the_genes:
             if not isinstance(the_gene, Subunit):
                 the_subunit = Subunit(the_gene)
+            else:
+                the_subunit = the_gene
             if the_model:
                 try:
                     the_subunit = the_model.subunits.get_by_id(the_subunit.id)
