@@ -94,6 +94,23 @@ class Species(Object):
         the_copy._reaction = set()
         return(the_copy)
 
+    def get_reaction(self):
+        """Returns a list of Reactions that contain this Species
+
+        """
+        from warnings import warn
+        warn("deprecated, used species.reactions instead")
+        return list(self._reaction)
+    
+    def get_model(self):
+        """Returns the Model object that contain this Object
+
+        """
+        print("get_model is deprecated. used model property instead")
+        return self._model
+    @property
+    def model(self):
+        return(self._model)
 #
 #END Class Species
 ########################
