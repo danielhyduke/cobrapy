@@ -424,7 +424,7 @@ class Catalyst(Species):
             _model = None
         Species.__init__(self, id)
         self._complex = _complex
-        self.model = _model
+        self._model = _model
 
         self._modifications = {} #The set of modifications that are required
         #to make the enzyme functional
