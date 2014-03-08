@@ -32,11 +32,14 @@ def decompartmentalize(element, in_place=False):
             e = e.copy()
         if hasattr(e, 'species'):
             decompartmentalize(e.species, in_place=True)
-        suffix_string = '_' + e.compartment
-        if e.id.endswith(suffix_string):
-            e.id = e.id[:-len(suffix_string)]
-        e.compartment = None
-        decompartmentalized_elements.append(e)
+        if e.compartment is None:
+            decompartmentalized_elements.append(e)
+        else:
+            suffix_string = '_' + e.compartment
+            if e.id.endswith(suffix_string):
+                e.id = e.id[:-len(suffix_string)]
+            e.compartment = None
+            decompartmentalized_elements.append(e)
     if len(element) == 1:
         decompartmentalized_elements = decompartmentalized_elements.pop()
     return(decompartmentalized_elements)

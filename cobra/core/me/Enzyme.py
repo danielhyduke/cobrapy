@@ -43,6 +43,7 @@ class Modification(Object):
     def targets(self):
         return list(self._targets)
 
+
     def remove_target(self, target):
         """
         """
@@ -146,6 +147,12 @@ class Complex(Species):
     @property
     def modifications(self):
         return list(self._modifications)
+
+    @property
+    def composition(self):
+        return(dict([(k, v) for k, v in self._subunits.iteritems()]))
+    
+
 
     @property
     def reactions(self):
