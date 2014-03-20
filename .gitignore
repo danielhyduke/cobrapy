@@ -9,3 +9,5 @@ cobra/curation/data/mnxref_*
 .DS_Store
 setuptools-*egg
 setuptools-*.tar.gz
+cobra/solvers/cglpk.c
+cobra/solvers/cglpk.so
