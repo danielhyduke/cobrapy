@@ -76,10 +76,13 @@ class Modification(Object):
             self.id = 'Empty_Modification'
         else:
             self.id = 'Modification'
-        _tmp_list = stoichiometry_dict.items()
+        #Need to sort based on id attribute
+        _tmp_dict = dict([(k.id, k) for k in stoichiometry_dict])
+        _tmp_list = _tmp_dict.keys()
         _tmp_list.sort()
-        for k, v in _tmp_list:
-            self.id += '__%s_%s'%(repr(v), k.id)
+        for k in _tmp_list:
+            v = stoichiometry_dict[_tmp_dict[k]]
+            self.id += '__%s_%s'%(repr(v), k)
         _update_logic(self, stoichiometry_dict)
         
 
@@ -235,16 +238,11 @@ class Complex(Species):
         """
         [self._subunits.update({k: v})
          for k, v in subunit_stoichiometry_dict.iteritems()]
+        #Regenerate the catalysts to match the new stoichiometry
         for the_catalyst in self._catalysts:
             _old_id = the_catalyst.id
             the_catalyst._update_id(subunit_stoichiometry_dict)
             the_catalyst._update_id(the_catalyst._modifications, prefix=the_catalyst.id)
-            
-            if self.model is not None and _old_id != the_catalyst.id and _update_model:
-                _object_dict = self.model.catalysts._object_dict
-                _object_dict.pop(_old_id)
-                _object_dict[the_catalyst.id] = the_catalyst
-                #self.model.catalysts._generate_index()
         self._update_id(self._subunits)
         
                                                                           
@@ -254,21 +252,27 @@ class Complex(Species):
         each modification is separated by __.
 
         """
-        if self.model is not None:
-            #Remove from the complex from the DictList because
-            #the id might be changing due to the current convention of
-            #constructing the id based on the complex composition.
-            self.model.complexes._object_dict.pop(self.id)
-            
+        ## if self.model is not None:
+        ##     #Remove from the complex from the DictList because
+        ##     #the id might be changing due to the current convention of
+        ##     #constructing the id based on the complex composition.
+        ##     self.model.complexes._object_dict.pop(self.id)
+        _old_id = self.id
         self.id = prefix
-        _tmp_list = stoichiometry_dict.items()
+        #Need to sort based on the object ids
+        _tmp_dict = dict([(k.id, k) for k in stoichiometry_dict.iterkeys()])
+        _tmp_list = _tmp_dict.keys()
         _tmp_list.sort()
-        for k, v in _tmp_list:
-            self.id += '__%s_%s'%(repr(v), k.id)
+        for k in _tmp_list:
+            v = stoichiometry_dict[_tmp_dict[k]]
+            self.id += '__%s_%s'%(repr(v), k)
         _update_logic(self, stoichiometry_dict)
-        if self.model is not None:
-            #Add the complex back in with its new id
-            self.model.complexes._object_dict[self.id] = self
+        if self.model is not None and self.id != _old_id:
+            self.model.complexes._generate_index() #If the object id's been changed and
+            #it's contained in a DictList then regenerate the indices so the
+            #containing DictList can be queried with get_by_id
+        ##     #Add the complex back in with its new id
+        ##     self.model.complexes._object_dict[self.id] = self
 
         
 
@@ -492,13 +496,19 @@ class Catalyst(Species):
         each modification is separated by __.
 
         """
+        _old_id = self.id
         self.id = prefix
-        _tmp_list = stoichiometry_dict.items()
+        #Need to sort based on ids
+        _tmp_dict = dict([(k.id, k) for k in stoichiometry_dict.iterkeys()])
+        _tmp_list = _tmp_dict.keys()
         _tmp_list.sort()
-        for k, v in _tmp_list:
-            self.id += '__%s_%s'%(repr(v), k.id)
+        for k in _tmp_list:
+            v = stoichiometry_dict[_tmp_dict[k]]
+            self.id += '__%s_%s'%(repr(v), k)
         _update_logic(self, stoichiometry_dict)
-
+        #Update the container Model's catalyst DictList index if necessary
+        if self.model is not None and _old_id != self.id:
+            self.model.catalysts._generate_index()
 
 
     def _remove_from_complex(self, complex):
@@ -616,14 +626,16 @@ class Subunit(Gene):
         return(self._complex)
 #Module Functions
 def _update_logic(the_object, stoichiometry_dict):
-    """Construct a logical and string from a stoichiometry dictionary and
+    """Construct a logical AND string from a stoichiometry dictionary and
     attach to an object
 
     the_object: an object capable of having an attribute attached
 
     
     """
-    tmp_list = stoichiometry_dict.items()
+    #Sort based on id
+    _tmp_dict = dict([(k.id, k) for k in stoichiometry_dict.iterkeys()])
+    tmp_list = _tmp_dict.keys()
     tmp_list.sort()
-    tmp_list = ['%s(%i)'%(k,v) for k, v in tmp_list]
+    tmp_list = ['%s(%i)'%(k, stoichiometry_dict[_tmp_dict[k]]) for k in tmp_list]
     the_object.logic = reduce(lambda x, y: '%s AND %s'%(x, y), tmp_list)
