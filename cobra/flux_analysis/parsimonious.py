@@ -10,8 +10,6 @@ def optimize_minimal_flux(model, already_irreversible=False,
     flux. Finally, it will convert the reaction back to the irreversible
     form it was in before. See http://dx.doi.org/10.1038/msb.2010.47
 
-    Parameters
-    ----------
     model : :class:`~cobra.core.Model` object
 
     already_irreversible : bool, optional
@@ -21,13 +19,13 @@ def optimize_minimal_flux(model, already_irreversible=False,
 
     """
     if "new_objective" in optimize_kwargs:
-        raise ValueError("Not implemented yet, use objective coefficients")
+        raise ValueError("Use objective coefficients, not new_objective")
     if not already_irreversible:
         modify.convert_to_irreversible(model)
-    hot_start = model.optimize(**optimize_kwargs)
+    model.optimize(**optimize_kwargs)
     # if the problem is infeasible
     if model.solution.f is None:
-        return
+        raise Exception("model could not be solved")
     old_f = model.solution.f
     old_objective_coefficients = {}
     old_lower_bounds = {}
@@ -60,10 +58,7 @@ def optimize_minimal_flux(model, already_irreversible=False,
     # if the minimization problem was successful
     if model.solution.f is not None:
         model.solution.f = old_f
-    modify.revert_to_reversible(model)
+    if not already_irreversible:
+        modify.revert_to_reversible(model)
+    return model.solution
 
-
-if __name__ == "__main__":
-    import cobra.test
-    model = cobra.test.create_test_model(cobra.test.ecoli_pickle)
-    optimize_minimal_flux(model)

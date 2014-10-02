@@ -1,23 +1,23 @@
 Documentation for COBRApy
 =========================
+For installation instructions, please see `INSTALL.md
+<https://github.com/opencobra/cobrapy/blob/master/INSTALL.md>`_.
+
 .. toctree::
     :numbered:
     :maxdepth: 2
 
-    introduction
-    reactions
-    metabolites
-    01_create_model
-    02_read_simulate_write
-    03_single_deletion
-    04_change_objective
-    05_add_reactions
-    06_ice_cream_milp
-    07_double_deletion
+    getting_started
+    building_model
+    io
+    simulating
+    deletions
+    phenotype_phase_plane
     escher
+    milp
+    qp
+    faq
     cobra
-
-
 
 
 Indices and tables

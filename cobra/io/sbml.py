@@ -8,6 +8,8 @@ from copy import deepcopy
 from time import time
 from warnings import warn
 import re
+from math import isnan, isinf
+
 #
 if __name == 'java':
     from org.sbml.jsbml import SBMLDocument, SpeciesReference, KineticLaw, Parameter
@@ -243,6 +245,12 @@ def create_cobra_model_from_sbml_file(sbml_filename, old_sbml=False, legacy_meta
         else:
             reaction.objective_coefficient = __default_objective_coefficient
 
+        # ensure values are not set to nan or inf
+        if isnan(reaction.lower_bound) or isinf(reaction.lower_bound):
+            reaction.lower_bound = __default_lower_bound
+        if isnan(reaction.upper_bound) or isinf(reaction.upper_bound):
+            reaction.upper_bound = __default_upper_bound
+
         reaction_note_dict = parse_legacy_sbml_notes(sbml_reaction.getNotesString())
         #Parse the reaction notes.
         #POTENTIAL BUG: DEALING WITH LEGACY 'SBML' THAT IS NOT IN A
@@ -324,7 +332,7 @@ def write_cobra_model_to_sbml_file(cobra_model, sbml_filename,
                                    use_fbc_package=True):
     """Write a cobra.Model object to an SBML XML file.
 
-    cobra_model:  A cobra.Model object
+    cobra_model:  :class:`~cobra.core.Model.Model` object
 
     sbml_filename:  The file to write the SBML XML to.
 
@@ -332,15 +340,14 @@ def write_cobra_model_to_sbml_file(cobra_model, sbml_filename,
 
     sbml_version: 1 is the only version supported at the moment.
 
-    print_time:  Boolean.  Print the time requirements for different sections
-
-    use_fbc_package: Boolean.  Convert the model to the FBC package format to improve portability.
-    http://sbml.org/Documents/Specifications/SBML_Level_3/Packages/Flux_Balance_Constraints_(flux)
+    use_fbc_package: Boolean.
+        Convert the model to the FBC package format to improve portability.
+        http://sbml.org/Documents/Specifications/SBML_Level_3/Packages/Flux_Balance_Constraints_(flux)
 
 
     TODO: Update the NOTES to match the SBML standard and provide support for
     Level 2 Version 4
-    
+
     """
     note_start_tag, note_end_tag = '<p>', '</p>'
     if sbml_level > 2 or (sbml_level == 2 and sbml_version == 4):
@@ -518,11 +525,12 @@ def add_sbml_species(sbml_model, cobra_metabolite, note_start_tag,
         sbml_species.setName(cobra_metabolite.name)
     else:
         sbml_species.setName(cobra_metabolite.id)
-    try:
-        sbml_species.setCompartment(the_compartment)
-    except:
-        warn('metabolite failed: ' + the_id)
-        return cobra_metabolite
+    if the_compartment is not None:
+        try:
+            sbml_species.setCompartment(the_compartment)
+        except:
+            warn('metabolite failed: ' + the_id)
+            return cobra_metabolite
     if cobra_metabolite.charge is not None:
         sbml_species.setCharge(cobra_metabolite.charge)
     if hasattr(cobra_metabolite.formula, 'id') or \
@@ -537,11 +545,11 @@ def add_sbml_species(sbml_model, cobra_metabolite, note_start_tag,
                 if the_id_type.lower() == 'charge':
                     continue #Use of notes['CHARGE'] has been deprecated in favor of metabolite.charge
                 if not isinstance(the_id_type, str):
-                    the_id_type = repr(the_id_type)
+                    the_id_type = str(the_id_type)
                 if hasattr(the_id, '__iter__') and len(the_id) == 1:
                     the_id = the_id[0]
                 if not isinstance(the_id, str):
-                    the_id = repr(the_id)
+                    the_id = str(the_id)
                 tmp_note += '%s%s: %s%s'%(note_start_tag,
                                              the_id_type,
                                              the_id, note_end_tag)
@@ -549,7 +557,7 @@ def add_sbml_species(sbml_model, cobra_metabolite, note_start_tag,
     return metabolite_id
 
 
-def fix_legacy_id(id, use_hyphens=False):
+def fix_legacy_id(id, use_hyphens=False, fix_compartments=False):
     id = id.replace('_DASH_', '__')
     id = id.replace('_FSLASH_', '/')
     id = id.replace('_BSLASH_', "\\")
@@ -568,6 +576,11 @@ def fix_legacy_id(id, use_hyphens=False):
         id = id.replace('__', '-')
     else:
         id = id.replace("-", "__")
+    if fix_compartments:
+        if len(id) > 2:
+            if (id[-3] == "(" and id[-1] == ")") or \
+               (id[-3] == "[" and id[-1] == "]"):
+                id = id[:-3] + "_" + id[-2]
     return id
 
 
@@ -583,7 +596,7 @@ def read_legacy_sbml(filename, use_hyphens=False):
             reaction.id = reaction.id[:-3] + "_e"
     model.reactions._generate_index()
     # remove boundary metabolites (end in _b and only present in exchanges)
-    for metabolite in model.metabolites:
+    for metabolite in list(model.metabolites):
         if not metabolite.id.endswith("_b"):
             continue
         if len(metabolite._reaction) == 1:
