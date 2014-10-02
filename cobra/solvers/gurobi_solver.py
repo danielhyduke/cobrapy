@@ -1,27 +1,52 @@
-##cobra.solvers.gurobi_solver
-#Interface to the gurobi 5.0.1 python solver
+# Interface to gurobipy
 
 from warnings import warn
-from os import name as __name
-from copy import deepcopy
 from itertools import izip
-###solver specific parameters
-from .parameters import status_dict, variable_kind_dict, \
-     sense_dict, parameter_mappings, parameter_defaults, \
-     objective_senses, default_objective_sense
+
+from gurobipy import Model, LinExpr, GRB, QuadExpr
+
 
 from ..core.Solution import Solution
-from time import time
-solver_name = 'gurobi'
-objective_senses = objective_senses[solver_name]
-parameter_mappings = parameter_mappings[solver_name]
-parameter_defaults = parameter_defaults[solver_name]
+from ..external.six import string_types
 
-## from numpy import array
-from gurobipy import Model, LinExpr, GRB, QuadExpr
-variable_kind_dict = eval(variable_kind_dict[solver_name])
-status_dict = eval(status_dict[solver_name])
-__solver_class = Model
+solver_name = 'gurobi'
+_SUPPORTS_MILP = True
+
+
+# set solver-specific parameters
+parameter_defaults = {'objective_sense': 'maximize',
+                      'tolerance_optimality': 1e-6,
+                      'tolerance_feasibility': 1e-6,
+                      'tolerance_integer': 1e-9,
+                      # This is primal simplex, default is -1 (automatic)
+                      'lp_method': 0,
+                      'verbose': False,
+                      'log_file': ''}
+parameter_mappings = {'log_file': 'LogFile',
+                      'lp_method': 'Method',
+                      'threads': 'Threads',
+                      'objective_sense': 'ModelSense',
+                      'output_verbosity': 'OutputFlag',
+                      'verbose': 'OutputFlag',
+                      'quadratic_precision': 'Quad',
+                      'time_limit': 'TimeLimit',
+                      'tolerance_feasibility': 'FeasibilityTol',
+                      'tolerance_markowitz': 'MarkowitzTol',
+                      'tolerance_optimality': 'OptimalityTol',
+                      'iteration_limit': 'IterationLimit',
+                      'tolerance_barrier': 'BarConvTol',
+                      'tolerance_integer': 'IntFeasTol',
+                      'MIP_gap_abs': 'MIPGapAbs',
+                      'MIP_gap': 'MIPGap'}
+# http://www.gurobi.com/documentation/5./6/reference-manual/method
+METHODS = {"auto": -1, "primal": 0, "dual": 1, "barrier": 2,
+           "concurrent": 3, "deterministic concurrent": 4}
+variable_kind_dict = {'continuous': GRB.CONTINUOUS, 'integer': GRB.INTEGER}
+sense_dict = {'E': GRB.EQUAL, 'L': GRB.LESS_EQUAL, 'G': GRB.GREATER_EQUAL}
+objective_senses = {'maximize': GRB.MAXIMIZE, 'minimize': GRB.MINIMIZE}
+status_dict = {GRB.OPTIMAL: 'optimal', GRB.INFEASIBLE: 'infeasible',
+               GRB.UNBOUNDED: 'unbounded', GRB.TIME_LIMIT: 'time_limit'}
+
 def get_status(lp):
     status = lp.status
     if status in status_dict:
@@ -39,10 +64,10 @@ def format_solution(lp, cobra_model, **kwargs):
         the_solution = Solution(None, status=status)
     else:
         objective_value = lp.ObjVal
-        x = [v.X for v  in lp.getVars()]      
+        x = [v.X for v in lp.getVars()]
         x_dict = {r.id: value for r, value in izip(cobra_model.reactions, x)}
         if lp.isMIP:
-            y = y_dict = None #MIP's don't have duals
+            y = y_dict = None  # MIP's don't have duals
         else:
             y = [c.Pi for c in lp.getConstrs()]
             y_dict = {m.id: value for m, value in izip(cobra_model.metabolites, y)}
@@ -51,9 +76,15 @@ def format_solution(lp, cobra_model, **kwargs):
     return(the_solution)
 
 def set_parameter(lp, parameter_name, parameter_value):
-    if parameter_name == 'ModelSense':
-        lp.setAttr(parameter_name, objective_senses[parameter_value])
+    if parameter_name == 'ModelSense' or parameter_name == "objective_sense":
+        lp.setAttr('ModelSense', objective_senses[parameter_value])
+    elif parameter_name == 'reuse_basis' and not parameter_value:
+        lp.reset()
     else:
+        parameter_name = parameter_mappings.get(parameter_name, parameter_name)
+        if parameter_name == "Method" and isinstance(parameter_value,
+                                                     string_types):
+            parameter_value = METHODS[parameter_value]
         lp.setParam(parameter_name, parameter_value)
 
 def change_variable_bounds(lp, index, lower_bound, upper_bound):
@@ -100,7 +131,6 @@ def update_problem(lp, cobra_model, **kwargs):
         the_variable.obj = float(the_reaction.objective_coefficient)
 
 
-sense_dict = eval(sense_dict[solver_name])
 def create_problem(cobra_model, quadratic_component=None, **kwargs):
     """Solver-specific method for constructing a solver problem from
     a cobra.Model.  This can be tuned for performance using kwargs
@@ -108,16 +138,14 @@ def create_problem(cobra_model, quadratic_component=None, **kwargs):
 
     """
     lp = Model("")
-    #Silence the solver
-    set_parameter(lp, 'OutputFlag', 0)
 
     the_parameters = parameter_defaults
     if kwargs:
-        the_parameters = deepcopy(parameter_defaults)
+        the_parameters = parameter_defaults.copy()
         the_parameters.update(kwargs)
 
-    [set_parameter(lp, parameter_mappings[k], v)
-         for k, v in the_parameters.iteritems() if k in parameter_mappings]
+    for k, v in the_parameters.iteritems():
+        set_parameter(lp, k, v)
 
 
     # Create variables
@@ -168,7 +196,8 @@ def set_quadratic_objective(lp, quadratic_objective):
         linear_objective = linear_objective.getLinExpr()
     gur_quadratic_objective = QuadExpr()
     for (index_0, index_1), the_value in quadratic_objective.todok().items():
-        gur_quadratic_objective.addTerms(the_value,
+        # gurobi does not multiply by 1/2 (only does v^T Q v)
+        gur_quadratic_objective.addTerms(the_value * 0.5,
                                          variable_list[index_0],
                                          variable_list[index_1])
     # this adds to the existing quadratic objectives
@@ -179,9 +208,8 @@ def solve_problem(lp, **kwargs):
 
     """
     #Update parameter settings if provided
-    if kwargs:
-        [set_parameter(lp, parameter_mappings[k], v)
-         for k, v in kwargs.iteritems() if k in parameter_mappings]
+    for k, v in kwargs.iteritems():
+        set_parameter(lp, k, v)
 
     lp.update()
     lp.optimize()
@@ -193,24 +221,19 @@ def solve(cobra_model, **kwargs):
     """
 
     """
-    #Start out with default parameters and then modify if
-    #new onese are provided
-    the_parameters = deepcopy(parameter_defaults)
-    if kwargs:
-        the_parameters.update(kwargs)
     for i in ["new_objective", "update_problem", "the_problem"]:
-        if i in the_parameters:
+        if i in kwargs:
             raise Exception("Option %s removed" % i)
-    if 'error_reporting' in the_parameters:
+    if 'error_reporting' in kwargs:
         warn("error_reporting deprecated")
+        kwargs.pop('error_reporting')
 
     #Create a new problem
-    lp = create_problem(cobra_model, **the_parameters)
-
+    lp = create_problem(cobra_model, **kwargs)
 
     ###Try to solve the problem using other methods if the first method doesn't work
     try:
-        lp_method = the_parameters['lp_method']
+        lp_method = kwargs['lp_method']
     except:
         lp_method = 0
     the_methods = [0, 2, 1]
@@ -219,17 +242,11 @@ def solve(cobra_model, **kwargs):
     #Start with the user specified method
     the_methods.insert(0, lp_method)
     for the_method in the_methods:
-        the_parameters['lp_method'] = the_method
         try:
-            status = solve_problem(lp, **the_parameters)
+            status = solve_problem(lp, lp_method=the_method)
         except:
             status = 'failed'
         if status == 'optimal':
             break
 
-    the_solution = format_solution(lp, cobra_model)
-    #if status != 'optimal':
-    #    print '%s failed: %s'%(solver_name, status)
-    #cobra_model.solution = the_solution
-    #solution = {'the_problem': lp, 'the_solution': the_solution}
-    return the_solution
+    return format_solution(lp, cobra_model)

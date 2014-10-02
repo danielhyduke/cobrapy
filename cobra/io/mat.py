@@ -1,6 +1,9 @@
 #This section is used to load the appropriate package for writing mat files
 #from Python or Jython.  Currently, only the section for Python that depends
 #on scipy has been written.
+
+import re
+
 from numpy import array, object as np_object
 from scipy.io import loadmat, savemat
 from scipy.sparse import coo_matrix
@@ -23,6 +26,21 @@ except ImportError:
 from .. import Model, Metabolite, Reaction, Formula
 
 
+bracket_re = re.compile("r\[[a-z]\]$")
+underscore_re = re.compile(r"_[a-z]$")
+
+
+def get_id_comparment(id):
+    """extract the compartment from the id string"""
+    bracket_search = bracket_re.findall(id)
+    if len(bracket_search) == 1:
+        return bracket_search[0][1]
+    underscore_search = underscore_re.findall(id)
+    if len(underscore_search) == 1:
+        return underscore_search[0][1]
+    return None
+
+
 def _cell(x):
     """translate an array x into a MATLAB cell array"""
     return array(x, dtype=np_object)
@@ -31,9 +49,8 @@ def _cell(x):
 def load_matlab_model(infile_path, variable_name=None):
     """Load a cobra model stored as a .mat file
 
-    Parameters
-    ----------
     infile_path : str
+
     variable_name : str, optional
         The variable name of the model in the .mat file. If this is not
         specified, then the first MATLAB variable which looks like a COBRA
@@ -73,6 +90,7 @@ def load_matlab_model(infile_path, variable_name=None):
         for i, name in enumerate(m["mets"][0, 0]):
             new_metabolite = Metabolite()
             new_metabolite.id = str(name[0][0])
+            new_metabolite.compartment = get_id_comparment(new_metabolite.id)
             try:
                 new_metabolite.name = str(m["metNames"][0, 0][i][0][0])
                 new_metabolite.formula = Formula(str(m["metFormulas"][0][0][i][0][0]))
@@ -94,6 +112,10 @@ def load_matlab_model(infile_path, variable_name=None):
                 new_reaction.name = str(m["rxnNames"][0, 0][i][0][0])
             except:
                 pass
+            try:
+                new_reaction.subsystem = str(m['subSystems'][0, 0][i][0][0])
+            except:
+                pass
             new_reactions.append(new_reaction)
         model.add_reactions(new_reactions)
         coo = coo_matrix(m["S"][0, 0])
@@ -108,21 +130,22 @@ def save_matlab_model(model, file_name):
     """Save the cobra model as a .mat file.
 
     This .mat file can be used directly in the MATLAB version of COBRA.
-    .. note:: This function works best with scipy 0.11b1 or later
 
-    Parameters
-    ----------
-    model : cobra.Model
+    model : :class:`~cobra.core.Model.Model` object
+
     file_name : str or file-like object
 
     """
+    mat = create_mat_dict(model)
+    savemat(file_name, {str(model.description): mat},
+             appendmat=True, oned_as="column")
+
+def create_mat_dict(model):
+    """create a dict mapping model attributes to arrays"""
     model = model.to_array_based_model()
     rxns = model.reactions
     mets = model.metabolites
     mat = dicttype()
-    csense = ""
-    for m in mets:
-        csense += m._constraint_sense
     mat["mets"] = _cell(mets.list_attr("id"))
     mat["metNames"] = _cell(mets.list_attr("name"))
     mat["metFormulas"] = _cell([str(m.formula) for m in mets])
@@ -131,7 +154,7 @@ def save_matlab_model(model, file_name):
     mat["rxns"] = _cell(rxns.list_attr("id"))
     mat["rxnNames"] = _cell(rxns.list_attr("name"))
     mat["subSystems"] = _cell(rxns.list_attr("subsystem"))
-    mat["csense"] = csense
+    mat["csense"] = "".join(model._constraint_sense)
     mat["S"] = model.S
     mat["lb"] = array(rxns.list_attr("lower_bound"))
     mat["ub"] = array(rxns.list_attr("upper_bound"))
@@ -139,5 +162,4 @@ def save_matlab_model(model, file_name):
     mat["c"] = array(rxns.list_attr("objective_coefficient"))
     mat["rev"] = array(rxns.list_attr("reversibility"))
     mat["description"] = str(model.description)
-    savemat(file_name, {str(model.description): mat},
-             appendmat=True, oned_as="column")
+    return mat

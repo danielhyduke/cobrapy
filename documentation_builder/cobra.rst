@@ -1,13 +1,5 @@
-cobra Package
+cobra package
 =============
-
-:mod:`cobra` Package
---------------------
-
-.. automodule:: cobra.__init__
-    :members:
-    :undoc-members:
-    :show-inheritance:
 
 Subpackages
 -----------
@@ -15,13 +7,17 @@ Subpackages
 .. toctree::
 
     cobra.core
-    cobra.external
     cobra.flux_analysis
     cobra.io
     cobra.manipulation
     cobra.mlab
     cobra.solvers
-    cobra.stats
-    cobra.test
     cobra.topology
 
+Module contents
+---------------
+
+.. automodule:: cobra
+    :members:
+    :undoc-members:
+    :show-inheritance:

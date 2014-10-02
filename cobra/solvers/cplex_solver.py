@@ -1,52 +1,72 @@
-#cobra.solvers.cplex_solver
-#Interface to ilog/cplex 12.4 python interface
+# Interface to ilog/cplex 12.4 python interface
 
-from os import name as __name
 from copy import deepcopy
 from warnings import warn
-###solver specific parameters
-from .parameters import status_dict, variable_kind_dict, \
-     sense_dict, parameter_mappings, parameter_defaults, \
-     objective_senses, default_objective_sense
+import sys
+
+from cplex import Cplex, SparsePair
+from cplex.exceptions import CplexError
 
 from ..core.Solution import Solution
+from ..external.six.moves import zip
+from ..external.six import string_types 
 
-from time import time
 solver_name = 'cplex'
-parameter_defaults = parameter_defaults[solver_name]
-sense_dict = eval(sense_dict[solver_name])
+_SUPPORTS_MILP = True
+
+# solver specific parameters
+parameter_defaults = {'objective_sense': 'maximize',
+                      'tolerance_optimality': 1e-6,
+                      'tolerance_feasibility': 1e-6,
+                      'tolerance_integer': 1e-9,
+                      'lp_method': 1,
+                      'tolerance_barrier': 1e-8,
+                      'verbose': False}
+parameter_mappings = {'lp_method': 'lpmethod',
+                      'lp_parallel': 'threads',
+                      'threads': 'threads',
+                      'objective_sense': 'objective_sense',
+                      'time_limit': 'timelimit',
+                      'iteration_limit': 'simplex.limits.iterations',
+                      'tolerance_barrier': 'barrier.convergetol',
+                      'tolerance_feasibility': 'simplex.tolerances.feasibility',
+                      'tolerance_markowitz': 'simplex.tolerances.markowitz',
+                      'tolerance_optimality': 'simplex.tolerances.optimality',
+                      'tolerance_integer': 'mip.tolerances.integrality',
+                      'MIP_gap_abs': 'mip.tolerances.absmipgap',
+                      'MIP_gap': 'mip.tolerances.mipgap'}
+variable_kind_dict = {'continuous': Cplex.variables.type.continuous,
+                      'integer': Cplex.variables.type.integer}
+status_dict = {'MIP_infeasible': 'infeasible',
+               'integer optimal solution': 'optimal',
+               'MIP_optimal': 'optimal',
+               'MIP_optimal_tolerance': 'optimal',
+               'MIP_unbounded':  'unbounded',
+               'infeasible': 'infeasible',
+               'optimal': 'optimal',
+               'optimal_tolerance': 'optimal',
+               'unbounded': 'unbounded',
+               'integer optimal, tolerance': 'optimal',
+               'time limit exceeded': 'time_limit'}
 
 
-parameter_mappings = parameter_mappings[solver_name]
-objective_senses = objective_senses[solver_name]
-from cplex import Cplex, SparsePair
-class Problem(Cplex):
-    def __init__(self):
-        Cplex.__init__(self)
-__solver_class = Problem
-variable_kind_dict = eval(variable_kind_dict[solver_name])
-status_dict = eval(status_dict[solver_name])
 def get_status(lp):
     status = lp.solution.get_status_string().lower()
-    if status in status_dict:
-        status = status_dict[status]
-    else:
-        status = 'failed'
-    return status
+    return status_dict[status] if status in status_dict else 'failed'
+
 
 def get_objective_value(lp):
     return lp.solution.get_objective_value()
 
+
 def format_solution(lp, cobra_model, **kwargs):
     status = get_status(lp)
-    #TODO: It might be able to speed this up a little.
     if status in ('optimal', 'time_limit'):
         objective_value = lp.solution.get_objective_value()
-        #This can be sped up a little
         x_dict = dict(zip(lp.variables.get_names(),
-                     lp.solution.get_values()))
+                          lp.solution.get_values()))
         x = lp.solution.get_values()
-        #MIP's don't have duals
+        # MIP's don't have duals
         if lp.get_problem_type() in (Cplex.problem_type.MIQP,
                                      Cplex.problem_type.MILP):
 
@@ -58,22 +78,56 @@ def format_solution(lp, cobra_model, **kwargs):
     else:
         x = y = x_dict = y_dict = objective_value = None
 
-    the_solution = Solution(objective_value, x=x, x_dict=x_dict,
-                            status=status, y=y, y_dict=y_dict)
-    return the_solution    
+    return Solution(objective_value, x=x, x_dict=x_dict, status=status,
+                    y=y, y_dict=y_dict)
+
 
 def set_parameter(lp, parameter_name, parameter_value):
-    """
-    
-    """
-    if parameter_name == 'objective.set_sense':
-        if parameter_value in objective_senses:
-            parameter_value = eval(objective_senses[parameter_value])
+    if parameter_name == 'objective_sense':
+        parameter_value = getattr(lp.objective.sense, parameter_value)
+        lp.objective.set_sense(parameter_value)
+        return
+    elif parameter_name == 'the_problem':
+        warn('option the_problem removed')
+        return
+    elif parameter_name == 'verbose':
+        if parameter_value:
+            lp.set_log_stream(sys.stdout)
+            lp.set_results_stream(sys.stdout)
+            lp.set_warning_stream(sys.stderr)
+            # If the value passed in is True, it shold be 1. MIP display can
+            # be as high as 5, but the others only go up to 2.
+            value = int(parameter_value)
+            set_parameter(lp, 'mip.display', value)
+            set_parameter(lp, 'simplex.display', min(value, 2))
+            set_parameter(lp, 'barrier.display', min(value, 2))
+        else:
+            lp.set_log_stream(None)
+            lp.set_results_stream(None)
+            lp.set_warning_stream(None)
+            set_parameter(lp, 'mip.display', 0)
+            set_parameter(lp, 'simplex.display', 0)
+            set_parameter(lp, 'barrier.display', 0)
+        return
     try:
-        eval('lp.%s(%s)'%(parameter_name, repr(parameter_value)))
-    except Exception, e:
-        print "Couldn't set parameter %s: %s"%(parameter_name, repr(e))
-
+        cplex_name = parameter_mappings.get(parameter_name, parameter_name)
+        cplex_value = parameter_value
+        # This will iteratively get parameters. For example
+        # "simplex.tolerances.feasibility" will evaluate to
+        # lp.parameters.simplex.tolerances.feasibility.
+        param = lp.parameters
+        for i in cplex_name.split("."):
+            param = getattr(param, i)
+        # For example, this next part will allow setting the parameter
+        # lpmethod to "auto", "primal", "dual" or any other string in
+        # parameters.lp.method.values
+        if isinstance(cplex_value, string_types) and \
+                hasattr(param.values, cplex_value):
+            cplex_value = getattr(param.values, cplex_value)
+        param.set(cplex_value)
+    except (CplexError, AttributeError) as e:
+        raise ValueError("Failed to set %s to %s: %s" %
+                         (parameter_name, str(parameter_value), repr(e)))
 
 
 def create_problem(cobra_model, quadratic_component=None, **kwargs):
@@ -82,38 +136,31 @@ def create_problem(cobra_model, quadratic_component=None, **kwargs):
 
 
     """
+    # Process parameter defaults
     the_parameters = parameter_defaults
     if kwargs:
-        the_parameters = deepcopy(parameter_defaults)
+        the_parameters = parameter_defaults.copy()
         the_parameters.update(kwargs)
-
-    lp = __solver_class()
-    if 'log_file' not in the_parameters:
-        lp.set_results_stream(None)
-        lp.set_warning_stream(None)
-    [set_parameter(lp, parameter_mappings[k], v)
-     for k, v in the_parameters.iteritems() if k in parameter_mappings]
     if 'relax_b' in the_parameters:
+        relax_b = the_parameters.pop("relax_b")
         warn('need to reimplement relax_b')
         relax_b = False
     else:
         relax_b = False
 
-    #Using the new objects
-    #NOTE: This might be slow
-    objective_coefficients = []
-    lower_bounds = []
-    upper_bounds = []
-    variable_names = []
-    variable_kinds = []
-    [(objective_coefficients.append(x.objective_coefficient),
-      lower_bounds.append(x.lower_bound),
-      upper_bounds.append(x.upper_bound),
-      variable_names.append(x.id),
-      variable_kinds.append(variable_kind_dict[x.variable_kind]))
-     for x in cobra_model.reactions]
-    #Cplex decides that the problem is a MIP if variable_kinds are supplied
-    #even if there aren't any integers.
+    # Begin problem creation
+    lp = Cplex()
+    for k, v in the_parameters.iteritems():
+        set_parameter(lp, k, v)
+    objective_coefficients = cobra_model.reactions.list_attr(
+        'objective_coefficient')
+    lower_bounds = cobra_model.reactions.list_attr("lower_bound")
+    upper_bounds = cobra_model.reactions.list_attr("upper_bound")
+    variable_names = cobra_model.reactions.list_attr("id")
+    variable_kinds = [variable_kind_dict[x.variable_kind] for x
+                      in cobra_model.reactions]
+    # Cplex decides that the problem is a MIP if variable_kinds are supplied
+    # even if there aren't any integers.
     if variable_kind_dict['integer'] in variable_kinds:
         lp.variables.add(obj=objective_coefficients,
                          lb=lower_bounds,
@@ -188,8 +235,7 @@ def set_quadratic_objective(lp, quadratic_objective):
     if lp.objective.get_num_quadratic_nonzeros() > 0:
         lp.objective.set_quadratic((0.,) * lp.variables.get_num())
 
-    # cplex divides by 2 for some reason
-    quadratic_component_scaled = quadratic_objective.todok() * 2
+    quadratic_component_scaled = quadratic_objective.todok()
 
     lp.parameters.emphasis.numerical.set(1)
     for k, v in quadratic_component_scaled.items():
@@ -238,51 +284,30 @@ def update_problem(lp, cobra_model, **kwargs):
                                         for x in cobra_model.reactions])
 
 
-
-###
 def solve_problem(lp, **kwargs):
-    """A performance tunable method for solving a problem
-
-    """
-    #Update parameter settings if provided
-    if kwargs:
-        [set_parameter(lp, parameter_mappings[k], v)
-         for k, v in kwargs.iteritems() if k in parameter_mappings]
-    try:
-        the_problem = kwargs['the_problem']
-    except:
-        the_problem = False
-    if isinstance(the_problem, __solver_class):
-        try:
-            the_basis = the_problem.solution.basis.get_basis()
-            lp.start.set_basis(the_basis[0],the_basis[1])
-            lp.parameters.preprocessing.presolve.set(0)
-        except:
-            warn("cplex_java isn't yet configured to reuse the basis")
-    
+    # Update parameter settings if provided
+    for k, v in kwargs.iteritems():
+        set_parameter(lp, k, v)
     lp.solve()
-    #If the solver takes more than 0.1 s with a hot start it is likely stuck
-    status = get_status(lp)
-    return status
+    # If the solver takes more than 0.1 s with a hot start it is likely stuck
+    return get_status(lp)
 
-    
+
 def solve(cobra_model, **kwargs):
     """
 
     """
     #Start out with default parameters and then modify if
     #new onese are provided
-    the_parameters = deepcopy(parameter_defaults)
-    if kwargs:
-        the_parameters.update(kwargs)
     for i in ["new_objective", "update_problem", "the_problem"]:
-        if i in the_parameters:
+        if i in kwargs:
             raise Exception("Option %s removed" % i)
-    if 'error_reporting' in the_parameters:
+    if 'error_reporting' in kwargs:
+        kwargs.pop('error_erporting')
         warn("error_reporting deprecated")
 
-
-    lp = create_problem(cobra_model, **the_parameters)
+    # Create problem will get parameter defaults
+    lp = create_problem(cobra_model, **kwargs)
 
     ###Try to solve the problem using other methods if the first method doesn't work
     try:
@@ -295,17 +320,10 @@ def solve(cobra_model, **kwargs):
     #Start with the user specified method
     the_methods.insert(0, lp_method)
     for the_method in the_methods:
-        the_parameters['lp_method'] = the_method
         try:
-            status = solve_problem(lp, **the_parameters)
+            status = solve_problem(lp, lp_method=the_method)
         except:
             status = 'failed'
         if status == 'optimal':
             break
-
-    the_solution = format_solution(lp, cobra_model)
-    #if status != 'optimal':
-    #    print '%s failed: %s'%(solver_name, status)
-    #cobra_model.solution = the_solution
-    #solution = {'the_problem': lp, 'the_solution': the_solution}
-    return the_solution
+    return format_solution(lp, cobra_model)

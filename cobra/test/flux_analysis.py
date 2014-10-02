@@ -15,7 +15,7 @@ if __name__ == "__main__":
     from cobra import Model, Reaction, Metabolite
     from cobra.manipulation import initialize_growth_medium
     from cobra.solvers import solver_dict, get_solver_name
-    from cobra.manipulation import modify
+    from cobra.manipulation import modify, delete
     from cobra.flux_analysis.parsimonious import optimize_minimal_flux
     from cobra.flux_analysis.variability import flux_variability_analysis
     from cobra.flux_analysis.single_deletion import single_deletion
@@ -28,7 +28,7 @@ else:
     from .. import Model, Reaction, Metabolite
     from ..manipulation import initialize_growth_medium
     from ..solvers import solver_dict, get_solver_name
-    from ..manipulation import modify
+    from ..manipulation import modify, delete
     from ..flux_analysis.parsimonious import optimize_minimal_flux
     from ..flux_analysis.variability import flux_variability_analysis
     from ..flux_analysis.single_deletion import single_deletion
@@ -62,6 +62,63 @@ class TestCobraFluxAnalysis(TestCase):
         model2.optimize()
         self.assertAlmostEqual(model1.solution.f, model2.solution.f, places=3)
 
+        # Ensure revert_to_reversible is robust to solutions generated both
+        # before and after reversibility conversion, or not solved at all.
+        model3 = create_test_model()
+        model3.optimize()
+        modify.convert_to_irreversible(model3)
+        modify.revert_to_reversible(model3)
+        self.assertAlmostEqual(model1.solution.f, model3.solution.f, places=3)
+
+        model4 = create_test_model()
+        modify.convert_to_irreversible(model4)
+        modify.revert_to_reversible(model4)
+
+    def test_gene_knockout_computation(self):
+        cobra_model = self.model
+        delete_model_genes = delete.delete_model_genes
+        get_removed = lambda m: {x.id for x in m._trimmed_reactions}
+        gene_list = ['STM1067', 'STM0227']
+        dependent_reactions = {'3HAD121', '3HAD160', '3HAD80', '3HAD140',
+                               '3HAD180', '3HAD100', '3HAD181','3HAD120',
+                               '3HAD60', '3HAD141', '3HAD161', 'T2DECAI',
+                               '3HAD40'}
+        delete_model_genes(cobra_model, gene_list)
+        self.assertEqual(get_removed(cobra_model), dependent_reactions)
+        # cumulative
+        delete_model_genes(cobra_model, ["STM4221"],
+                           cumulative_deletions=True)
+        dependent_reactions.add('PGI')
+        self.assertEqual(get_removed(cobra_model), dependent_reactions)
+        # non-cumulative
+        delete_model_genes(cobra_model, ["STM4221"],
+                           cumulative_deletions=False)
+        self.assertEqual(get_removed(cobra_model), {'PGI'})
+        # make sure on reset that the bounds are correct
+        reset_bound = cobra_model.reactions.get_by_id("T2DECAI").upper_bound
+        self.assertEqual(reset_bound, 1000.)
+        # test computation when gene name is a subset of another
+        test_model = Model()
+        test_reaction_1 = Reaction("test1")
+        test_reaction_1.gene_reaction_rule = "eggs or (spam and eggspam)"
+        test_model.add_reaction(test_reaction_1)
+        delete.delete_model_genes(test_model, ["eggs"])
+        self.assertEqual(get_removed(test_model), set())
+        delete_model_genes(test_model, ["spam"], cumulative_deletions=True)
+        self.assertEqual(get_removed(test_model), {'test1'})
+        # test computation with nested boolean expression
+        delete.undelete_model_genes(test_model)
+        test_reaction_1.gene_reaction_rule = \
+            "g1 and g2 and (g3 or g4 or (g5 and g6))"
+        delete_model_genes(test_model, ["g3"], cumulative_deletions=False)
+        self.assertEqual(get_removed(test_model), set())
+        delete_model_genes(test_model, ["g1"], cumulative_deletions=False)
+        self.assertEqual(get_removed(test_model), {'test1'})
+        delete_model_genes(test_model, ["g5"], cumulative_deletions=False)
+        self.assertEqual(get_removed(test_model), set())
+        delete_model_genes(test_model, ["g3", "g4", "g5"],
+                           cumulative_deletions=False)
+        self.assertEqual(get_removed(test_model), {'test1'})
 
     def test_single_deletion(self):
         cobra_model = self.model
@@ -75,7 +132,9 @@ class TestCobraFluxAnalysis(TestCase):
                        'moma':{ tpiA.id:1.62, metN.id:2.4, atpA.id:1.40, eno.id:0.33}}
 
         #MOMA requires cplex or gurobi
-        if get_solver_name(qp=True) is None:
+        try:
+            get_solver_name(qp=True)
+        except:
             growth_dict.pop('moma')
         for method, the_growth_rates in growth_dict.items():
             element_list = the_growth_rates.keys()
@@ -160,6 +219,8 @@ class TestCobraFluxAnalysis(TestCase):
             '5DGLCNt2rpp': {'minimum': 0.0, 'maximum': 0.0},
             'ACALD': {'minimum': 3.35702, 'maximum': 7.49572}}
 
+        infeasible_model = create_test_model()
+        infeasible_model.reactions.get_by_id("EX_glyc_e").lower_bound = 0
         for solver in solver_dict:
             cobra_model = create_test_model()
             initialize_growth_medium(cobra_model, 'LB')
@@ -167,7 +228,11 @@ class TestCobraFluxAnalysis(TestCase):
                     reaction_list=cobra_model.reactions[100:140])
             for the_reaction, the_range in iteritems(fva_out):
                 for k, v in iteritems(the_range):
-                    self.assertAlmostEqual(fva_results[the_reaction][k], v, places=3)
+                    self.assertAlmostEqual(fva_results[the_reaction][k], v, places=5)
+            # ensure that an infeasible model does not run FVA
+            self.assertRaises(ValueError, flux_variability_analysis,
+                              infeasible_model, solver=solver)
+
 
 # make a test suite to run all of the tests
 loader = TestLoader()

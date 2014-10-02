@@ -113,6 +113,8 @@ class TestCobraSolver(object):
 
     def test_solve_mip(self):
         solver = self.solver
+        if not hasattr(solver, "_SUPPORTS_MILP") or not solver._SUPPORTS_MILP:
+            self.skipTest("no milp support")
         cobra_model = Model('MILP_implementation_test')
         constraint = Metabolite("constraint")
         constraint._bound = 2.5
@@ -186,11 +188,40 @@ class TestCobraSolver(object):
         solution = solver.format_solution(lp, m)
         self.assertAlmostEqual(solution.x_dict["y"], 2.5)
 
+    def test_inequality(self):
+        # The space enclosed by the constraints is a 2D triangle with
+        # vertexes as (3, 0), (1, 2), and (0, 1)
+        solver = self.solver
+        # c1 encodes y - x > 1 ==> y > x - 1
+        # c2 encodes y + x < 3 ==> y < 3 - x
+        c1 = Metabolite("c1")
+        c2 = Metabolite("c2")
+        x = Reaction("x")
+        x.lower_bound = 0
+        y = Reaction("y")
+        y.lower_bound = 0
+        x.add_metabolites({c1: -1, c2: 1})
+        y.add_metabolites({c1: 1, c2: 1})
+        c1._bound = 1
+        c1._constraint_sense = "G"
+        c2._bound = 3
+        c2._constraint_sense = "L"
+        m = Model()
+        m.add_reactions([x, y])
+        # test that optimal values are at the vertices
+        m.change_objective("x")
+        self.assertAlmostEqual(solver.solve(m).f, 1.0)
+        self.assertAlmostEqual(solver.solve(m).x_dict["y"], 2.0)
+        m.change_objective("y")
+        self.assertAlmostEqual(solver.solve(m).f, 3.0)
+        self.assertAlmostEqual(solver.solve(m, objective_sense="minimize").f,
+                              1.0)
+
     @skipIf(scipy is None, "scipy required for quadratic objectives")
     def test_quadratic(self):
         solver = self.solver
         if not hasattr(solver, "set_quadratic_objective"):
-            return
+            self.skipTest("no qp support")
         c = Metabolite("c")
         c._bound = 2
         x = Reaction("x")
@@ -204,7 +235,7 @@ class TestCobraSolver(object):
         m = Model()
         m.add_reactions([x, y])
         lp = self.solver.create_problem(m)
-        quadratic_obj = scipy.sparse.eye(2)
+        quadratic_obj = scipy.sparse.eye(2) * 2
         solver.set_quadratic_objective(lp, quadratic_obj)
         solver.solve_problem(lp, objective_sense="minimize")
         solution = solver.format_solution(lp, m)
@@ -231,7 +262,8 @@ class TestCobraSolver(object):
         m.add_reaction(z)
         solution = solver.solve(m, quadratic_component=scipy.sparse.eye(3),
                                 objective_sense="minimize")
-        self.assertAlmostEqual(solution.f, 12)
+        # should be 12 not 24 because 1/2 (V^T Q V)
+        self.assertAlmostEqual(solution.f, 6)
         self.assertAlmostEqual(solution.x_dict["x"], 2)
         self.assertAlmostEqual(solution.x_dict["y"], 2)
         self.assertAlmostEqual(solution.x_dict["z"], 2)
