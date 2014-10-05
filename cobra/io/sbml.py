@@ -137,6 +137,7 @@ def create_cobra_model_from_sbml_file(sbml_filename, old_sbml=False, legacy_meta
         tmp_metabolite.name = sbml_metabolite.getName()
         tmp_formula = ''
         tmp_metabolite.notes = parse_legacy_sbml_notes(sbml_metabolite.getNotesString())
+        tmp_metabolite.annotation = parse_annotation(sbml_metabolite)
         tmp_metabolite.charge = sbml_metabolite.getCharge()
         if "CHARGE" in tmp_metabolite.notes:
             note_charge = tmp_metabolite.notes["CHARGE"][0]
@@ -181,6 +182,7 @@ def create_cobra_model_from_sbml_file(sbml_filename, old_sbml=False, legacy_meta
         cobra_reaction_list.append(reaction)
         #reaction.exchange_reaction = 0
         reaction.name = sbml_reaction.getName()
+        reaction.annotation = parse_annotation(sbml_reaction)
         cobra_metabolites = {}
         #Use the cobra.Metabolite class here
         for sbml_metabolite in sbml_reaction.getListOfReactants():
@@ -598,3 +600,26 @@ def read_legacy_sbml(filename, use_hyphens=False):
                 metabolite.remove_from_model()
     model.metabolites._generate_index()
     return model
+#tools to parse MIRIAM RDF annotation
+from libsbml import CVTermList, RDFAnnotationParser
+from collections import defaultdict
+from libsbml import BQB_ENCODES, BQB_HAS_PART, BQB_HAS_PROPERTY, BQB_HAS_VERSION, BQB_IS, BQB_IS_DESCRIBED_BY, BQB_IS_ENCODED_BY, BQB_IS_HOMOLOG_TO, BQB_IS_PART_OF, BQB_IS_PROPERTY_OF, BQB_IS_VERSION_OF, BQB_OCCURS_IN, BQB_UNKNOWN
+_bq_values = (BQB_ENCODES, BQB_HAS_PART, BQB_HAS_PROPERTY, BQB_HAS_VERSION, BQB_IS, BQB_IS_DESCRIBED_BY, BQB_IS_ENCODED_BY, BQB_IS_HOMOLOG_TO, BQB_IS_PART_OF, BQB_IS_PROPERTY_OF, BQB_IS_VERSION_OF, BQB_OCCURS_IN, BQB_UNKNOWN)
+
+_bq_strings = ('BQB_ENCODES', 'BQB_HAS_PART', 'BQB_HAS_PROPERTY', 'BQB_HAS_VERSION', 'BQB_IS', 'BQB_IS_DESCRIBED_BY', 'BQB_IS_ENCODED_BY', 'BQB_IS_HOMOLOG_TO', 'BQB_IS_PART_OF', 'BQB_IS_PROPERTY_OF', 'BQB_IS_VERSION_OF', 'BQB_OCCURS_IN', 'BQB_UNKNOWN')
+_bq_lookup = dict(zip(_bq_values, _bq_strings))
+def parse_annotation(sbml_entity):
+    tmp_annotation = sbml_entity.getAnnotation()
+    tmp_cvlist = CVTermList()
+    RDFAnnotationParser.parseRDFAnnotation(tmp_annotation,
+                                           tmp_cvlist)
+    annotation_dict = defaultdict(list)
+    for i in range(tmp_cvlist.getSize()):
+        term = tmp_cvlist.get(i)
+        #need to know if bqbiol or bqmodel
+        key = _bq_lookup[term.getBiologicalQualifierType()]
+        resources = term.getResources()
+        for j in range(resources.getLength()):
+            annotation_dict[key].append(resources.getValue(j))
+    return(annotation_dict)
+        
